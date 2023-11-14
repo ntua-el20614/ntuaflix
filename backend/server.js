@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   });
 
 // Start the server
-const port = "5500";
+const port = "7117";
 const ipAddress = 'localhost';//
 app.listen(port, ipAddress, () => {
   console.log(`Server is running on http://${ipAddress}:${port}`);//${ipAddress}:
