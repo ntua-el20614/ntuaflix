@@ -34,16 +34,15 @@ CREATE TABLE Titles (
 );
 
 CREATE TABLE Episodes (
-    episodeID INT AUTO_INCREMENT PRIMARY KEY,
-    seriesID VARCHAR(255),
+    tconst VARCHAR(255) PRIMARY KEY,
+    parentTconst VARCHAR(255),
     seasonN VARCHAR(255),
     episodeN VARCHAR(255),
-    FOREIGN KEY (seriesID) REFERENCES Titles(tconst)
+    FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
 
-CREATE TABLE Title_ratings (
-    ratingID INT AUTO_INCREMENT PRIMARY KEY,
-    titleid VARCHAR(255),
+CREATE TABLE Title_ratings ( 
+    titleid VARCHAR(255) PRIMARY KEY,
     averageRate DECIMAL(3, 2),
     numVotes INT,
     FOREIGN KEY (titleid) REFERENCES Titles(tconst)
@@ -64,7 +63,7 @@ CREATE TABLE title_principals (
     category VARCHAR(255),
     job VARCHAR(255),
     characters VARCHAR(255),
-    img_url_assets VARCHAR(255),
+    img_url_asset VARCHAR(255),
     PRIMARY KEY (tconst, ordering),
     FOREIGN KEY (tconst) REFERENCES Titles(tconst),
     FOREIGN KEY (nconst) REFERENCES people(nconst)
