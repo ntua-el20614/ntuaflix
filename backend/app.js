@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /* Routes used */
-app.use('/api/samples', sampleRoutes);
+app.use('/api', sampleRoutes);
 
 app.use((req, res, next) => { res.status(404).json({ message: 'Endpoint not found' }) });
 

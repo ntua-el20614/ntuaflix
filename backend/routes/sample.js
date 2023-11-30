@@ -5,7 +5,8 @@ const sampleController = require('../controllers/sample');
 const router = express.Router();
 
 router.get('/', sampleController.getSample);
-router.get('/:id', sampleController.getSampleById);
+router.get('/movies', sampleController.getMovies);
+router.get('/movie/:id', sampleController.getMovieById);
 router.post('/:id', sampleController.postSample);
 
 module.exports = router;
