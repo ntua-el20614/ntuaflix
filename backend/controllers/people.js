@@ -21,7 +21,6 @@ exports.getTypeOfPeople = (req, res, next) => {
     const profession = req.params.profession;
 
     const query = `SELECT * FROM people WHERE primaryProfession LIKE "%${profession}%"`;
-    console.log(query);
     pool.getConnection((err, connection) => {
         connection.query(query, (err, rows) => {
             connection.release();
@@ -36,7 +35,6 @@ exports.getTypeOfPeopleOneProfession = (req, res, next) => {
     const profession = req.params.profession;
 
     const query = `SELECT * FROM people WHERE primaryProfession LIKE "${profession}"`;
-    console.log(query);
     pool.getConnection((err, connection) => {
         connection.query(query, (err, rows) => {
             connection.release();
