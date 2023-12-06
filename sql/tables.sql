@@ -90,21 +90,3 @@ CREATE TABLE watchlist (
     FOREIGN KEY (userID) REFERENCES users(userID),
     FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
-
-CREATE TABLE forum (
-    forumID INT AUTO_INCREMENT PRIMARY KEY,
-    tconst VARCHAR(255),
-    title VARCHAR(255),
-    description VARCHAR(255),
-    FOREIGN KEY (tconst) REFERENCES Titles(tconst)
-);
-
-CREATE TABLE comments (
-    commentID INT AUTO_INCREMENT PRIMARY KEY,
-    forumID INT,
-    userID INT,
-    commentText VARCHAR(255),
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (forumID) REFERENCES forum(forumID),
-    FOREIGN KEY (userID) REFERENCES users(userID)
-);
