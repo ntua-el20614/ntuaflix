@@ -1,0 +1,46 @@
+==== All Requirements (from excel file from helios - we do not include all of them at the end) ====
+Selection of the N movies with the best ratings for a genre
+Movie recommender with Machine Learning 
+User authentication
+Finding the highest rated movie of each actor/actress
+Finding the most recent movie of each actor/creator
+List the N most highly rated movies of each actor/creator 
+List the N types of movies of each actor/caster that have the highest rated movies in which he/she is involved
+Finding the movies that users have watched
+Recording of movies watched by users
+Calculating user's profile based on the movies he/she has already watched. For example, the profile likes 20% action movies, 15% thrillers, 40% comedies, etc.
+Based on the user's profile to recommend movies that suit him when he doesn't know what to choose.
+Calculate actor's profile / coefficient based on the movies he/she has participated in. For example, the actor has done 20% action films, 15% thrillers, 40% comedies etc.
+Adding films by the user that he intends to see, of the "view later" type, to more than one list
+Adding "like" or "dislike" to films
+Create friends, so that you can see what each person has on their list and make recommendations based on their friends' lists
+Search movies by actor/actress criteria
+Search for films by genre 
+Search for films by year of release
+Additional rating of parts of the film (e.g. interesting beginning, weak middle, terrible ending)
+Chatbot for discussion with user, suggesting a movie etc.
+Movie recommendations to users
+Recommendation of movies based on what you have declared you like ("likes" / "dislikes")
+Calculation of links between each movie and its cast
+Calculating links between each contributor and his/her films
+When we select an actor/caster to display their biography.
+Visualization in graphic format for the films liked by the user and the categories they share
+User verification
+To refresh the films
+Discussion of the film by users on the film page
+View full movie details
+
+==== Use Cases ====
+1. User Authentication and Profile Management:
+-Focuses on user registration, login, and profile management.
+-Essential for personalizing the user experience and securing user data.
+
+2. Movie Browsing, Searching, and Actor/Cast Information:
+-Combines movie and actor/cast searching, including viewing detailed information about movies and their associated cast and crew.
+-Encompasses finding the highest rated and most recent movies for each actor/creator and displaying actor biographies.
+-This unified use case offers a comprehensive view of the film database from both movie and actor perspectives.
+
+3. User Interaction and Community Features:
+-Includes recording and updating user preferences, watched movies, movie ratings (like/dislike), and comments.
+-Covers the creation of user friends lists and facilitates community discussions in a forum-like setting for films and TV shows.
+-Involves calculating links between movies and their cast or contributors, enhancing the social and interconnected aspect of the service.
