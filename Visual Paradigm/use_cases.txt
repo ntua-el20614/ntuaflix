@@ -33,14 +33,11 @@ View full movie details
 ==== Use Cases ====
 1. User Authentication and Profile Management:
 -Focuses on user registration, login, and profile management.
--Essential for personalizing the user experience and securing user data.
 
 2. Movie Browsing, Searching, and Actor/Cast Information:
 -Combines movie and actor/cast searching, including viewing detailed information about movies and their associated cast and crew.
 -Encompasses finding the highest rated and most recent movies for each actor/creator and displaying actor biographies.
--This unified use case offers a comprehensive view of the film database from both movie and actor perspectives.
 
 3. User Interaction and Community Features:
--Includes recording and updating user preferences, watched movies, movie ratings (like/dislike), and comments.
--Covers the creation of user friends lists and facilitates community discussions in a forum-like setting for films and TV shows.
--Involves calculating links between movies and their cast or contributors, enhancing the social and interconnected aspect of the service.
+-Includes recording and updating movie ratings (like/dislike), and comments.
+-Involves calculating links between movies and their cast or contributors.
