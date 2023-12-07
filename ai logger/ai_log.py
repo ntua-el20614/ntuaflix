@@ -71,8 +71,9 @@ def get_next_filename(phase, directory="."):
 def log_chat(filename):
     print("\nPlease save your chat log to a file and provide the file path:")
 
-    #chat_log_path = input("Enter the name of your log file: ")
-    chat_log_path="logger.txt"
+    chat_log_path = input("Enter the name of your log file: ")
+    #chat_log_path="logger.txt"
+    chat_log_path+=".txt"
     try:
         with open(chat_log_path, 'r') as chat_file:
             lines = chat_file.readlines()
