@@ -69,10 +69,11 @@ def get_next_filename(phase, directory="."):
     return f"{phase}_{next_order}.json"
 
 def log_chat(filename):
-    print("\nPlease save your chat log to a file and provide the file path:")
-
-    chat_log_path = input("Enter the name of your log file: ")
+    print("If you dont want a prompt write \"No prompt\"")
+    chat_log_path = input("Enter the name of your log file (without .txt): ")
     #chat_log_path="logger.txt"
+    if chat_log_path == "No prompt":
+        return False
     chat_log_path+=".txt"
     try:
         with open(chat_log_path, 'r') as chat_file:
@@ -80,6 +81,7 @@ def log_chat(filename):
     except FileNotFoundError:
         print("File not found. Please check the path and try again.")
         return
+    
 
     log_filename = f"prompt_{filename}.txt"
 
@@ -96,6 +98,7 @@ def log_chat(filename):
             file.write(line)
 
     print(f"Chat log saved to {log_filename}")
+    return True
 
 
 def zip_files(zip_filename, files_to_zip):
@@ -116,17 +119,29 @@ print(f"Responses saved to {filename}")
 
 # Generate prompt filename with correct extension
 prompt = f"prompt_{filename[:-5]}.txt"
-log_chat(filename[:-5])  # Pass the base filename without .json extension
+done = log_chat(filename[:-5])  # Pass the base filename without .json extension
 
 # Zip the files
-zip_files(f"zipped_{filename[:-5]}.zip", [filename, prompt])
+if done:
+    zip_files(f"zipped_{filename[:-5]}.zip", [filename, prompt])
+    
+    
+    try:
+        os.remove(filename)
+        os.remove(prompt)
+        print("Files successfully deleted.")
+    except FileNotFoundError:
+        print("One or both files not found. They may have already been deleted or never existed.")
 
-try:
-    os.remove(filename)
-    os.remove(prompt)
-    print("Files successfully deleted.")
-except FileNotFoundError:
-    print("One or both files not found. They may have already been deleted or never existed.")
+    
+else:
+    zip_files(f"zipped_{filename[:-5]}.zip", [filename])
+    
+    try:
+        os.remove(filename) 
+        print("File successfully deleted.")
+    except FileNotFoundError:
+        print("Files not found. It may have already been deleted or never existed.")
 
 
 print("Visit galileo.softlab.ntua.gr:3001 to submit the zipped file")
