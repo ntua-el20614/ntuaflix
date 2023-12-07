@@ -1,6 +1,8 @@
 import json
 import os
 import re
+import zipfile
+
 
 def run_survey():
     data = {
@@ -54,7 +56,7 @@ def run_survey():
     return responses
 
 def get_next_filename(phase, directory="."):
-    pattern = re.compile(rf"{phase}_(\d+).json")
+    pattern = re.compile(rf"zipped_{phase}_(\d+).zip")
     max_order = 0
 
     for filename in os.listdir(directory):
@@ -66,13 +68,64 @@ def get_next_filename(phase, directory="."):
     next_order = max_order + 1
     return f"{phase}_{next_order}.json"
 
+def log_chat(filename):
+    print("\nPlease save your chat log to a file and provide the file path:")
+
+    #chat_log_path = input("Enter the name of your log file: ")
+    chat_log_path="logger.txt"
+    try:
+        with open(chat_log_path, 'r') as chat_file:
+            lines = chat_file.readlines()
+    except FileNotFoundError:
+        print("File not found. Please check the path and try again.")
+        return
+
+    log_filename = f"prompt_{filename}.txt"
+
+    with open(log_filename, "w") as file:
+        for line in lines:
+            if line.strip() == "User":
+                file.write("User:\n")
+                file.write("______\n")
+                continue
+            if line.strip() == "ChatGPT":
+                file.write("ChatGPT:\n")
+                file.write("_________\n")
+                continue
+            file.write(line)
+
+    print(f"Chat log saved to {log_filename}")
+
+
+def zip_files(zip_filename, files_to_zip):
+    with zipfile.ZipFile(zip_filename, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for file in files_to_zip:
+            zipf.write(file)
+
+
 responses = run_survey()
 
 phase = responses.get("phase").replace(" ", "_").lower()  # Replace spaces with underscores and convert to lower case
 filename = get_next_filename(phase)
 
+# Save JSON responses
 with open(filename, "w") as file:
     json.dump({"answers": responses}, file, indent=4)
-
 print(f"Responses saved to {filename}")
-print("Visit galileo.softlab.ntua.gr:3001 to submit the file")
+
+# Generate prompt filename with correct extension
+prompt = f"prompt_{filename[:-5]}.txt"
+log_chat(filename[:-5])  # Pass the base filename without .json extension
+
+# Zip the files
+zip_files(f"zipped_{filename[:-5]}.zip", [filename, prompt])
+
+try:
+    os.remove(filename)
+    os.remove(prompt)
+    print("Files successfully deleted.")
+except FileNotFoundError:
+    print("One or both files not found. They may have already been deleted or never existed.")
+
+
+print("Visit galileo.softlab.ntua.gr:3001 to submit the zipped file")
