@@ -7,6 +7,6 @@ const router = express.Router();
 router.get('/', movieController.getSample);
 router.get('/movies', movieController.getMovies);
 router.get('/movie/:id', movieController.getMovieById);
-router.get('/movie_all_info/:id', movieController.getAllInfoForMovieById);
+router.get('/title/:titleID', movieController.getAllInfoForMovieById);
 
 module.exports = router;

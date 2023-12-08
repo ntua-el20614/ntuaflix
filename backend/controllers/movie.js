@@ -37,42 +37,50 @@ exports.getMovieById = (req, res, next) => {
 
 
 exports.getAllInfoForMovieById = (req, res, next) => {
-    const id = req.params.id;
+    const titleID = req.params.titleID;
 
 
     const query = `
-
+    
     SELECT 
-    T.tconst, 
-    MAX(T.titletype) AS titletype, 
-    MAX(T.primarytitle) AS primarytitle, 
-    MAX(T.originaltitle) AS originaltitle, 
-    MAX(T.isAdult) AS isAdult, 
-    MAX(T.startYear) AS startYear, 
-    MAX(T.endYear) AS endYear, 
-    MAX(T.runtimeMinutes) AS runtimeMinutes, 
-    MAX(T.genres) AS genres, 
-    MAX(T.img_url_asset) AS img_url_asset, 
-    GROUP_CONCAT(DISTINCT CONCAT('seasonN:', IFNULL(E.seasonN, ''), '|episodeN:', IFNULL(E.episodeN, '')) SEPARATOR ';') AS episodes_info,
-    MAX(R.averageRate) AS averageRate, 
-    MAX(R.numVotes) AS numVotes, 
-    MAX(C.directors) AS directors, 
-    MAX(C.writers) AS writers,
-    GROUP_CONCAT(DISTINCT CONCAT('ordering:', A.ordering, '|title:', IFNULL(A.title, ''), '|region:', IFNULL(A.region, ''), '|language:', IFNULL(A.language, ''), '|types:', IFNULL(A.types, ''), '|attributes:', IFNULL(A.attributes, ''), '|isOriginalTitle:', IFNULL(A.isOriginalTitle, '')) SEPARATOR ';') AS aka_info
-FROM 
-    Titles T
-LEFT JOIN 
-    Episodes E ON T.tconst = E.parentTconst
-LEFT JOIN 
-    Title_ratings R ON T.tconst = R.titleid
-LEFT JOIN 
-    Title_crew C ON T.tconst = C.tconst
-LEFT JOIN 
-    Title_akas A ON T.tconst = A.tconst
-WHERE 
-    T.tconst = "${id}"
-GROUP BY 
-    T.tconst;
+    T.tconst AS titleID,
+    T.titletype AS type,
+    T.originaltitle AS originalTitle,
+    T.img_url_asset AS titlePoster,
+    T.startYear,
+    T.endYear,
+    CONCAT(
+        '[',
+        GROUP_CONCAT(DISTINCT JSON_OBJECT('genreTitle', TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(T.genres, ',', numbers.n), ',', -1))) ORDER BY TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(T.genres, ',', numbers.n), ',', -1)) SEPARATOR ','),
+        ']'
+    ) AS genres,
+    JSON_OBJECT('avRating', TR.averageRate, 'nVotes', TR.numVotes) AS rating,
+    TA.titleAkas,
+    TP.principals
+FROM ntuaflix.Titles T
+LEFT JOIN ntuaflix.Title_ratings TR ON T.tconst = TR.titleid
+LEFT JOIN (
+    SELECT 
+        tconst, 
+        JSON_ARRAYAGG(JSON_OBJECT('akaTitle', title, 'regionAbbrev', region)) AS titleAkas
+    FROM ntuaflix.title_akas
+    GROUP BY tconst
+) TA ON T.tconst = TA.tconst
+LEFT JOIN (
+    SELECT 
+        TP.tconst, 
+        JSON_ARRAYAGG(JSON_OBJECT('nameID', TP.nconst, 'name', P.primaryName, 'category', TP.category)) AS principals
+    FROM ntuaflix.title_principals TP
+    JOIN ntuaflix.people P ON TP.nconst = P.nconst
+    GROUP BY TP.tconst
+) TP ON T.tconst = TP.tconst,
+LATERAL (
+    SELECT 1 n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+) AS numbers
+WHERE T.tconst = '${titleID}'
+AND CHAR_LENGTH(T.genres) - CHAR_LENGTH(REPLACE(T.genres, ',', '')) >= numbers.n - 1
+GROUP BY T.tconst, TA.titleAkas, TP.principals;
+
 
     `;
 

@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 /* Routes used */
-app.use('/api', movieRoutes);
-app.use('/api', peopleRoutes); 
+app.use('/ntuaflix_api', movieRoutes);
+app.use('/ntuaflix_api', peopleRoutes); 
 
 
 //app.use('/',(req,res,next)=> {res.status(404).json({message: 'Hello and welcome to the backend server of ntuaflix'})})
