@@ -76,16 +76,16 @@ def log_chat(filename):
         return False
     chat_log_path+=".txt"
     try:
-        with open(chat_log_path, 'r') as chat_file:
+        with open(chat_log_path, 'r', encoding='utf-8') as chat_file:
             lines = chat_file.readlines()
     except FileNotFoundError:
         print("File not found. Please check the path and try again.")
-        return
+        return True
     
 
     log_filename = f"prompt_{filename}.txt"
 
-    with open(log_filename, "w") as file:
+    with open(log_filename, "w", encoding='utf-8') as file:
         for line in lines:
             if line.strip() == "User":
                 file.write("User:\n")
@@ -113,7 +113,7 @@ phase = responses.get("phase").replace(" ", "_").lower()  # Replace spaces with 
 filename = get_next_filename(phase)
 
 # Save JSON responses
-with open(filename, "w") as file:
+with open(filename, "w", encoding='utf-8') as file:
     json.dump({"answers": responses}, file, indent=4)
 print(f"Responses saved to {filename}")
 
