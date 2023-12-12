@@ -42,6 +42,7 @@ exports.getAllInfoForMovieById = (req, res, next) => {
 
     const query = `
     
+    
     SELECT 
     T.tconst AS titleID,
     T.titletype AS type,
@@ -49,39 +50,61 @@ exports.getAllInfoForMovieById = (req, res, next) => {
     T.img_url_asset AS titlePoster,
     T.startYear,
     T.endYear,
-    CONCAT(
-        '[',
-        GROUP_CONCAT(DISTINCT JSON_OBJECT('genreTitle', TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(T.genres, ',', numbers.n), ',', -1))) ORDER BY TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(T.genres, ',', numbers.n), ',', -1)) SEPARATOR ','),
-        ']'
-    ) AS genres,
+    G.genres,
     JSON_OBJECT('avRating', TR.averageRate, 'nVotes', TR.numVotes) AS rating,
     TA.titleAkas,
     TP.principals
 FROM ntuaflix.Titles T
+LEFT JOIN (
+    SELECT 
+        tconst,
+        JSON_ARRAYAGG(JSON_OBJECT('genreTitle', genre)) AS genres
+    FROM (
+        SELECT DISTINCT 
+            tconst, 
+            TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(T.genres, ',', numbers.n), ',', -1)) AS genre
+        FROM ntuaflix.Titles T
+        CROSS JOIN (
+            SELECT 1 n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+        ) AS numbers
+        WHERE CHAR_LENGTH(T.genres) - CHAR_LENGTH(REPLACE(T.genres, ',', '')) >= numbers.n - 1
+    ) AS unique_genres
+    GROUP BY tconst
+) G ON T.tconst = G.tconst
 LEFT JOIN ntuaflix.Title_ratings TR ON T.tconst = TR.titleid
 LEFT JOIN (
     SELECT 
         tconst, 
         JSON_ARRAYAGG(JSON_OBJECT('akaTitle', title, 'regionAbbrev', region)) AS titleAkas
-    FROM ntuaflix.title_akas
+    FROM (
+        SELECT DISTINCT 
+            tconst, 
+            title, 
+            region
+        FROM ntuaflix.title_akas
+    ) AS distinct_akas
     GROUP BY tconst
 ) TA ON T.tconst = TA.tconst
 LEFT JOIN (
     SELECT 
-        TP.tconst, 
-        JSON_ARRAYAGG(JSON_OBJECT('nameID', TP.nconst, 'name', P.primaryName, 'category', TP.category)) AS principals
-    FROM ntuaflix.title_principals TP
-    JOIN ntuaflix.people P ON TP.nconst = P.nconst
-    GROUP BY TP.tconst
-) TP ON T.tconst = TP.tconst,
-LATERAL (
-    SELECT 1 n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
-) AS numbers
+        tconst, 
+        JSON_ARRAYAGG(JSON_OBJECT('nameID', nconst, 'name', primaryName, 'category', category)) AS principals
+    FROM (
+        SELECT DISTINCT 
+            TP.tconst, 
+            TP.nconst, 
+            P.primaryName, 
+            TP.category
+        FROM ntuaflix.title_principals TP
+        JOIN ntuaflix.people P ON TP.nconst = P.nconst
+    ) AS distinct_principals
+    GROUP BY tconst
+) TP ON T.tconst = TP.tconst
 WHERE T.tconst = '${titleID}'
-AND CHAR_LENGTH(T.genres) - CHAR_LENGTH(REPLACE(T.genres, ',', '')) >= numbers.n - 1
-GROUP BY T.tconst, TA.titleAkas, TP.principals;
+GROUP BY T.tconst;
 
 
+    
     `;
 
     pool.getConnection((err, connection) => {
