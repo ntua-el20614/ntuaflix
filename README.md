@@ -5,4 +5,4 @@ National Technical University of Athens - Software Engineering - University Proj
 + Giorgos Pittakis el20605 --> GeorgeOLoco
 + Eracklis Nikolaides el20607 --> EraclisOTyramolas
 + Christodoulos Stylianides el20614 --> ChrisOPellouis
-+ Iwannis Tsantilas el20883 --> JuanOMotherFucker
++ Ioannis Tsantilas el20883 --> JuanOMotherFucker
