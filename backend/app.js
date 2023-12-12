@@ -4,6 +4,7 @@ const cors = require('cors');
 /* Import routes */
 const movieRoutes = require('./routes/movie');
 const peopleRoutes = require('./routes/people');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 /* Routes used */
+app.use('/admin',adminRoutes);
 app.use('/ntuaflix_api', movieRoutes);
 app.use('/ntuaflix_api', peopleRoutes); 
 
