@@ -1,3 +1,4 @@
+const { query } = require('express');
 const { pool } = require('../utils/database');
 
 
@@ -117,8 +118,8 @@ GROUP BY T.tconst;
     });
 }
 
-exports.getPrimaryTitle = (req, res, next) => {
-    
+exports.postPrimaryTitle = (req, res, next) => {
+
     const titlePart = req.body.titlePart;
     if (!titlePart) {
         return res.status(400).json({ message: 'No title part provided' });
@@ -140,3 +141,49 @@ exports.getPrimaryTitle = (req, res, next) => {
         });
     });
 }
+
+
+exports.postGenre = (req,res,next)=>{
+
+    const qgenre = req.body.qgenre;
+    const minrating = req.body.minrating;
+    const yrFrom = req.body.yrFrom;
+    const yrTo = req.body.yrTo;
+
+    
+    /* 
+    if (!qgenre || !minrating) {
+        return res.status(400).json({ message: 'No genre or minrating given' });
+    }
+    afto edw to afinw ws minima giati an den valoume genre mporoume na xrisimopoiisoume
+    afto to endpoint gia perissoteres xrisis, stin ousia na min perioristoume
+    
+    // */
+
+    const query = `
+    SELECT Titles.tconst, Titles.primarytitle, Titles.startYear, Titles.genres, Title_ratings.averageRate
+    FROM Titles
+    INNER JOIN Title_ratings ON Titles.tconst = Title_ratings.titleid
+    WHERE Titles.genres LIKE CONCAT('%', '${qgenre}', '%')
+    AND CAST(Title_ratings.averageRate AS DECIMAL(3, 2)) >= CAST('${minrating}' AS DECIMAL(3, 2))
+    AND ( '${yrFrom}' = '' OR CAST(Titles.startYear AS UNSIGNED) >= CAST('${yrFrom}' AS UNSIGNED) )
+    AND ( '${yrTo}' = '' OR CAST(Titles.startYear AS UNSIGNED) <= CAST('${yrTo}' AS UNSIGNED) );
+    `;
+    
+
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error connecting to database' });
+        }
+        connection.query(query, (err, rows) => {
+            connection.release();
+            if (err) {
+                return res.status(500).json({ message: 'Internal server error' });
+            }
+            return res.status(200).json(rows);
+        });
+    });
+
+}
+ 
