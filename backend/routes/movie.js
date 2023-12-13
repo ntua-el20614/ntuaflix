@@ -8,5 +8,6 @@ router.get('/', movieController.getSample);
 router.get('/movies', movieController.getMovies);
 router.get('/movie/:id', movieController.getMovieById);
 router.get('/title/:titleID', movieController.getAllInfoForMovieById);
+router.post('/searchtitle',movieController.getPrimaryTitle)
 
 module.exports = router;

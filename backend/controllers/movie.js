@@ -117,3 +117,26 @@ GROUP BY T.tconst;
     });
 }
 
+exports.getPrimaryTitle = (req, res, next) => {
+    
+    const titlePart = req.body.titlePart;
+    if (!titlePart) {
+        return res.status(400).json({ message: 'No title part provided' });
+    }
+
+    const query = 'SELECT * FROM ntuaflix.titles WHERE primarytitle LIKE ?';
+    const values = [`%${titlePart}%`];
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error connecting to database' });
+        }
+        connection.query(query, values, (err, rows) => {
+            connection.release();
+            if (err) {
+                return res.status(500).json({ message: 'Internal server error' });
+            }
+            return res.status(200).json(rows);
+        });
+    });
+}
