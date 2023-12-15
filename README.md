@@ -1,6 +1,6 @@
 # ntuaflix
 National Technical University of Athens - Software Engineering - University Project
-gigi
+# gigi
 
 ## Authors
 + Giorgos Pittakis el20605 --> GeorgeOLoco
