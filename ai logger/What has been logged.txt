@@ -10,4 +10,7 @@ deployment 4
 deployment 5
 deployment 6
 deployment 7
+deployment 8
+deployment 9
+deployment 10
 requirements gathering 1
