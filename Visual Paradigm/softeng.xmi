@@ -13158,6 +13158,176 @@
 						<property name="qualityScore" type="int" value="-1"/>
 					</properties>
 				</vpumlModel>
+				<vpumlModel id="BUVvtjGGAqAEBhl7" modelType="ReportDiagramDetailsContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="ReportDiagramDetailsContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="9UVvtjGGAqAEBhl9"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="9UVvtjGGAqAEBhl9" modelType="ReportDiagramDetails">
+							<properties>
+								<property name="name" type="string" value="ReportDiagramDetails"/>
+								<property name="modelType" type="string" value="ReportDiagramDetails"/>
+								<property name="fiFields" type="modelRefs">
+									<modelRef value="nezvtjGGAqAEBhwg"/>
+									<modelRef value="U.zvtjGGAqAEBhwj"/>
+									<modelRef value="m.zvtjGGAqAEBhwm"/>
+									<modelRef value="l.zvtjGGAqAEBhwq"/>
+									<modelRef value="n.zvtjGGAqAEBhwr"/>
+									<modelRef value="n.zvtjGGAqAEBhws"/>
+									<modelRef value="EBzvtjGGAqAEBhwt"/>
+									<modelRef value="GBzvtjGGAqAEBhwu"/>
+									<modelRef value="FBzvtjGGAqAEBhww"/>
+									<modelRef value="FBzvtjGGAqAEBhwx"/>
+									<modelRef value="7BzvtjGGAqAEBhwy"/>
+								</property>
+								<property name="fillInDoc" type="boolean" value="true"/>
+								<property name="docBasePath" type="string" value="DocBases/Software-Requirements-Specification.docx"/>
+								<property name="version" type="string" value="20150413"/>
+							</properties>
+							<vpumlChildModelRefs>
+								<modelRef value="nezvtjGGAqAEBhwg"/>
+								<modelRef value="U.zvtjGGAqAEBhwj"/>
+								<modelRef value="m.zvtjGGAqAEBhwm"/>
+								<modelRef value="l.zvtjGGAqAEBhwq"/>
+								<modelRef value="n.zvtjGGAqAEBhwr"/>
+								<modelRef value="n.zvtjGGAqAEBhws"/>
+								<modelRef value="EBzvtjGGAqAEBhwt"/>
+								<modelRef value="GBzvtjGGAqAEBhwu"/>
+								<modelRef value="FBzvtjGGAqAEBhww"/>
+								<modelRef value="FBzvtjGGAqAEBhwx"/>
+								<modelRef value="7BzvtjGGAqAEBhwy"/>
+							</vpumlChildModelRefs>
+							<vpumlChildModels>
+								<vpumlModel id="nezvtjGGAqAEBhwg" modelType="FIText">
+									<properties>
+										<property name="name" type="string" value="Project Name"/>
+										<property name="modelType" type="string" value="FIText"/>
+										<property name="instances" type="models">
+											<vpumlModels>
+												<vpumlModel id="U.zvtjGGAqAEBhwi" modelType="FITextInstance">
+													<properties>
+														<property name="name" type="string" value=""/>
+														<property name="modelType" type="string" value="FITextInstance"/>
+														<property htmlValue="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      ntuaflix2023-17&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;" name="documentation" type="htmlString" value="ntuaflix2023-17"/>
+													</properties>
+												</vpumlModel>
+											</vpumlModels>
+										</property>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="U.zvtjGGAqAEBhwj" modelType="FIText">
+									<properties>
+										<property name="name" type="string" value="Document Version"/>
+										<property name="modelType" type="string" value="FIText"/>
+										<property name="instances" type="models">
+											<vpumlModels>
+												<vpumlModel id="m.zvtjGGAqAEBhwk" modelType="FITextInstance">
+													<properties>
+														<property name="name" type="string" value=""/>
+														<property name="modelType" type="string" value="FITextInstance"/>
+														<property htmlValue="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      1&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;" name="documentation" type="htmlString" value="1"/>
+													</properties>
+												</vpumlModel>
+											</vpumlModels>
+										</property>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="m.zvtjGGAqAEBhwm" modelType="FIDiagram">
+									<properties>
+										<property name="name" type="string" value="Use Case Diagrams"/>
+										<property name="modelType" type="string" value="FIDiagram"/>
+										<property name="layerFilters" type="models">
+											<vpumlModels>
+												<vpumlModel id="l.zvtjGGAqAEBhwo" modelType="CompositeValueSpecification">
+													<properties>
+														<property name="name" type="string" value="liTO_DGGAqACiCmE"/>
+														<property name="modelType" type="string" value="CompositeValueSpecification"/>
+														<property name="documentation" type="htmlString" value=""/>
+														<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+														<property name="pmCreateDateTime" type="string" value="1702651967465"/>
+														<property name="userIDLastNumericValue" type="int" value="0"/>
+														<property name="backlogActivityId" type="int" value="0"/>
+														<property name="qualityScore" type="int" value="-1"/>
+														<property name="value" type="textModel" value="@followDiagram"/>
+													</properties>
+												</vpumlModel>
+											</vpumlModels>
+										</property>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="l.zvtjGGAqAEBhwq" modelType="FIElement">
+									<properties>
+										<property name="name" type="string" value="Use Cases"/>
+										<property name="modelType" type="string" value="FIElement"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="n.zvtjGGAqAEBhwr" modelType="FIDiagram">
+									<properties>
+										<property name="name" type="string" value="Requirement Diagrams"/>
+										<property name="modelType" type="string" value="FIDiagram"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="n.zvtjGGAqAEBhws" modelType="FIElement">
+									<properties>
+										<property name="name" type="string" value="Requirements"/>
+										<property name="modelType" type="string" value="FIElement"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="EBzvtjGGAqAEBhwt" modelType="FIElement">
+									<properties>
+										<property name="name" type="string" value="Actors"/>
+										<property name="modelType" type="string" value="FIElement"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="GBzvtjGGAqAEBhwu" modelType="FIDiagram">
+									<properties>
+										<property name="name" type="string" value="Deployment Diagrams"/>
+										<property name="modelType" type="string" value="FIDiagram"/>
+										<property name="layerFilters" type="models">
+											<vpumlModels>
+												<vpumlModel id="FBzvtjGGAqAEBhwv" modelType="CompositeValueSpecification">
+													<properties>
+														<property name="name" type="string" value="rebrwjGGAqAG8wnY"/>
+														<property name="modelType" type="string" value="CompositeValueSpecification"/>
+														<property name="documentation" type="htmlString" value=""/>
+														<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+														<property name="pmCreateDateTime" type="string" value="1702651967528"/>
+														<property name="userIDLastNumericValue" type="int" value="0"/>
+														<property name="backlogActivityId" type="int" value="0"/>
+														<property name="qualityScore" type="int" value="-1"/>
+														<property name="value" type="textModel" value="@followDiagram"/>
+													</properties>
+												</vpumlModel>
+											</vpumlModels>
+										</property>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="FBzvtjGGAqAEBhww" modelType="FIElement">
+									<properties>
+										<property name="name" type="string" value="Nodes"/>
+										<property name="modelType" type="string" value="FIElement"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="FBzvtjGGAqAEBhwx" modelType="FIElement">
+									<properties>
+										<property name="name" type="string" value="Components"/>
+										<property name="modelType" type="string" value="FIElement"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="7BzvtjGGAqAEBhwy" modelType="FIElement">
+									<properties>
+										<property name="name" type="string" value="Artifacts"/>
+										<property name="modelType" type="string" value="FIElement"/>
+									</properties>
+								</vpumlModel>
+							</vpumlChildModels>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
 			</vpumlChildModels>
 		</xmi:Extension>
 		<ownedMember name="UseCase" xmi:id="UseCase_UseCase_id" xmi:type="uml:Stereotype">
@@ -13514,7 +13684,7 @@
 				<properties>
 					<property name="pmAuthor" type="string" value="el20614@mail.ntua.gr"/>
 					<property name="pmCreateDateTime" type="string" value="1701871571208"/>
-					<property name="pmLastModified" type="string" value="1702623226677"/>
+					<property name="pmLastModified" type="string" value="1702650851997"/>
 					<property name="userIDLastNumericValue" type="int" value="0"/>
 					<property name="backlogActivityId" type="int" value="0"/>
 					<property name="stereotypes" type="stereotypes">
@@ -13556,6 +13726,7 @@
 				<subdiagram xmi:value="iLze_DGGAqACiEgg"/>
 				<subdiagram xmi:value="oRk.WjGGAqAEBxoU"/>
 				<subdiagram xmi:value="KViJ8jGGAqAEBxvQ"/>
+				<subdiagram xmi:value="FEGdtjGGAqAEBkhu"/>
 			</xmi:Extension>
 			<include addition="XSYJ_DGGAqACiGcS" xmi:id="JyYJ_DGGAqACiGcg" xmi:type="uml:Include">
 				<xmi:Extension extender="Visual Paradigm">
@@ -13569,6 +13740,323 @@
 					<appliedStereotype xmi:value="Include_Include_id"/>
 				</xmi:Extension>
 			</include>
+			<ownedBehavior name="Verification State Diagram" xmi:id="FEGdtjGGAqAEBkhu_stateMachine_id" xmi:type="uml:StateMachine">
+				<region xmi:id="FEGdtjGGAqAEBkhu_stateMachine_region_id" xmi:type="uml:Region">
+					<subvertex name="Logout" xmi:id="w.49tjGGAqAEBkkq" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648117187"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="w.49tjGGAqAEBkkq" xmi:id="w.49tjGGAqAEBkkq_documentaiton" xmi:type="uml:Comment">
+							<body>This is the final state where the user logs out of the platform, concluding their session.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      is the final state where the user logs out of the platform, concluding &#13;&#10;      their session.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="w.49tjGGAqAEBkkq" target="VEu9tjGGAqAEBkmV" xmi:id="dyF9tjGGAqAEBkne" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Update Profile" xmi:id="m5o9tjGGAqAEBkkh" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648109529"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="m5o9tjGGAqAEBkkh" xmi:id="m5o9tjGGAqAEBkkh_documentaiton" xmi:type="uml:Comment">
+							<body>After making edits, this state represents the process of saving the changes to the user's profile.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;After &#13;&#10;      making edits, this state represents the process of saving the changes to &#13;&#10;      the user's profile.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="m5o9tjGGAqAEBkkh" target="w.49tjGGAqAEBkkq" xmi:id="QI59tjGGAqAEBknW" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Edit Profile" xmi:id="1bQ9tjGGAqAEBkkW" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648098219"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="1bQ9tjGGAqAEBkkW" xmi:id="1bQ9tjGGAqAEBkkW_documentaiton" xmi:type="uml:Comment">
+							<body>If the user chooses to edit their profile, this state is where they can make changes to their profile information.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;If &#13;&#10;      the user chooses to edit their profile, this state is where they can &#13;&#10;      make changes to their profile information.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="1bQ9tjGGAqAEBkkW" target="m5o9tjGGAqAEBkkh" xmi:id="7pZ9tjGGAqAEBknS" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Access User Profile" xmi:id="49fdtjGGAqAEBkkN" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648081352"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="49fdtjGGAqAEBkkN" xmi:id="49fdtjGGAqAEBkkN_documentaiton" xmi:type="uml:Comment">
+							<body>Once logged in, the user can access their profile. This is a state where the user is viewing their profile information.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;Once &#13;&#10;      logged in, the user can access their profile. This is a state where the &#13;&#10;      user is viewing their profile information.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="49fdtjGGAqAEBkkN" target="1bQ9tjGGAqAEBkkW" xmi:id="AUZ9tjGGAqAEBknO" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Registration Successful" xmi:id=".APdtjGGAqAEBkkE" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648070175"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement=".APdtjGGAqAEBkkE" xmi:id=".APdtjGGAqAEBkkE_documentaiton" xmi:type="uml:Comment">
+							<body>This state represents a successful registration process.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      state represents a successful registration process.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source=".APdtjGGAqAEBkkE" target="49fdtjGGAqAEBkkN" xmi:id="8.p9tjGGAqAEBknK" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Display Error Message" xmi:id="qE9dtjGGAqAEBkjo" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648017429"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="qE9dtjGGAqAEBkjo" xmi:id="qE9dtjGGAqAEBkjo_documentaiton" xmi:type="uml:Comment">
+							<body>This state is where users are informed of a failure either in login or registration processes.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      state is where users are informed of a failure either in login or &#13;&#10;      registration processes.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<subvertex name="Login Successful" xmi:id="GQtdtjGGAqAEBkjf" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648008856"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="GQtdtjGGAqAEBkjf" xmi:id="GQtdtjGGAqAEBkjf_documentaiton" xmi:type="uml:Comment">
+							<body>This state indicates the user has successfully logged in to the platform.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      state indicates the user has successfully logged in to the platform.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="edit" source="GQtdtjGGAqAEBkjf" target="49fdtjGGAqAEBkkN" xmi:id="wgp9tjGGAqAEBknG" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="no edit" source="GQtdtjGGAqAEBkjf" target="VEu9tjGGAqAEBkmV" xmi:id="RJ59tjGGAqAEBkna" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="User Registers" xmi:id="j0.dtjGGAqAEBkit" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647952113"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="j0.dtjGGAqAEBkit" xmi:id="j0.dtjGGAqAEBkit_documentaiton" xmi:type="uml:Comment">
+							<body>This is the state for new users who need to register. If the registration is successful, it moves to &quot;Registration Successful&quot;, otherwise, it shows an &quot;Error Message&quot;.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      is the state for new users who need to register. If the registration is &#13;&#10;      successful, it moves to &amp;quot;Registration Successful&amp;quot;, otherwise, it shows &#13;&#10;      an &amp;quot;Error Message&amp;quot;.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="fail" source="j0.dtjGGAqAEBkit" target="qE9dtjGGAqAEBkjo" xmi:id="G.J9tjGGAqAEBknC" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="success" source="j0.dtjGGAqAEBkit" target=".APdtjGGAqAEBkkE" xmi:id="LFaDtjGGAqAEBk35" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="User Logged In" xmi:id="CdudtjGGAqAEBkik" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647946128"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="CdudtjGGAqAEBkik" xmi:id="CdudtjGGAqAEBkik_documentaiton" xmi:type="uml:Comment">
+							<body>This decision state occurs if the user is already registered. If successful, it moves to &quot;Login Successful&quot;, otherwise, it shows an &quot;Error Message&quot;.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      decision state occurs if the user is already registered. If successful, &#13;&#10;      it moves to &amp;quot;Login Successful&amp;quot;, otherwise, it shows an &amp;quot;Error Message&amp;quot;.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="success" source="CdudtjGGAqAEBkik" target="GQtdtjGGAqAEBkjf" xmi:id="FYx9tjGGAqAEBkm2" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="fail" source="CdudtjGGAqAEBkik" target="qE9dtjGGAqAEBkjo" xmi:id="Fxx9tjGGAqAEBkm6" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="User Access Platform" xmi:id="unmdtjGGAqAEBkiX" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647930461"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="unmdtjGGAqAEBkiX" xmi:id="unmdtjGGAqAEBkiX_documentaiton" xmi:type="uml:Comment">
+							<body>This is the initial state where the user starts their interaction by accessing the platform.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      is the initial state where the user starts their interaction by &#13;&#10;      accessing the platform.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="registered" source="unmdtjGGAqAEBkiX" target="CdudtjGGAqAEBkik" xmi:id="3oR9tjGGAqAEBkmu" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="not registered" source="unmdtjGGAqAEBkiX" target="j0.dtjGGAqAEBkit" xmi:id="MpR9tjGGAqAEBkmy" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex kind="initial" name="" xmi:id="88GdtjGGAqAEBkiK" xmi:type="uml:Pseudostate">
+						<xmi:Extension extender="Visual Paradigm">
+							<initialPseudostate/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647923663"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</subvertex>
+					<transition kind="External" source="88GdtjGGAqAEBkiK" target="unmdtjGGAqAEBkiX" xmi:id="nmh9tjGGAqAEBkmm" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex kind="final" name="" xmi:id="VEu9tjGGAqAEBkmV" xmi:type="uml:Pseudostate">
+						<xmi:Extension extender="Visual Paradigm">
+							<finalState2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702648205866"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="stateInvariant" type="string" value=""/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</subvertex>
+				</region>
+			</ownedBehavior>
 			<ownedMember name="Verification Sequence Diagram" xmi:id="eLze_DGGAqACiEgn" xmi:type="uml:Interaction">
 				<lifeline name="Web Server" represents="vy788jGGAqAESwm8_represents" xmi:id="vy788jGGAqAESwm8" xmi:type="uml:Lifeline">
 					<xmi:Extension extender="Visual Paradigm">
@@ -14358,7 +14846,7 @@
 				<properties>
 					<property name="pmAuthor" type="string" value="el20614@mail.ntua.gr"/>
 					<property name="pmCreateDateTime" type="string" value="1701872004393"/>
-					<property name="pmLastModified" type="string" value="1702392545675"/>
+					<property name="pmLastModified" type="string" value="1702650851997"/>
 					<property name="userIDLastNumericValue" type="int" value="0"/>
 					<property name="backlogActivityId" type="int" value="0"/>
 					<property name="stereotypes" type="stereotypes">
@@ -14400,6 +14888,7 @@
 				<subdiagram xmi:value="3gEXujGGAqAECI_8"/>
 				<subdiagram xmi:value="sijGejGGAqAECNlb"/>
 				<subdiagram xmi:value="dzbuejGGAqAECBwA"/>
+				<subdiagram xmi:value="OZi1tjGGAqAEBhcM"/>
 			</xmi:Extension>
 			<include addition="FOzl_DGGAqACiJdz" xmi:id="Muzl_DGGAqACiJeB" xmi:type="uml:Include">
 				<xmi:Extension extender="Visual Paradigm">
@@ -14425,6 +14914,311 @@
 					<appliedStereotype xmi:value="Include_Include_id"/>
 				</xmi:Extension>
 			</include>
+			<ownedBehavior name="Movie State Diagram" xmi:id="OZi1tjGGAqAEBhcM_stateMachine_id" xmi:type="uml:StateMachine">
+				<region xmi:id="OZi1tjGGAqAEBhcM_stateMachine_region_id" xmi:type="uml:Region">
+					<subvertex name="Show Person's Details" xmi:id="QSX1tjGGAqAEBhe0" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647276674"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="QSX1tjGGAqAEBhe0" xmi:id="QSX1tjGGAqAEBhe0_documentaiton" xmi:type="uml:Comment">
+							<body>If the user selects a cast or crew member, the system will display detailed information about that person. This state represents a deeper level of detail regarding the individuals involved in the movie.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;If &#13;&#10;      the user selects a cast or crew member, the system will display detailed &#13;&#10;      information about that person. This state represents a deeper level of &#13;&#10;      detail regarding the individuals involved in the movie.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="QSX1tjGGAqAEBhe0" target="jQ0NtjGGAqAEBhgW" xmi:id="NyRNtjGGAqAEBhi5" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Display Associated Cast and Crew" xmi:id="JM71tjGGAqAEBher" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647264036"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="JM71tjGGAqAEBher" xmi:id="JM71tjGGAqAEBher_documentaiton" xmi:type="uml:Comment">
+							<body>Alternatively, the user can view information about the movie's cast and crew. This is a further informational state that can lead to more detailed exploration.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;Alternatively, &#13;&#10;      the user can view information about the movie's cast and crew. This is a &#13;&#10;      further informational state that can lead to more detailed exploration.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="select person" source="JM71tjGGAqAEBher" target="QSX1tjGGAqAEBhe0" xmi:id="V7yNtjGGAqAEBhhT" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Rate Movie" xmi:id=".hz1tjGGAqAEBheg" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647248991"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement=".hz1tjGGAqAEBheg" xmi:id=".hz1tjGGAqAEBheg_documentaiton" xmi:type="uml:Comment">
+							<body>From the movie details, the user can choose to rate the movie. This action may be contingent on the user being logged in or having the necessary permissions to rate.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;From &#13;&#10;      the movie details, the user can choose to rate the movie. This action &#13;&#10;      may be contingent on the user being logged in or having the necessary &#13;&#10;      permissions to rate.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source=".hz1tjGGAqAEBheg" target="jQ0NtjGGAqAEBhgW" xmi:id="VVKNtjGGAqAEBhhX" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Show Movie Details" xmi:id="L9j1tjGGAqAEBheX" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647241716"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="L9j1tjGGAqAEBheX" xmi:id="L9j1tjGGAqAEBheX_documentaiton" xmi:type="uml:Comment">
+							<body>When the movie is found, its details are displayed to the user. This state provides the user with more information about the movie, like synopsis, ratings, cast, etc.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;When &#13;&#10;      the movie is found, its details are displayed to the user. This state &#13;&#10;      provides the user with more information about the movie, like synopsis, &#13;&#10;      ratings, cast, etc.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="logged in" source="L9j1tjGGAqAEBheX" target=".hz1tjGGAqAEBheg" xmi:id="KZSNtjGGAqAEBhhL" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="not logged in" source="L9j1tjGGAqAEBheX" target="JM71tjGGAqAEBher" xmi:id="usyNtjGGAqAEBhhP" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Display Search Results" xmi:id="hrd1tjGGAqAEBheM" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647229793"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="hrd1tjGGAqAEBheM" xmi:id="hrd1tjGGAqAEBheM_documentaiton" xmi:type="uml:Comment">
+							<body>If the search is successful but the exact item is not immediately found, the system displays a list of search results for the user to choose from. This is a state where users are presented with multiple options or partial matches.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;If &#13;&#10;      the search is successful but the exact item is not immediately found, &#13;&#10;      the system displays a list of search results for the user to choose &#13;&#10;      from. This is a state where users are presented with multiple options or &#13;&#10;      partial matches.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<subvertex name="Found" xmi:id="Kht1tjGGAqAEBheD" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647224404"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="Kht1tjGGAqAEBheD" xmi:id="Kht1tjGGAqAEBheD_documentaiton" xmi:type="uml:Comment">
+							<body>This is a state that represents a direct hit in the search, where the searched movie is found. From here, the user can proceed to view more details about the movie.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      is a state that represents a direct hit in the search, where the &#13;&#10;      searched movie is found. From here, the user can proceed to view more &#13;&#10;      details about the movie.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="Kht1tjGGAqAEBheD" target="L9j1tjGGAqAEBheX" xmi:id="njiNtjGGAqAEBhhH" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Display No Results Message" xmi:id="sYR1tjGGAqAEBhdu" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647177613"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="sYR1tjGGAqAEBhdu" xmi:id="sYR1tjGGAqAEBhdu_documentaiton" xmi:type="uml:Comment">
+							<body>If the search is unsuccessful, the system displays a message indicating that no results were found. This is an end state for the search flow when no items match the search criteria.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;If &#13;&#10;      the search is unsuccessful, the system displays a message indicating &#13;&#10;      that no results were found. This is an end state for the search flow &#13;&#10;      when no items match the search criteria.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<subvertex name="Search Successful" xmi:id="u5e1tjGGAqAEBhdW" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647163357"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="u5e1tjGGAqAEBhdW" xmi:id="u5e1tjGGAqAEBhdW_documentaiton" xmi:type="uml:Comment">
+							<body>This is a decision node that represents a successful search operation where at least one result is found. It determines whether to proceed to show the found movie details or not.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      is a decision node that represents a successful search operation where &#13;&#10;      at least one result is found. It determines whether to proceed to show &#13;&#10;      the found movie details or not.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="u5e1tjGGAqAEBhdW" target="Kht1tjGGAqAEBheD" xmi:id="BNCNtjGGAqAEBhg_" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="no result" source="u5e1tjGGAqAEBhdW" target="hrd1tjGGAqAEBheM" xmi:id="QEiNtjGGAqAEBhhD" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="User Searches for Movie" xmi:id="FmW1tjGGAqAEBhc7" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647146088"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="FmW1tjGGAqAEBhc7" xmi:id="FmW1tjGGAqAEBhc7_documentaiton" xmi:type="uml:Comment">
+							<body>After accessing the browsing section, the user initiates a search for a movie. This is a transitional action leading to multiple potential outcomes depending on the search results.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;After &#13;&#10;      accessing the browsing section, the user initiates a search for a movie. &#13;&#10;      This is a transitional action leading to multiple potential outcomes &#13;&#10;      depending on the search results.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="success" source="FmW1tjGGAqAEBhc7" target="u5e1tjGGAqAEBhdW" xmi:id="yB8NtjGGAqAEBhg1" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="fail" source="FmW1tjGGAqAEBhc7" target="sYR1tjGGAqAEBhdu" xmi:id="O0CNtjGGAqAEBhg7" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="User Accesses Browsing" xmi:id="LUK1tjGGAqAEBhco" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647120564"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="LUK1tjGGAqAEBhco" xmi:id="LUK1tjGGAqAEBhco_documentaiton" xmi:type="uml:Comment">
+							<body>This represents the initial state where the user enters the browsing section of the platform. It's the starting point of the user's journey in the system.  </body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      This represents the initial state where the user enters the browsing &#13;&#10;      section of the platform. It's the starting point of the user's journey &#13;&#10;      in the system.&lt;o p=&quot;#DEFAULT&quot;&gt;&lt;/o&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="LUK1tjGGAqAEBhco" target="FmW1tjGGAqAEBhc7" xmi:id="ffcNtjGGAqAEBhgx" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex kind="initial" name="" xmi:id="Lti1tjGGAqAEBhcY" xmi:type="uml:Pseudostate">
+						<xmi:Extension extender="Visual Paradigm">
+							<initialPseudostate/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647110516"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</subvertex>
+					<transition kind="External" source="Lti1tjGGAqAEBhcY" target="LUK1tjGGAqAEBhco" xmi:id="L6cNtjGGAqAEBhgr" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex kind="final" name="" xmi:id="jQ0NtjGGAqAEBhgW" xmi:type="uml:Pseudostate">
+						<xmi:Extension extender="Visual Paradigm">
+							<finalState2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647345329"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="stateInvariant" type="string" value=""/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</subvertex>
+				</region>
+			</ownedBehavior>
 			<ownedMember kind="final" name="" xmi:id="dHO4ejGGAqAECJ26" xmi:type="uml:Pseudostate">
 				<xmi:Extension extender="Visual Paradigm">
 					<activityFinalNode/>
@@ -17026,7 +17820,7 @@
 				<properties>
 					<property name="pmAuthor" type="string" value="el20614@mail.ntua.gr"/>
 					<property name="pmCreateDateTime" type="string" value="1701876513968"/>
-					<property name="pmLastModified" type="string" value="1702392545675"/>
+					<property name="pmLastModified" type="string" value="1702650851997"/>
 					<property name="userIDLastNumericValue" type="int" value="0"/>
 					<property name="backlogActivityId" type="int" value="0"/>
 					<property name="stereotypes" type="stereotypes">
@@ -17068,6 +17862,7 @@
 				<subdiagram xmi:value="DLEXujGGAqAECJAK"/>
 				<subdiagram xmi:value="ZEgmejGGAqAECNmL"/>
 				<subdiagram xmi:value="sUeeejGGAqAECB2Z"/>
+				<subdiagram xmi:value="IGtNtjGGAqAEBinw"/>
 			</xmi:Extension>
 			<include addition="7kiV_DGGAqACiJft" xmi:id="6UiV_DGGAqACiJf7" xmi:type="uml:Include">
 				<xmi:Extension extender="Visual Paradigm">
@@ -17075,6 +17870,285 @@
 					<appliedStereotype xmi:value="Include_Include_id"/>
 				</xmi:Extension>
 			</include>
+			<ownedBehavior name="People State Diagram" xmi:id="IGtNtjGGAqAEBinw_stateMachine_id" xmi:type="uml:StateMachine">
+				<region xmi:id="IGtNtjGGAqAEBinw_stateMachine_region_id" xmi:type="uml:Region">
+					<subvertex name="Show Movie Details" xmi:id="cYottjGGAqAEBipj" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647583118"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="cYottjGGAqAEBipj" xmi:id="cYottjGGAqAEBipj_documentaiton" xmi:type="uml:Comment">
+							<body>This state is reached when the user selects a specific movie or show from the actor's body of work. It displays the details of the selected movie or show.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      state is reached when the user selects a specific movie or show from the &#13;&#10;      actor's body of work. It displays the details of the selected movie or &#13;&#10;      show.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="another movie selected" source="cYottjGGAqAEBipj" target="6qwttjGGAqAEBipa" xmi:id="AGhttjGGAqAEBisY" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" source="cYottjGGAqAEBipj" target="vCmttjGGAqAEBirX" xmi:id="._httjGGAqAEBise" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Display Other Movies" xmi:id="6qwttjGGAqAEBipa" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647575895"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="6qwttjGGAqAEBipa" xmi:id="6qwttjGGAqAEBipa_documentaiton" xmi:type="uml:Comment">
+							<body>After viewing an actor's details, the user can choose to see other films or shows the actor has been involved in. This state allows the user to explore related media.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;After &#13;&#10;      viewing an actor's details, the user can choose to see other films or &#13;&#10;      shows the actor has been involved in. This state allows the user to &#13;&#10;      explore related media.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="movie selected" source="6qwttjGGAqAEBipa" target="cYottjGGAqAEBipj" xmi:id="ODBttjGGAqAEBisS" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Show Person's Details" xmi:id="DfAttjGGAqAEBipR" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647566256"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="DfAttjGGAqAEBipR" xmi:id="DfAttjGGAqAEBipR_documentaiton" xmi:type="uml:Comment">
+							<body>In this state, the system displays the detailed information about the selected actor to the user.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;In &#13;&#10;      this state, the system displays the detailed information about the &#13;&#10;      selected actor to the user.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="person selected" source="DfAttjGGAqAEBipR" target="6qwttjGGAqAEBipa" xmi:id="eJettjGGAqAEBisC" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Display Search Results" xmi:id="9hfNtjGGAqAEBipI" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647556207"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="9hfNtjGGAqAEBipI" xmi:id="9hfNtjGGAqAEBipI_documentaiton" xmi:type="uml:Comment">
+							<body>If the search is successful but does not directly lead to a single actor (no exact match), this state shows the search results to the user.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;If &#13;&#10;      the search is successful but does not directly lead to a single actor &#13;&#10;      (no exact match), this state shows the search results to the user.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<subvertex name="Found" xmi:id="20vNtjGGAqAEBio_" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647550683"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="20vNtjGGAqAEBio_" xmi:id="20vNtjGGAqAEBio__documentaiton" xmi:type="uml:Comment">
+							<body>This state indicates that an exact match for the actor has been found directly from the search.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      state indicates that an exact match for the actor has been found &#13;&#10;      directly from the search.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="20vNtjGGAqAEBio_" target="DfAttjGGAqAEBipR" xmi:id="SAettjGGAqAEBir." xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="Display No Results Message" xmi:id="iLXNtjGGAqAEBio2" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647541009"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="iLXNtjGGAqAEBio2" xmi:id="iLXNtjGGAqAEBio2_documentaiton" xmi:type="uml:Comment">
+							<body>This is the end state for the path where the search fails to find any matching actors, resulting in a message to the user indicating that no results were found.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;This &#13;&#10;      is the end state for the path where the search fails to find any &#13;&#10;      matching actors, resulting in a message to the user indicating that no &#13;&#10;      results were found.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<subvertex name="Search Successful" xmi:id="Dq7NtjGGAqAEBior" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647526768"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="Dq7NtjGGAqAEBior" xmi:id="Dq7NtjGGAqAEBior_documentaiton" xmi:type="uml:Comment">
+							<body>A decision point that indicates whether the search query was able to find a match. If successful, it moves to the &quot;Found&quot; state.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;A &#13;&#10;      decision point that indicates whether the search query was able to find &#13;&#10;      a match. If successful, it moves to the &amp;quot;Found&amp;quot; state.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source="Dq7NtjGGAqAEBior" target="20vNtjGGAqAEBio_" xmi:id="RouttjGGAqAEBir2" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="no result" source="Dq7NtjGGAqAEBior" target="9hfNtjGGAqAEBipI" xmi:id="6ButtjGGAqAEBir6" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="User Searches For Actor" xmi:id="aCrNtjGGAqAEBioi" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647518230"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement="aCrNtjGGAqAEBioi" xmi:id="aCrNtjGGAqAEBioi_documentaiton" xmi:type="uml:Comment">
+							<body>A state reflecting the action where the user initiates a search query for an actor.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;A &#13;&#10;      state reflecting the action where the user initiates a search query for &#13;&#10;      an actor.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" name="success" source="aCrNtjGGAqAEBioi" target="Dq7NtjGGAqAEBior" xmi:id="M8OttjGGAqAEBiru" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<transition kind="External" name="fail" source="aCrNtjGGAqAEBioi" target="iLXNtjGGAqAEBio2" xmi:id="NlOttjGGAqAEBiry" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex name="User Accesses Browsing" xmi:id=".STNtjGGAqAEBioZ" xmi:type="uml:State">
+						<xmi:Extension extender="Visual Paradigm">
+							<state2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647506079"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+						<ownedComment annotatedElement=".STNtjGGAqAEBioZ" xmi:id=".STNtjGGAqAEBioZ_documentaiton" xmi:type="uml:Comment">
+							<body>The initial state where a user starts their interaction with the system by accessing the browsing functionality.</body>
+							<xmi:Extension extender="Visual Paradigm">
+								<htmlValue value="&lt;head&gt;&#13;&#10;    &lt;style type=&quot;text/css&quot;&gt;&#10;      &lt;!--&#10;        body { color: #000000; font-family: Dialog; font-size: 12px }&#10;      --&gt;&#10;    &lt;/style&gt;&#13;&#10;    &#13;&#10;  &lt;/head&gt;&#13;&#10;  &lt;body&gt;&#13;&#10;    &lt;p&gt;&#13;&#10;      &lt;span line-height=&quot;107%&quot; style=&quot;font-size:12.0pt;font-family:Times New Roman,serif;&quot;&gt;&lt;font face=&quot;Times New Roman,serif&quot; size=&quot;12.0pt&quot; style=&quot;font-size:12.0pt;&quot;&gt;The &#13;&#10;      initial state where a user starts their interaction with the system by &#13;&#10;      accessing the browsing functionality.&lt;/font&gt;&lt;/span&gt;&#13;&#10;    &lt;/p&gt;&#13;&#10;  &lt;/body&gt;"/>
+							</xmi:Extension>
+						</ownedComment>
+					</subvertex>
+					<transition kind="External" source=".STNtjGGAqAEBioZ" target="aCrNtjGGAqAEBioi" xmi:id="GL2ttjGGAqAEBirq" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex kind="initial" name="" xmi:id="JetNtjGGAqAEBioM" xmi:type="uml:Pseudostate">
+						<xmi:Extension extender="Visual Paradigm">
+							<initialPseudostate/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647486372"/>
+								<property name="pmLastModified" type="string" value="1702650852013"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</subvertex>
+					<transition kind="External" source="JetNtjGGAqAEBioM" target=".STNtjGGAqAEBioZ" xmi:id="Yy2ttjGGAqAEBirm" xmi:type="uml:Transition">
+						<xmi:Extension extender="Visual Paradigm">
+							<transition2/>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</transition>
+					<subvertex kind="final" name="" xmi:id="vCmttjGGAqAEBirX" xmi:type="uml:Pseudostate">
+						<xmi:Extension extender="Visual Paradigm">
+							<finalState2/>
+							<properties>
+								<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
+								<property name="pmCreateDateTime" type="string" value="1702647665725"/>
+								<property name="pmLastModified" type="string" value="1702650851997"/>
+								<property name="userIDLastNumericValue" type="int" value="0"/>
+								<property name="backlogActivityId" type="int" value="0"/>
+								<property name="stateInvariant" type="string" value=""/>
+								<property name="qualityScore" type="int" value="-1"/>
+							</properties>
+							<qualityScore value="-1"/>
+						</xmi:Extension>
+					</subvertex>
+				</region>
+			</ownedBehavior>
 			<ownedMember kind="initial" name="" xmi:id="AnZKejGGAqAECLqS" xmi:type="uml:Pseudostate">
 				<xmi:Extension extender="Visual Paradigm">
 					<initialNode/>
@@ -20116,716 +21190,15 @@
 		</ownedMember>
 		<ownedMember xmi:id="stateMachine_id" xmi:type="uml:StateMachine">
 			<region xmi:id="stateMachine_region_id" xmi:type="uml:Region">
-				<subvertex kind="initial" name="" xmi:id="Lti1tjGGAqAEBhcY" xmi:type="uml:Pseudostate">
+				<subvertex kind="initial" name="" xmi:id="5lSeNjGGAqAEB5yx" xmi:type="uml:Pseudostate">
 					<xmi:Extension extender="Visual Paradigm">
 						<initialPseudostate/>
 						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647110516"/>
-							<property name="pmLastModified" type="string" value="1702647469617"/>
+							<property name="pmAuthor" type="string" value="el20614@mail.ntua.gr"/>
+							<property name="pmCreateDateTime" type="string" value="1702626929255"/>
+							<property name="pmLastModified" type="string" value="1702650851997"/>
 							<property name="userIDLastNumericValue" type="int" value="0"/>
 							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="Lti1tjGGAqAEBhcY" target="LUK1tjGGAqAEBhco" xmi:id="L6cNtjGGAqAEBhgr" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="User Accesses Browsing" xmi:id="LUK1tjGGAqAEBhco" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647120564"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="LUK1tjGGAqAEBhco" target="FmW1tjGGAqAEBhc7" xmi:id="ffcNtjGGAqAEBhgx" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="User Searches for Movie" xmi:id="FmW1tjGGAqAEBhc7" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647146088"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="success" source="FmW1tjGGAqAEBhc7" target="u5e1tjGGAqAEBhdW" xmi:id="yB8NtjGGAqAEBhg1" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="fail" source="FmW1tjGGAqAEBhc7" target="sYR1tjGGAqAEBhdu" xmi:id="O0CNtjGGAqAEBhg7" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Search Successful" xmi:id="u5e1tjGGAqAEBhdW" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647163357"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="u5e1tjGGAqAEBhdW" target="Kht1tjGGAqAEBheD" xmi:id="BNCNtjGGAqAEBhg_" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="no result" source="u5e1tjGGAqAEBhdW" target="hrd1tjGGAqAEBheM" xmi:id="QEiNtjGGAqAEBhhD" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Display No Results Message" xmi:id="sYR1tjGGAqAEBhdu" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647177613"/>
-							<property name="pmLastModified" type="string" value="1702647469617"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<subvertex name="Found" xmi:id="Kht1tjGGAqAEBheD" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647224404"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="Kht1tjGGAqAEBheD" target="L9j1tjGGAqAEBheX" xmi:id="njiNtjGGAqAEBhhH" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Display Search Results" xmi:id="hrd1tjGGAqAEBheM" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647229793"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<subvertex name="Show Movie Details" xmi:id="L9j1tjGGAqAEBheX" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647241716"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="logged in" source="L9j1tjGGAqAEBheX" target=".hz1tjGGAqAEBheg" xmi:id="KZSNtjGGAqAEBhhL" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="not logged in" source="L9j1tjGGAqAEBheX" target="JM71tjGGAqAEBher" xmi:id="usyNtjGGAqAEBhhP" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Rate Movie" xmi:id=".hz1tjGGAqAEBheg" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647248991"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source=".hz1tjGGAqAEBheg" target="jQ0NtjGGAqAEBhgW" xmi:id="VVKNtjGGAqAEBhhX" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Display Associated Cast and Crew" xmi:id="JM71tjGGAqAEBher" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647264036"/>
-							<property name="pmLastModified" type="string" value="1702647469614"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="select person" source="JM71tjGGAqAEBher" target="QSX1tjGGAqAEBhe0" xmi:id="V7yNtjGGAqAEBhhT" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Show Person's Details" xmi:id="QSX1tjGGAqAEBhe0" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647276674"/>
-							<property name="pmLastModified" type="string" value="1702647469617"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="QSX1tjGGAqAEBhe0" target="jQ0NtjGGAqAEBhgW" xmi:id="NyRNtjGGAqAEBhi5" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex kind="final" name="" xmi:id="jQ0NtjGGAqAEBhgW" xmi:type="uml:Pseudostate">
-					<xmi:Extension extender="Visual Paradigm">
-						<finalState2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647345329"/>
-							<property name="pmLastModified" type="string" value="1702647469617"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="stateInvariant" type="string" value=""/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<subvertex kind="initial" name="" xmi:id="JetNtjGGAqAEBioM" xmi:type="uml:Pseudostate">
-					<xmi:Extension extender="Visual Paradigm">
-						<initialPseudostate/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647486372"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="JetNtjGGAqAEBioM" target=".STNtjGGAqAEBioZ" xmi:id="Yy2ttjGGAqAEBirm" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="User Accesses Browsing" xmi:id=".STNtjGGAqAEBioZ" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647506079"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source=".STNtjGGAqAEBioZ" target="aCrNtjGGAqAEBioi" xmi:id="GL2ttjGGAqAEBirq" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="User Searches For Actor" xmi:id="aCrNtjGGAqAEBioi" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647518230"/>
-							<property name="pmLastModified" type="string" value="1702647796034"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="success" source="aCrNtjGGAqAEBioi" target="Dq7NtjGGAqAEBior" xmi:id="M8OttjGGAqAEBiru" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="fail" source="aCrNtjGGAqAEBioi" target="iLXNtjGGAqAEBio2" xmi:id="NlOttjGGAqAEBiry" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Search Successful" xmi:id="Dq7NtjGGAqAEBior" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647526768"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="Dq7NtjGGAqAEBior" target="20vNtjGGAqAEBio_" xmi:id="RouttjGGAqAEBir2" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="no result" source="Dq7NtjGGAqAEBior" target="9hfNtjGGAqAEBipI" xmi:id="6ButtjGGAqAEBir6" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Display No Results Message" xmi:id="iLXNtjGGAqAEBio2" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647541009"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<subvertex name="Found" xmi:id="20vNtjGGAqAEBio_" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647550683"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="20vNtjGGAqAEBio_" target="DfAttjGGAqAEBipR" xmi:id="SAettjGGAqAEBir." xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Display Search Results" xmi:id="9hfNtjGGAqAEBipI" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647556207"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<subvertex name="Show Person's Details" xmi:id="DfAttjGGAqAEBipR" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647566256"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="person selected" source="DfAttjGGAqAEBipR" target="6qwttjGGAqAEBipa" xmi:id="eJettjGGAqAEBisC" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Display Other Movies" xmi:id="6qwttjGGAqAEBipa" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647575895"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="movie selected" source="6qwttjGGAqAEBipa" target="cYottjGGAqAEBipj" xmi:id="ODBttjGGAqAEBisS" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Show Movie Details" xmi:id="cYottjGGAqAEBipj" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647583118"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="another movie selected" source="cYottjGGAqAEBipj" target="6qwttjGGAqAEBipa" xmi:id="AGhttjGGAqAEBisY" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" source="cYottjGGAqAEBipj" target="vCmttjGGAqAEBirX" xmi:id="._httjGGAqAEBise" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex kind="final" name="" xmi:id="vCmttjGGAqAEBirX" xmi:type="uml:Pseudostate">
-					<xmi:Extension extender="Visual Paradigm">
-						<finalState2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647665725"/>
-							<property name="pmLastModified" type="string" value="1702647796036"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="stateInvariant" type="string" value=""/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<subvertex kind="initial" name="" xmi:id="88GdtjGGAqAEBkiK" xmi:type="uml:Pseudostate">
-					<xmi:Extension extender="Visual Paradigm">
-						<initialPseudostate/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647923663"/>
-							<property name="pmLastModified" type="string" value="1702648576910"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="88GdtjGGAqAEBkiK" target="unmdtjGGAqAEBkiX" xmi:id="nmh9tjGGAqAEBkmm" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="User Access Platform" xmi:id="unmdtjGGAqAEBkiX" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647930461"/>
-							<property name="pmLastModified" type="string" value="1702648576894"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="registered" source="unmdtjGGAqAEBkiX" target="CdudtjGGAqAEBkik" xmi:id="3oR9tjGGAqAEBkmu" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="not registered" source="unmdtjGGAqAEBkiX" target="j0.dtjGGAqAEBkit" xmi:id="MpR9tjGGAqAEBkmy" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="User Logged In" xmi:id="CdudtjGGAqAEBkik" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647946128"/>
-							<property name="pmLastModified" type="string" value="1702648576894"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="success" source="CdudtjGGAqAEBkik" target="GQtdtjGGAqAEBkjf" xmi:id="FYx9tjGGAqAEBkm2" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="fail" source="CdudtjGGAqAEBkik" target="qE9dtjGGAqAEBkjo" xmi:id="Fxx9tjGGAqAEBkm6" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="User Registers" xmi:id="j0.dtjGGAqAEBkit" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702647952113"/>
-							<property name="pmLastModified" type="string" value="1702648576910"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="fail" source="j0.dtjGGAqAEBkit" target="qE9dtjGGAqAEBkjo" xmi:id="G.J9tjGGAqAEBknC" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="success" source="j0.dtjGGAqAEBkit" target=".APdtjGGAqAEBkkE" xmi:id="LFaDtjGGAqAEBk35" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Login Successful" xmi:id="GQtdtjGGAqAEBkjf" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648008856"/>
-							<property name="pmLastModified" type="string" value="1702648576894"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" name="edit" source="GQtdtjGGAqAEBkjf" target="49fdtjGGAqAEBkkN" xmi:id="wgp9tjGGAqAEBknG" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<transition kind="External" name="no edit" source="GQtdtjGGAqAEBkjf" target="VEu9tjGGAqAEBkmV" xmi:id="RJ59tjGGAqAEBkna" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Display Error Message" xmi:id="qE9dtjGGAqAEBkjo" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648017429"/>
-							<property name="pmLastModified" type="string" value="1702648576910"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<subvertex name="Registration Successful" xmi:id=".APdtjGGAqAEBkkE" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648070175"/>
-							<property name="pmLastModified" type="string" value="1702648576894"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source=".APdtjGGAqAEBkkE" target="49fdtjGGAqAEBkkN" xmi:id="8.p9tjGGAqAEBknK" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Access User Profile" xmi:id="49fdtjGGAqAEBkkN" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648081352"/>
-							<property name="pmLastModified" type="string" value="1702648576894"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="49fdtjGGAqAEBkkN" target="1bQ9tjGGAqAEBkkW" xmi:id="AUZ9tjGGAqAEBknO" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Edit Profile" xmi:id="1bQ9tjGGAqAEBkkW" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648098219"/>
-							<property name="pmLastModified" type="string" value="1702648576894"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="1bQ9tjGGAqAEBkkW" target="m5o9tjGGAqAEBkkh" xmi:id="7pZ9tjGGAqAEBknS" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Update Profile" xmi:id="m5o9tjGGAqAEBkkh" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648109529"/>
-							<property name="pmLastModified" type="string" value="1702648576910"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="m5o9tjGGAqAEBkkh" target="w.49tjGGAqAEBkkq" xmi:id="QI59tjGGAqAEBknW" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex name="Logout" xmi:id="w.49tjGGAqAEBkkq" xmi:type="uml:State">
-					<xmi:Extension extender="Visual Paradigm">
-						<state2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648117187"/>
-							<property name="pmLastModified" type="string" value="1702648576910"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="qualityScore" type="int" value="-1"/>
-						</properties>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</subvertex>
-				<transition kind="External" source="w.49tjGGAqAEBkkq" target="VEu9tjGGAqAEBkmV" xmi:id="dyF9tjGGAqAEBkne" xmi:type="uml:Transition">
-					<xmi:Extension extender="Visual Paradigm">
-						<transition2/>
-						<qualityScore value="-1"/>
-					</xmi:Extension>
-				</transition>
-				<subvertex kind="final" name="" xmi:id="VEu9tjGGAqAEBkmV" xmi:type="uml:Pseudostate">
-					<xmi:Extension extender="Visual Paradigm">
-						<finalState2/>
-						<properties>
-							<property name="pmAuthor" type="string" value="el20883@mail.ntua.gr"/>
-							<property name="pmCreateDateTime" type="string" value="1702648205866"/>
-							<property name="pmLastModified" type="string" value="1702648576910"/>
-							<property name="userIDLastNumericValue" type="int" value="0"/>
-							<property name="backlogActivityId" type="int" value="0"/>
-							<property name="stateInvariant" type="string" value=""/>
 							<property name="qualityScore" type="int" value="-1"/>
 						</properties>
 						<qualityScore value="-1"/>
@@ -21320,7 +21693,7 @@
 				<afilterByViewpointLegend value="true"/>
 				<apmAuthor value="el20614@mail.ntua.gr"/>
 				<apmCreateDateTime value="1701871559785"/>
-				<apmLastModified value="1702623226677"/>
+				<apmLastModified value="1702650852013"/>
 				<ateamworkAuthor value="Christodoulos"/>
 				<ateamworkCreateDateTime value="1701871585379"/>
 				<alastCommittedUser value="el20614@mail.ntua.gr"/>
@@ -21365,7 +21738,7 @@
 				<aconnectorModelElementNameAlignment value="4"/>
 				<amodelElementNameAlignment value="4"/>
 				<ashapePresentationOption value="0"/>
-				<azoomRatio value="1.4"/>
+				<azoomRatio value="0.8"/>
 				<amaximized value="false"/>
 				<ax value="0"/>
 				<ay value="0"/>
@@ -28172,7 +28545,7 @@
 			</uml:DiagramElement>
 		</uml:Diagram.element>
 	</uml:Diagram>
-	<uml:Diagram diagramType="StateDiagram" documentation="" name="State Machine Diagram1" toolName="Visual Paradigm" xmi:id="OZi1tjGGAqAEBhcM">
+	<uml:Diagram diagramType="StateDiagram" documentation="" name="Movie State Diagram" toolName="Visual Paradigm" xmi:id="OZi1tjGGAqAEBhcM">
 		<xmi:Extension extender="Visual Paradigm">
 			<properties>
 				<ashowShapeStereotypeIconName value="true"/>
@@ -28181,11 +28554,11 @@
 				<afilterByViewpointLegend value="true"/>
 				<apmAuthor value="el20883@mail.ntua.gr"/>
 				<apmCreateDateTime value="1702647110044"/>
-				<apmLastModified value="1702647906483"/>
+				<apmLastModified value="1702650852013"/>
 				<ateamworkAuthor value="Ioannis"/>
 				<ateamworkCreateDateTime value="1702647465711"/>
-				<alastCommittedUser value="el20883@mail.ntua.gr"/>
-				<alastCommittedUserName value="Ioannis"/>
+				<alastCommittedUser value="el20614@mail.ntua.gr"/>
+				<alastCommittedUserName value="Christodoulos"/>
 				<ashowShapeLegend value="false"/>
 				<ashowConnectorLegend value="false"/>
 				<ashowColorLegend value="false"/>
@@ -28227,13 +28600,14 @@
 				<aconnectorModelElementNameAlignment value="4"/>
 				<amodelElementNameAlignment value="4"/>
 				<ashapePresentationOption value="0"/>
-				<azoomRatio value="1.3"/>
+				<azoomRatio value="0.8"/>
 				<amaximized value="false"/>
 				<ax value="0"/>
 				<ay value="0"/>
 				<awidth value="0"/>
 				<aheight value="0"/>
 				<aqualityScore value="-1"/>
+				<aparentModel value="lLee_DGGAqACiEfJ"/>
 				<a_globalPaletteOption value="true"/>
 				<ainitializeDiagramForCreate value="false"/>
 				<arequestValidateSnapToGrid value="false"/>
@@ -29283,7 +29657,7 @@
 			</uml:DiagramElement>
 		</uml:Diagram.element>
 	</uml:Diagram>
-	<uml:Diagram diagramType="StateDiagram" documentation="" name="State Machine Diagram2" toolName="Visual Paradigm" xmi:id="IGtNtjGGAqAEBinw">
+	<uml:Diagram diagramType="StateDiagram" documentation="" name="People State Diagram" toolName="Visual Paradigm" xmi:id="IGtNtjGGAqAEBinw">
 		<xmi:Extension extender="Visual Paradigm">
 			<properties>
 				<ashowShapeStereotypeIconName value="true"/>
@@ -29292,11 +29666,11 @@
 				<afilterByViewpointLegend value="true"/>
 				<apmAuthor value="el20883@mail.ntua.gr"/>
 				<apmCreateDateTime value="1702647485955"/>
-				<apmLastModified value="1702647796036"/>
+				<apmLastModified value="1702650852013"/>
 				<ateamworkAuthor value="Ioannis"/>
 				<ateamworkCreateDateTime value="1702647794222"/>
-				<alastCommittedUser value="el20883@mail.ntua.gr"/>
-				<alastCommittedUserName value="Ioannis"/>
+				<alastCommittedUser value="el20614@mail.ntua.gr"/>
+				<alastCommittedUserName value="Christodoulos"/>
 				<ashowShapeLegend value="false"/>
 				<ashowConnectorLegend value="false"/>
 				<ashowColorLegend value="false"/>
@@ -29338,13 +29712,14 @@
 				<aconnectorModelElementNameAlignment value="4"/>
 				<amodelElementNameAlignment value="4"/>
 				<ashapePresentationOption value="0"/>
-				<azoomRatio value="1.0"/>
+				<azoomRatio value="0.7"/>
 				<amaximized value="false"/>
 				<ax value="0"/>
 				<ay value="0"/>
 				<awidth value="0"/>
 				<aheight value="0"/>
 				<aqualityScore value="-1"/>
+				<aparentModel value="DT19_DGGAqACiK_D"/>
 				<a_globalPaletteOption value="true"/>
 				<ainitializeDiagramForCreate value="false"/>
 				<arequestValidateSnapToGrid value="false"/>
@@ -30307,7 +30682,7 @@
 			</uml:DiagramElement>
 		</uml:Diagram.element>
 	</uml:Diagram>
-	<uml:Diagram diagramType="StateDiagram" documentation="" name="State Machine Diagram3" toolName="Visual Paradigm" xmi:id="FEGdtjGGAqAEBkhu">
+	<uml:Diagram diagramType="StateDiagram" documentation="" name="Verification State Diagram" toolName="Visual Paradigm" xmi:id="FEGdtjGGAqAEBkhu">
 		<xmi:Extension extender="Visual Paradigm">
 			<properties>
 				<ashowShapeStereotypeIconName value="true"/>
@@ -30316,11 +30691,11 @@
 				<afilterByViewpointLegend value="true"/>
 				<apmAuthor value="el20883@mail.ntua.gr"/>
 				<apmCreateDateTime value="1702647923240"/>
-				<apmLastModified value="1702648576910"/>
+				<apmLastModified value="1702650852013"/>
 				<ateamworkAuthor value="Ioannis"/>
 				<ateamworkCreateDateTime value="1702648574836"/>
-				<alastCommittedUser value="el20883@mail.ntua.gr"/>
-				<alastCommittedUserName value="Ioannis"/>
+				<alastCommittedUser value="el20614@mail.ntua.gr"/>
+				<alastCommittedUserName value="Christodoulos"/>
 				<ashowShapeLegend value="false"/>
 				<ashowConnectorLegend value="false"/>
 				<ashowColorLegend value="false"/>
@@ -30362,13 +30737,14 @@
 				<aconnectorModelElementNameAlignment value="4"/>
 				<amodelElementNameAlignment value="4"/>
 				<ashapePresentationOption value="0"/>
-				<azoomRatio value="1.3"/>
-				<amaximized value="true"/>
+				<azoomRatio value="0.8"/>
+				<amaximized value="false"/>
 				<ax value="0"/>
 				<ay value="0"/>
-				<awidth value="1918"/>
-				<aheight value="871"/>
+				<awidth value="0"/>
+				<aheight value="0"/>
 				<aqualityScore value="-1"/>
+				<aparentModel value="EIrO_DGGAqACiCqv"/>
 				<a_globalPaletteOption value="true"/>
 				<ainitializeDiagramForCreate value="false"/>
 				<arequestValidateSnapToGrid value="false"/>
@@ -38941,5 +39317,76 @@
 				<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
 			</uml:DiagramElement>
 		</uml:Diagram.element>
+	</uml:Diagram>
+	<uml:Diagram diagramType="ReportDiagram" documentation="" name="Software Requirements Specification" toolName="Visual Paradigm" xmi:id="CUVvtjGGAqAEBhl4">
+		<xmi:Extension extender="Visual Paradigm">
+			<properties>
+				<ashowShapeStereotypeIconName value="true"/>
+				<ashowAllocatedFrom value="true"/>
+				<ashowAllocatedTo value="true"/>
+				<afilterByViewpointLegend value="true"/>
+				<apmAuthor value="el20883@mail.ntua.gr"/>
+				<apmCreateDateTime value="1702651929232"/>
+				<apmLastModified value="1702652771594"/>
+				<ateamworkAuthor value="Ioannis"/>
+				<ateamworkCreateDateTime value="1702652705036"/>
+				<alastCommittedUser value="el20883@mail.ntua.gr"/>
+				<alastCommittedUserName value="Ioannis"/>
+				<ashowShapeLegend value="false"/>
+				<ashowConnectorLegend value="false"/>
+				<ashowColorLegend value="false"/>
+				<ashowPackageNameStyle value="0"/>
+				<ashowConnectorName value="0"/>
+				<ashowInformationItemOption value="2"/>
+				<ahideConnectorIfFromToIsHidden value="0"/>
+				<apaintConnectorThroughLabel value="1"/>
+				<ashowActivityStateNodeCaption value="524287"/>
+				<aeditable value="true"/>
+				<arequestFitSizeWithPromptUser value="false"/>
+				<afollowDiagramParentElement value="true"/>
+				<aautoFitShapesSize value="false"/>
+				<ashowTaggedValues value="false"/>
+				<ahideEmptyTaggedValues value="false"/>
+				<ashowStereotypes value="true"/>
+				<ashowPMIteration value="false"/>
+				<ashowPMPhase value="false"/>
+				<ashowPMDiscipline value="false"/>
+				<ashowPMVersion value="false"/>
+				<ashowPMPriority value="false"/>
+				<ashowPMStatus value="false"/>
+				<ashowPMDifficulty value="false"/>
+				<ashowPMAuthor value="false"/>
+				<ashowRelationshipConstraintExpression value="false"/>
+				<ashowConstraints value="false"/>
+				<aalignToGrid value="false"/>
+				<agridVisible value="false"/>
+				<agridWidth value="10"/>
+				<agridHeight value="10"/>
+				<agridColor value="Cr:192,192,192,255"/>
+				<adiagramBackground value="Cr:255,255,255,255"/>
+				<aconnectorStyle value="1"/>
+				<aconnectorLineJumps value="0"/>
+				<aconnectorLineJumpsSize value="0"/>
+				<aconnectionPointStyle value="0"/>
+				<aconnectorLabelOrientation value="0"/>
+				<aconnectorModelElementNameAlignment value="4"/>
+				<amodelElementNameAlignment value="4"/>
+				<ashapePresentationOption value="0"/>
+				<azoomRatio value="1.0"/>
+				<amaximized value="false"/>
+				<ax value="0"/>
+				<ay value="0"/>
+				<awidth value="0"/>
+				<aheight value="0"/>
+				<aqualityScore value="-1"/>
+				<a_globalPaletteOption value="true"/>
+				<ainitializeDiagramForCreate value="true"/>
+				<arequestValidateSnapToGrid value="false"/>
+				<apointConnectorEndToCompartmentMember value="true"/>
+				<agenericXMLElementAddress value="BUVvtjGGAqAEBhl7:9UVvtjGGAqAEBhl9"/>
+				<ainlineAlready value="false"/>
+				<amapTreeOn value="false"/>
+			</properties>
+		</xmi:Extension>
 	</uml:Diagram>
 </xmi:XMI>
