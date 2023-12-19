@@ -17,3 +17,8 @@ exports.getHealth = async (req, res, next) => {
         res.status(500).json({ status: "failed", dataconnection: error.message });
     }
 };
+
+exports.getTest =(req,res,next)=>{
+
+    res.status(200).json({status:"success"});
+}
