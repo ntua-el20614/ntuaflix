@@ -18,7 +18,50 @@ exports.getHealth = async (req, res, next) => {
     }
 };
 
-exports.getTest =(req,res,next)=>{
+exports.chUser = (req, res, next) => {
 
-    res.status(200).json({status:"success"});
+    const username = req.params.username;
+    const password = req.params.password; // Ensure this is hashed if needed
+
+    const query = `
+    INSERT INTO ntuaflix.users (username, password_hashed)
+    VALUES ('${username}', '${password}') AS new_values
+    ON DUPLICATE KEY UPDATE password_hashed = new_values.password_hashed;
+     `;
+    pool.getConnection((err, connection) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error connecting to the database' });
+        }
+
+        connection.query(query, [username, password], (err, results) => {
+            connection.release();
+            if (err) {
+                return res.status(500).json({ message: 'Internal server error' });
+            }
+
+            return res.status(200).json({ message: 'Operation successful', new_password: `${password}`, data: results });
+        });
+    });
+}
+
+
+exports.getUser = (req, res, next) => {
+
+    const username = req.params.username;
+    const query = `SELECT * FROM users WHERE username = '${username}'`;
+
+    pool.getConnection((err, connection) => {
+        connection.query(query, (err, rows) => {
+            connection.release();
+            if (err) return res.status(500).json({ message: 'Internal server error' });
+
+            return res.status(200).json(rows);
+        });
+    });
+
+}
+
+exports.getTest = (req, res, next) => {
+
+    res.status(200).json({ status: "success" });
 }
