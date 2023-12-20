@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const { pool } = require('../utils/database');
 const fs = require('fs');
 const Papa = require('papaparse');
@@ -32,7 +33,7 @@ exports.uploadTitleBasics = (req, res, next) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({ message: 'Error reading file' });
-        } 
+        }
 
         Papa.parse(data, {
             header: true,
@@ -61,9 +62,10 @@ exports.uploadTitleBasics = (req, res, next) => {
 
                     pool.query(query, (err, results) => {
                         if (err) {
- 
+                            console.log("error with database")
+
                         }
-                        
+
                     });
                 });
 
@@ -73,96 +75,87 @@ exports.uploadTitleBasics = (req, res, next) => {
     });
 };
 
-exports.uploadTitleAkas = (req,res,next) => {
+exports.uploadTitleAkas = (req, res, next) => {
 
 
-    const query=``;
-    
-    connection.query(query, (err, results) => {
-        connection.release();
+    if (!req.files || !req.files.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const filePath = req.files.file[0].path;
+    fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
-            return res.status(500).json({ message: 'Internal server error' });
+            return res.status(500).json({ message: 'Error reading file' });
         }
 
-        return res.status(200).json({ message: 'Insert Successfull'});
+        Papa.parse(data, {
+            header: true,
+            delimiter: '\t',
+            complete: (results) => {
+                // Process each row of the TSV data
+                results.data.forEach(row => {
+                    const { titleId, ordering, title, region, language, types, attributes, isOriginalTitle } = row;
+
+                    const query = `
+                        INSERT INTO title_akas (tconst, ordering, title, region, language, types, attributes, isOriginalTitle)
+                        VALUES ('${titleId}', '${ordering}', '${title}','${region}','${language}','${types}','${attributes}','${isOriginalTitle}')
+                        ON DUPLICATE KEY UPDATE
+                            title = VALUES(title),
+                            region = VALUES(region),
+                            language = VALUES(language),
+                            types = VALUES(types),
+                            attributes = VALUES(attributes),
+                            isOriginalTitle = VALUES(isOriginalTitle);
+                    `;
+                    
+                    console.log(query);
+
+                    pool.query(query, (err, results) => {
+                        if (err) {
+                            //console.log(err)
+
+                        }
+
+                    });
+                });
+                res.status(200).json({ message: 'File processed successfully' });
+
+            }
+        });
     });
 }
 
-exports.uploadNameBasics = (req,res,next) => {
-
-
-    const query=``;
-    
-    connection.query(query, (err, results) => {
-        connection.release();
-        if (err) {
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-
-        return res.status(200).json({ message: 'Insert Successfull'});
-    });
+exports.uploadNameBasics = (req, res, next) => {
 }
 
-exports.uploadTitleCrew = (req,res,next) => {
-
-
-    const query=``;
-    
-    connection.query(query, (err, results) => {
-        connection.release();
-        if (err) {
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-
-        return res.status(200).json({ message: 'Insert Successfull'});
-    });
+exports.uploadTitleCrew = (req, res, next) => {
 }
 
-exports.uploadTitleEpisode = (req,res,next) => {
-
-
-    const query=``;
-    
-    connection.query(query, (err, results) => {
-        connection.release();
-        if (err) {
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-
-        return res.status(200).json({ message: 'Insert Successfull'});
-    });
+exports.uploadTitleEpisode = (req, res, next) => {
 }
 
-exports.uploadTitlePrincipals = (req,res,next) => {
-
-
-    const query=``;
-    
-    connection.query(query, (err, results) => {
-        connection.release();
-        if (err) {
-            return res.status(500).json({ message: 'Internal server error' });
-        }
-
-        return res.status(200).json({ message: 'Insert Successfull'});
-    });
+exports.uploadTitlePrincipals = (req, res, next) => {
 }
 
-exports.uploadTitleRatings = (req,res,next) => {
+exports.uploadTitleRatings = (req, res, next) => {
 
-
-    const query=``;
-    
-    connection.query(query, (err, results) => {
-        connection.release();
+    pool.getConnection((err, connection) => {
         if (err) {
-            return res.status(500).json({ message: 'Internal server error' });
+            return res.status(500).json({ message: 'Error connecting to the database' });
         }
 
-        return res.status(200).json({ message: 'Insert Successfull'});
-    });
-}
+        const query = ``;
 
+        connection.query(query, (err, results) => {
+            connection.release();
+            if (err) {
+                return res.status(500).json({ message: 'Internal server error' });
+            }
+
+            return res.status(200).json({ message: 'Insert Successfull' });
+        });
+    });
+
+}
 
 
 
