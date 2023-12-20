@@ -62,7 +62,7 @@ exports.uploadTitleBasics = (req, res, next) => {
 
                     pool.query(query, (err, results) => {
                         if (err) {
-                            console.log("error with database")
+                            res.status(200).json({ error: err });
 
                         }
 
@@ -111,6 +111,7 @@ exports.uploadTitleAkas = (req, res, next) => {
 
                     pool.query(query, (err, results) => {
                         if (err) {
+                            res.status(200).json({ error: err });
 
                         }
 
@@ -160,6 +161,7 @@ exports.uploadNameBasics = (req, res, next) => {
 
                     pool.query(query, (err, results) => {
                         if (err) { 
+                            res.status(200).json({ error: err });
 
                         }
 
@@ -173,9 +175,100 @@ exports.uploadNameBasics = (req, res, next) => {
 }
 
 exports.uploadTitleCrew = (req, res, next) => {
+
+
+    if (!req.files || !req.files.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const filePath = req.files.file[0].path;
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error reading file' });
+        }
+
+        Papa.parse(data, {
+            header: true,
+            delimiter: '\t',
+            complete: (results) => {
+                // Process each row of the TSV data
+                results.data.forEach(row => {
+                    const {tconst,directors,writers} = row;
+
+                    const query = `
+                        INSERT INTO title_crew (tconst, directors, writers)
+                        VALUES ('${tconst}', '${directors}', '${writers}')
+                        ON DUPLICATE KEY UPDATE
+                        directors = VALUES(directors),
+                        writers = VALUES(writers);
+                    `;
+                    
+                    
+
+                    pool.query(query, (err, results) => {
+                        if (err) { 
+                            
+                            res.status(200).json({ error: err });
+
+
+                        }
+
+                    });
+                });
+                res.status(200).json({ message: 'File processed successfully' });
+
+            }
+        });
+    });
 }
 
 exports.uploadTitleEpisode = (req, res, next) => {
+
+
+    if (!req.files || !req.files.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const filePath = req.files.file[0].path;
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error reading file' });
+        }
+
+        Papa.parse(data, {
+            header: true,
+            delimiter: '\t',
+            complete: (results) => {
+                // Process each row of the TSV data
+                results.data.forEach(row => {
+                    const {tconst,directors,writers} = row;
+
+                    const query = `
+                        INSERT INTO episode (tconst, parentTconst, seasonN, episodeN)
+                        VALUES ('${tconst}', '${parentTconst}', '${seasonN}', '${episodeN}')
+                        ON DUPLICATE KEY UPDATE
+                        parentTconst = VALUES(parentTconst),
+                        seasonN = VALUES(seasonN),
+                        episodeN = VALUES(episodeN);
+                    `;
+                    
+                    
+
+                    pool.query(query, (err, results) => {
+                        if (err) { 
+                            
+                            res.status(200).json({ error: err });
+
+
+                        }
+
+                    });
+                });
+                res.status(200).json({ message: 'File processed successfully' });
+
+            }
+        });
+    });
+
+
 }
 
 exports.uploadTitlePrincipals = (req, res, next) => {
