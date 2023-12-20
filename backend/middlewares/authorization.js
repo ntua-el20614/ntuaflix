@@ -1,4 +1,4 @@
-const authenticate = (req, res, next) => {
+const authorize = (req, res, next) => {
     const secretKey = req.body.secretKey;
     const admin = req.body.is_user_admin;
   
@@ -10,4 +10,4 @@ const authenticate = (req, res, next) => {
     next();
 }
 
-module.exports = authenticate;
+module.exports = authorize;
