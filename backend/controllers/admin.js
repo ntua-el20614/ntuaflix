@@ -61,20 +61,109 @@ exports.uploadTitleBasics = (req, res, next) => {
 
                     pool.query(query, (err, results) => {
                         if (err) {
-
-                            // Handle errors, maybe log them or send a response
+ 
                         }
-                        // Handle success, maybe log it or update a counter
+                        
                     });
                 });
 
-                // You might want to send a response after all insertions are done
-                // This could be improved by using Promises or async/await for better control
                 res.status(200).json({ message: 'File processed successfully' });
             }
         });
     });
 };
+
+exports.uploadTitleAkas = (req,res,next) => {
+
+
+    const query=``;
+    
+    connection.query(query, (err, results) => {
+        connection.release();
+        if (err) {
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        return res.status(200).json({ message: 'Insert Successfull'});
+    });
+}
+
+exports.uploadNameBasics = (req,res,next) => {
+
+
+    const query=``;
+    
+    connection.query(query, (err, results) => {
+        connection.release();
+        if (err) {
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        return res.status(200).json({ message: 'Insert Successfull'});
+    });
+}
+
+exports.uploadTitleCrew = (req,res,next) => {
+
+
+    const query=``;
+    
+    connection.query(query, (err, results) => {
+        connection.release();
+        if (err) {
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        return res.status(200).json({ message: 'Insert Successfull'});
+    });
+}
+
+exports.uploadTitleEpisode = (req,res,next) => {
+
+
+    const query=``;
+    
+    connection.query(query, (err, results) => {
+        connection.release();
+        if (err) {
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        return res.status(200).json({ message: 'Insert Successfull'});
+    });
+}
+
+exports.uploadTitlePrincipals = (req,res,next) => {
+
+
+    const query=``;
+    
+    connection.query(query, (err, results) => {
+        connection.release();
+        if (err) {
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        return res.status(200).json({ message: 'Insert Successfull'});
+    });
+}
+
+exports.uploadTitleRatings = (req,res,next) => {
+
+
+    const query=``;
+    
+    connection.query(query, (err, results) => {
+        connection.release();
+        if (err) {
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        return res.status(200).json({ message: 'Insert Successfull'});
+    });
+}
+
+
 
 
 exports.chUser = (req, res, next) => {
