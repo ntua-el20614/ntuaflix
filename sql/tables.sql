@@ -78,7 +78,7 @@ CREATE TABLE title_akas (
     language VARCHAR(255),
     types VARCHAR(255),
     attributes VARCHAR(255),
-    isOriginalTitle BOOLEAN,
+    isOriginalTitle INT,
     PRIMARY KEY (tconst, ordering),
     FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
