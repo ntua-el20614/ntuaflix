@@ -107,11 +107,10 @@ exports.uploadTitleAkas = (req, res, next) => {
                             isOriginalTitle = VALUES(isOriginalTitle);
                     `;
                     
-                    console.log(query);
+                    
 
                     pool.query(query, (err, results) => {
                         if (err) {
-                            //console.log(err)
 
                         }
 
@@ -125,6 +124,52 @@ exports.uploadTitleAkas = (req, res, next) => {
 }
 
 exports.uploadNameBasics = (req, res, next) => {
+    
+
+
+    if (!req.files || !req.files.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const filePath = req.files.file[0].path;
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error reading file' });
+        }
+
+        Papa.parse(data, {
+            header: true,
+            delimiter: '\t',
+            complete: (results) => {
+                // Process each row of the TSV data
+                results.data.forEach(row => {
+                    const {nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles, img_url_asset} = row;
+
+                    const query = `
+                        INSERT INTO people (nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles, img_url_asset)
+                        VALUES ('${nconst}', '${primaryName}', '${birthYear}','${deathYear}','${primaryProfession}','${knownForTitles}','${img_url_asset}')
+                        ON DUPLICATE KEY UPDATE
+                        primaryName = VALUES(primaryName),
+                        birthYear = VALUES(birthYear),
+                        deathYear = VALUES(deathYear),
+                        primaryProfession = VALUES(primaryProfession),
+                        knownForTitles = VALUES(knownForTitles),
+                        img_url_asset = VALUES(img_url_asset);
+                    `;
+                    
+                    
+
+                    pool.query(query, (err, results) => {
+                        if (err) { 
+
+                        }
+
+                    });
+                });
+                res.status(200).json({ message: 'File processed successfully' });
+
+            }
+        });
+    });
 }
 
 exports.uploadTitleCrew = (req, res, next) => {
