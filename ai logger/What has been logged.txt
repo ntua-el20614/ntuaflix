@@ -4,6 +4,8 @@ coding 3
 coding 4
 coding 5
 coding 6
+coding 7
+coding 8
 component 1
 deployment 1
 deployment 2
