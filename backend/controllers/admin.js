@@ -106,8 +106,8 @@ exports.uploadTitleAkas = (req, res, next) => {
                             attributes = VALUES(attributes),
                             isOriginalTitle = VALUES(isOriginalTitle);
                     `;
-                    
-                    
+
+
 
                     pool.query(query, (err, results) => {
                         if (err) {
@@ -125,7 +125,7 @@ exports.uploadTitleAkas = (req, res, next) => {
 }
 
 exports.uploadNameBasics = (req, res, next) => {
-    
+
 
 
     if (!req.files || !req.files.file) {
@@ -143,7 +143,7 @@ exports.uploadNameBasics = (req, res, next) => {
             complete: (results) => {
                 // Process each row of the TSV data
                 results.data.forEach(row => {
-                    const {nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles, img_url_asset} = row;
+                    const { nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles, img_url_asset } = row;
 
                     const query = `
                         INSERT INTO people (nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles, img_url_asset)
@@ -156,11 +156,11 @@ exports.uploadNameBasics = (req, res, next) => {
                         knownForTitles = VALUES(knownForTitles),
                         img_url_asset = VALUES(img_url_asset);
                     `;
-                    
-                    
+
+
 
                     pool.query(query, (err, results) => {
-                        if (err) { 
+                        if (err) {
                             res.status(200).json({ error: err });
 
                         }
@@ -192,7 +192,7 @@ exports.uploadTitleCrew = (req, res, next) => {
             complete: (results) => {
                 // Process each row of the TSV data
                 results.data.forEach(row => {
-                    const {tconst,directors,writers} = row;
+                    const { tconst, directors, writers } = row;
 
                     const query = `
                         INSERT INTO title_crew (tconst, directors, writers)
@@ -201,12 +201,12 @@ exports.uploadTitleCrew = (req, res, next) => {
                         directors = VALUES(directors),
                         writers = VALUES(writers);
                     `;
-                    
-                    
+
+
 
                     pool.query(query, (err, results) => {
-                        if (err) { 
-                            
+                        if (err) {
+
                             res.status(200).json({ error: err });
 
 
@@ -239,7 +239,7 @@ exports.uploadTitleEpisode = (req, res, next) => {
             complete: (results) => {
                 // Process each row of the TSV data
                 results.data.forEach(row => {
-                    const {tconst,directors,writers} = row;
+                    const { tconst, directors, writers } = row;
 
                     const query = `
                         INSERT INTO episode (tconst, parentTconst, seasonN, episodeN)
@@ -249,12 +249,12 @@ exports.uploadTitleEpisode = (req, res, next) => {
                         seasonN = VALUES(seasonN),
                         episodeN = VALUES(episodeN);
                     `;
-                    
-                    
+
+
 
                     pool.query(query, (err, results) => {
-                        if (err) { 
-                            
+                        if (err) {
+
                             res.status(200).json({ error: err });
 
 
@@ -273,7 +273,7 @@ exports.uploadTitleEpisode = (req, res, next) => {
 
 exports.uploadTitlePrincipals = (req, res, next) => {
 
-    
+
     if (!req.files || !req.files.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
@@ -289,7 +289,7 @@ exports.uploadTitlePrincipals = (req, res, next) => {
             complete: (results) => {
                 // Process each row of the TSV data
                 results.data.forEach(row => {
-                    const {tconst, ordering, nconst, category, job, characters, img_url_asset} = row;
+                    const { tconst, ordering, nconst, category, job, characters, img_url_asset } = row;
 
                     const query = `
                         INSERT INTO title_principals (tconst, ordering, nconst, category, job, characters, img_url_asset)
@@ -302,11 +302,11 @@ exports.uploadTitlePrincipals = (req, res, next) => {
                         img_url_asset = VALUES(img_url_asset);
                     `;
                     //console.log(query);
-                    
+
 
                     pool.query(query, (err, results) => {
-                        if (err) { 
-                            
+                        if (err) {
+
                             res.status(200).json({ error: err });
 
 
@@ -325,22 +325,48 @@ exports.uploadTitlePrincipals = (req, res, next) => {
 
 exports.uploadTitleRatings = (req, res, next) => {
 
-    pool.getConnection((err, connection) => {
+    if (!req.files || !req.files.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const filePath = req.files.file[0].path;
+    fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
-            return res.status(500).json({ message: 'Error connecting to the database' });
+            return res.status(500).json({ message: 'Error reading file' });
         }
 
-        const query = ``;
+        Papa.parse(data, {
+            header: true,
+            delimiter: '\t',
+            complete: (results) => {
+                // Process each row of the TSV data
+                results.data.forEach(row => {
+                    //console.log(row)
+                    const { tconst, averageRating, numVotes } = row;
+                    const query = `
+                        INSERT INTO title_ratings (titleid, averageRate, numVotes)
+                        VALUES ('${tconst}', '${averageRating}', '${numVotes}')
+                        ON DUPLICATE KEY UPDATE
+                        averageRate = VALUES(averageRate),
+                        numVotes = VALUES(numVotes);
+                    `; 
 
-        connection.query(query, (err, results) => {
-            connection.release();
-            if (err) {
-                return res.status(500).json({ message: 'Internal server error' });
+
+                    pool.query(query, (err, results) => {
+                        if (err) {
+
+                            res.status(200).json({ error: err });
+
+
+                        }
+
+                    });
+                });
+                res.status(200).json({ message: 'File processed successfully' });
+
             }
-
-            return res.status(200).json({ message: 'Insert Successfull' });
         });
     });
+
 
 }
 
