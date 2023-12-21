@@ -2,6 +2,7 @@ const { Console } = require('console');
 const { pool } = require('../utils/database');
 const fs = require('fs');
 const Papa = require('papaparse');
+const multer = require('multer');
 
 
 exports.getHealth = async (req, res, next) => {
@@ -76,8 +77,6 @@ exports.uploadTitleBasics = (req, res, next) => {
 };
 
 exports.uploadTitleAkas = (req, res, next) => {
-
-
     if (!req.files || !req.files.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
@@ -91,13 +90,11 @@ exports.uploadTitleAkas = (req, res, next) => {
             header: true,
             delimiter: '\t',
             complete: (results) => {
-                // Process each row of the TSV data
-                results.data.forEach(row => {
+                const promises = results.data.map(row => {
                     const { titleId, ordering, title, region, language, types, attributes, isOriginalTitle } = row;
-
                     const query = `
                         INSERT INTO title_akas (tconst, ordering, title, region, language, types, attributes, isOriginalTitle)
-                        VALUES ('${titleId}', '${ordering}', '${title}','${region}','${language}','${types}','${attributes}','${isOriginalTitle}')
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                         ON DUPLICATE KEY UPDATE
                             title = VALUES(title),
                             region = VALUES(region),
@@ -107,22 +104,26 @@ exports.uploadTitleAkas = (req, res, next) => {
                             isOriginalTitle = VALUES(isOriginalTitle);
                     `;
 
-
-
-                    pool.query(query, (err, results) => {
-                        if (err) {
-                            res.status(200).json({ error: err });
-
-                        }
-
+                    return new Promise((resolve, reject) => {
+                        pool.query(query, [titleId, ordering, title, region, language, types, attributes, isOriginalTitle], (err, results) => {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve(results);
+                            }
+                        });
                     });
                 });
-                res.status(200).json({ message: 'File processed successfully' });
 
+                Promise.all(promises)
+                    .then(() => res.status(200).json({ message: 'File processed successfully' }))
+                    .catch(error => res.status(500).json({ error: error.message }));
             }
         });
     });
-}
+};
+
+
 
 exports.uploadNameBasics = (req, res, next) => {
 
@@ -222,8 +223,6 @@ exports.uploadTitleCrew = (req, res, next) => {
 }
 
 exports.uploadTitleEpisode = (req, res, next) => {
-
-
     if (!req.files || !req.files.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
@@ -237,39 +236,37 @@ exports.uploadTitleEpisode = (req, res, next) => {
             header: true,
             delimiter: '\t',
             complete: (results) => {
-                // Process each row of the TSV data
-                results.data.forEach(row => {
-                    const { tconst, directors, writers } = row;
+                const promises = results.data.map(row => {
+                    const { tconst, parentTconst, seasonN, episodeN } = row;
 
                     const query = `
                         INSERT INTO episode (tconst, parentTconst, seasonN, episodeN)
-                        VALUES ('${tconst}', '${parentTconst}', '${seasonN}', '${episodeN}')
+                        VALUES (?, ?, ?, ?)
                         ON DUPLICATE KEY UPDATE
-                        parentTconst = VALUES(parentTconst),
-                        seasonN = VALUES(seasonN),
-                        episodeN = VALUES(episodeN);
+                            parentTconst = VALUES(parentTconst),
+                            seasonN = VALUES(seasonN),
+                            episodeN = VALUES(episodeN);
                     `;
 
-
-
-                    pool.query(query, (err, results) => {
-                        if (err) {
-
-                            res.status(200).json({ error: err });
-
-
-                        }
-
+                    return new Promise((resolve, reject) => {
+                        pool.query(query, [tconst, parentTconst, seasonN, episodeN], (err, results) => {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve(results);
+                            }
+                        });
                     });
                 });
-                res.status(200).json({ message: 'File processed successfully' });
 
+                Promise.all(promises)
+                    .then(() => res.status(200).json({ message: 'File processed successfully' }))
+                    .catch(error => res.status(500).json({ error: error.message }));
             }
         });
     });
+};
 
-
-}
 
 exports.uploadTitlePrincipals = (req, res, next) => {
 
@@ -348,7 +345,7 @@ exports.uploadTitleRatings = (req, res, next) => {
                         ON DUPLICATE KEY UPDATE
                         averageRate = VALUES(averageRate),
                         numVotes = VALUES(numVotes);
-                    `; 
+                    `;
 
 
                     pool.query(query, (err, results) => {

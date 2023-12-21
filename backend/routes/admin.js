@@ -5,29 +5,29 @@ const adminController = require('../controllers/admin');
 const authorize = require('../middlewares/authorization')
 const multer = require('multer');
 
-const upload = multer({ dest: 'uploads/' }); 
+const upload = multer({ dest: 'uploads/' });
 const router = express.Router();
 
 //1
 router.get('/healthcheck', adminController.getHealth);
 
 //2-8
-router.post('/upload/titlebasics', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.uploadTitleBasics);
-router.post('/upload/titleakas', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.uploadTitleAkas);
-router.post('/upload/namebasics', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.uploadNameBasics);
-router.post('/upload/titlecrew', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.uploadTitleCrew);
-router.post('/upload/titleepisode', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.uploadTitleEpisode);
-router.post('/upload/titleprincipals', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.uploadTitlePrincipals);
-router.post('/upload/titleratings', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.uploadTitleRatings);
+router.post('/upload/titlebasics', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadTitleBasics);
+router.post('/upload/titleakas', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadTitleAkas);
+router.post('/upload/namebasics', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadNameBasics);
+router.post('/upload/titlecrew', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadTitleCrew);
+router.post('/upload/titleepisode', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadTitleEpisode);
+router.post('/upload/titleprincipals', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadTitlePrincipals);
+router.post('/upload/titleratings', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadTitleRatings);
 
 //9
-//router.post('/upload/', authorize, upload.fields([{ name: 'file', maxCount: 1 }, { name: 'data', maxCount: 1 }]), adminController.upload);
+//router.post('/upload/', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.upload);
 
 //10-11
-router.post('/usermod/:username/:password', authorize, adminController.chUser);
-router.get('/users/:username', authorize, adminController.getUser);
+router.post('/usermod/:username/:password', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.chUser);
+router.get('/users/:username', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getUser);
 
 //more
-router.get('/test', authorize, adminController.getTest);
+router.post('/test', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'data', maxCount: 1 }]), authorize, adminController.getTest);
 
 module.exports = router;
