@@ -5,5 +5,5 @@ National Technical University of Athens - Software Engineering - University Proj
 ## Authors
 + Giorgos Pittakis el20605 --> GeorgeOLoco
 + Eracklis Nikolaides el20607 --> EraclisOTyramolas
-+ Christodoulos Stylianides el20614 --> ChrisOPellouis
++ Christodoulos Stylianides el20614 --> ChrisStylianidis
 + Ioannis Tsantilas el20883 --> JuanOMotherFucker
