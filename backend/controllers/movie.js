@@ -186,4 +186,8 @@ exports.postGenre = (req,res,next)=>{
     });
 
 }
+
+exports.getSearchName = (req,res,next)=>{
+    
+}
  
