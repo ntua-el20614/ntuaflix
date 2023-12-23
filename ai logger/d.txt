@@ -1,0 +1,153 @@
+User
+I have this database:
+DROP DATABASE IF EXISTS ntuaflix;
+
+CREATE DATABASE ntuaflix;
+USE ntuaflix;
+
+CREATE TABLE users (
+    userID INT AUTO_INCREMENT PRIMARY KEY,
+    is_admin BOOLEAN DEFAULT FALSE,
+    username VARCHAR(255) UNIQUE,
+    email VARCHAR(255),
+    password_hashed VARCHAR(255)
+);
+
+CREATE TABLE people (
+    nconst VARCHAR(255) PRIMARY KEY,
+    primaryName VARCHAR(255),
+    birthYear VARCHAR(255),
+    deathYear VARCHAR(255),
+    primaryProfession VARCHAR(255),
+    knownForTitles VARCHAR(255),
+    img_url_asset VARCHAR(255)
+);
+
+CREATE TABLE Titles (
+    tconst VARCHAR(255) PRIMARY KEY,
+    titletype VARCHAR(255),
+    primarytitle VARCHAR(255),
+    originaltitle VARCHAR(255),
+    isAdult BOOLEAN,
+    startYear VARCHAR(255),
+    endYear VARCHAR(255),
+    runtimeMinutes VARCHAR(255),
+    genres VARCHAR(255),
+    img_url_asset VARCHAR(255)
+);
+
+CREATE TABLE Episodes (
+    tconst VARCHAR(255) PRIMARY KEY,
+    parentTconst VARCHAR(255),
+    seasonN VARCHAR(255),
+    episodeN VARCHAR(255),
+    FOREIGN KEY (tconst) REFERENCES Titles(tconst)
+);
+
+CREATE TABLE Title_ratings ( 
+    titleid VARCHAR(255) PRIMARY KEY,
+    averageRate DECIMAL(3, 2),
+    numVotes INT,
+    FOREIGN KEY (titleid) REFERENCES Titles(tconst)
+);
+
+CREATE TABLE title_crew (
+    tconst VARCHAR(255),
+    directors VARCHAR(255),
+    writers VARCHAR(255),
+    PRIMARY KEY (tconst),
+    FOREIGN KEY (tconst) REFERENCES Titles(tconst)
+);
+
+CREATE TABLE title_principals (
+    tconst VARCHAR(255),
+    ordering INT,
+    nconst VARCHAR(255),
+    category VARCHAR(255),
+    job VARCHAR(255),
+    characters VARCHAR(255),
+    img_url_asset VARCHAR(255),
+    PRIMARY KEY (tconst, ordering),
+    FOREIGN KEY (tconst) REFERENCES Titles(tconst),
+    FOREIGN KEY (nconst) REFERENCES people(nconst)
+);
+
+CREATE TABLE title_akas (
+    tconst VARCHAR(255),
+    ordering INT,
+    title VARCHAR(255),
+    region VARCHAR(255),
+    language VARCHAR(255),
+    types VARCHAR(255),
+    attributes VARCHAR(255),
+    isOriginalTitle INT,
+    PRIMARY KEY (tconst, ordering),
+    FOREIGN KEY (tconst) REFERENCES Titles(tconst)
+);
+
+CREATE TABLE watchlist (
+    userID INT,
+    tconst VARCHAR(255),
+    watched BOOLEAN,
+    PRIMARY KEY (userID, tconst),
+    FOREIGN KEY (userID) REFERENCES users(userID),
+    FOREIGN KEY (tconst) REFERENCES Titles(tconst)
+);
+
+Make a query that :
+ Επιστρέφει αντικείμενο τύπου nameObject που περιέχει τα στοιχεία του συντελεστή με nconst==nameID, ως ακολούθως.
+nameObject
+Πεδίο Τύπος Περιγραφή
+nameID String Το αναγνωριστικό nconst
+name String Το ονοματεπώνυμο του συντελεστή
+namePoster String URL με την εικόνα του συντελεστή
+birthYr String Το έτος γέννησης
+deathYr String Το έτος θανάτου
+profession String Το πεδίο primaryProfession
+nameTitles List Λίστα με τις ταινίες/σειρές στις οποίες
+υπάρχει καταγεγραμμένη (στο title.principals)
+συμμετοχή του συντελεστή, ως ακολούθως
+titleID String Το αναγνωριστικό tconst της
+ταινίας/σειράς
+category String Το είδος της συμμετοχής του συντελεστή
+(director, composer, actor κλπ)
+ChatGPT
+To create a SQL query that returns an object of type nameObject with the specified structure, you need to join the people and title_principals tables, along with a sub-query to fetch the required details from the Titles table. Here is the SQL query to achieve this:
+
+sql
+Copy code
+SELECT 
+    p.nconst AS nameID,
+    p.primaryName AS name,
+    p.img_url_asset AS namePoster,
+    p.birthYear AS birthYr,
+    p.deathYear AS deathYr,
+    p.primaryProfession AS profession,
+    JSON_ARRAYAGG(
+        JSON_OBJECT(
+            'titleID', tp.tconst,
+            'category', tp.category
+        )
+    ) AS nameTitles
+FROM 
+    people p
+JOIN 
+    title_principals tp ON p.nconst = tp.nconst
+WHERE 
+    p.nconst = 'nameID'  -- Replace 'nameID' with the actual nconst value you want to query
+GROUP BY 
+    p.nconst;
+This query does the following:
+
+Selects the relevant fields (nconst, primaryName, img_url_asset, birthYear, deathYear, primaryProfession) from the people table.
+
+Joins with the title_principals table to get the associated titles and categories for the contributor.
+
+Uses JSON_ARRAYAGG and JSON_OBJECT to create a JSON array of title details (each containing titleID and category).
+
+Filters the results for a specific contributor by matching the nconst value in the WHERE clause.
+
+Groups the results by nconst to aggregate the title details for each contributor.
+
+Remember to replace 'nameID' with the actual nconst value you want to query. This query assumes that you're working in a SQL environment that supports JSON functions like JSON_ARRAYAGG and JSON_OBJECT. If your environment does not support these functions, you might need to modify the query accordingly.
+
