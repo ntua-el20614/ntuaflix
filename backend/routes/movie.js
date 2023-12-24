@@ -12,10 +12,10 @@ router.get('/movie/:id', movieController.getMovieById);
 router.get('/title/:titleID', movieController.getAllInfoForMovieById);
 
 //b.
-router.get('/searchtitle', movieController.postPrimaryTitle)
+router.get('/searchtitle', movieController.getPrimaryTitle)
 
 //c.
-router.get('/bygenre', movieController.postGenre)
+router.get('/bygenre', movieController.getGenre)
 
 //e.
 router.get('/searchname', movieController.getSearchName)
