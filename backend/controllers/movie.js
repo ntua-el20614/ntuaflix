@@ -109,7 +109,7 @@ GROUP BY T.tconst;
     }
 }
 
-exports.postPrimaryTitle = async (req, res, next) => {
+exports.getPrimaryTitle = async (req, res, next) => {
     const titlePart = req.body.titlePart;
     if (!titlePart) {
         return res.status(400).json({ message: 'No title part provided' });
@@ -127,7 +127,7 @@ exports.postPrimaryTitle = async (req, res, next) => {
 };
 
 
-exports.postGenre = async (req,res,next)=>{
+exports.getGenre = async (req,res,next)=>{
 
     const qgenre = req.body.qgenre;
     const minrating = req.body.minrating;
