@@ -1,55 +1,54 @@
 const { pool } = require('../utils/database');
 
 
-exports.getPeople = (req, res, next) => {
+exports.getPeople = async (req, res, next) => {
 
     const query = `SELECT * FROM People`;
 
-    pool.getConnection((err, connection) => {
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) return res.status(500).json({ message: 'Internal server error' });
 
-            return res.status(200).json(rows);
-        });
-    });
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
 
 }
 
 
-exports.getTypeOfPeople = (req, res, next) => {
+exports.getTypeOfPeople = async (req, res, next) => {
     const profession = req.params.profession;
 
     const query = `SELECT * FROM people WHERE primaryProfession LIKE "%${profession}%"`;
-    pool.getConnection((err, connection) => {
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) return res.status(500).json({ message: 'Internal server error' });
 
-            return res.status(200).json(rows);
-        });
-    });
+
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
 
 }
 
 
-exports.getTypeOfPeopleOneProfession = (req, res, next) => {
+exports.getTypeOfPeopleOneProfession = async (req, res, next) => {
     const profession = req.params.profession;
 
     const query = `SELECT * FROM people WHERE primaryProfession LIKE "${profession}"`;
-    pool.getConnection((err, connection) => {
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) return res.status(500).json({ message: 'Internal server error' });
 
-            return res.status(200).json(rows);
-        });
-    });
+
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
 
 }
 
 
-exports.getAllInfoForAPerson = (req, res, next) => {
+exports.getAllInfoForAPerson = async (req, res, next) => {
     const nameID = req.params.nameID;
 
 
@@ -77,17 +76,12 @@ exports.getAllInfoForAPerson = (req, res, next) => {
             p.nconst;
     `;
 
-    pool.getConnection((err, connection) => {
-        if (err) {
-            return res.status(500).json({ message: 'Error connecting to database' });
-        }
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) {
-                return res.status(500).json({ message: 'Internal server error' });
-            }
-            return res.status(200).json(rows);
-        });
-    });
+    
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
 
 }

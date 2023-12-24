@@ -8,24 +8,17 @@ const util = require('util');
 
 const readFile = util.promisify(fs.readFile);
 
+
 exports.getHealth = async (req, res, next) => {
     try {
-        await new Promise((resolve, reject) => {
-            pool.query('SELECT 1', (err, results) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(true);
-                }
-            });
-        });
+        // Using promise-based query
+        const [results] = await pool.query('SELECT 1');
 
         res.json({ status: "OK", dataconnection: "Database connection is successful" });
     } catch (error) {
         res.status(500).json({ status: "failed", dataconnection: error.message });
     }
 };
-
 
 
 exports.uploadTitleBasics = async (req, res, next) => {
@@ -372,50 +365,43 @@ exports.uploadTitleRatings = async (req, res, next) => {
 
 
 
-exports.chUser = (req, res, next) => {
+exports.chUser = async (req, res, next) => {
 
     const username = req.params.username;
     const password = req.params.password; // Ensure this is hashed if needed
 
     const query = `
     INSERT INTO ntuaflix.users (username, password_hashed)
-    VALUES ('${username}', '${password}') AS new_values
+    VALUES (?, ?) AS new_values
     ON DUPLICATE KEY UPDATE password_hashed = new_values.password_hashed;
      `;
-    pool.getConnection((err, connection) => {
-        if (err) {
-            return res.status(500).json({ message: 'Error connecting to the database' });
-        }
-
-        connection.query(query, [username, password], (err, results) => {
-            connection.release();
-            if (err) {
-                return res.status(500).json({ message: 'Internal server error' });
-            }
-
-            return res.status(200).json({ message: 'Operation successful', new_password: `${password}`, data: results });
-        });
-    });
+    try {
+        const [results] = await pool.query(query, [username, password]);
+        res.status(200).json({ message: 'Operation successful', new_password: `${password}`, data: results });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
 }
 
 
-exports.getUser = (req, res, next) => {
+exports.getUser = async (req, res, next) => {
 
     const username = req.params.username;
-    const query = `SELECT * FROM users WHERE username = '${username}'`;
+    const query = `SELECT * FROM users WHERE username = ?`;
 
-    pool.getConnection((err, connection) => {
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) return res.status(500).json({ message: 'Internal server error' });
-
-            return res.status(200).json(rows);
-        });
-    });
-
+    try {
+        const [results] = await pool.query(query, [username]);
+        res.status(200).json({ message: 'Operation successful', new_password: `${password}`, data: results });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
 }
 
-exports.getTest = (req, res, next) => {
-
-    res.status(200).json({ status: "success" });
+exports.getTest = async (req, res, next) => {
+    try {
+        const [results] = await pool.query('SELECT 1');
+        res.status(200).json({ status: "success" });
+    } catch (err) {
+        res.status(500).json({ status: "failed" });
+    }
 }

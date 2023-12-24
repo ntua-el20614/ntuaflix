@@ -5,39 +5,31 @@ const { pool } = require('../utils/database');
 exports.getSample = (req, res, next) => {
     res.status(200).json({ message: 'Hello World!' });
 }
-exports.getMovies = (req, res, next) => {
 
-    const query = `SELECT * FROM Titles WHERE titletype = \'movie\'`;
+exports.getMovies = async (req, res, next) => {
+    const query = `SELECT * FROM Titles WHERE titletype = 'movie'`;
 
-    pool.getConnection((err, connection) => {
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) return res.status(500).json({ message: 'Internal server error' });
-
-            return res.status(200).json(rows);
-        });
-    });
-
-}
-
-exports.getMovieById = (req, res, next) => {
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+exports.getMovieById = async (req, res, next) => {
     const id = req.params.id;
-
-
     const query = `SELECT * FROM Titles WHERE tconst = '${id}'`;
 
-    pool.getConnection((err, connection) => {
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) return res.status(500).json({ message: 'Internal server error' });
-
-            return res.status(200).json(rows);
-        });
-    });
-}
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
 
 
-exports.getAllInfoForMovieById = (req, res, next) => {
+exports.getAllInfoForMovieById = async (req, res, next) => {
     const titleID = req.params.titleID;
 
 
@@ -108,18 +100,16 @@ GROUP BY T.tconst;
     
     `;
 
-    pool.getConnection((err, connection) => {
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) return res.status(500).json({ message: 'Internal server error' });
-
-            return res.status(200).json(rows);
-        });
-    });
+    
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
 }
 
-exports.postPrimaryTitle = (req, res, next) => {
-
+exports.postPrimaryTitle = async (req, res, next) => {
     const titlePart = req.body.titlePart;
     if (!titlePart) {
         return res.status(400).json({ message: 'No title part provided' });
@@ -128,22 +118,16 @@ exports.postPrimaryTitle = (req, res, next) => {
     const query = 'SELECT * FROM ntuaflix.titles WHERE primarytitle LIKE ?';
     const values = [`%${titlePart}%`];
 
-    pool.getConnection((err, connection) => {
-        if (err) {
-            return res.status(500).json({ message: 'Error connecting to database' });
-        }
-        connection.query(query, values, (err, rows) => {
-            connection.release();
-            if (err) {
-                return res.status(500).json({ message: 'Internal server error' });
-            }
-            return res.status(200).json(rows);
-        });
-    });
-}
+    try {
+        const [rows] = await pool.query(query, values);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Error connecting to database' });
+    }
+};
 
 
-exports.postGenre = (req,res,next)=>{
+exports.postGenre = async (req,res,next)=>{
 
     const qgenre = req.body.qgenre;
     const minrating = req.body.minrating;
@@ -171,19 +155,12 @@ exports.postGenre = (req,res,next)=>{
     `;
     
 
-
-    pool.getConnection((err, connection) => {
-        if (err) {
-            return res.status(500).json({ message: 'Error connecting to database' });
-        }
-        connection.query(query, (err, rows) => {
-            connection.release();
-            if (err) {
-                return res.status(500).json({ message: 'Internal server error' });
-            }
-            return res.status(200).json(rows);
-        });
-    });
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
 
 }
 
