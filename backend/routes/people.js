@@ -11,4 +11,7 @@ router.get('/people/one_profession/:profession', peopleController.getTypeOfPeopl
 //d
 router.get('/name/:nameID', peopleController.getAllInfoForAPerson)
 
+//e.
+router.get('/searchname', peopleController.getSearchName)
+
 module.exports = router;

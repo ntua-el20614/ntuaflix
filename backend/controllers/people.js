@@ -85,3 +85,24 @@ exports.getAllInfoForAPerson = async (req, res, next) => {
     }
 
 }
+
+
+exports.getSearchName = async (req, res, next) => {
+    const namePart = req.body.namePart;
+    if (!namePart) {
+        return res.status(400).json({ message: 'No name part provided' });
+    }
+    
+    const query =   `SELECT *
+                        FROM people
+                    WHERE primaryName LIKE ?;
+                    `;
+    const values = [`%${namePart}%`];
+    
+    try {
+        const [rows] = await pool.query(query, values);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Error connecting to database' });
+    }
+};
