@@ -17,7 +17,4 @@ router.get('/searchtitle', movieController.getPrimaryTitle)
 //c.
 router.get('/bygenre', movieController.getGenre)
 
-//e.
-router.get('/searchname', movieController.getSearchName)
-
 module.exports = router;
