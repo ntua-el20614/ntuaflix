@@ -14,4 +14,7 @@ router.get('/name/:nameID', peopleController.getAllInfoForAPerson)
 //e.
 router.get('/searchname', peopleController.getSearchName)
 
+//top 10 highest rated people
+router.get('/toptenpeople', peopleController.getTopTenPeople)
+
 module.exports = router;

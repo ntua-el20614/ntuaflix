@@ -105,4 +105,25 @@ exports.getSearchName = async (req, res, next) => {
     } catch (err) {
         res.status(500).json({ message: 'Error connecting to database' });
     }
-};
+}
+
+exports.getTopTenPeople = async (req,res,next)=>{
+
+    const query = `
+    SELECT p.nconst, p.primaryName, p.primaryProfession, AVG(tr.averageRate) AS avgRating
+    FROM people p
+    JOIN title_principals tp ON p.nconst = tp.nconst
+    JOIN title_ratings tr ON tp.tconst = tr.titleid
+    GROUP BY p.nconst, p.primaryName
+    ORDER BY avgRating DESC
+    LIMIT 10;
+    `;
+    
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+}
