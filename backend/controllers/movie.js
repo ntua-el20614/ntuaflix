@@ -162,4 +162,25 @@ exports.getGenre = async (req,res,next)=>{
         res.status(500).json({ message: 'Internal server error' });
     }
 
-} 
+}
+
+exports.getTopTwentyMovies = async (req,res,next)=>{
+
+    const query = `
+    SELECT t.tconst, t.primarytitle, tr.averageRate, t.genres, t.img_url_asset, t.startYear
+    FROM Titles t
+        JOIN title_ratings tr ON t.tconst = tr.titleid
+    WHERE t.titletype = 'movie'
+    ORDER BY t.startYear DESC, tr.averageRate DESC
+    LIMIT 20;
+    `;
+    
+
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+}

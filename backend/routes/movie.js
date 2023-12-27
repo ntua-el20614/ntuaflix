@@ -17,4 +17,7 @@ router.get('/searchtitle', movieController.getPrimaryTitle)
 //c.
 router.get('/bygenre', movieController.getGenre)
 
+//top 20 recent movies
+router.get('/toptwentymovies', movieController.getTopTwentyMovies)
+
 module.exports = router;
