@@ -175,7 +175,6 @@ exports.getTopTwentyMovies = async (req,res,next)=>{
     LIMIT 20;
     `;
     
-
     try {
         const [rows] = await pool.query(query);
         res.status(200).json(rows);
