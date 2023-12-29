@@ -1,18 +1,26 @@
 # Dependency directories
 backend/node_modules/
+
+cli/node_modules/
+
 jspm_packages/
 
 
 __pycache__/
 
+
 /node_modules
+
 package-lock.json
+
 package.json
 
 
 
 backend/package-lock.json
+
 backend/package.json
+
 backend/uploads/
 
 
