@@ -1,0 +1,93 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #878787;
+}
+
+.site-header {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #fff;
+}
+
+.site-header img {
+    max-height: 100px;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+.site-header{
+    background-color: black;
+}
+
+.item {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 10px;
+    padding: 10px;
+    flex-basis: calc(25% - 20px); /* Adjust for 4 items per row */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+.item img {
+    width: calc(100% - 20px); /* Adjust width considering padding and margins */
+    height: auto; /* Adjust height automatically to maintain aspect ratio */
+    margin: 0 10px; /* Margin left and right */
+    display: block; /* Ensures margins apply */
+    max-height: 120px; /* Adjust max-height for a more rectangular shape */
+    max-width: 100%; /* Ensure the max width is not exceeded */
+    object-fit: cover; /* Ensures the image covers the area nicely */
+}
+
+
+
+@media (max-width: 768px) {
+    .item {
+        flex-basis: calc(50% - 20px); /* Adjust for 2 items per row */
+    }
+}
+
+
+.item:hover {
+    transform: scale(1.05);
+}
+.container {
+    transition: grid-template-columns 0.3s ease-in-out;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* This will keep movies and people side by side */
+    gap: 10px;
+    padding: 20px;
+}
+
+
+.movies-section,
+.people-section {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#movies-container,
+#people-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/* Additional styles for boxes and responsiveness */
