@@ -1,4 +1,4 @@
-# Software Engineering A.I. logger
+# Software Engineering CLI
 
 ## Introduction
 CLI implementation
