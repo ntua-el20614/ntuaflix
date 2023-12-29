@@ -1,6 +1,7 @@
 # ntuaflix
 National Technical University of Athens - Software Engineering - University Project
-# gg
+# Python requirements to download
+`pip install -r requirements.txt`
 
 ## Authors
 + Giorgos Pittakis el20605 --> [GeorgeOLoco](https://github.com/GeorgeOLoco)
