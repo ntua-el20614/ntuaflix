@@ -1,26 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>NtuaFlix</title>
-  <link rel="icon" href="../static/GHlogo.png" type="image/png">
-
   <meta charset="UTF-8">
-
-  <link rel="stylesheet" href="/static/css/LandingPage.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NTUAFlix</title>
+  <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 
 <body>
-  <div class="welcome-message">
-    Welcome to NtuaFlix
+  <header class="site-header">
+    <img src="../static/logo.png" alt="NTUAFlix Logo">
+  </header>
+  <div class="container">
+    <div class="movies-section">
+      <h2>Movies</h2>
+      <input type="text" id="movie-search" placeholder="Search Movies...">
+      <div id="movies-container"></div>
+    </div>
+    <div class="people-section">
+      <h2>People</h2>
+      <input type="text" id="people-search" placeholder="Search People...">
+      <div id="people-container"></div>
+    </div>
   </div>
 
-
-
-  <script>
-
-  </script>
 </body>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    fetchData('http://localhost:7117/ntuaflix_api/toptwentymovies', 'movies-container');
+    fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
+  });
+
+  function fetchData(url, containerId) {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        displayData(data, containerId);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  function displayData(data, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // Clear existing content
+
+    data.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('item');
+      console.log(item);
+        if (containerId === 'movies-container') {
+          if (item.img_url_asset != null){
+            div.innerHTML = `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
+          }
+
+              div.innerHTML += `
+                <h3>${item.primarytitle}</h3>
+                <p>Rating: ${item.averageRate}</p>
+                <p>Year: ${item.startYear}</p>`;
+                if (item.genres != null){
+                    div.innerHTML += `<p>Genre: ${item.genres}</p>`;
+                }
+                
+        } else if (containerId === 'people-container') {
+            // Populate with people data, adjust according to your JSON structure
+            // Example:
+            div.innerHTML = `
+                <h3>${item.primaryName}</h3>
+                <h3>${item.primaryProfession}</h3>
+            `;
+        }
+
+        container.appendChild(div);
+        setTimeout(() => div.classList.add('item-loaded'), 100);
+    });
+}
+
+  
+
+</script>
 
 </html>
