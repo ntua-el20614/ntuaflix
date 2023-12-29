@@ -1,0 +1,27 @@
+truncated_name.basics.tsv:
+nconst	primaryName	birthYear	deathYear	primaryProfession	knownForTitles	img_url_asset
+nm0000019	Federico Fellini	1920	1993	writer,director,actor	tt0071129,tt0047528,tt0050783,tt0056801	https://image.tmdb.org/t/p/{width_variable}/jH2VnHAuI0UbTWsnrjMPro0fC9j.jpg
+
+truncated_title.akas.tsv:
+titleId	ordering	title	region	language	types	attributes	isOriginalTitle
+tt0000929	1	Willys Streiche: Klebolin klebt alles	DE	\N	alternative	\N	0
+
+truncated_title.basics.tsv:
+tconst	titleType	primaryTitle	originalTitle	isAdult	startYear	endYear	runtimeMinutes	genres	img_url_asset
+tt0000929	short	Klebolin klebt alles	Klebolin klebt alles	0	1990	\N	\N	Comedy,Short	\N
+
+truncated_title.crew.tsv:
+tconst	directors	writers
+tt0088656	nm0632726,nm0407479	nm0014556,nm0840697,nm0847638
+
+truncated_title.episode.tsv:
+tconst	parentTconst	seasonNumber	episodeNumber
+tt0073481	tt0298685	1	4
+
+truncated_title.principals.tsv:
+tconst	ordering	nconst	category	job	characters	img_url_asset
+tt0000929	1	nm0066941	actor	\N	\N	\N
+
+truncated_title.ratings.tsv:
+tconst	averageRating	numVotes
+tt0000929	5.3	46
