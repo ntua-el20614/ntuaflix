@@ -251,39 +251,31 @@ program
     .command('newratings')
     .description('Upload new title ratings to the ntuaflix API')
     .requiredOption('--filename <filename>', 'The filename of the ratings to upload')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
     .action(newratings);
 
-// Implementation of the newratings action function
 async function newratings(options) {
     try {
-        const response = await axios.post('http://localhost:7117/admin/upload/titleratings', {
-            filename: options.filename
+        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const formData = new FormData();
+        formData.append('file', fs.createReadStream(filePath));
+        formData.append('format', options.format);
+
+
+        // Append the secretKey and is_user_admin fields
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true'); // or whatever value is appropriate
+        // Additional fields like secretKey or is_user_admin should be appended here if required
+
+        const response = await axios.post('http://localhost:7117/admin/upload/titleratings', formData, {
+            headers: formData.getHeaders(),
         });
-        
-        // Directory where the file will be saved
-        const dir = './cli_responses';
 
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)){
-            fs.mkdirSync(dir);
-        }
-
-        // Path for the new file
-        const filePath = path.join(dir, 'newratings.json');
-
-        // Save the response data to a JSON file
-        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log('New ratings data saved to ' + filePath);
-            }
-        });
+        console.log(response.data);
     } catch (error) {
-        console.error('Error uploading title ratings:', error);
+        console.error('Error uploading title basics:', error);
     }
 }
-
 
 // 14 -- title
 program
