@@ -49,7 +49,6 @@
     data.forEach(item => {
         const div = document.createElement('div');
         div.classList.add('item');
-      console.log(item);
         if (containerId === 'movies-container') {
           if (item.img_url_asset != null){
             div.innerHTML = `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
@@ -60,13 +59,16 @@
                 <p>Rating: ${item.averageRate}</p>
                 <p>Year: ${item.startYear}</p>`;
                 if (item.genres != null){
-                    div.innerHTML += `<p>Genre: ${item.genres}</p>`;
+                    div.innerHTML += `<p>Genre: ${item.genres.replace(',', ', ')}</p>`;
                 }
                 
         } else if (containerId === 'people-container') {
-            // Populate with people data, adjust according to your JSON structure
-            // Example:
-            div.innerHTML = `
+
+          
+          if (item.img_url_asset != null){
+            div.innerHTML = `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
+          }
+            div.innerHTML += `
                 <h3>${item.primaryName}</h3>
                 <h3>${item.primaryProfession}</h3>
             `;
