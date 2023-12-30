@@ -7,7 +7,15 @@ const path = require('path');
 
 program.version('1.0.0');
 
-// 1 -- healthcheck
+// 1 -- login
+
+// 2 -- logout
+
+// 3 -- adduser
+
+// 4 -- user
+
+// 5 -- healthcheck
 program
     .command('healthcheck')
     .description('Perform a health check of the ntuaflix API')
@@ -43,7 +51,21 @@ async function healthcheck() {
 
 program.parse(process.argv);
 
-// 9 -- newratings
+// 6 -- resetall
+
+// 7 -- newtitles
+
+// 8 -- newakas
+
+// 9 -- newnames
+
+// 10 -- newcrew
+
+// 11 -- newepisode
+
+// 12 -- newprincipals
+
+// 13 -- newratings
 program
     .command('newratings')
     .description('Upload new title ratings to the ntuaflix API')
@@ -82,7 +104,7 @@ async function newratings(options) {
 
 program.parse(process.argv);
 
-// 10 -- title
+// 14 -- title
 program
     .command('title')
     .description('Retrieve a title by its ID from the ntuaflix API')
@@ -101,7 +123,7 @@ async function title(options) {
 
 program.parse(process.argv);
 
-// 11 -- searchtitle
+// 15 -- searchtitle
 program
     .command('searchtitle')
     .description('Search for a title with a part of its name')
@@ -122,7 +144,7 @@ async function searchtitle(options) {
 
 program.parse(process.argv);
 
-// 12 -- bygenre
+// 16 -- bygenre
 program
     .command('bygenre')
     .description('Retrieve titles by genre with optional filters for minimum and maximum year')
@@ -148,7 +170,7 @@ async function bygenre(options) {
 
 program.parse(process.argv);
 
-// 13 -- name
+// 17 -- name
 program
     .command('name')
     .description('Retrieve a name by its ID from the ntuaflix API')
@@ -167,7 +189,7 @@ async function name(options) {
 
 program.parse(process.argv);
 
-// 14 -- searchname 
+// 18 -- searchname 
 program
     .command('searchname')
     .description('Search for a name in the ntuaflix API')
