@@ -110,10 +110,11 @@ exports.getSearchName = async (req, res, next) => {
 exports.getTopTenPeople = async (req,res,next)=>{
 
     const query = `
-    SELECT p.nconst, p.primaryName, p.primaryProfession, AVG(tr.averageRate) AS avgRating
+    SELECT p.nconst, p.img_url_asset , p.primaryName, p.primaryProfession, AVG(tr.averageRate) AS avgRating
     FROM people p
     JOIN title_principals tp ON p.nconst = tp.nconst
     JOIN title_ratings tr ON tp.tconst = tr.titleid
+    where p.img_url_asset is not null
     GROUP BY p.nconst, p.primaryName
     ORDER BY avgRating DESC
     LIMIT 10;
