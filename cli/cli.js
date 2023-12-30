@@ -4,6 +4,7 @@ const { program } = require('commander');
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const FormData = require('form-data');
 
 program.version('1.0.0');
 
@@ -49,11 +50,42 @@ async function healthcheck() {
     }
 }
 
-program.parse(process.argv);
 
 // 6 -- resetall
 
 // 7 -- newtitles
+
+program
+    .command('newtitles')
+    .description('Upload new title basics to the ntuaflix API')
+    .requiredOption('--filename <filename>', 'The filename of the title basics to upload')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
+    .action(newtitles);
+
+    async function newtitles(options) {
+        try {
+            const filePath = path.join('C:\\Users\\Iraklis\\OneDrive\\Desktop\\ntuaflix\\ntuaflix\\cli\\cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
+    
+
+            // Append the secretKey and is_user_admin fields
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true'); // or whatever value is appropriate
+            // Additional fields like secretKey or is_user_admin should be appended here if required
+    
+            const response = await axios.post('http://localhost:7117/admin/upload/titlebasics', formData, {
+                headers: formData.getHeaders(),
+            });
+    
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading title basics:', error);
+        }
+    }
+    
+
 
 // 8 -- newakas
 
@@ -102,7 +134,6 @@ async function newratings(options) {
     }
 }
 
-program.parse(process.argv);
 
 // 14 -- title
 program
@@ -121,7 +152,6 @@ async function title(options) {
     }
 }
 
-program.parse(process.argv);
 
 // 15 -- searchtitle
 program
@@ -142,7 +172,6 @@ async function searchtitle(options) {
     }
 }
 
-program.parse(process.argv);
 
 // 16 -- bygenre
 program
@@ -168,7 +197,6 @@ async function bygenre(options) {
     }
 }
 
-program.parse(process.argv);
 
 // 17 -- name
 program
@@ -187,7 +215,6 @@ async function name(options) {
     }
 }
 
-program.parse(process.argv);
 
 // 18 -- searchname 
 program
