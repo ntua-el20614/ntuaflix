@@ -285,97 +285,58 @@ program
     .action(title);
 
 async function title(options) {
-    try {
-        const response = await axios.get(`http://localhost:7117/title/${options.titleID}`);
-        
-        
-    } catch (error) {
-        console.error('Error fetching title:', error);
+        try {
+            // Replace 'http://localhost:7117' with the actual base URL of your API.
+            const response = await axios.get(`http://localhost:7117/title/${options.titleID}`);
+            
+            // If the API returns data, log it to the console in a formatted way.
+            if (response.data) {
+                const titleData = response.data;
+    
+                // You could further format this output if needed.
+                console.log(`Title ID: ${titleData.titleID}`);
+                console.log(`Type: ${titleData.type}`);
+                console.log(`Original Title: ${titleData.originalTitle}`);
+                console.log(`Poster URL: ${titleData.titlePoster}`);
+                console.log(`Start Year: ${titleData.startYear}`);
+                console.log(`End Year: ${titleData.endYear || 'N/A'}`);
+                console.log(`Genres: ${titleData.genres.join(', ')}`);
+                
+                // Handle the AKAs.
+                if (titleData.titleAkas && titleData.titleAkas.length > 0) {
+                    console.log(`Also known as:`);
+                    titleData.titleAkas.forEach(aka => {
+                        console.log(`  - ${aka.akaTitle} (${aka.regionAbbrev})`);
+                    });
+                }
+    
+                // Handle the principals.
+                if (titleData.principals && titleData.principals.length > 0) {
+                    console.log(`Principals:`);
+                    titleData.principals.forEach(principal => {
+                        console.log(`  - ${principal.name} (${principal.category})`);
+                    });
+                }
+    
+                // Handle the rating.
+                if (titleData.rating) {
+                    console.log(`Rating: ${titleData.rating.avRating}`);
+                    console.log(`Votes: ${titleData.rating.nVotes}`);
+                }
+            } else {
+                console.log('No data found for the given title ID.');
+            }
+        } catch (error) {
+            console.error('Error fetching title:', error.message);
+        }
     }
-}
-
+        
 
 // 15 -- searchtitle
-program
-    .command('searchtitle')
-    .description('Search for a title with a part of its name')
-    .requiredOption('--titlepart <part>', 'The part of the title name to search for')
-    .action(searchtitle);
-
-async function searchtitle(options) {
-    try {
-        const response = await axios.get(`http://localhost:7117/searchtitle`, {
-            params: { q: options.titlepart }
-        });
-        
-        
-    } catch (error) {
-        console.error('Error searching title:', error);
-    }
-}
-
 
 // 16 -- bygenre
-program
-    .command('bygenre')
-    .description('Retrieve titles by genre with optional filters for minimum and maximum year')
-    .requiredOption('--genre <genre>', 'The genre of the titles to retrieve')
-    .option('--min <year>', 'The minimum year for filtering titles', '')
-    .option('--max <year>', 'The maximum year for filtering titles', '')
-    .action(bygenre);
-
-async function bygenre(options) {
-    try {
-        const params = {
-            genre: options.genre,
-            ...(options.min && { min: options.min }),
-            ...(options.max && { max: options.max }),
-        };
-        const response = await axios.get(`http://localhost:7117/bygenre`, { params });
-        
-        
-    } catch (error) {
-        console.error('Error fetching by genre:', error);
-    }
-}
-
 
 // 17 -- name
-program
-    .command('name')
-    .description('Retrieve a name by its ID from the ntuaflix API')
-    .requiredOption('--nameid <id>', 'The ID of the name to retrieve')
-    .action(name);
-
-async function name(options) {
-    try {
-        const response = await axios.get(`http://localhost:7117/name/${options.nameid}`);
-        
-        
-    } catch (error) {
-        console.error('Error fetching name:', error);
-    }
-}
-
-
-// 18 -- searchname 
-program
-    .command('searchname')
-    .description('Search for a name in the ntuaflix API')
-    .requiredOption('--name <name>', 'The name to search for')
-    .action(searchname);
-
-async function searchname(options) {
-    try {
-        const response = await axios.get(`http://localhost:7117/searchname`, {
-            params: { q: options.name }
-        });
-        
-        
-    } catch (error) {
-        console.error('Error searching name:', error);
-    }
-}
 
 program.parse(process.argv);
 
