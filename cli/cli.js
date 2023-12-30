@@ -146,7 +146,7 @@ async function title(options) {
     try {
         const response = await axios.get(`http://localhost:7117/title/${options.titleID}`);
         
-        // Handle the rest of the file saving similarly to healthcheck
+        
     } catch (error) {
         console.error('Error fetching title:', error);
     }
@@ -166,7 +166,7 @@ async function searchtitle(options) {
             params: { q: options.titlepart }
         });
         
-        // Handle the rest of the file saving similarly to healthcheck
+        
     } catch (error) {
         console.error('Error searching title:', error);
     }
@@ -191,7 +191,7 @@ async function bygenre(options) {
         };
         const response = await axios.get(`http://localhost:7117/bygenre`, { params });
         
-        // Handle the rest of the file saving similarly to healthcheck
+        
     } catch (error) {
         console.error('Error fetching by genre:', error);
     }
@@ -209,7 +209,7 @@ async function name(options) {
     try {
         const response = await axios.get(`http://localhost:7117/name/${options.nameid}`);
         
-        // Handle the rest of the file saving similarly to healthcheck
+        
     } catch (error) {
         console.error('Error fetching name:', error);
     }
@@ -229,7 +229,7 @@ async function searchname(options) {
             params: { q: options.name }
         });
         
-        // Handle the rest of the file saving similarly to healthcheck
+        
     } catch (error) {
         console.error('Error searching name:', error);
     }
