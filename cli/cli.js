@@ -64,7 +64,7 @@ program
 
     async function newtitles(options) {
         try {
-            const filePath = path.join('C:\\Users\\Iraklis\\OneDrive\\Desktop\\ntuaflix\\ntuaflix\\cli\\cli_posts', options.filename);
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
             const formData = new FormData();
             formData.append('file', fs.createReadStream(filePath));
             formData.append('format', options.format);
@@ -88,6 +88,38 @@ program
 
 
 // 8 -- newakas
+
+// ... previous code ...
+
+// 7 -- newakas
+program
+    .command('newakas')
+    .description('Upload new title akas to the ntuaflix API')
+    .requiredOption('--filename <filename>', 'The filename of the title akas to upload')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
+    .action(newakas);
+
+async function newakas(options) {
+    try {
+        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const formData = new FormData();
+        formData.append('file', fs.createReadStream(filePath));
+        formData.append('format', options.format);
+
+        // Include the secretKey and is_user_admin if needed for authorization
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+
+        const response = await axios.post('http://localhost:7117/admin/upload/titleakas', formData, {
+            headers: formData.getHeaders(),
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error uploading title akas:', error);
+    }
+}
+
 
 // 9 -- newnames
 
