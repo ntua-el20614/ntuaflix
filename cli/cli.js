@@ -89,9 +89,6 @@ program
 
 // 8 -- newakas
 
-// ... previous code ...
-
-// 7 -- newakas
 program
     .command('newakas')
     .description('Upload new title akas to the ntuaflix API')
@@ -123,39 +120,167 @@ async function newakas(options) {
 
 // 9 -- newnames
 
+program
+    .command('newnames')
+    .description('Upload new name basics to the ntuaflix API')
+    .requiredOption('--filename <filename>', 'The filename of the name basics to upload')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
+    .action(newnames);
+
+// Implementation of the newnames action function
+async function newnames(options) {
+    try {
+        // Assuming 'cli_posts' is in the same directory as your CLI script
+        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const formData = new FormData();
+        formData.append('file', fs.createReadStream(filePath));
+        formData.append('format', options.format);
+
+        // Include secretKey and is_user_admin if needed for authorization
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+
+        const response = await axios.post('http://localhost:7117/admin/upload/namebasics', formData, {
+            headers: formData.getHeaders(),
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error uploading name basics:', error);
+    }
+}
+
 // 10 -- newcrew
+
+program
+    .command('newcrew')
+    .description('Upload new title crew to the ntuaflix API')
+    .requiredOption('--filename <filename>', 'The filename of the title crew to upload')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
+    .action(newcrew);
+
+// Implementation of the newcrew action function
+async function newcrew(options) {
+    try {
+        // Assuming 'cli_posts' is in the same directory as your CLI script
+        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const formData = new FormData();
+        formData.append('file', fs.createReadStream(filePath));
+        formData.append('format', options.format);
+
+        // Include secretKey and is_user_admin if needed for authorization
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+
+        const response = await axios.post('http://localhost:7117/admin/upload/titlecrew', formData, {
+            headers: formData.getHeaders(),
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error uploading title crew:', error);
+    }
+}
 
 // 11 -- newepisode
 
+program
+    .command('newepisode')
+    .description('Upload new title episode to the ntuaflix API')
+    .requiredOption('--filename <filename>', 'The filename of the title episode to upload')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
+    .action(newepisode);
+
+// Implementation of the newepisode action function
+async function newepisode(options) {
+    try {
+        // Assuming 'cli_posts' is in the same directory as your CLI script
+        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const formData = new FormData();
+        formData.append('file', fs.createReadStream(filePath));
+        formData.append('format', options.format);
+
+        // Include secretKey and is_user_admin if needed for authorization
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+
+        const response = await axios.post('http://localhost:7117/admin/upload/titleepisode', formData, {
+            headers: formData.getHeaders(),
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error uploading title episode:', error);
+    }
+}
+
 // 12 -- newprincipals
+
+program
+    .command('newprincipals')
+    .description('Upload new title principals to the ntuaflix API')
+    .requiredOption('--filename <filename>', 'The filename of the title principals to upload')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
+    .action(newprincipals);
+
+// Implementation of the newprincipals action function
+async function newprincipals(options) {
+    try {
+        // Assuming 'cli_posts' is in the same directory as your CLI script
+        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const formData = new FormData();
+        formData.append('file', fs.createReadStream(filePath));
+        formData.append('format', options.format);
+
+        // Include secretKey and is_user_admin if needed for authorization
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+
+        const response = await axios.post('http://localhost:7117/admin/upload/titleprincipals', formData, {
+            headers: formData.getHeaders(),
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error uploading title principals:', error);
+    }
+}
 
 // 13 -- newratings
 program
     .command('newratings')
     .description('Upload new title ratings to the ntuaflix API')
     .requiredOption('--filename <filename>', 'The filename of the ratings to upload')
-    .option('--format <format>', 'Format of the file (json or csv)', 'json')
     .action(newratings);
 
+// Implementation of the newratings action function
 async function newratings(options) {
-    try {        
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
-
-        // Include the secretKey and is_user_admin if needed for authorization
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
-
-        const response = await axios.post('http://localhost:7117/admin/upload/titleratings', formData, {
-            headers: formData.getHeaders();
+    try {
+        const response = await axios.post('http://localhost:7117/admin/upload/titleratings', {
+            filename: options.filename
         });
-
-        console.log(response.data);
         
+        // Directory where the file will be saved
+        const dir = './cli_responses';
+
+        // Create the directory if it doesn't exist
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+
+        // Path for the new file
+        const filePath = path.join(dir, 'newratings.json');
+
+        // Save the response data to a JSON file
+        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log('New ratings data saved to ' + filePath);
+            }
+        });
     } catch (error) {
-        console.error('Error uploading data:', error);
+        console.error('Error uploading title ratings:', error);
     }
 }
 
