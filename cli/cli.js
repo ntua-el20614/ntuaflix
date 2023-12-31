@@ -5,6 +5,8 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const FormData = require('form-data');
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
 
 program.version('1.0.0');
 
@@ -286,7 +288,6 @@ program
 
 async function title(options) {
         try {
-            // Replace 'http://localhost:7117' with the actual base URL of your API.
             const response = await axios.get(`http://localhost:7117/title/${options.titleID}`);
             
             // If the API returns data, log it to the console in a formatted way.
@@ -330,9 +331,46 @@ async function title(options) {
             console.error('Error fetching title:', error.message);
         }
     }
+    
         
 
 // 15 -- searchtitle
+program
+    .command('searchtitle')
+    .description('Retrieve a titles by a part from the ntuaflix API')
+    .requiredOption('--titlepart <part>', 'part of the title we are looking for')
+    .action(searchtitle);
+
+// Setup the yargs command to accept a title part as an argument
+const argv = yargs(hideBin(process.argv))
+  .command('search', 'Search for a movie title', {
+    titlePart: {
+      description: 'part of the title to search for',
+      alias: 't',
+      type: 'string',
+    },
+  })
+  .help()
+  .alias('help', 'h')
+  .argv;
+
+// Function to make the API call to searchtitle endpoint
+async function searchtitle (titlePart) {
+  try {
+    const response = await axios.post('http://localhost:7117/searchtitle', { titlePart: titlePart });
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error connecting to the database:', error.message);
+  }
+};
+
+// Check if the search command is used and call the searchTitle function
+if (argv._.includes('search') && argv.titlePart) {
+  searchtitle(argv.titlePart);
+} else {
+  console.log('Please provide a title part to search for using the -t flag');
+}
+
 
 // 16 -- bygenre
 
