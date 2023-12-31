@@ -5,10 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NTUAFlix</title>
+  <link rel="icon" type="image/png" href="../static/logo.png">
   <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 
 <body>
+  <div id="loadingScreen" class="loading-screen">
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="loading-logo">
+  </div>
   <header class="site-header">
     <img src="../static/logo.png" alt="NTUAFlix Logo">
   </header>
@@ -31,6 +35,20 @@
   document.addEventListener('DOMContentLoaded', function () {
     fetchData('http://localhost:7117/ntuaflix_api/toptwentymovies', 'movies-container');
     fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
+
+    setTimeout(() => {
+    const loadingScreen = document.getElementById('loadingScreen');
+    loadingScreen.style.animationPlayState = 'running';
+
+    // After the loading screen fades out, fade in the main content
+    loadingScreen.addEventListener('animationend', () => {
+      loadingScreen.style.display = 'none';
+
+      const mainContent = document.querySelector('.container');
+      mainContent.style.animationPlayState = 'running';
+    });
+  }, 3000);
+
   });
 
   function fetchData(url, containerId) {
@@ -47,39 +65,42 @@
     container.innerHTML = ''; // Clear existing content
 
     data.forEach(item => {
-        const div = document.createElement('div');
-        div.classList.add('item');
-        if (containerId === 'movies-container') {
-          if (item.img_url_asset != null){
-            div.innerHTML = `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
-          }
+      const div = document.createElement('div');
+      div.classList.add('item');
+      div.innerHTML = '';
+      
+      if (containerId === 'movies-container' || containerId === 'people-container') {
+        if (item.img_url_asset != null) {
+          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primaryName || item.primarytitle}">`;
+        }
 
-              div.innerHTML += `
+      }
+
+      if (containerId === 'movies-container') {
+
+        div.innerHTML += `
                 <h3>${item.primarytitle}</h3>
                 <p>Rating: ${item.averageRate}</p>
                 <p>Year: ${item.startYear}</p>`;
-                if (item.genres != null){
-                    div.innerHTML += `<p>Genre: ${item.genres.replace(',', ', ')}</p>`;
-                }
-                
-        } else if (containerId === 'people-container') {
+        if (item.genres != null) {
+          div.innerHTML += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
+        }
 
-          
-          if (item.img_url_asset != null){
-            div.innerHTML = `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
-          }
-            div.innerHTML += `
+      } else if (containerId === 'people-container') {
+
+
+        div.innerHTML += `
                 <h3>${item.primaryName}</h3>
                 <h3>${item.primaryProfession}</h3>
             `;
-        }
+      }
 
-        container.appendChild(div);
-        setTimeout(() => div.classList.add('item-loaded'), 100);
+      container.appendChild(div);
+      setTimeout(() => div.classList.add('item-loaded'), 100);
     });
-}
+  }
 
-  
+
 
 </script>
 
