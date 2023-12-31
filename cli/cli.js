@@ -282,99 +282,205 @@ async function newratings(options) {
 // 14 -- title
 program
     .command('title')
-    .description('Retrieve a title by its ID from the ntuaflix API')
-    .requiredOption('--titleID <id>', 'The ID of the title to retrieve')
-    .action(title);
+    .description('Fetch a title by its ID from the ntuaflix API')
+    .requiredOption('--titleID <titleID>', 'The titleID of the movie or series to fetch')
+    .action(getTitleById);
 
-async function title(options) {
-        try {
-            const response = await axios.get(`http://localhost:7117/title/${options.titleID}`);
-            
-            // If the API returns data, log it to the console in a formatted way.
-            if (response.data) {
-                const titleData = response.data;
-    
-                // You could further format this output if needed.
-                console.log(`Title ID: ${titleData.titleID}`);
-                console.log(`Type: ${titleData.type}`);
-                console.log(`Original Title: ${titleData.originalTitle}`);
-                console.log(`Poster URL: ${titleData.titlePoster}`);
-                console.log(`Start Year: ${titleData.startYear}`);
-                console.log(`End Year: ${titleData.endYear || 'N/A'}`);
-                console.log(`Genres: ${titleData.genres.join(', ')}`);
-                
-                // Handle the AKAs.
-                if (titleData.titleAkas && titleData.titleAkas.length > 0) {
-                    console.log(`Also known as:`);
-                    titleData.titleAkas.forEach(aka => {
-                        console.log(`  - ${aka.akaTitle} (${aka.regionAbbrev})`);
-                    });
-                }
-    
-                // Handle the principals.
-                if (titleData.principals && titleData.principals.length > 0) {
-                    console.log(`Principals:`);
-                    titleData.principals.forEach(principal => {
-                        console.log(`  - ${principal.name} (${principal.category})`);
-                    });
-                }
-    
-                // Handle the rating.
-                if (titleData.rating) {
-                    console.log(`Rating: ${titleData.rating.avRating}`);
-                    console.log(`Votes: ${titleData.rating.nVotes}`);
-                }
-            } else {
-                console.log('No data found for the given title ID.');
-            }
-        } catch (error) {
-            console.error('Error fetching title:', error.message);
+async function getTitleById(options) {
+    try {
+        const response = await axios.get('http://localhost:7117/title/:titleID', {titleID});
+
+        // Directory where the file will be saved
+        const dir = './cli_responses';
+
+        // Create the directory if it doesn't exist
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
         }
+
+        // Path for the new file
+        const filePath = path.join(dir, `title_${options.titleID}.json`);
+
+        // Save the response data to a JSON file
+        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log(`Title data saved to ${filePath}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching title by ID:', error);
     }
-    
-        
+}
 
 // 15 -- searchtitle
 program
     .command('searchtitle')
-    .description('Retrieve a titles by a part from the ntuaflix API')
-    .requiredOption('--titlepart <part>', 'part of the title we are looking for')
+    .description('Search for titles in the ntuaflix database by a part of the title')
+    .requiredOption('--titlepart <titlePart>', 'The part of the title to search for')
     .action(searchtitle);
 
-// Setup the yargs command to accept a title part as an argument
-const argv = yargs(hideBin(process.argv))
-  .command('search', 'Search for a movie title', {
-    titlePart: {
-      description: 'part of the title to search for',
-      alias: 't',
-      type: 'string',
-    },
-  })
-  .help()
-  .alias('help', 'h')
-  .argv;
+async function searchtitle(options) {
+    try {
+        // Make the GET request to the search endpoint
+        const response = await axios.get('http://localhost:7117/searchtitle', {titlePart});
 
-// Function to make the API call to searchtitle endpoint
-async function searchtitle (titlePart) {
-  try {
-    const response = await axios.post('http://localhost:7117/searchtitle', { titlePart: titlePart });
-    console.log(response.data);
-  } catch (error) {
-    console.error('Error connecting to the database:', error.message);
-  }
-};
+        // Directory where the file will be saved
+        const dir = './cli_responses';
 
-// Check if the search command is used and call the searchTitle function
-if (argv._.includes('search') && argv.titlePart) {
-  searchtitle(argv.titlePart);
-} else {
-  console.log('Please provide a title part to search for using the -t flag');
+        // Create the directory if it doesn't exist
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+
+        // Path for the new file
+        const filePath = path.join(dir, `title_${options.titlePart}.json`);
+
+        // Save the response data to a JSON file
+        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log(`Search results saved to ${filePath}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error performing title search:', error);
+    }
 }
 
-
 // 16 -- bygenre
+program
+    .command('bygenre')
+    .description('Search for titles in the ntuaflix database by genre')
+    .requiredOption('--genre <qgenre>', 'The full name of the genre to search for')
+    .requiredOption('--min <minrating>', 'The minimum rating of the titles')
+    .option('--from <yrFrom>', 'The start year of the titles')
+    .option('--to <yrTo>', 'The end year of the titles')
+    .action(bygenre);
 
-// 17 -- name
+async function bygenre(options) {
+    try {
+        // Construct the query parameters
+        const params = new URLSearchParams({
+            qgenre: options.genre,
+            minrating: options.minrating
+        });
+
+        // Add optional year range to the query parameters if provided
+        if (options.from) {
+            params.append('yrFrom', options.from);
+        }
+        if (options.to) {
+            params.append('yrTo', options.to);
+        }
+
+        // Make the GET request to the bygenre endpoint
+        const response = await axios.get(`http://localhost:7117/bygenre?${params}`);
+
+        // Directory where the file will be saved
+        const dir = './cli_responses';
+
+        // Create the directory if it doesn't exist
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+
+        // Filename based on the genre query, sanitized to remove special characters
+        const filename = `bygenre_${options.genre.replace(/[^a-z0-9]/gi, '_')}.json`;
+
+        // Path for the new file
+        const filePath = path.join(dir, filename);
+
+        // Save the response data to a JSON file
+        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log(`Genre search results saved to ${filePath}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error performing genre search:', error);
+    }
+}
+    
+// 17 -- nameID
+program
+    .command('nameid')
+    .description('Fetch details of a person by their nameID from the ntuaflix database')
+    .requiredOption('--nameid <nameID>', 'The nameID (nconst) of the person to fetch details for')
+    .action(getNameById);
+
+async function getNameById(options) {
+    try {
+        // Make the GET request to the name endpoint
+        const response = await axios.get(`http://localhost:7117/name/:nameID${options.nameid}`);
+
+        // Directory where the file will be saved
+        const dir = './cli_responses';
+
+        // Create the directory if it doesn't exist
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+
+        // Path for the new file
+        const filePath = path.join(dir, `name_${options.nameid}.json`);
+
+        // Save the response data to a JSON file
+        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log(`Person details saved to ${filePath}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching person details:', error);
+    }
+}
+
+//18 --name
+// 18 -- searchname
+program
+    .command('searchname')
+    .description('Search for people in the ntuaflix database by a part of the name')
+    .requiredOption('--namepart <namePart>', 'The part of the name to search for')
+    .action(searchname);
+
+async function searchname(options) {
+    try {
+        // Make the GET request to the searchname endpoint with the name part
+        const response = await axios.get(`http://localhost:7117/searchname?namePart=${encodeURIComponent(options.namePart)}`);
+
+        // Directory where the file will be saved
+        const dir = './cli_responses';
+
+        // Create the directory if it doesn't exist
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+
+        // Sanitize the name part to create a valid filename
+        const sanitizedQuery = options.namePart.replace(/[^a-z0-9]/gi, '_');
+
+        // Path for the new file
+        const filePath = path.join(dir, `searchname_${sanitizedQuery}.json`);
+
+        // Save the response data to a JSON file
+        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log(`Search by name results saved to ${filePath}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error performing search by name:', error);
+    }
+}
 
 program.parse(process.argv);
 
