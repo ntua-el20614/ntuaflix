@@ -17,20 +17,44 @@
     <img src="../static/logo.png" alt="NTUAFlix Logo">
   </header>
   <div class="container">
-    <div class="movies-section">
-      <h2>Movies</h2>
-      <input type="text" id="movie-search" placeholder="Search Movies...">
-      <div id="movies-container"></div>
-    </div>
-    <div class="people-section">
-      <h2>People</h2>
-      <input type="text" id="people-search" placeholder="Search People...">
-      <div id="people-container"></div>
-    </div>
+    <!-- Inside the Movies Section -->
+<div class="movies-section">
+  <h2>Movies</h2>
+  <form action="" class="search-form">
+    <input type="search" required>
+    <i class="fa fa-search"></i>
+  </form>
+  <div id="movies-container"></div>
+</div>
+
+<!-- Inside the People Section -->
+<div class="people-section">
+  <h2>People</h2>
+  <form action="" class="search-form">
+    <input type="search" required>
+    <i class="fa fa-search"></i>
+  </form>
+  <div id="people-container"></div>
+</div>
+
+<!-- FontAwesome Link at the top of your <head> section -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    
   </div>
 
 </body>
 <script>
+  
+  const clearBtns = document.querySelectorAll(".clear-btn"); // Modified to select all clear buttons
+
+clearBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+        const input = this.previousElementSibling; // Assuming the input is right before the clear button in each form
+        input.value = "";
+    });
+});
+
 
   document.addEventListener('DOMContentLoaded', function () {
     fetchData('http://localhost:7117/ntuaflix_api/toptwentymovies', 'movies-container');
@@ -47,9 +71,29 @@
       const mainContent = document.querySelector('.container');
       mainContent.style.animationPlayState = 'running';
     });
-  }, 3000);
+  }, 5000);
+  
 
   });
+
+
+  
+function filterData(containerId, query) {
+    const container = document.getElementById(containerId);
+    const items = container.getElementsByClassName('item');
+
+    for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        let title = item.querySelector('h3').textContent.toLowerCase();
+
+        if (title.includes(query.toLowerCase())) {
+            item.style.display = "";
+        } else {
+            item.style.display = "none";
+        }
+    }
+}
+
 
   function fetchData(url, containerId) {
     fetch(url)
