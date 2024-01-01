@@ -9,7 +9,7 @@ body, html {
 .site-header {
     text-align: center;
     padding: 10px 0;
-    background-color: #fff;
+    background-color: black;
 }
 
 .site-header img {
@@ -21,9 +21,6 @@ body, html {
     font-size: 2em;
 }
 
-.site-header {
-    background-color: black;
-}
 
 .item {
     background-color: #717171;
@@ -56,6 +53,7 @@ body, html {
 
 .item:hover {
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 .container {

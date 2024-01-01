@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NTUAFlix</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="../static/logo.png">
   <link rel="stylesheet" href="/static/css/landing.css">
 </head>
@@ -18,42 +20,42 @@
   </header>
   <div class="container">
     <!-- Inside the Movies Section -->
-<div class="movies-section">
-  <h2>Movies</h2>
-  <form action="" class="search-form">
-    <input type="search" required>
-    <i class="fa fa-search"></i>
-  </form>
-  <div id="movies-container"></div>
-</div>
+    <div class="movies-section">
+      <h2>Movies</h2>
+      <form action="" class="search-form" onsubmit="searchMovies(event)">
+        <input type="search" required id="movie-search-input">
+        <i class="fa fa-search"></i>
+      </form>
 
-<!-- Inside the People Section -->
-<div class="people-section">
-  <h2>People</h2>
-  <form action="" class="search-form">
-    <input type="search" required>
-    <i class="fa fa-search"></i>
-  </form>
-  <div id="people-container"></div>
-</div>
+      <div id="movies-container"></div>
+    </div>
 
-<!-- FontAwesome Link at the top of your <head> section -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Inside the People Section -->
+    <div class="people-section">
+      <h2>People</h2>
+      <form action="" class="search-form" onsubmit="searchPeople(event)">
+        <input type="search" required id="people-search-input">
+        <i class="fa fa-search"></i>
+      </form>
+      <div id="people-container"></div>
+    </div>
 
-    
+    <!-- FontAwesome Link at the top of your <head> section -->
+
+
   </div>
 
 </body>
 <script>
-  
+
   const clearBtns = document.querySelectorAll(".clear-btn"); // Modified to select all clear buttons
 
-clearBtns.forEach(btn => {
-    btn.addEventListener("click", function() {
-        const input = this.previousElementSibling; // Assuming the input is right before the clear button in each form
-        input.value = "";
+  clearBtns.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const input = this.previousElementSibling; // Assuming the input is right before the clear button in each form
+      input.value = "";
     });
-});
+  });
 
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -61,38 +63,61 @@ clearBtns.forEach(btn => {
     fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
 
     setTimeout(() => {
-    const loadingScreen = document.getElementById('loadingScreen');
-    loadingScreen.style.animationPlayState = 'running';
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.style.animationPlayState = 'running';
 
-    // After the loading screen fades out, fade in the main content
-    loadingScreen.addEventListener('animationend', () => {
-      loadingScreen.style.display = 'none';
+      // After the loading screen fades out, fade in the main content
+      loadingScreen.addEventListener('animationend', () => {
+        loadingScreen.style.display = 'none';
 
-      const mainContent = document.querySelector('.container');
-      mainContent.style.animationPlayState = 'running';
-    });
-  }, 5000);
-  
+        const mainContent = document.querySelector('.container');
+        mainContent.style.animationPlayState = 'running';
+      });
+    }, 3000);
+
 
   });
 
+  function searchMovies(event) {
+    event.preventDefault(); // Prevents the form from submitting traditionally
+    const titlePart = document.getElementById('movie-search-input').value;
 
-  
-function filterData(containerId, query) {
+    if (titlePart.trim() === '') {
+      fetchData('http://localhost:7117/ntuaflix_api/toptwentymovies', 'movies-container');
+    } else {
+      const url = 'http://localhost:7117/ntuaflix_api/searchtitle';
+      searchMovieData(url, titlePart);
+    }
+  }
+
+  function searchPeople(event) {
+    event.preventDefault(); // Prevents the form from submitting traditionally
+    const namePart = document.getElementById('people-search-input').value;
+
+    if (namePart.trim() === '' || namePart === null) {
+      fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
+    } else {
+      const url = 'http://localhost:7117/ntuaflix_api/searchname';
+      searchPeopleData(url, namePart);
+    }
+  }
+
+
+  function filterData(containerId, query) {
     const container = document.getElementById(containerId);
     const items = container.getElementsByClassName('item');
 
     for (let i = 0; i < items.length; i++) {
-        let item = items[i];
-        let title = item.querySelector('h3').textContent.toLowerCase();
+      let item = items[i];
+      let title = item.querySelector('h3').textContent.toLowerCase();
 
-        if (title.includes(query.toLowerCase())) {
-            item.style.display = "";
-        } else {
-            item.style.display = "none";
-        }
+      if (title.includes(query.toLowerCase())) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
     }
-}
+  }
 
 
   function fetchData(url, containerId) {
@@ -105,14 +130,16 @@ function filterData(containerId, query) {
   }
 
   function displayData(data, containerId) {
+    console.log(data);
     const container = document.getElementById(containerId);
     container.innerHTML = ''; // Clear existing content
 
     data.forEach(item => {
+      if (item.titletype === 'tvEpisode') return; // Skip TV episodes
       const div = document.createElement('div');
       div.classList.add('item');
       div.innerHTML = '';
-      
+
       if (containerId === 'movies-container' || containerId === 'people-container') {
         if (item.img_url_asset != null) {
           div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primaryName || item.primarytitle}">`;
@@ -123,9 +150,11 @@ function filterData(containerId, query) {
       if (containerId === 'movies-container') {
 
         div.innerHTML += `
-                <h3>${item.primarytitle}</h3>
-                <p>Rating: ${item.averageRate}</p>
-                <p>Year: ${item.startYear}</p>`;
+                <h3>${item.primarytitle}</h3>`;
+        if (item.averageRate != null) {
+          div.innerHTML += `<p>Rating: ${item.averageRate}</p>`;
+        }
+        `<p>Year: ${item.startYear}</p>`;
         if (item.genres != null) {
           div.innerHTML += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
         }
@@ -135,7 +164,7 @@ function filterData(containerId, query) {
 
         div.innerHTML += `
                 <h3>${item.primaryName}</h3>
-                <h3>${item.primaryProfession}</h3>
+                <p>${item.primaryProfession.replace(/,/g, ', ')}</p>
             `;
       }
 
@@ -144,6 +173,46 @@ function filterData(containerId, query) {
     });
   }
 
+
+  function searchMovieData(url, titlePart) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ titlePart: titlePart })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        displayData(data, 'movies-container'); // Reuse the displayData function
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  function searchPeopleData(url, namePart) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ namePart: namePart })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        displayData(data, 'people-container'); // Ensure this function is compatible with people data format
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
 
 
 </script>
