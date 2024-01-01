@@ -7,3 +7,8 @@ import requests
 def index():
     return render_template("landing.html", pageTitle="Login Page")
 
+
+@app.route("/moviepage")
+def movie():
+    return render_template("moviepage.html", pageTitle="Login Page")
+

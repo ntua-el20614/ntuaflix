@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="icon" type="image/png" href="../static/logo.png">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<style>
+    .cast-list {
+        border: 1px solid #ccc;
+        display: flex;
+        overflow-x: auto;
+        margin: 20px;
+
+        /* Hide scrollbar for IE, Edge, and Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+
+        /* Hide scrollbar for Chrome, Safari, and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+
+
+    .cast-item {
+        margin-right: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 25px;
+
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-right: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        min-width: 250px;
+        max-width: 250px;
+        background-color: #717171;
+        transition: transform 0.3s ease;
+    }
+
+
+    .cast-item:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    body {
+        margin-left: 20px;
+    }
+</style>
+
+<body>
+    <div id="movieDetailsContainer">
+        <!-- Movie details will be displayed here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('movieId');
+
+            // Function to fetch movie details
+            function fetchMovieDetails(id) {
+                // Replace with the actual API endpoint or data fetching logic
+                fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
+                    .then(response => response.json())
+                    .then(data => displayMovieDetails(data[0]))
+                    .catch(error => console.error('Error fetching movie details:', error));
+            }
+
+            function fetchPersonDetails(id) {
+
+                return fetch(`http://localhost:7117/ntuaflix_api/person/${id}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        return data[0];
+                    })
+                    .catch(error => {
+                        console.error('Error fetching movie details:', error);
+                        throw error;
+                    });
+            }
+            function fetchCharacterDetails(nameID, titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/character/${nameID}/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching character details:', error);
+                        // Return a default object to avoid undefined
+                        return { characters: '' };
+                    });
+            }
+
+
+            function calculateAge(birthYear, deathYear) {
+                const currentYear = new Date().getFullYear();
+                let age;
+
+                if (deathYear && deathYear !== '\\N') {
+                    age = deathYear - birthYear;
+                    return `Died at age ${age}`;
+                } else {
+                    age = currentYear - birthYear;
+                    return `Age: ${age}`;
+                }
+            }
+
+
+            async function displayMovieDetails(movieData) {
+
+                const container = document.getElementById('movieDetailsContainer');
+
+                // Start building HTML content with the basic movie details
+                let htmlContent = `
+                    <h1>${movieData.originalTitle}</h1>
+                    <p>Year: ${movieData.startYear}</p>`
+                if (movieData.rating && movieData.rating.avRating !== "\\N") {
+                    htmlContent += `<p>Rating: ${movieData.rating.avRating} (${movieData.rating.nVotes})</p>`;
+
+                }
+
+
+                // Add the movie poster if available
+                if (movieData.titlePoster) {
+                    htmlContent += `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">`;
+                }
+
+                // Add genres if available
+                if (movieData.genres && movieData.genres.length > 0) {
+                    htmlContent += `<p>Genres: ${movieData.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
+                }
+
+                // Add titleAkas if available
+                let flag1 = true;
+                if (movieData.titleAkas && movieData.titleAkas.length > 0) {
+                    movieData.titleAkas.slice(0, 10).forEach(aka => {
+                        if (aka.akaTitle === movieData.originalTitle) return; //na min valume ta idia titles.
+                        if (flag1) {
+
+                            htmlContent += '<div><h3>Alternate Titles:</h3><ul>';
+                            flag1 = false;
+                        }
+                        htmlContent += `<li>${aka.akaTitle} (${aka.regionAbbrev !== '\\N' ? aka.regionAbbrev : 'N/A'})</li>`;
+                    });
+                    htmlContent += '</ul></div>';
+                }
+
+                // Add cast if available
+                if (movieData.principals && movieData.principals.length > 0) {
+                    let flag = true;
+                    let castHtmlContent = '';
+                    for (const principal of movieData.principals) {
+                        if (principal.category === 'actor' || principal.category === 'actress') {
+                            if (flag) {
+                                castHtmlContent += '<div class="cast-container"><h3>Cast:</h3><div class="cast-list">';
+                                flag = false;
+                            }
+                            try {
+                                const personInfo = await fetchPersonDetails(principal.nameID);
+                                const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
+                                const div = document.createElement('div');
+                                div.classList.add('cast-item');
+                                div.innerHTML = '';
+
+                                // Check if image URL is available and not null
+                                if (personInfo.img_url_asset) {
+                                    div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
+                                }
+
+                                div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
+
+                                if (characterInfo[0] && characterInfo[0].characters) {
+                                    const characterName = characterInfo[0].characters.replace(/[\[\]"]+/g, ''); // Remove brackets and quotes
+                                    div.innerHTML += `<p>as ${characterName}</p>`;
+                                }
+
+                                // Add profession, birth year, and death year, if available
+                                if (personInfo.primaryProfession && personInfo.primaryProfession !== '\\N') {
+                                    div.innerHTML += `<p>Profession: ${personInfo.primaryProfession.replace(/,/g, ', ')}</p>`;
+                                }
+                                if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
+                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                                    div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
+                                    if (ageString[0] === 'A') {
+                                        div.innerHTML += `(${ageString})`;
+                                    }
+                                    div.innerHTML += `</p>`;
+                                }
+                                if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
+                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                                    div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> (${ageString})</p>`;
+                                }
+
+                                castHtmlContent += div.outerHTML;
+
+                            } catch (error) {
+                                console.error('Error fetching person details:', error);
+                            }
+                        }
+                    }
+
+                    castHtmlContent += '</div></div>';
+                    htmlContent += castHtmlContent;
+                }
+                let flag = true;
+                // Add principals if available (other than actors and actresses)
+                if (movieData.principals && movieData.principals.length > 0) {
+                    let principalsHtmlContent = '';
+                    for (const principal of movieData.principals) {
+                        if (principal.category !== 'actor' && principal.category !== 'actress') {
+                            if (flag) {
+                                principalsHtmlContent += '<div class="cast-container"><h3>Principals:</h3><div class="cast-list">';
+                                flag = false;
+                            }
+                            try {
+                                const personInfo = await fetchPersonDetails(principal.nameID);
+
+                                const div = document.createElement('div');
+                                div.classList.add('cast-item');
+                                div.innerHTML = '';
+
+                                if (personInfo.img_url_asset) {
+                                    div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
+                                }
+
+                                div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
+                                div.innerHTML += `<p>${principal.category}</p>`;
+
+                                
+                                if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
+                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                                    div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
+                                    if (ageString[0] === 'A') {
+                                        div.innerHTML += `(${ageString})`;
+                                    }
+                                    div.innerHTML += `</p>`;
+                                }
+                                if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
+                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                                    div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> (${ageString})</p>`;
+                                }
+
+                                principalsHtmlContent += div.outerHTML;
+
+                            } catch (error) {
+                                console.error('Error fetching person details:', error);
+                            }
+                        }
+                    }
+
+                    principalsHtmlContent += '</div></div>';
+                    htmlContent += principalsHtmlContent;
+                }
+
+                // Update the container with the built HTML content
+                container.innerHTML = htmlContent;
+            }
+
+            // Fetch and display the details for the provided movie ID
+            if (movieId) {
+                fetchMovieDetails(movieId);
+            } else {
+                console.log("No movie ID provided.");
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
