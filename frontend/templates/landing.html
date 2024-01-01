@@ -130,13 +130,13 @@
   }
 
   function displayData(data, containerId) {
-    console.log(data);
     const container = document.getElementById(containerId);
     container.innerHTML = ''; // Clear existing content
 
     data.forEach(item => {
       if (item.titletype === 'tvEpisode') return; // Skip TV episodes
       const div = document.createElement('div');
+
       div.classList.add('item');
       div.innerHTML = '';
 
@@ -148,6 +148,8 @@
       }
 
       if (containerId === 'movies-container') {
+        div.setAttribute('data-id', item.tconst); //  Add a data attribute to each item
+
 
         div.innerHTML += `
                 <h3>${item.primarytitle}</h3>`;
@@ -170,9 +172,17 @@
 
       container.appendChild(div);
       setTimeout(() => div.classList.add('item-loaded'), 100);
+
+      div.addEventListener('click', () => {
+        redirectToMoviePage(event.currentTarget.getAttribute('data-id'));
+      });
+
     });
   }
 
+  function redirectToMoviePage(movieId) {
+    window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+  }
 
   function searchMovieData(url, titlePart) {
     fetch(url, {
