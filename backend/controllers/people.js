@@ -47,6 +47,36 @@ exports.getTypeOfPeopleOneProfession = async (req, res, next) => {
 
 }
 
+exports.getOnePerson = async (req, res, next) => { 
+
+    const nameID = req.params.nameID;
+
+    const query = `SELECT * FROM people WHERE nconst = "${nameID}"`;
+    
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+}
+
+exports.getCharacter = async (req, res, next) => {
+    const nameID = req.params.nameID;
+    const titleID = req.params.titleID;
+
+    const query = `SELECT * FROM title_principals WHERE nconst = "${nameID}" AND tconst = "${titleID}"`;
+    
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+
+}
 
 exports.getAllInfoForAPerson = async (req, res, next) => {
     const nameID = req.params.nameID;
