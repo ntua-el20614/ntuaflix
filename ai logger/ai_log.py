@@ -2,7 +2,6 @@ import json
 import os
 import re
 import zipfile
-print("Hello")
 
 def run_survey():
     data = {
