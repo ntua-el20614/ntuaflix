@@ -55,6 +55,38 @@
     body {
         margin-left: 20px;
     }
+
+    .movie-details-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .movie-info-section {
+        flex: 3;
+        /* Adjust as needed for the desired width */
+        padding-right: 20px;
+        /* Spacing between the sections */
+    }
+
+    .movie-poster-section {
+        flex: 1;
+        padding-right: 50px;
+    }
+
+
+    @media (max-width: 768px) {
+        .movie-details-flex-container {
+            flex-direction: column;
+        }
+
+        .movie-info-section,
+        .movie-poster-section {
+            flex: none;
+            /* Adjust to stack the sections vertically */
+        }
+    }
 </style>
 
 <body>
@@ -108,6 +140,21 @@
                     });
             }
 
+            function fetchCrewDetails(titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/crew/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching crew details:', error);
+                        // Return a default object to avoid undefined
+                        return { director: [], writer: [] };
+                    });
+            }
+
 
             function calculateAge(birthYear, deathYear) {
                 const currentYear = new Date().getFullYear();
@@ -129,23 +176,22 @@
 
                 // Start building HTML content with the basic movie details
                 let htmlContent = `
-                    <h1>${movieData.originalTitle}</h1>
-                    <p>Year: ${movieData.startYear}</p>`
+    <div class="movie-details-flex-container">
+        <div class="movie-info-section">
+            <h1>${movieData.originalTitle}</h1>
+            <p>Year: ${movieData.startYear}</p>`
                 if (movieData.rating && movieData.rating.avRating !== "\\N") {
                     htmlContent += `<p>Rating: ${movieData.rating.avRating} (${movieData.rating.nVotes})</p>`;
 
                 }
 
 
-                // Add the movie poster if available
-                if (movieData.titlePoster) {
-                    htmlContent += `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">`;
-                }
-
                 // Add genres if available
                 if (movieData.genres && movieData.genres.length > 0) {
                     htmlContent += `<p>Genres: ${movieData.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
                 }
+
+
 
                 // Add titleAkas if available
                 let flag1 = true;
@@ -161,6 +207,18 @@
                     });
                     htmlContent += '</ul></div>';
                 }
+
+                htmlContent += `</div>`;
+
+
+                // Add the movie poster if available
+                if (movieData.titlePoster) {
+                    htmlContent += `<div class="movie-poster-section">
+                            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">` : ''}
+                                </div>`;
+                }
+                htmlContent += `</div>`;
+
 
                 // Add cast if available
                 if (movieData.principals && movieData.principals.length > 0) {
@@ -243,7 +301,7 @@
                                 div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
                                 div.innerHTML += `<p>${principal.category}</p>`;
 
-                                
+
                                 if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
                                     let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
                                     div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
@@ -269,8 +327,77 @@
                     htmlContent += principalsHtmlContent;
                 }
 
+                // Add crew if available
+                let crewData = await fetchCrewDetails(movieData.titleID);
+                if (crewData) {
+                    crewData = crewData[0];
+                }
+                let unifiedCrew = {};
+
+                if (crewData.result) {
+
+
+                    // Process directors if they exist
+                    if (Array.isArray(crewData.result.director)) {
+                        for (const director of crewData.result.director) {
+                            if (!unifiedCrew[director.nconst]) {
+                                unifiedCrew[director.nconst] = { ...director, roles: ['Director'] };
+                            } else {
+                                unifiedCrew[director.nconst].roles.push('Director');
+                            }
+                        }
+                    }
+
+                    // Process writers if they exist
+                    if (Array.isArray(crewData.result.writer)) {
+                        for (const writer of crewData.result.writer) {
+                            if (!unifiedCrew[writer.nconst]) {
+                                unifiedCrew[writer.nconst] = { ...writer, roles: ['Writer'] };
+                            } else if (!unifiedCrew[writer.nconst].roles.includes('Writer')) {
+                                unifiedCrew[writer.nconst].roles.push('Writer');
+                            }
+                        }
+                    }
+                }
+                let crewHtmlContent = '<div class="crew-container"><h3>Crew:</h3><div class="cast-list">';
+                for (const key in unifiedCrew) {
+                    const crewMember = unifiedCrew[key];
+                    crewHtmlContent += createCrewItem(crewMember, crewMember.roles.join(' & '));
+                }
+                crewHtmlContent += '</div></div>';
+                htmlContent += crewHtmlContent;
+
+
                 // Update the container with the built HTML content
                 container.innerHTML = htmlContent;
+            }
+
+            function createCrewItem(crewMember, role) {
+                const div = document.createElement('div');
+                div.classList.add('cast-item');
+                div.innerHTML = '';
+
+                if (crewMember.img_url_asset) {
+                    div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
+                }
+
+                div.innerHTML += `<h3>${crewMember.primaryName}</h3>`;
+                div.innerHTML += `<p>${role}</p>`;
+
+                if (crewMember.birthYear && crewMember.birthYear !== '\\N') {
+                    let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                    div.innerHTML += `<p>Birth Year: ${crewMember.birthYear}</p>`;
+                    if (ageString[0] === 'A') {
+                        div.innerHTML += `(${ageString})`;
+                    }
+                    div.innerHTML += `</p>`;
+                }
+                if (crewMember.deathYear && crewMember.deathYear !== '\\N') {
+                    let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                    div.innerHTML += `<p>Death Year: ${crewMember.deathYear}</p> <p> (${ageString})</p>`;
+                }
+
+                return div.outerHTML;
             }
 
             // Fetch and display the details for the provided movie ID
