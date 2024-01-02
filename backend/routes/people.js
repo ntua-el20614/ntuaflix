@@ -9,6 +9,7 @@ router.get('/people/profession/:profession', peopleController.getTypeOfPeople);
 router.get('/people/one_profession/:profession', peopleController.getTypeOfPeopleOneProfession);
 router.get('/person/:nameID',peopleController.getOnePerson);
 router.get('/character/:nameID/:titleID',peopleController.getCharacter);
+router.get('/crew/:titleID',peopleController.getCrew);
 //d
 router.get('/name/:nameID', peopleController.getAllInfoForAPerson)
 

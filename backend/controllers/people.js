@@ -78,6 +78,61 @@ exports.getCharacter = async (req, res, next) => {
 
 }
 
+exports.getCrew = async (req, res, next) => {
+    const titleID = req.params.titleID;
+
+    const query = `
+    
+SELECT 
+JSON_OBJECT(
+    'writer', (
+        SELECT 
+            JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'nconst', p.nconst, 
+                    'primaryName', p.primaryName, 
+                    'birthYear', p.birthYear, 
+                    'deathYear', p.deathYear, 
+                    'primaryProfession', p.primaryProfession, 
+                    'knownForTitles', p.knownForTitles,
+                    'img_url_asset', p.img_url_asset
+                )
+            )
+        FROM title_crew tc
+        JOIN people p ON FIND_IN_SET(p.nconst, tc.writers)
+        WHERE tc.tconst = ?
+    ),
+    'director', (
+        SELECT 
+            JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'nconst', p.nconst, 
+                    'primaryName', p.primaryName, 
+                    'birthYear', p.birthYear, 
+                    'deathYear', p.deathYear, 
+                    'primaryProfession', p.primaryProfession, 
+                    'knownForTitles', p.knownForTitles,
+                    'img_url_asset', p.img_url_asset
+                )
+            )
+        FROM title_crew tc
+        JOIN people p ON FIND_IN_SET(p.nconst, tc.directors)
+        WHERE tc.tconst = ?
+    )
+) AS result
+FROM DUAL;
+
+    `;
+    
+    try {
+        const [rows] = await pool.query(query,[titleID,titleID]);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    
+
+}}
+
 exports.getAllInfoForAPerson = async (req, res, next) => {
     const nameID = req.params.nameID;
 
