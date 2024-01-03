@@ -10,5 +10,10 @@ def index():
 
 @app.route("/moviepage")
 def movie():
-    return render_template("moviepage.html", pageTitle="Login Page")
+    return render_template("moviepage.html", pageTitle="Movie Page")
+
+
+@app.route("/personpage")
+def person():
+    return render_template("personpage.html", pageTitle="Person Page")
 

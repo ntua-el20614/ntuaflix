@@ -170,16 +170,20 @@
             }
 
 
-            async function displayMovieDetails(movieData) {
+            function redirectToPersonPage(personId) {
+                window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
+            }
 
+            async function displayMovieDetails(movieData) {
                 const container = document.getElementById('movieDetailsContainer');
+                container.innerHTML = ''; // Clear existing content
 
                 // Start building HTML content with the basic movie details
                 let htmlContent = `
-    <div class="movie-details-flex-container">
-        <div class="movie-info-section">
-            <h1>${movieData.originalTitle}</h1>
-            <p>Year: ${movieData.startYear}</p>`
+                        <div class="movie-details-flex-container">
+                        <div class="movie-info-section">
+                        <h1>${movieData.originalTitle}</h1>
+                        <p>Year: ${movieData.startYear}</p>`
                 if (movieData.rating && movieData.rating.avRating !== "\\N") {
                     htmlContent += `<p>Rating: ${movieData.rating.avRating} (${movieData.rating.nVotes})</p>`;
 
@@ -214,190 +218,183 @@
                 // Add the movie poster if available
                 if (movieData.titlePoster) {
                     htmlContent += `<div class="movie-poster-section">
-                            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">` : ''}
-                                </div>`;
+            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">` : ''}
+                </div>`;
                 }
                 htmlContent += `</div>`;
+                const MovieInfoContainer = document.createElement('div');
+                MovieInfoContainer.innerHTML = htmlContent;
+                container.appendChild(MovieInfoContainer);
+                // Function to create and return a div for a cast or crew member
+                function createPersonDiv(personInfo, principal, characterInfo = null) {
+                    const div = document.createElement('div');
+                    div.classList.add('cast-item');
+                    div.setAttribute('id', principal.nameID);
+
+                    // Check if image URL is available and not null
+                    if (personInfo.img_url_asset) {
+                        div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
+                    }
+
+                    div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
+
+                    if (characterInfo && characterInfo.characters) {
+                        const characterName = characterInfo.characters.replace(/[\[\]"]+/g, ''); // Remove brackets and quotes
+                        div.innerHTML += `<p>as ${characterName}</p>`;
+                    }
+
+                    // Add profession, birth year, and death year, if available
+                    if (personInfo.primaryProfession && personInfo.primaryProfession !== '\\N') {
+                        div.innerHTML += `<p>Profession: ${personInfo.primaryProfession.replace(/,/g, ', ')}</p>`;
+                    }
+                    if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
+                        let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                        div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
+                        if (ageString[0] === 'A') {
+                            div.innerHTML += `(${ageString})`;
+                        }
+                        div.innerHTML += `</p>`;
+                    }
+                    if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
+                        let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                        div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> (${ageString})</p>`;
+                    }
+
+                    // Attach event listener
+                    div.addEventListener('click', (event) => {
+                        //console.log(event.currentTarget.getAttribute('id'));
+                        redirectToPersonPage(event.currentTarget.getAttribute('id'));
+                    });
+
+                    return div;
+                }
+
+                function createCrewDiv(crewMember, roles) {
+                    const div = document.createElement('div');
+                    div.classList.add('cast-item');
+                    div.setAttribute('id', crewMember.nconst);
+
+                    // Check if image URL is available and not null
+                    if (crewMember.img_url_asset) {
+                        div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
+                    }
+
+                    div.innerHTML += `<h3>${crewMember.primaryName}</h3>`;
+                    div.innerHTML += `<p>Role: ${roles}</p>`;
+
+                    // Add birth year and age, if available
+                    if (crewMember.birthYear && crewMember.birthYear !== '\\N') {
+                        let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                        div.innerHTML += `<p>Birth Year: ${crewMember.birthYear}</p>`;
+                        div.innerHTML += ageString[0] === 'A' ? `(${ageString})` : '';
+                    }
+
+                    // Add death year, if available
+                    if (crewMember.deathYear && crewMember.deathYear !== '\\N') {
+                        let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                        div.innerHTML += `<p>Death Year: ${crewMember.deathYear} (${ageString})</p>`;
+                    }
+
+                    // Attach event listener
+                    div.addEventListener('click', (event) => {
+                        //console.log(event.currentTarget.getAttribute('id'));
+                        redirectToPersonPage(event.currentTarget.getAttribute('id'));
+                    });
+
+                    return div;
+                }
+
+                function combineCrewData(directors, writers) {
+                    let combinedCrew = {};
+
+                    directors.forEach(director => {
+                        combinedCrew[director.nconst] = { ...director, roles: ['Director'] };
+                    });
+
+                    writers.forEach(writer => {
+                        if (combinedCrew[writer.nconst]) {
+                            combinedCrew[writer.nconst].roles.push('Writer');
+                        } else {
+                            combinedCrew[writer.nconst] = { ...writer, roles: ['Writer'] };
+                        }
+                    });
+
+                    return Object.values(combinedCrew);
+                }
+
 
 
                 // Add cast if available
+                let flag = true;
                 if (movieData.principals && movieData.principals.length > 0) {
-                    let flag = true;
-                    let castHtmlContent = '';
+
                     for (const principal of movieData.principals) {
                         if (principal.category === 'actor' || principal.category === 'actress') {
                             if (flag) {
-                                castHtmlContent += '<div class="cast-container"><h3>Cast:</h3><div class="cast-list">';
+
+                                const castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h3>Cast:</h3><div class="cast-list"></div>';
+                                container.appendChild(castContainer);
+
+                                castListDiv = castContainer.querySelector('.cast-list');
                                 flag = false;
                             }
-                            try {
-                                const personInfo = await fetchPersonDetails(principal.nameID);
-                                const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
-                                const div = document.createElement('div');
-                                div.classList.add('cast-item');
-                                div.innerHTML = '';
-
-                                // Check if image URL is available and not null
-                                if (personInfo.img_url_asset) {
-                                    div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
-                                }
-
-                                div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
-
-                                if (characterInfo[0] && characterInfo[0].characters) {
-                                    const characterName = characterInfo[0].characters.replace(/[\[\]"]+/g, ''); // Remove brackets and quotes
-                                    div.innerHTML += `<p>as ${characterName}</p>`;
-                                }
-
-                                // Add profession, birth year, and death year, if available
-                                if (personInfo.primaryProfession && personInfo.primaryProfession !== '\\N') {
-                                    div.innerHTML += `<p>Profession: ${personInfo.primaryProfession.replace(/,/g, ', ')}</p>`;
-                                }
-                                if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
-                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
-                                    div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
-                                    if (ageString[0] === 'A') {
-                                        div.innerHTML += `(${ageString})`;
-                                    }
-                                    div.innerHTML += `</p>`;
-                                }
-                                if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
-                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
-                                    div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> (${ageString})</p>`;
-                                }
-
-                                castHtmlContent += div.outerHTML;
-
-                            } catch (error) {
-                                console.error('Error fetching person details:', error);
-                            }
+                            const personInfo = await fetchPersonDetails(principal.nameID);
+                            const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
+                            const personDiv = createPersonDiv(personInfo, principal, characterInfo);
+                            castListDiv.appendChild(personDiv);
                         }
                     }
-
-                    castHtmlContent += '</div></div>';
-                    htmlContent += castHtmlContent;
                 }
-                let flag = true;
-                // Add principals if available (other than actors and actresses)
+
+                // Add principals if available
+                flag = true;
                 if (movieData.principals && movieData.principals.length > 0) {
-                    let principalsHtmlContent = '';
+
                     for (const principal of movieData.principals) {
                         if (principal.category !== 'actor' && principal.category !== 'actress') {
                             if (flag) {
-                                principalsHtmlContent += '<div class="cast-container"><h3>Principals:</h3><div class="cast-list">';
+
+                                const castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h3>Principals:</h3><div class="cast-list"></div>';
+                                container.appendChild(castContainer);
+
+                                castListDiv = castContainer.querySelector('.cast-list');
                                 flag = false;
                             }
-                            try {
-                                const personInfo = await fetchPersonDetails(principal.nameID);
-
-                                const div = document.createElement('div');
-                                div.classList.add('cast-item');
-                                div.innerHTML = '';
-
-                                if (personInfo.img_url_asset) {
-                                    div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
-                                }
-
-                                div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
-                                div.innerHTML += `<p>${principal.category}</p>`;
-
-
-                                if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
-                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
-                                    div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
-                                    if (ageString[0] === 'A') {
-                                        div.innerHTML += `(${ageString})`;
-                                    }
-                                    div.innerHTML += `</p>`;
-                                }
-                                if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
-                                    let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
-                                    div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> (${ageString})</p>`;
-                                }
-
-                                principalsHtmlContent += div.outerHTML;
-
-                            } catch (error) {
-                                console.error('Error fetching person details:', error);
-                            }
+                            const personInfo = await fetchPersonDetails(principal.nameID);
+                            const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
+                            const personDiv = createPersonDiv(personInfo, principal, characterInfo);
+                            castListDiv.appendChild(personDiv);
                         }
                     }
-
-                    principalsHtmlContent += '</div></div>';
-                    htmlContent += principalsHtmlContent;
                 }
 
                 // Add crew if available
                 let crewData = await fetchCrewDetails(movieData.titleID);
+                crewData = crewData[0].result;
+
+
                 if (crewData) {
-                    crewData = crewData[0];
-                }
-                let unifiedCrew = {};
-
-                if (crewData.result) {
+                    const combinedCrew = combineCrewData(crewData.director, crewData.writer);
 
 
-                    // Process directors if they exist
-                    if (Array.isArray(crewData.result.director)) {
-                        for (const director of crewData.result.director) {
-                            if (!unifiedCrew[director.nconst]) {
-                                unifiedCrew[director.nconst] = { ...director, roles: ['Director'] };
-                            } else {
-                                unifiedCrew[director.nconst].roles.push('Director');
-                            }
-                        }
-                    }
+                    const crewContainer = document.createElement('div');
+                    crewContainer.classList.add('cast-container');
+                    crewContainer.innerHTML = '<h3>Crew:</h3><div class="cast-list"></div>';
+                    container.appendChild(crewContainer);
 
-                    // Process writers if they exist
-                    if (Array.isArray(crewData.result.writer)) {
-                        for (const writer of crewData.result.writer) {
-                            if (!unifiedCrew[writer.nconst]) {
-                                unifiedCrew[writer.nconst] = { ...writer, roles: ['Writer'] };
-                            } else if (!unifiedCrew[writer.nconst].roles.includes('Writer')) {
-                                unifiedCrew[writer.nconst].roles.push('Writer');
-                            }
-                        }
+                    const crewListDiv = crewContainer.querySelector('.cast-list');
+
+
+                    for (const crewMember of combinedCrew) {
+                        const crewDiv = createCrewDiv(crewMember, crewMember.roles.join(' & '));
+                        crewListDiv.appendChild(crewDiv);
                     }
                 }
-                let crewHtmlContent = '<div class="crew-container"><h3>Crew:</h3><div class="cast-list">';
-                for (const key in unifiedCrew) {
-                    const crewMember = unifiedCrew[key];
-                    crewHtmlContent += createCrewItem(crewMember, crewMember.roles.join(' & '));
-                }
-                crewHtmlContent += '</div></div>';
-                htmlContent += crewHtmlContent;
 
-
-                // Update the container with the built HTML content
-                container.innerHTML = htmlContent;
-            }
-
-            function createCrewItem(crewMember, role) {
-                const div = document.createElement('div');
-                div.classList.add('cast-item');
-                div.innerHTML = '';
-
-                if (crewMember.img_url_asset) {
-                    div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
-                }
-
-                div.innerHTML += `<h3>${crewMember.primaryName}</h3>`;
-                div.innerHTML += `<p>${role}</p>`;
-
-                if (crewMember.birthYear && crewMember.birthYear !== '\\N') {
-                    let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
-                    div.innerHTML += `<p>Birth Year: ${crewMember.birthYear}</p>`;
-                    if (ageString[0] === 'A') {
-                        div.innerHTML += `(${ageString})`;
-                    }
-                    div.innerHTML += `</p>`;
-                }
-                if (crewMember.deathYear && crewMember.deathYear !== '\\N') {
-                    let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
-                    div.innerHTML += `<p>Death Year: ${crewMember.deathYear}</p> <p> (${ageString})</p>`;
-                }
-
-                return div.outerHTML;
             }
 
             // Fetch and display the details for the provided movie ID
@@ -407,6 +404,8 @@
                 console.log("No movie ID provided.");
             }
         });
+
+
 
 
     </script>
