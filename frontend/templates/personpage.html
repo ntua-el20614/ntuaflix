@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Person Page</title>
+    <link rel="icon" type="image/png" href="../static/logo.png">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<style>
+    .cast-list {
+        border: 1px solid #ccc;
+        display: flex;
+        overflow-x: auto;
+        margin: 20px;
+
+        /* Hide scrollbar for IE, Edge, and Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+
+        /* Hide scrollbar for Chrome, Safari, and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+
+
+    .cast-item {
+        margin-right: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 25px;
+
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-right: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        min-width: 250px;
+        max-width: 250px;
+        background-color: #717171;
+        transition: transform 0.3s ease;
+    }
+
+    .cast-item img {
+        margin-top: 20px;
+    }
+
+
+    .cast-item:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    body {
+        margin-left: 20px;
+    }
+
+    .movie-details-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .movie-info-section {
+        flex: 3;
+        /* Adjust as needed for the desired width */
+        padding-right: 20px;
+        /* Spacing between the sections */
+    }
+
+    .movie-poster-section {
+        flex: 1;
+        padding-right: 50px;
+    }
+
+
+    @media (max-width: 600px) {
+        .movie-details-flex-container {
+            flex-direction: column;
+        }
+
+        .movie-info-section,
+        .movie-poster-section {
+            flex: none;
+            /* Adjust to stack the sections vertically */
+        }
+    }
+</style>
+
+<body>
+    <div id="personInfo"></div>
+    <div id="knownForTitles" class="cast-list"></div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const personId = new URLSearchParams(window.location.search).get('personId');
+            fetchPersonData(personId);
+            //fetchKnownForTitles(personId);
+        });
+
+
+
+
+        function fetchMovieDetails(id) {
+
+            return fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    return data[0];
+                })
+                .catch(error => {
+                    console.error('Error fetching movie details:', error);
+                    throw error;
+                });
+        }
+
+
+        function fetchPersonData(personId) {
+            fetch(`http://localhost:7117/ntuaflix_api/person/${personId}`)
+                .then(response => response.json())
+                .then(data => {
+                    displayPersonInfo(data[0]);
+                })
+                .catch(error => console.error('Error fetching person data:', error));
+        }
+
+        function calculateAge(birthYear, deathYear) {
+            const currentYear = new Date().getFullYear();
+            let age;
+
+            if (deathYear && deathYear !== '\\N') {
+                age = deathYear - birthYear;
+                return `Died at age ${age}`;
+            } else {
+                age = currentYear - birthYear;
+                return `Age: ${age}`;
+            }
+        }
+
+        function createPersonDiv(personInfo) {
+            const div = document.createElement('div');
+            div.classList.add('cast-item');
+            if (personInfo === undefined) return div;
+            div.setAttribute('id', personInfo.titleID);
+
+            // Check if image URL is available and not null
+            if (personInfo.titlePoster) {
+                div.innerHTML += `<img src="${personInfo.titlePoster.replace('{width_variable}', 'w200').replace('w500', 'w200')}" alt="${personInfo.originalTitle}">`;
+            }
+
+            div.innerHTML += `<h3>${personInfo.originalTitle}</h3>`;
+
+            /*
+            if (characterInfo && characterInfo.characters) {
+                const characterName = characterInfo.characters.replace(/[\[\]"]+/g, ''); // Remove brackets and quotes
+                div.innerHTML += `<p>as ${characterName}</p>`;
+            }
+            */// Add character name, in the movie if we have time
+
+            if (personInfo.genres && personInfo.genres.length > 0) {
+                div.innerHTML += `<p>Genres: ${personInfo.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
+            }
+
+            // Attach event listener
+            div.addEventListener('click', (event) => {
+                //console.log(event.currentTarget.getAttribute('id'));
+                redirectToMoviePage(event.currentTarget.getAttribute('id'));
+            });
+
+            return div;
+        }
+
+
+        function redirectToMoviePage(movieId) {
+            window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+        }
+        async function displayPersonInfo(personInfo) {
+
+
+
+            const container = document.getElementById('personInfo');
+            container.innerHTML = ''; // Clear existing content
+
+            // Start building HTML content with the basic movie details
+            let htmlContent = `
+                        <div class="movie-details-flex-container">
+                        <div class="movie-info-section">
+                        <h1>${personInfo.primaryName}</h1>`
+
+            if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) htmlContent += `<p>Alive: ${personInfo.birthYear} `
+            if (personInfo.deathYear !== '\\N' && personInfo.deathYear !== null) htmlContent += `- ${personInfo.deathYear}`
+            const age = calculateAge(personInfo.birthYear, personInfo.deathYear)
+            if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) htmlContent += `</p><p>${age} </p>`
+
+
+            // Add professions if available
+            if (personInfo.primaryProfession && personInfo.primaryProfession.length > 0) {
+                htmlContent += `<p>Professions: ${personInfo.primaryProfession.replace(/,/g, ', ')}</p>`;
+            }
+
+
+            htmlContent += `</div>`
+
+
+
+
+            // Add the movie poster if available
+            if (personInfo.img_url_asset) {
+                htmlContent += `<div class="movie-poster-section">
+            ${personInfo.img_url_asset ? `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w400').replace('w500', 'w400')}">` : ''}
+                </div>`;
+            }
+            htmlContent += `</div>`;
+
+
+            // Add known titles if available
+            let flag = true;
+            let castContainer = undefined;
+            let castListDiv;
+            if (personInfo.knownForTitles && personInfo.knownForTitles.length > 0) {
+                const titles = personInfo.knownForTitles.split(',');
+
+                // Loop through each title and fetch details
+                for (const title of titles) {
+                    try {
+                        const movieInfo = await fetchMovieDetails(title); // Await the async call
+                        const personDiv = createPersonDiv(movieInfo); // Use the resolved movieInfo
+                        if (personDiv.innerHTML !== "") {
+                            if (flag) {
+                                castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h3>Known For Titles:</h3><div class="cast-list"></div>';
+
+                                castListDiv = castContainer.querySelector('.cast-list');
+                                flag = false;
+                            }
+
+                            castListDiv.appendChild(personDiv);
+                        }
+                    } catch (error) {
+                        console.error('Error processing title:', title, error);
+                    }
+                }
+            }
+
+            const stuff = document.createElement('div');
+            stuff.innerHTML = htmlContent;
+            container.appendChild(stuff);
+            if (castContainer !== undefined)
+                container.appendChild(castContainer);
+
+        }
+
+    </script>
+</body>
+
+
+</html>

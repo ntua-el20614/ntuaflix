@@ -10,6 +10,12 @@
   <link rel="icon" type="image/png" href="../static/logo.png">
   <link rel="stylesheet" href="/static/css/landing.css">
 </head>
+<style>
+  
+  .img {
+        margin-top: 20px;
+    }
+  </style>
 
 <body>
   <div id="loadingScreen" class="loading-screen">
@@ -161,6 +167,9 @@
           div.innerHTML += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
         }
 
+        div.addEventListener('click', () => {
+          redirectToMoviePage(event.currentTarget.getAttribute('data-id'));
+        });
       } else if (containerId === 'people-container') {
 
 
@@ -168,14 +177,18 @@
                 <h3>${item.primaryName}</h3>
                 <p>${item.primaryProfession.replace(/,/g, ', ')}</p>
             `;
+
+        div.setAttribute('data-id', item.nconst); // Assuming 'nconst' is the person ID
+
+
+        div.addEventListener('click', () => {
+          redirectToPersonPage(div.getAttribute('data-id'));
+        });
       }
 
       container.appendChild(div);
       setTimeout(() => div.classList.add('item-loaded'), 100);
 
-      div.addEventListener('click', () => {
-        redirectToMoviePage(event.currentTarget.getAttribute('data-id'));
-      });
 
     });
   }
@@ -184,6 +197,9 @@
     window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
   }
 
+  function redirectToPersonPage(personId) {
+    window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
+  }
   function searchMovieData(url, titlePart) {
     fetch(url, {
       method: 'POST',
