@@ -32,6 +32,8 @@ exports.login = async (req, res) => {
             process.env.JWT_SECRET || '3141592653589793236264', // Use environment variable or replace with your actual key
             { expiresIn: '1h' }
         );
+        
+        await pool.query('UPDATE users SET token = ? WHERE userID = ?', [token, user.userID]);
 
         // Send token in response
         res.status(200).json({ token: token });
