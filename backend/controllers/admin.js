@@ -365,7 +365,7 @@ exports.uploadTitleRatings = async (req, res, next) => {
 
 
 
-exports.chUser = async (req, res, next) => {
+/*exports.chUser = async (req, res, next) => {
 
     const username = req.params.username;
     const password = req.params.password; // Ensure this is hashed if needed
@@ -381,7 +381,30 @@ exports.chUser = async (req, res, next) => {
     } catch (err) {
         res.status(500).json({ message: 'Internal server error', error: err.message });
     }
-}
+}*/
+
+exports.chUser = async (req, res, next) => {
+    const username = req.params.username;
+    const plainTextPassword = req.params.password; // This should be the plaintext password
+
+    // Generate a salt and hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(plainTextPassword, salt);
+
+    const query = `
+        INSERT INTO ntuaflix.users (username, password_hashed)
+        VALUES (?, ?)
+        ON DUPLICATE KEY UPDATE password_hashed = VALUES(password_hashed);
+    `;
+
+    try {
+        const [results] = await pool.query(query, [username, hashedPassword]);
+        res.status(200).json({ message: 'Operation successful', data: results });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
+};
+
 
 
 exports.getUser = async (req, res, next) => {
