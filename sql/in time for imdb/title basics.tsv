@@ -1,3 +1,62 @@
 tconst	titleType	primaryTitle	originalTitle	isAdult	startYear	endYear	runtimeMinutes	genres	img_url_asset
 tt1637688	movie	In Time	In Time	0	2011	\N	109	Action,Sci-Fi,Thriller	https://image.tmdb.org/t/p/{width_variable}/3Mwj2sIONQckOZP3YwsUXF7U5I4.jpg
 tt15398776	movie	Oppenheimer	Oppenheimer	0	2023	\N	180	Biography,Drama,History	https://image.tmdb.org/t/p/{width_variable}/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg
+tt0046593	tvSeries	The Magical World of Disney	Disneyland	0	1954	1997	120	Adventure,Drama,Family	https://image.tmdb.org/t/p/{width_variable}/qxzolPXbAigjPANgTOdXXDxqcbr.jpg
+tt0086734	tvSeries	Hunter	Hunter	0	1984	1991	48	Action,Crime,Drama	https://image.tmdb.org/t/p/{width_variable}/kmC8d3KQozh1SlIih0hdfXsGLe8.jpg
+tt0088655	tvMiniSeries	AD Police Files	AD Police Files	0	1990	1990	121	Animation,Crime,Sci-Fi	https://image.tmdb.org/t/p/{width_variable}/cnoxaByiINVuvb20bR5LmkHgzJX.jpg
+tt0094456	tvSeries	Eurocops	Eurocops	0	1988	1994	52	Crime,Thriller	https://image.tmdb.org/t/p/{width_variable}/dPm7ybBVyc0Dl0Yyn4o3WQSNdCC.jpg
+tt0094525	tvSeries	Poirot	Poirot	0	1989	2013	100	Crime,Drama,Mystery	https://image.tmdb.org/t/p/{width_variable}/6f4IVfbn8knb7RjdZlGLuW5guDc.jpg
+tt0095670	tvSeries	La mujer de tu vida	La mujer de tu vida	0	1990	1994	60	Comedy,Romance	https://image.tmdb.org/t/p/{width_variable}/54a9EQ3zZJI1Q1ATxtPTRRMCCDo.jpg
+tt0096538	tvSeries	B.L. Stryker	B.L. Stryker	0	1989	1990	120	Mystery	https://image.tmdb.org/t/p/{width_variable}/vvnhccWAJ86l7zOtErWXaXEUBT1.jpg
+tt0096658	tvSeries	Navarro	Navarro	0	1989	2006	90	Crime,Drama	https://image.tmdb.org/t/p/{width_variable}/g8RNyYCCcFTciIZM4FVNPPnFqB0.jpg
+tt0098761	tvSeries	Capital News	Capital News	0	1990	1990	60	Drama
+tt0098765	tvSeries	The Case-Book of Sherlock Holmes	The Case-Book of Sherlock Holmes	0	1991	1993	60	Crime,Drama,Mystery
+tt0098792	tvSeries	A Family for Joe	A Family for Joe	0	1990	1990	30	Comedy
+tt0098798	tvSeries	The Flash	The Flash	0	1990	1991	48	Action,Crime,Fantasy	https://image.tmdb.org/t/p/{width_variable}/fi1GEdCbyWRDHpyJcB25YYK7fh4.jpg
+tt0098884	tvSeries	Over My Dead Body	Over My Dead Body	0	1990	1991	60	Crime,Drama
+tt0098889	tvSeries	Chillers	Chillers	0	1990	1990	53	Action,Drama,Horror	https://image.tmdb.org/t/p/{width_variable}/sS0J0WiUzdo9r3pmJmTGGbAAtEM.jpg
+tt0098916	tvSeries	Sunset Beat	Sunset Beat	0	1990	1992	60	Drama
+tt0099231	tvSeries	Frederick Forsyth Presents	Frederick Forsyth Presents	0	1989	\N	98	Action,Thriller
+tt0099283	tvSeries	Le gorille	Le gorille	0	1990	1992	92	Action,Comedy,Thriller	https://image.tmdb.org/t/p/{width_variable}/i7iUQh7845TrhCSQUO0vR4bd6Y6.jpg
+tt0101152	tvSeries	Nestor Burma	Nestor Burma	0	1991	2003	85	Crime,Mystery,Thriller	https://image.tmdb.org/t/p/{width_variable}/l1TgOUA99FFdXJn1z5i7ifcZJ2L.jpg
+tt0101161	tvSeries	P.S.I. Luv U	P.S.I. Luv U	0	1991	1992	60	Drama	https://image.tmdb.org/t/p/{width_variable}/cAfhxy5MHheMTs4gnzBGiccBovh.jpg
+tt0106078	tvSeries	Die Männer vom K3	Die Männer vom K3	0	1988	2003	90	Crime
+tt0133302	tvSeries	Frontline	Frontline	0	1983	\N	60	Documentary,News	https://image.tmdb.org/t/p/{width_variable}/rEsUftFdD7PjkWmCrzqWoUYHbXv.jpg
+tt0135104	tvSeries	Rex the Runt	Rex the Runt	0	1991	2005	10	Animation,Comedy	https://image.tmdb.org/t/p/{width_variable}/3UnGN3HLsnbm0cOlqyXZnM6PTaA.jpg
+tt0139780	tvSeries	Lifestories: Families in Crisis	Lifestories: Families in Crisis	0	1992	1996	30	Drama,Family,Short
+tt0158415	tvSeries	Vampire Princess Miyu	Kyûketsuki Miyu	0	1997	1998	25	Action,Animation,Drama	https://image.tmdb.org/t/p/{width_variable}/A5Ro3RpFXAWiV5Ntk7BoMcDcSUE.jpg
+tt0159876	tvSeries	Great Performances	Great Performances	0	1971	\N	180	Music,Musical	https://image.tmdb.org/t/p/{width_variable}/mlV5McEtFXJxRHQJ8qGRuQgOWeQ.jpg
+tt0166458	tvSeries	Ruth Rendell Mysteries	Ruth Rendell Mysteries	0	1987	2000	60	Crime,Drama,Mystery	https://image.tmdb.org/t/p/{width_variable}/y9wIBLSOOBwGCiEbfMNIeRjGOzM.jpg
+tt0167566	tvSeries	Love at First Sight	Coup de foudre	0	1988	\N	26	Romance
+tt0167644	tvSeries	Maigret	Maigret	0	1991	2005	90	Crime,Drama,Mystery	https://image.tmdb.org/t/p/{width_variable}/kQQARcBsgzd5d2s7ZPA5NjHF33S.jpg
+tt0176357	tvSeries	American Playhouse	American Playhouse	0	1982	1994	\N	Comedy,Drama,Romance	https://image.tmdb.org/t/p/{width_variable}/34LLeInneWvMyIHcCpDCrkOxDe7.jpg
+tt0190210	tvSeries	Wild West C.O.W.-Boys of Moo Mesa	Wild West C.O.W.-Boys of Moo Mesa	0	1992	1994	30	Action,Adventure,Animation	https://image.tmdb.org/t/p/{width_variable}/wDOVjZ2mgpOKsWaWEJYyHydGaw7.jpg
+tt0199184	tvSeries	Arena	Arena	0	1975	\N	60	Documentary	https://image.tmdb.org/t/p/{width_variable}/vOEqqj5kac2J96w3P9yhEhAnOeh.jpg
+tt0297625	tvSeries	Screen One	Screen One	0	1985	2002	120	Comedy,Crime,Drama	https://image.tmdb.org/t/p/{width_variable}/7pLpn4lBQH5sPFReCyQzgCjQBBs.jpg
+tt0297626	tvSeries	Screen Two	Screen Two	0	1985	1998	120	Drama	https://image.tmdb.org/t/p/{width_variable}/4Dp0H8DVuY5fzZWpOIRyEJ8eanx.jpg
+tt0298685	tvSeries	Performance	Performance	0	1991	1998	180	Drama
+tt0313144	tvSeries	V comme vengeance	V comme vengeance	0	1989	1992	\N	\N
+tt0346328	tvSeries	Lucky Luke	Lucky Luke	0	1992	1992	50	Comedy,Western	https://image.tmdb.org/t/p/{width_variable}/i5b3EXnsKOWQb3P30hZukWNPr6d.jpg
+tt0364151	tvSeries	American Masters	American Masters	0	1985	\N	90	Biography,Documentary,Music	https://image.tmdb.org/t/p/{width_variable}/n2PHBbRwNxaQGuqIW4Y5ulq0HQC.jpg
+tt0401056	tvSeries	Il ricatto	Il ricatto	0	1988	\N	\N	Drama	https://image.tmdb.org/t/p/{width_variable}/xXdjixV5upNUM15fe5r9vSqoKoJ.jpg
+tt0806901	tvSeries	Police Call 110	Polizeiruf 110	0	1971	\N	\N	Crime,Drama,Mystery	https://image.tmdb.org/t/p/{width_variable}/6ZZadTzWhvC6msfEm5G4F4IFgBY.jpg
+tt0806910	tvSeries	Tatort	Tatort	0	1970	\N	90	Crime,Drama,Mystery	https://image.tmdb.org/t/p/{width_variable}/sqGAH4Koj0poDi65arOK14rTDVu.jpg
+tt0809273	tvSeries	Haute tension	Haute tension	0	1988	1994	\N	Thriller
+tt0815353	tvSeries	Cinéma, de notre temps	Cinéma, de notre temps	0	1989	\N	\N	Documentary
+tt0846838	tvSeries	Schwarz Rot Gold	Schwarz Rot Gold	0	1982	1995	90	Crime	https://image.tmdb.org/t/p/{width_variable}/oOnMYwtgoCOr8qCfX4AHFAzImGT.jpg
+tt0882736	tvSeries	Zwei Brüder	Zwei Brüder	0	1994	2001	90	Crime,Mystery	https://image.tmdb.org/t/p/{width_variable}/81Genv5dwBvvn2Pv2ZY1Wn4mXKi.jpg
+tt0889258	tvSeries	Anwalt Abel	Anwalt Abel	0	1988	2001	90	Crime
+tt0939820	tvSeries	Velmi uveritelné príbehy	Velmi uveritelné príbehy	0	1991	\N	\N	Crime,Drama,Horror
+tt0985040	tvSeries	CBS Schoolbreak Special	CBS Schoolbreak Special	0	1984	1996	\N	Adventure,Comedy,Drama	https://image.tmdb.org/t/p/{width_variable}/7muGNVtbHL9L83MwtcOWq6ebKiQ.jpg
+tt1049304	tvSeries	Screenplay	Screenplay	0	1986	1993	\N	Drama	https://image.tmdb.org/t/p/{width_variable}/bcegph0ViAJWlI4zau3UBYq650C.jpg
+tt1226281	tvSeries	Schulz & Schulz	Schulz & Schulz	0	1989	1993	\N	\N
+tt12606372	tvSeries	Detective Extralarge	Detective Extralarge	0	1991	1993	\N	Comedy,Crime	https://image.tmdb.org/t/p/{width_variable}/jA8aVqCVOb85n7WtjU6WII0sn08.jpg
+tt13031912	tvMiniSeries	Fantaghirò: Cave of the Golden Rose	Fantaghirò	0	1991	1996	\N	Adventure,Fantasy	https://image.tmdb.org/t/p/{width_variable}/dVNloL6eQx0Fv4KeXsSRb6GyZiZ.jpg
+tt1342141	tvSeries	Kommissar Klefisch	Kommissar Klefisch	0	1990	1996	90	Crime
+tt15175450	tvSeries	Mrs. Harris	Mrs. Harris	0	1982	1991	89	Comedy,Crime
+tt1601983	tvSeries	The Play on One	The Play on One	0	1988	1991	\N	Drama	https://image.tmdb.org/t/p/{width_variable}/wiElx6JxHiZXb5wg3RiwC1BeaaU.jpg
+tt1615489	tvSeries	4 Play	4 Play	0	1989	1991	\N	Drama
+tt1634348	tvSeries	Arbeitersaga	Arbeitersaga	0	1988	\N	\N	Drama	https://image.tmdb.org/t/p/{width_variable}/2GyyGi7CdikL4pr3jPfmjFmowCw.jpg
+tt1685403	tvSeries	He-Play	He-Play	0	1990	1992	11	Drama,Short
+tt3687174	tvSeries	Different Drummer	Different Drummer	0	1989	1991	30	Documentary
+tt3782882	tvSeries	Cycle Simenon	Cycle Simenon	0	1989	\N	\N	\N
