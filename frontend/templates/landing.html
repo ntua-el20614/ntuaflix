@@ -11,11 +11,10 @@
   <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 <style>
-  
   .img {
-        margin-top: 20px;
-    }
-  </style>
+    margin-top: 20px;
+  }
+</style>
 
 <body>
   <div id="loadingScreen" class="loading-screen">
@@ -27,7 +26,12 @@
   <div class="container">
     <!-- Inside the Movies Section -->
     <div class="movies-section">
-      <h2>Movies</h2>
+
+      <select id="category-select" onchange="updateCategory()">
+        <option value="all" id="option-all">All</option>
+        <option value="movies" id="option-movies">Movies</option>
+        <option value="tvshows" id="option-tvshows">TV Shows</option>
+      </select>
       <form action="" class="search-form" onsubmit="searchMovies(event)">
         <input type="search" required id="movie-search-input">
         <i class="fa fa-search"></i>
@@ -65,7 +69,7 @@
 
 
   document.addEventListener('DOMContentLoaded', function () {
-    fetchData('http://localhost:7117/ntuaflix_api/toptwentymovies', 'movies-container');
+    fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
     fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
 
     setTimeout(() => {
@@ -84,12 +88,22 @@
 
   });
 
+  var currentCategory = 'all'; // Default value
+
+  function updateCategory() {
+    var selectedCategory = document.getElementById('category-select').value;
+
+    currentCategory = selectedCategory;
+    searchMovies(event);
+  }
+
+
   function searchMovies(event) {
     event.preventDefault(); // Prevents the form from submitting traditionally
     const titlePart = document.getElementById('movie-search-input').value;
 
     if (titlePart.trim() === '') {
-      fetchData('http://localhost:7117/ntuaflix_api/toptwentymovies', 'movies-container');
+      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
     } else {
       const url = 'http://localhost:7117/ntuaflix_api/searchtitle';
       searchMovieData(url, titlePart);
@@ -139,8 +153,34 @@
     const container = document.getElementById(containerId);
     container.innerHTML = ''; // Clear existing content
 
+    //var selectedCategory = document.getElementById('category-select').value;
+    console.log("current", currentCategory)
+    /*
+    short
+    movie
+    tvSeries
+    tvEpisode
+    tvMiniSeries
+    */
+    let list_to_exclude = []
+    if (containerId === 'movies-container'){
+    if (currentCategory == "tvshows") {
+      list_to_exclude.push("movie")
+      list_to_exclude.push("short")
+
+    } else if (currentCategory == "movies") {
+
+      list_to_exclude.push("tvSeries")
+      list_to_exclude.push("tvMiniSeries")
+    }
+    list_to_exclude.push("tvEpisode")}
+    console.log(list_to_exclude)
     data.forEach(item => {
-      if (item.titletype === 'tvEpisode') return; // Skip TV episodes
+      
+    if (containerId === 'movies-container'){
+      console.log(item)}
+      //console.log(item, list_to_exclude.includes(item.titletype))
+      if (list_to_exclude.includes(item.titletype)) return; // Skip types in list_to_exclude
       const div = document.createElement('div');
 
       div.classList.add('item');
@@ -166,10 +206,16 @@
         if (item.genres != null) {
           div.innerHTML += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
         }
+        if(item.titletype == "movie" || item.titletype == "short"){
 
         div.addEventListener('click', () => {
           redirectToMoviePage(event.currentTarget.getAttribute('data-id'));
         });
+        }else if(item.titletype == "tvSeries" || item.titletype == "tvMiniSeries"){
+          div.addEventListener('click', () => {
+            redirectToSeriesPage(event.currentTarget.getAttribute('data-id'));
+          }); 
+        }
       } else if (containerId === 'people-container') {
 
 
@@ -195,6 +241,9 @@
 
   function redirectToMoviePage(movieId) {
     window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+  }
+  function redirectToSeriesPage(seriesId) {
+    window.location.href = `http://localhost:8228/seriespage?seriesId=${seriesId}`;
   }
 
   function redirectToPersonPage(personId) {

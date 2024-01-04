@@ -55,7 +55,7 @@
         cursor: pointer;
     }
 
-    body {
+    .AllInfoForPerson {
         margin-left: 20px;
     }
 
@@ -93,9 +93,14 @@
 </style>
 
 <body>
+    
+  <header class="site-header">
+    <img src="../static/logo.png" alt="NTUAFlix Logo">
+  </header>
+  <div class="AllInfoForPerson">
     <div id="personInfo"></div>
     <div id="knownForTitles" class="cast-list"></div>
-
+  </div>
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {

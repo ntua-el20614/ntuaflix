@@ -52,7 +52,7 @@
         cursor: pointer;
     }
 
-    body {
+    .movieInfo {
         margin-left: 20px;
     }
 
@@ -94,7 +94,11 @@
 </style>
 
 <body>
-    <div id="movieDetailsContainer">
+    
+  <header class="site-header">
+    <img src="../static/logo.png" alt="NTUAFlix Logo">
+  </header>
+    <div id="movieDetailsContainer" class="movieInfo">
         <!-- Movie details will be displayed here -->
     </div>
 
@@ -198,6 +202,8 @@
                 if (movieData.genres && movieData.genres.length > 0) {
                     htmlContent += `<p>Genres: ${movieData.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
                 }
+
+                console.log(movieData)
 
 
 
@@ -359,7 +365,7 @@
                 if (movieData.principals && movieData.principals.length > 0) {
 
                     for (const principal of movieData.principals) {
-                        if (principal.category !== 'actor' && principal.category !== 'actress') {
+                        if (principal.category !== 'actor' && principal.category !== 'actress' && principal.category !== 'writer' && principal.category !== 'director') {
                             if (flag) {
 
                                 const castContainer = document.createElement('div');
