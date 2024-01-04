@@ -13,6 +13,12 @@ def movie():
     return render_template("moviepage.html", pageTitle="Movie Page")
 
 
+
+@app.route("/seriespage")
+def series():
+    return render_template("seriespage.html", pageTitle="Series Page")
+
+
 @app.route("/personpage")
 def person():
     return render_template("personpage.html", pageTitle="Person Page")
