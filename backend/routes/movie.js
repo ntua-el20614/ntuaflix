@@ -18,6 +18,6 @@ router.post('/searchtitle', movieController.getPrimaryTitle)
 router.post('/bygenre', movieController.getGenre)
 
 //top 20 recent movies
-router.get('/toptwentymovies', movieController.getTopTwentyMovies)
+router.get('/topmovies', movieController.getTopMovies)
 
 module.exports = router;

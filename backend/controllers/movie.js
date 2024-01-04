@@ -164,15 +164,15 @@ exports.getGenre = async (req,res,next)=>{
 
 }
 
-exports.getTopTwentyMovies = async (req,res,next)=>{
+exports.getTopMovies = async (req,res,next)=>{
 
     const query = `
-    SELECT t.tconst, t.primarytitle, tr.averageRate, t.genres, t.img_url_asset, t.startYear
+    SELECT t.tconst, t.primarytitle, tr.averageRate, t.genres, t.img_url_asset, t.startYear, t.titletype
     FROM Titles t
         JOIN title_ratings tr ON t.tconst = tr.titleid
-    WHERE t.titletype = 'movie' and t.img_url_asset IS NOT NULL
+    WHERE t.img_url_asset IS NOT NULL
     ORDER BY t.startYear DESC, tr.averageRate DESC
-    LIMIT 20;
+    LIMIT 100;
     `;
     
     try {
