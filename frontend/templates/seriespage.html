@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Details</title>
+    <title>TvSeries Details</title>
     <link rel="icon" type="image/png" href="../static/logo.png">
     <link rel="stylesheet" href="/static/css/landing.css">
 </head>
@@ -96,10 +96,10 @@
 </style>
 
 <body>
-    
-  <header class="site-header">
-    <img src="../static/logo.png" alt="NTUAFlix Logo">
-  </header>
+
+    <header class="site-header">
+        <img src="../static/logo.png" alt="NTUAFlix Logo">
+    </header>
     <div id="movieDetailsContainer" class="movieInfo">
         <!-- Movie details will be displayed here -->
     </div>
@@ -165,6 +165,19 @@
                     });
             }
 
+            function fetchEpisodeDetails(titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/episodes/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching crew details:', error);
+                    });
+            }
+
 
             function calculateAge(birthYear, deathYear) {
                 const currentYear = new Date().getFullYear();
@@ -185,6 +198,7 @@
             }
 
             async function displayMovieDetails(movieData) {
+                console.log(movieData);
                 const container = document.getElementById('movieDetailsContainer');
                 container.innerHTML = ''; // Clear existing content
 
@@ -206,7 +220,7 @@
                 }
 
 
-                
+
 
 
                 // Add titleAkas if available
@@ -290,7 +304,7 @@
 
 
                     // Check if image URL is available and not null
-                    if (crewMember.img_url_asset && crewMember.img_url_asset !== '\\N' ) {
+                    if (crewMember.img_url_asset && crewMember.img_url_asset !== '\\N') {
                         div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
                     }
 
@@ -394,8 +408,8 @@
                 let crewData = await fetchCrewDetails(movieData.titleID);
                 crewData = crewData[0].result;
 
-
-                if (crewData) {
+                
+                if (crewData && ((crewData.director && crewData.director.length > 0) || (crewData.writer && crewData.writer.length > 0))) {
                     const combinedCrew = combineCrewData(crewData.director, crewData.writer);
 
 
@@ -412,6 +426,12 @@
                         crewListDiv.appendChild(crewDiv);
                     }
                 }
+
+
+                //Display episodes
+                let episodeData = await fetchEpisodeDetails(movieData.titleID);
+                episodeData = episodeData[0];
+                console.log(episodeData)
 
             }
 

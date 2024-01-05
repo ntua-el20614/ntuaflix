@@ -190,7 +190,7 @@
       div.innerHTML = '';
 
       if (containerId === 'movies-container' || containerId === 'people-container') {
-        if (item.img_url_asset != null && item.img_url_asset !== '\\N') {
+        if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
           div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primaryName || item.primarytitle}">`;
         }
 
@@ -221,7 +221,7 @@
         }
       } else if (containerId === 'people-container') {
 
-
+        console.log(item)
         div.innerHTML += `
                 <h3>${item.primaryName}</h3>
                 <p>${item.primaryProfession.replace(/,/g, ', ')}</p>
