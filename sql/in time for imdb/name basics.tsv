@@ -1,4 +1,1526 @@
 nconst	primaryName	birthYear	deathYear	primaryProfession	knownForTitles	img_url_asset
+nm0000004	John Belushi	1949	1982	actor,soundtrack,writer	tt0077975,tt0078723,tt0080455,tt0072562
+nm0000005	Ingmar Bergman	1918	2007	writer,director,actor	tt0050986,tt0050976,tt0069467,tt0083922
+nm0000008	Marlon Brando	1924	2004	actor,soundtrack,director	tt0070849,tt0047296,tt0068646,tt0078788
+nm0000009	Richard Burton	1925	1984	actor,soundtrack,producer	tt0059749,tt0057877,tt0087803,tt0061184
+nm0000010	James Cagney	1899	1986	actor,soundtrack,director	tt0035575,tt0031867,tt0029870,tt0042041
+nm0000018	Kirk Douglas	1916	2020	actor,producer,soundtrack	tt0050825,tt0054331,tt0049456,tt0080736
+nm0000019	Federico Fellini	1920	1993	writer,director,actor	tt0050783,tt0056801,tt0071129,tt0053779
+nm0000024	John Gielgud	1904	2000	actor,writer,director	tt0045943,tt0071877,tt0117631,tt0082031
+nm0000027	Alec Guinness	1914	2000	actor,soundtrack,writer	tt0076759,tt0041546,tt0050212,tt0051739
+nm0000031	Katharine Hepburn	1907	2003	actress,soundtrack,writer	tt0032904,tt0043265,tt0063227,tt0082846
+nm0000032	Charlton Heston	1923	2008	actor,director,soundtrack	tt0049833,tt0063442,tt0052618,tt0067525
+nm0000033	Alfred Hitchcock	1899	1980	director,producer,writer	tt0052357,tt0034248,tt0054215,tt0053125
+nm0000036	Buster Keaton	1895	1966	actor,writer,director	tt0015324,tt0017925,tt0016332,tt0015163
+nm0000037	Gene Kelly	1912	1996	soundtrack,actor,miscellaneous	tt0043278,tt0045152,tt0053946,tt0041716
+nm0000040	Stanley Kubrick	1928	1999	director,writer,producer	tt0062622,tt0066921,tt0120663,tt0072684
+nm0000041	Akira Kurosawa	1910	1998	writer,director,assistant_director	tt0080979,tt0051808,tt0047478,tt0089881
+nm0000044	Burt Lancaster	1913	1994	actor,producer,soundtrack	tt0057091,tt0051036,tt0045793,tt0085859
+nm0000045	Bruce Lee	1940	1973	actor,writer,miscellaneous	tt0067824,tt0068767,tt0068935,tt0070034
+nm0000046	Vivien Leigh	1913	1967	actress,soundtrack,writer	tt0034272,tt0044081,tt0033238,tt0031381
+nm0000048	Peter Lorre	1904	1964	actor,soundtrack,writer	tt0034583,tt0036613,tt0022100,tt0033870
+nm0000050	Groucho Marx	1890	1977	soundtrack,actor,writer	tt0023027,tt0026778,tt0023969,tt0028772
+nm0000051	James Mason	1909	1984	actor,producer,writer	tt0047522,tt0053125,tt0056193,tt0084855
+nm0000053	Robert Mitchum	1917	1997	actor,soundtrack,producer	tt0056197,tt0050356,tt0048424,tt0039689
+nm0000054	Marilyn Monroe	1926	1962	soundtrack,actress,writer	tt0045891,tt0048605,tt0053291,tt0045810
+nm0000056	Paul Newman	1925	2008	actor,producer,director	tt0084855,tt0110684,tt0054997,tt0257044
+nm0000057	David Niven	1910	1983	actor,producer,soundtrack	tt0052182,tt0057413,tt0074937,tt0048960
+nm0000059	Laurence Olivier	1907	1989	actor,producer,director	tt0074860,tt0069281,tt0077269,tt0032976
+nm0000062	Elvis Presley	1935	1977	music_artist,soundtrack,actor	tt0053848,tt0056023,tt0056585,tt0054692
+nm0000063	Anthony Quinn	1915	2001	actor,producer,soundtrack	tt0049456,tt0056172,tt0057831,tt0064952
+nm0000064	Edward G. Robinson	1893	1973	actor,soundtrack,writer	tt0038991,tt0040506,tt0038057,tt0036775
+nm0000065	Nino Rota	1911	1979	composer,soundtrack,music_department	tt0071562,tt0063518,tt0056801,tt0068646
+nm0000067	Miklós Rózsa	1907	1995	music_department,composer,soundtrack	tt0036775,tt0052618,tt0038109,tt0054847
+nm0000069	Frank Sinatra	1915	1998	music_artist,soundtrack,actor	tt0052218,tt0048347,tt0045793,tt0056218
+nm0000071	James Stewart	1908	1997	actor,soundtrack,director	tt0038650,tt0052357,tt0032904,tt0052561
+nm0000073	Shirley Temple	1928	2014	actress,soundtrack,writer	tt0031580,tt0030657,tt0024914,tt0016029
+nm0000076	François Truffaut	1932	1984	writer,director,producer	tt0055032,tt0053198,tt0075860,tt0070460
+nm0000078	John Wayne	1907	1979	actor,producer,soundtrack	tt0053580,tt0075213,tt0065126,tt0056217
+nm0000079	Raquel Welch	1940	2023	actress,soundtrack,producer	tt0072281,tt0061653,tt0066115,tt0068675
+nm0000080	Orson Welles	1915	1985	actor,writer,director	tt0033467,tt0040525,tt0052311,tt0057427
+nm0000083	Alan Miller	\N	\N	editor,writer,director	tt0424773,tt27504185,tt19064180,tt0969216
+nm0000085	Henner Hofmann	1950	\N	cinematographer,producer,camera_department	tt0097523,tt0097738,tt0113482,tt1825758
+nm0000086	Louis de Funès	1914	1983	actor,writer,director	tt0069747,tt0079200,tt0064425,tt0074103
+nm0000088	Aleksey Korenev	1927	1995	director,writer,assistant_director	tt0076551,tt0068304,tt0191104,tt0100069
+nm0000090	Armin Mueller-Stahl	1930	\N	actor,director,writer	tt0139809,tt0963178,tt0765443,tt0117631
+nm0000091	Gérard Pirès	1942	\N	director,writer,actor	tt0421974,tt0282552,tt0152930,tt0064297
+nm0000092	John Cleese	1939	\N	actor,writer,producer	tt0085959,tt0071853,tt0095159,tt0063929
+nm0000094	J. Reifel	\N	\N	writer	tt0117915,tt0118631,tt0116030,tt0118886
+nm0000095	Woody Allen	1935	\N	writer,director,actor	tt0118954,tt0079522,tt0075686,tt0091167
+nm0000096	Gillian Anderson	1968	\N	actress,producer,soundtrack	tt2294189,tt0106179,tt0455590,tt0442632
+nm0000097	Pamela Anderson	1967	\N	actress,producer,director	tt0426592,tt0115624,tt0306047,tt0893509
+nm0000098	Jennifer Aniston	1969	\N	actress,producer,soundtrack	tt0108778,tt3442006,tt1723121,tt0279113
+nm0000099	Patricia Arquette	1968	\N	actress,producer,director	tt1065073,tt0108399,tt0412175,tt0145531
+nm0000100	Rowan Atkinson	1955	\N	actor,writer,soundtrack	tt1634122,tt0118689,tt0110357,tt0274166
+nm0000101	Dan Aykroyd	1952	\N	writer,actor,producer	tt0087332,tt0080455,tt0118747,tt0102558
+nm0000102	Kevin Bacon	1958	\N	actor,producer,soundtrack	tt0087277,tt0164052,tt0327056,tt0361127
+nm0000104	Antonio Banderas	1960	\N	actor,soundtrack,producer	tt0112851,tt0120657,tt0120746,tt1189073
+nm0000106	Drew Barrymore	1975	\N	producer,actress,soundtrack	tt0120631,tt0151738,tt0160127,tt0343660
+nm0000108	Luc Besson	1959	\N	writer,producer,director	tt0100263,tt0110413,tt0119116,tt2872732
+nm0000110	Kenneth Branagh	1960	\N	actor,producer,director	tt0097499,tt0107616,tt0116477,tt3402236
+nm0000111	Matthew Broderick	1962	\N	actor,soundtrack,director	tt0115798,tt0395251,tt0091042,tt0086567
+nm0000113	Sandra Bullock	1964	\N	producer,actress,soundtrack	tt1454468,tt0212346,tt0111257,tt1041829
+nm0000114	Steve Buscemi	1957	\N	actor,director,producer	tt4686844,tt0116282,tt0105236,tt0162346
+nm0000115	Nicolas Cage	1964	\N	actor,producer,soundtrack	tt0117500,tt0119094,tt0113627,tt0435705
+nm0000116	James Cameron	1954	\N	writer,producer,director	tt0120338,tt0090605,tt1630029,tt0499549
+nm0000117	Neve Campbell	1973	\N	actress,producer,soundtrack	tt0117571,tt0120082,tt0134084,tt0120890
+nm0000118	John Carpenter	1948	\N	soundtrack,writer,music_department	tt0069945,tt0077651,tt0080749,tt0082340
+nm0000120	Jim Carrey	1962	\N	actor,writer,soundtrack	tt0109040,tt0338013,tt0315327,tt0110475
+nm0000122	Charles Chaplin	1889	1977	soundtrack,writer,actor	tt0021749,tt0044837,tt0032553,tt0027977
+nm0000123	George Clooney	1961	\N	actor,producer,director	tt0433383,tt1193138,tt0465538,tt1124035
+nm0000125	Sean Connery	1930	2020	actor,producer,soundtrack	tt0117500,tt0091605,tt0055928,tt0094226
+nm0000126	Kevin Costner	1955	\N	actor,producer,soundtrack	tt0102798,tt0099348,tt0119925,tt0103855
+nm0000127	Wes Craven	1939	2015	writer,producer,director	tt0087800,tt0117571,tt0111686,tt0105121
+nm0000128	Russell Crowe	1964	\N	actor,soundtrack,producer	tt1707386,tt0119488,tt0172495,tt0268978
+nm0000129	Tom Cruise	1962	\N	actor,producer,soundtrack	tt0325710,tt0116695,tt0092099,tt0120755
+nm0000130	Jamie Lee Curtis	1958	\N	actress,producer,director	tt0120694,tt6710474,tt0111503,tt1502407
+nm0000131	John Cusack	1966	\N	actor,producer,writer	tt0450385,tt0146882,tt0119229,tt0098258
+nm0000133	Geena Davis	1956	\N	actress,producer,soundtrack	tt0103074,tt0104694,tt0116908,tt0091064
+nm0000134	Robert De Niro	1943	\N	actor,producer,soundtrack	tt0081398,tt0075314,tt0101540,tt0077416
+nm0000135	John Denver	1943	1997	music_artist,soundtrack,music_department	tt4649466,tt0076489,tt0120591,tt0299328
+nm0000136	Johnny Depp	1963	\N	actor,producer,soundtrack	tt0325980,tt0449088,tt0408236,tt0383574
+nm0000138	Leonardo DiCaprio	1974	\N	producer,actor,soundtrack	tt0993846,tt0120338,tt0407887,tt1375666
+nm0000140	Michael Douglas	1944	\N	actor,producer,soundtrack	tt0088011,tt0093010,tt0094291,tt1291580
+nm0000141	David Duchovny	1960	\N	actor,producer,director	tt0120902,tt0904208,tt0251075,tt0106179
+nm0000142	Clint Eastwood	1930	\N	actor,producer,director	tt0405159,tt1205489,tt0105695,tt0112579
+nm0000144	Cary Elwes	1962	\N	actor,producer,soundtrack	tt0093779,tt0107977,tt0119468,tt0387564
+nm0000146	Ralph Fiennes	1962	\N	actor,producer,director	tt0108052,tt2278388,tt1372686,tt0387131
+nm0000147	Colin Firth	1960	\N	actor,producer,soundtrack	tt2802144,tt1315981,tt1504320,tt0243155
+nm0000148	Harrison Ford	1942	\N	actor,writer,producer	tt0090329,tt0076759,tt0082971,tt0106977
+nm0000149	Jodie Foster	1962	\N	actress,director,producer	tt0075314,tt0476964,tt0094608,tt0102926
+nm0000150	Michael J. Fox	1961	\N	actor,producer,miscellaneous	tt0088763,tt0116365,tt0096874,tt0115369
+nm0000151	Morgan Freeman	1937	\N	actor,producer,soundtrack	tt0114369,tt0405159,tt0468569,tt0097239
+nm0000153	Gina Gershon	1962	\N	actress,soundtrack,producer	tt0114436,tt0115736,tt0431308,tt1726669
+nm0000154	Mel Gibson	1956	\N	actor,producer,director	tt0112573,tt0118883,tt0117438,tt0104714
+nm0000155	Whoopi Goldberg	1955	\N	actress,producer,writer	tt0088939,tt0108147,tt0105417,tt0099653
+nm0000156	Jeff Goldblum	1952	\N	actor,soundtrack,producer	tt0116629,tt0107290,tt0091064,tt2278388
+nm0000158	Tom Hanks	1956	\N	producer,actor,soundtrack	tt0094737,tt0109830,tt0162222,tt1535109
+nm0000159	Teri Hatcher	1964	\N	actress,soundtrack,writer	tt0327597,tt0227538,tt0120347,tt0410975
+nm0000160	Ethan Hawke	1970	\N	actor,producer,writer	tt0112471,tt0381681,tt0139654,tt2209418
+nm0000161	Salma Hayek	1966	\N	actress,producer,soundtrack	tt0120679,tt0112851,tt0120891,tt1615065
+nm0000162	Anne Heche	1969	2022	actress,producer,writer	tt0120461,tt0119008,tt0120885,tt0120828
+nm0000163	Dustin Hoffman	1937	\N	actor,soundtrack,producer	tt0079417,tt0064665,tt0084805,tt0095953
+nm0000164	Anthony Hopkins	1937	\N	actor,soundtrack,composer	tt0113987,tt0412080,tt0102926,tt0975645
+nm0000165	Ron Howard	1954	\N	producer,actor,writer	tt0268978,tt0112384,tt0075213,tt0367279
+nm0000166	Helen Hunt	1963	\N	actress,producer,director	tt0103484,tt0117998,tt0119822,tt0455805
+nm0000169	Tommy Lee Jones	1946	\N	actor,director,soundtrack	tt0106977,tt0443272,tt0477348,tt2398231
+nm0000170	Milla Jovovich	1975	\N	actress,soundtrack,producer	tt0120804,tt1220198,tt1220634,tt0119116
+nm0000171	Ashley Judd	1968	\N	actress,producer,director	tt0470705,tt0113277,tt0119468,tt0150377
+nm0000174	Val Kilmer	1959	\N	actor,soundtrack,producer	tt0120053,tt0373469,tt0101761,tt0235737
+nm0000175	Stephen King	1947	\N	writer,producer,actor	tt0083767,tt0111161,tt0324864,tt0091499
+nm0000177	Kevin Kline	1947	\N	actor,soundtrack,director	tt0095159,tt0106673,tt0113117,tt0120891
+nm0000179	Jude Law	1972	\N	actor,producer,soundtrack	tt0346156,tt0376541,tt0134119,tt2278388
+nm0000180	David Lean	1908	1991	editor,director,writer	tt0056172,tt0059113,tt0038574,tt0050212
+nm0000182	Jennifer Lopez	1969	\N	music_artist,producer,actress	tt0120780,tt0252076,tt5503686,tt2126357
+nm0000183	Traci Lords	1968	\N	actress,soundtrack,producer	tt0120611,tt1007028,tt1984153,tt0099329
+nm0000184	George Lucas	1944	\N	writer,producer,director	tt0076759,tt0069704,tt0066434,tt0082971
+nm0000185	Dolph Lundgren	1957	\N	actor,producer,director	tt0089927,tt0093507,tt0105698,tt0113481
+nm0000186	David Lynch	1946	\N	writer,director,producer	tt0098936,tt0460829,tt0166924,tt0105665
+nm0000187	Madonna	1958	\N	music_artist,soundtrack,actress	tt0116250,tt0156841,tt0246460,tt0104694
+nm0000188	Steve Martin	1945	\N	writer,actor,producer	tt0093886,tt0102250,tt0079367,tt0383216
+nm0000189	Jenny McCarthy-Wahlberg	1972	\N	actress,producer,writer	tt0134084,tt0131857,tt0327643,tt0455967
+nm0000190	Matthew McConaughey	1969	\N	actor,producer,soundtrack	tt1935179,tt0816692,tt0790636,tt1915581
+nm0000191	Ewan McGregor	1971	\N	actor,producer,writer	tt2763304,tt1322269,tt0203009,tt0117951
+nm0000192	Alyssa Milano	1972	\N	actress,producer,soundtrack	tt0086827,tt0088944,tt0116287,tt0158552
+nm0000193	Demi Moore	1962	\N	actress,producer,soundtrack	tt0305357,tt0119173,tt0107211,tt0099653
+nm0000195	Bill Murray	1950	\N	actor,soundtrack,writer	tt1748122,tt0362270,tt0335266,tt0128445
+nm0000196	Mike Myers	1963	\N	actor,writer,soundtrack	tt0118655,tt0295178,tt0811138,tt0145660
+nm0000197	Jack Nicholson	1937	\N	actor,soundtrack,producer	tt0119822,tt0407887,tt0071315,tt0073486
+nm0000198	Gary Oldman	1958	\N	actor,producer,soundtrack	tt0468569,tt4555426,tt0103874,tt1340800
+nm0000199	Al Pacino	1940	\N	actor,director,soundtrack	tt0072890,tt0070666,tt0099422,tt0068646
+nm0000200	Bill Paxton	1955	2017	actor,producer,writer	tt0264616,tt0112384,tt0117998,tt0090605
+nm0000202	Ryan Phillippe	1974	\N	actor,producer,director	tt0120577,tt0139134,tt0375679,tt0280707
+nm0000204	Natalie Portman	1981	\N	actress,producer,soundtrack	tt0376541,tt0110413,tt0434409,tt0947798
+nm0000205	Parker Posey	1968	\N	actress,producer,soundtrack	tt0106677,tt0134084,tt0359013,tt0348150
+nm0000206	Keanu Reeves	1964	\N	actor,producer,soundtrack	tt0234215,tt0133093,tt0102685,tt0111257
+nm0000209	Tim Robbins	1958	\N	actor,producer,director	tt0111161,tt0327056,tt0091225,tt0105151
+nm0000212	Meg Ryan	1961	\N	actress,producer,director	tt0098635,tt0120632,tt0108160,tt0128853
+nm0000213	Winona Ryder	1971	\N	actress,producer,soundtrack	tt0100140,tt0110367,tt0172493,tt0099487
+nm0000216	Arnold Schwarzenegger	1947	\N	actor,producer,director	tt0216216,tt0103064,tt0107362,tt0088247
+nm0000217	Martin Scorsese	1942	\N	producer,director,actor	tt5537002,tt0070379,tt0075314,tt0099685
+nm0000218	Kristin Scott Thomas	1960	\N	actress,soundtrack,writer	tt0109831,tt1602613,tt0280707,tt0116209
+nm0000219	Steven Seagal	1952	\N	actor,producer,writer	tt0110725,tt0114781,tt0105690,tt0094602
+nm0000221	Charlie Sheen	1965	\N	actor,producer,soundtrack	tt0369179,tt0108333,tt0107144,tt0094291
+nm0000222	Brooke Shields	1965	\N	actress,producer,soundtrack	tt0080453,tt0082329,tt0080116,tt0078111
+nm0000225	Christian Slater	1969	\N	actor,producer,soundtrack	tt0124198,tt0102798,tt0108399,tt0115759
+nm0000226	Will Smith	1968	\N	producer,actor,soundtrack	tt0120891,tt0119654,tt0098800,tt0480249
+nm0000228	Kevin Spacey	1959	\N	actor,producer,soundtrack	tt0114814,tt0119488,tt0114369,tt0169547
+nm0000229	Steven Spielberg	1946	\N	producer,writer,director	tt0083866,tt0082971,tt0120815,tt0108052
+nm0000230	Sylvester Stallone	1946	\N	actor,producer,writer	tt0084602,tt3076658,tt0089927,tt0075148
+nm0000231	Oliver Stone	1946	\N	director,producer,writer	tt0102138,tt0096969,tt0091763,tt0110632
+nm0000232	Sharon Stone	1958	\N	actress,producer,soundtrack	tt0114214,tt0112641,tt0108162,tt0103772
+nm0000233	Quentin Tarantino	1963	\N	writer,actor,producer	tt7131622,tt3460252,tt0105236,tt0110912
+nm0000235	Uma Thurman	1970	\N	actress,producer,soundtrack	tt0378194,tt0266697,tt0110912,tt0118688
+nm0000236	Jennifer Tilly	1958	\N	actress,soundtrack,writer	tt0115736,tt0144120,tt0387575,tt0109348
+nm0000237	John Travolta	1954	\N	actor,soundtrack,producer	tt0110912,tt0113161,tt0076666,tt0077631
+nm0000240	Skeet Ulrich	1970	\N	actor,soundtrack,director	tt0409572,tt0117571,tt0115963,tt0913354
+nm0000241	Jean-Claude Van Damme	1960	\N	actor,writer,producer	tt0097659,tt0101764,tt0107711,tt0119013
+nm0000243	Denzel Washington	1954	\N	actor,producer,director	tt1037705,tt0168786,tt2671706,tt0139654
+nm0000245	Robin Williams	1951	2014	actor,soundtrack,writer	tt0265459,tt0107614,tt0115685,tt0093105
+nm0000246	Bruce Willis	1955	\N	actor,producer,soundtrack	tt0095016,tt0088571,tt0167404,tt0110912
+nm0000247	John Woo	1946	\N	director,producer,writer	tt0092263,tt0425637,tt0119094,tt0104684
+nm0000248	Edward D. Wood Jr.	1924	1978	writer,director,actor	tt0052077,tt0047127,tt0045826,tt0067479
+nm0000249	James Woods	1947	\N	actor,producer,director	tt0119282,tt0120877,tt0086541,tt0159097
+nm0000250	Renée Zellweger	1969	\N	actress,producer,soundtrack	tt0116695,tt0159365,tt0243155,tt0299658
+nm0000251	Timothy Dowling	1973	\N	actor,writer,script_department	tt0181852,tt2120120,tt1596350,tt0430922
+nm0000252	Robert Ellis	1892	1974	actor,director,writer	tt0030738,tt0010781,tt0006213,tt0030778
+nm0000255	Ben Affleck	1972	\N	producer,actor,writer	tt1024648,tt0119217,tt0840361,tt2267998
+nm0000257	Alan Alda	1936	\N	actor,miscellaneous,soundtrack	tt7653254,tt0068098,tt0097123,tt0082405
+nm0000258	Stephanie Zimbalist	1956	\N	actress,writer	tt0083470,tt0080402,tt0076993,tt2224219
+nm0000259	Ginger Lynn	1962	\N	actress,director,writer	tt0395584,tt0134898,tt0087562,tt0210365
+nm0000261	Karen Allen	1951	\N	actress,soundtrack,director	tt0082971,tt0367882,tt0088172,tt0077975
+nm0000263	Kirstie Alley	1951	2022	actress,producer,writer	tt0097778,tt0084726,tt0157503,tt0114852
+nm0000264	Pedro Almodóvar	1949	\N	writer,director,soundtrack	tt0101026,tt1189073,tt0287467,tt0095675
+nm0000265	Robert Altman	1925	2006	director,producer,writer	tt0073440,tt0105151,tt0108122,tt0280707
+nm0000267	Julie Andrews	1935	\N	actress,soundtrack,writer	tt0058331,tt0084865,tt0062362,tt0059742
+nm0000269	Jean-Jacques Annaud	1943	\N	director,producer,writer	tt2909116,tt0120102,tt0091605,tt0215750
+nm0000270	Gabrielle Anwar	1970	\N	actress,producer,soundtrack	tt0105323,tt0108333,tt0810788,tt0114660
+nm0000271	Anne Archer	1947	\N	actress,producer,soundtrack	tt0093010,tt0105112,tt0160009,tt0108122
+nm0000272	Fanny Ardant	1949	\N	actress,director,writer	tt0127536,tt0348853,tt0283832,tt0086551
+nm0000273	Alan Arkin	1934	2023	actor,soundtrack,director	tt0449059,tt0099487,tt1024648,tt0104348
+nm0000274	David Arquette	1971	\N	producer,actor,director	tt0271367,tt0120082,tt0151738,tt0134084
+nm0000275	Rosanna Arquette	1959	\N	actress,producer,director	tt0088680,tt0089017,tt0110912,tt0190138
+nm0000276	Sean Astin	1971	\N	actor,producer,director	tt0120737,tt0167261,tt0089218,tt0167260
+nm0000277	Richard Attenborough	1923	2014	actor,producer,director	tt0057115,tt0083987,tt0107290,tt0119567
+nm0000278	Pernilla August	1958	\N	actress,director,writer	tt0120915,tt0121765,tt0104350,tt0115164
+nm0000279	Hank Azaria	1964	\N	actor,soundtrack,producer	tt1839481,tt0132347,tt0096697,tt0115685
+nm0000281	Scott Baio	1960	\N	actor,director,producer	tt0367279,tt0070992,tt0270846,tt0281680
+nm0000285	Alec Baldwin	1958	\N	actor,producer,soundtrack	tt1230414,tt0407887,tt0318374,tt0104348
+nm0000286	Stephen Baldwin	1966	\N	actor,producer,director	tt0114814,tt0115683,tt0158622,tt0486583
+nm0000291	Angela Bassett	1958	\N	actress,producer,director	tt0118884,tt1825683,tt9114286,tt0114558
+nm0000294	Amanda Bearse	1958	\N	actress,director,producer	tt9731598,tt0247121,tt0092400,tt0089175
+nm0000297	Tom Berenger	1949	\N	actor,producer,writer	tt1375666,tt0097815,tt0091763,tt0085244
+nm0000299	Michael Biehn	1956	\N	actor,producer,director	tt0090605,tt0096754,tt0117500,tt0088247
+nm0000301	Thora Birch	1982	\N	actress,producer,director	tt0107120,tt0105112,tt0169547,tt0162346
+nm0000306	Brian Blessed	1936	\N	actor,soundtrack,director	tt0120855,tt0120915,tt0102798,tt0080745
+nm0000307	Helena Bonham Carter	1966	\N	actress,soundtrack,director	tt0137523,tt0408236,tt1504320,tt1707386
+nm0000309	David Bowie	1947	2016	music_artist,soundtrack,actor	tt0091369,tt0196229,tt0482571,tt0074851
+nm0000312	Amy Brenneman	1964	\N	actress,producer,writer	tt0209069,tt0116287,tt0113277,tt0411061
+nm0000316	Mel Brooks	1926	\N	actor,writer,soundtrack	tt0082517,tt0071230,tt0395251,tt0094012
+nm0000318	Tim Burton	1958	\N	producer,miscellaneous,director	tt0099487,tt0121164,tt0408236,tt1142977
+nm0000320	Luis Buñuel	1900	1983	writer,director,actor	tt0075824,tt0068361,tt0061395,tt0056732
+nm0000321	Gabriel Byrne	1950	\N	actor,producer,writer	tt7784604,tt0146675,tt0114814,tt0100150
+nm0000322	Emmanuelle Béart	1963	\N	actress,soundtrack	tt0117060,tt0283832,tt0109731,tt0113947
+nm0000327	Lacey Chabert	1982	\N	actress,producer,soundtrack	tt0120738,tt0277371,tt0454082,tt0377092
+nm0000329	Jackie Chan	1954	\N	producer,actor,stunts	tt0089374,tt0127357,tt0120812,tt0266915
+nm0000331	Chevy Chase	1943	\N	actor,writer,soundtrack	tt0085995,tt0080487,tt0092086,tt0104850
+nm0000332	Don Cheadle	1964	\N	actor,producer,soundtrack	tt1540133,tt0375679,tt0395169,tt0790770
+nm0000333	Cher	1946	\N	music_artist,soundtrack,actress	tt1126591,tt0100140,tt0089560,tt0093565
+nm0000334	Chow Yun-Fat	1955	\N	actor,writer,soundtrack	tt1098327,tt0190332,tt0120008,tt0473444
+nm0000335	Glenn Close	1947	\N	actress,soundtrack,producer	tt3750872,tt0093010,tt0094947,tt2015381
+nm0000336	James Coburn	1928	2002	actor,producer,director	tt0054047,tt0074695,tt0056923,tt0057115
+nm0000337	Rachael Leigh Cook	1979	\N	actress,producer,writer	tt0160862,tt0331811,tt11100856,tt5659816
+nm0000338	Francis Ford Coppola	1939	\N	producer,director,writer	tt0071360,tt0068646,tt0078788,tt0071562
+nm0000339	Roger Corman	1926	\N	producer,director,actor	tt0061189,tt0099612,tt0091419,tt0102926
+nm0000341	Michael Crichton	1942	2008	writer,producer,director	tt0107290,tt0070909,tt0117998,tt0108757
+nm0000343	David Cronenberg	1943	\N	actor,director,writer	tt0115964,tt0120907,tt0094964,tt0091064
+nm0000345	Billy Crystal	1948	\N	actor,writer,producer	tt0113097,tt0101587,tt0098635,tt0122933
+nm0000346	Macaulay Culkin	1980	\N	actor,producer,director	tt0099785,tt0104431,tt0107034,tt0102492
+nm0000349	Joan Cusack	1962	\N	actress,soundtrack,writer	tt1659337,tt0096463,tt0119360,tt0119229
+nm0000351	Donna D'Errico	1968	\N	actress,director,producer	tt4459134,tt12861508,tt7235466,tt4270458
+nm0000352	Vincent D'Onofrio	1959	\N	actor,producer,soundtrack	tt0093058,tt0119654,tt0109707,tt0209958
+nm0000353	Willem Dafoe	1955	\N	actor,soundtrack,producer	tt7984734,tt6938828,tt5649144,tt0145487
+nm0000354	Matt Damon	1970	\N	producer,actor,soundtrack	tt3659388,tt0119217,tt0134119,tt0407887
+nm0000355	Anthony Daniels	1946	\N	actor,producer,writer	tt2527336,tt2488496,tt0080684,tt0076759
+nm0000356	Sybil Danning	\N	\N	actress,producer,writer	tt0373883,tt0072281,tt0080421,tt0085672
+nm0000359	Olivier De Funès	1949	\N	actor,writer,soundtrack	tt0060475,tt0250077,tt0065848,tt0064425
+nm0000360	Rebecca De Mornay	1959	\N	actress,soundtrack,producer	tt0089941,tt0086200,tt0104389,tt0396269
+nm0000361	Brian De Palma	1940	\N	director,writer,producer	tt0094226,tt0120832,tt0080661,tt0086984
+nm0000362	Danny DeVito	1944	\N	actor,producer,director	tt0119488,tt0117008,tt0098621,tt0103776
+nm0000365	Julie Delpy	1969	\N	actress,writer,producer	tt0381681,tt0111507,tt0841044,tt0112471
+nm0000367	Gérard Depardieu	1948	\N	actor,producer,soundtrack	tt0103594,tt0120744,tt0099334,tt0099699
+nm0000368	Laura Dern	1967	\N	actress,producer,writer	tt0090756,tt0107290,tt2305051,tt7653254
+nm0000369	Matt Dillon	1964	\N	actor,director,producer	tt0129387,tt0375679,tt4003440,tt0097240
+nm0000370	Walt Disney	1901	1966	producer,actor,director	tt0058331,tt0034492,tt0048280,tt0029583
+nm0000373	Michael Dorn	1952	\N	actor,director,soundtrack	tt0111280,tt0102975,tt0117731,tt0120844
+nm0000375	Robert Downey Jr.	1965	\N	actor,producer,soundtrack	tt1300854,tt4154796,tt0371746,tt0988045
+nm0000376	Fran Drescher	1957	\N	writer,actress,producer	tt0837562,tt0118691,tt0098546,tt0106080
+nm0000377	Richard Dreyfuss	1947	\N	actor,producer,soundtrack	tt0075860,tt0113862,tt0076095,tt0073195
+nm0000379	Kirsten Dunst	1982	\N	actress,producer,soundtrack	tt0145487,tt0110148,tt0110367,tt1527186
+nm0000380	Robert Duvall	1931	\N	actor,producer,soundtrack	tt0068646,tt1872194,tt0086423,tt0118632
+nm0000381	Anthony Edwards	1962	\N	actor,producer,director	tt0443706,tt0088000,tt0092099,tt0108757
+nm0000382	Atom Egoyan	1960	\N	director,writer,producer	tt2326612,tt0273435,tt1352824,tt0120255
+nm0000384	Danny Elfman	1953	\N	music_department,soundtrack,composer	tt0119654,tt0367594,tt0107688,tt0121164
+nm0000385	Sam Elliott	1944	\N	actor,producer,soundtrack	tt0098206,tt0286716,tt1517451,tt5655222
+nm0000386	Roland Emmerich	1955	\N	writer,producer,director	tt0120685,tt0116629,tt1628841,tt0319262
+nm0000387	Robert Englund	1947	\N	actor,miscellaneous,soundtrack	tt0329101,tt0093629,tt0095742,tt0087800
+nm0000388	R. Lee Ermey	1944	2018	actor,miscellaneous,producer	tt0324216,tt0093058,tt0114369,tt0095647
+nm0000389	Emilio Estevez	1962	\N	actor,director,producer	tt0308055,tt1441912,tt3294746,tt0100994
+nm0000390	Joe Eszterhas	1944	\N	writer,producer,miscellaneous	tt0108162,tt0118577,tt0103772,tt0114436
+nm0000391	Rupert Everett	1959	\N	actor,soundtrack,producer	tt0119738,tt2404639,tt0109592,tt0122541
+nm0000393	Peter Falk	1927	2011	actor,producer,soundtrack	tt0074937,tt1466074,tt0281322,tt0093779
+nm0000397	Corey Feldman	\N	\N	actor,producer,soundtrack	tt0089218,tt0093437,tt0096734,tt0092005
+nm0000398	Sally Field	1946	\N	actress,producer,soundtrack	tt0076729,tt0109830,tt0443272,tt0098384
+nm0000399	David Fincher	1962	\N	producer,director,writer	tt0114369,tt2267998,tt1285016,tt0443706
+nm0000401	Laurence Fishburne	1961	\N	actor,producer,director	tt1598778,tt0327056,tt0234215,tt0133093
+nm0000402	Carrie Fisher	1956	2016	actress,miscellaneous,soundtrack	tt0080684,tt2527336,tt0076759,tt0086190
+nm0000404	Jane Fonda	1937	\N	actress,producer,soundtrack	tt0062711,tt3312830,tt0077362,tt0067309
+nm0000406	John Ford	1894	1973	director,producer,actor	tt0045061,tt0032551,tt0031971,tt0033729
+nm0000407	Vivica A. Fox	1964	\N	actress,producer,director	tt0116629,tt0266697,tt1628841,tt0118688
+nm0000408	Jonathan Frakes	1952	\N	actor,director,producer	tt0253754,tt0111280,tt0117731,tt0120844
+nm0000410	Stephen Fry	1957	\N	actor,writer,producer	tt0120514,tt0280707,tt0434409,tt0371724
+nm0000412	Andy Garcia	1956	\N	actor,producer,soundtrack	tt0343996,tt0099674,tt0349903,tt0240772
+nm0000413	Janeane Garofalo	1964	\N	actress,writer,producer	tt0132347,tt0382932,tt0117979,tt0243655
+nm0000416	Terry Gilliam	1940	\N	writer,actor,animation_department	tt0071853,tt0081633,tt1054606,tt0088846
+nm0000417	Crispin Glover	1964	\N	actor,soundtrack,producer	tt0091860,tt0118141,tt1898069,tt0310357
+nm0000418	Danny Glover	1946	\N	actor,producer,director	tt1190080,tt0093409,tt0122151,tt0097733
+nm0000419	Jean-Luc Godard	1930	2022	director,writer,editor	tt0058898,tt0056663,tt0059592,tt0057869
+nm0000420	Valeria Golino	1965	\N	actress,director,producer	tt8613070,tt0102059,tt0095953,tt0107144
+nm0000421	Cuba Gooding Jr.	1968	\N	actor,soundtrack,writer	tt0101507,tt0316465,tt0203019,tt0116695
+nm0000425	Peter Greenaway	1942	\N	director,writer,editor	tt1702429,tt0092929,tt0446750,tt0097108
+nm0000427	Pam Grier	1949	\N	actress,soundtrack,writer	tt0228333,tt0069897,tt0071517,tt0119396
+nm0000428	D.W. Griffith	1875	1948	director,writer,producer	tt0009968,tt0010484,tt0004972,tt0006864
+nm0000430	Steve Guttenberg	1958	\N	actor,producer,soundtrack	tt0098966,tt0087928,tt0091949,tt0094137
+nm0000431	Taylor Hackford	1944	\N	producer,director,writer	tt0109642,tt0106469,tt0084434,tt0350258
+nm0000434	Mark Hamill	\N	\N	actor,soundtrack,producer	tt0086190,tt0080684,tt2527336,tt0076759
+nm0000435	Daryl Hannah	1960	\N	actress,producer,soundtrack	tt0094291,tt0088161,tt0083658,tt0378194
+nm0000436	Curtis Hanson	1945	2016	director,producer,writer	tt0388125,tt0104389,tt0119488,tt0185014
+nm0000437	Woody Harrelson	1961	\N	actor,producer,soundtrack	tt1156398,tt0117318,tt0110632,tt2356777
+nm0000438	Ed Harris	1950	\N	actor,producer,director	tt0183659,tt0112384,tt0800308,tt0120382
+nm0000439	Neil Patrick Harris	1973	\N	actor,producer,soundtrack	tt0120201,tt0460649,tt4834206,tt2267998
+nm0000440	Nina Hartley	1959	\N	actress,director,producer	tt0167019,tt1282224,tt0189990,tt0118749
+nm0000442	Rutger Hauer	1944	2019	actor,producer,director	tt0083658,tt1640459,tt0401792,tt0091209
+nm0000443	Goldie Hawn	1945	\N	actress,soundtrack,producer	tt0104070,tt0093693,tt0116313,tt0081375
+nm0000447	Marilu Henner	1952	\N	actress,miscellaneous,producer	tt0077089,tt0087507,tt0102250,tt0105017
+nm0000450	Philip Seymour Hoffman	1967	2014	actor,producer,soundtrack	tt0379725,tt1560747,tt0292963,tt0181875
+nm0000451	Gaby Hoffmann	1982	\N	actress,soundtrack,director	tt0098554,tt0116242,tt0114011,tt0097351
+nm0000454	Dennis Hopper	1936	2010	actor,director,writer	tt0111257,tt0114898,tt0090756,tt0064276
+nm0000455	John Hughes	1950	2009	writer,producer,director	tt0093748,tt0090305,tt0088847,tt0098554
+nm0000459	Timothy Hutton	1960	\N	actor,producer,director	tt0343737,tt0081283,tt1103987,tt0115639
+nm0000460	Jeremy Irons	1948	\N	actor,soundtrack,producer	tt2094766,tt0110357,tt0094964,tt2975590
+nm0000461	Michael Ironside	1950	\N	actor,producer,writer	tt0092099,tt0081455,tt0100802,tt0120201
+nm0000462	Kate Jackson	1948	\N	actress,producer,director	tt0085088,tt0084293,tt0059978,tt0073972
+nm0000463	Famke Janssen	1964	\N	actress,writer,director	tt0376994,tt0113189,tt0120903,tt0185371
+nm0000464	Jim Jarmusch	1953	\N	director,writer,actor	tt5247022,tt0088184,tt0412019,tt1714915
+nm0000465	Ron Jeremy	1953	\N	actor,director,writer	tt0124819,tt0120577,tt0165710,tt0144117
+nm0000466	Jean-Pierre Jeunet	1953	\N	director,writer,producer	tt0344510,tt1149361,tt0211915,tt0101700
+nm0000467	Don Johnson	1949	\N	actor,producer,soundtrack	tt8946378,tt0086759,tt0072730,tt1853728
+nm0000468	Lynn-Holly Johnson	1958	\N	actress,director	tt0088395,tt0081738,tt0082398,tt0077716
+nm0000473	Diane Keaton	1946	\N	actress,producer,director	tt0337741,tt0356680,tt0075686,tt0082979
+nm0000474	Michael Keaton	1951	\N	actor,miscellaneous,producer	tt2562232,tt0096895,tt1895587,tt4276820
+nm0000476	Sally Kirkland	1941	\N	actress,producer,miscellaneous	tt0070903,tt3216866,tt0102138,tt0092569
+nm0000479	Walter Koenig	1936	\N	actor,writer,producer	tt0084726,tt0060028,tt0092007,tt0102975
+nm0000481	Alice Krige	1954	\N	actress,producer,writer	tt1981115,tt0117731,tt9086228,tt0105428
+nm0000482	Sylvia Kristel	1952	2012	actress,soundtrack,director	tt0077497,tt0081249,tt0071464,tt0078740
+nm0000483	Christopher Lambert	1957	\N	actor,producer,writer	tt0091203,tt0106950,tt0113855,tt0120604
+nm0000484	John Landis	1950	\N	producer,director,actor	tt0067716,tt0118747,tt0080455,tt0086491
+nm0000485	Fritz Lang	1890	1976	writer,director,producer	tt0017136,tt0057345,tt0038057,tt0022100
+nm0000486	Heather Langenkamp	1964	\N	actress,special_effects,make_up_department	tt13444912,tt0094490,tt0111686,tt0087800
+nm0000487	Ang Lee	1954	\N	director,producer,writer	tt0107156,tt0190332,tt0454876,tt0808357
+nm0000490	Spike Lee	1957	\N	director,producer,writer	tt0097216,tt9777644,tt0104797,tt0091939
+nm0000491	John Leguizamo	1960	\N	actor,producer,writer	tt0162677,tt0117509,tt0203009,tt0120177
+nm0000492	Jennifer Jason Leigh	1962	\N	actress,producer,soundtrack	tt0109642,tt3460252,tt0108122,tt0105414
+nm0000493	Jack Lemmon	1925	2001	actor,soundtrack,producer	tt0104348,tt0107050,tt0053604,tt0053291
+nm0000496	Juliette Lewis	1973	\N	actress,soundtrack,director	tt1322269,tt0116367,tt0101540,tt0110632
+nm0000498	Matthew Lillard	1970	\N	actor,producer,soundtrack	tt0331632,tt0267913,tt1033575,tt0133189
+nm0000499	Bai Ling	\N	\N	actress,producer,writer	tt0119994,tt0109506,tt1121931,tt0405336
+nm0000500	Richard Linklater	1960	\N	producer,director,writer	tt0405296,tt0243017,tt2209418,tt1065073
+nm0000506	Julia Louis-Dreyfus	1961	\N	actress,producer,soundtrack	tt2390361,tt0098904,tt0462128,tt1759761
+nm0000507	Rob Lowe	1964	\N	actor,producer,soundtrack	tt0086066,tt0145660,tt0105793,tt0090060
+nm0000510	Andie MacDowell	1958	\N	actress,producer,soundtrack	tt0102070,tt0107048,tt0109831,tt0098724
+nm0000511	Shirley MacLaine	1934	\N	actress,soundtrack,writer	tt0048750,tt0053604,tt0086425,tt0098384
+nm0000513	William H. Macy	1950	\N	actor,writer,director	tt0116282,tt0118749,tt0175880,tt1586680
+nm0000514	Michael Madsen	1957	\N	actor,producer,writer	tt0266697,tt0105236,tt0119008,tt0103074
+nm0000516	Lee Majors	1939	\N	actor,music_department,producer	tt0058791,tt0071054,tt0096061,tt0081859
+nm0000517	Terrence Malick	1943	\N	producer,writer,director	tt0069762,tt0478304,tt0077405,tt5827916
+nm0000518	John Malkovich	1953	\N	actor,producer,writer	tt0107206,tt0887883,tt0094947,tt0120601
+nm0000519	David Mamet	1947	\N	writer,producer,director	tt0093223,tt0104348,tt0120202,tt0120885
+nm0000520	Michael Mann	1943	\N	producer,writer,director	tt0104691,tt0140352,tt0369339,tt0083190
+nm0000521	Sophie Marceau	1966	\N	actress,director,writer	tt0143145,tt0082100,tt0112573,tt1194616
+nm0000524	Mary Stuart Masterson	1966	\N	actress,producer,director	tt0109198,tt0106387,tt0101921,tt0094006
+nm0000525	Heather Matarazzo	1982	\N	actress,producer,director	tt0114906,tt0247638,tt0498353,tt0118971
+nm0000527	Walter Matthau	1920	2000	actor,soundtrack,director	tt0063374,tt0072251,tt0056923,tt0060424
+nm0000530	Andrew McCarthy	1962	\N	actor,director,producer	tt0098627,tt0091790,tt2372162,tt2741602
+nm0000532	Malcolm McDowell	1943	\N	actor,producer,soundtrack	tt0373883,tt0111280,tt0080025,tt0066921
+nm0000533	Gates McFadden	1949	\N	actress,producer,miscellaneous	tt0112060,tt8806524,tt0091369,tt0092455
+nm0000535	Rose McGowan	1973	\N	actress,soundtrack,producer	tt0155776,tt0462322,tt0158552,tt1077258
+nm0000536	Robert Duncan McNeill	1964	\N	actor,producer,director	tt0093507,tt0387054,tt0934814,tt0112178
+nm0000540	Russ Meyer	1922	2004	director,cinematographer,writer	tt0059170,tt0059474,tt0075376,tt0078846
+nm0000541	Bette Midler	1945	\N	soundtrack,actress,producer	tt0091877,tt0094715,tt0107120,tt0116313
+nm0000545	Helen Mirren	1945	\N	actress,producer,director	tt0975645,tt0280707,tt1245526,tt0436697
+nm0000546	Matthew Modine	1959	\N	actor,producer,director	tt2932536,tt0112760,tt0093058,tt1345836
+nm0000547	Alfred Molina	1953	\N	actor,producer,soundtrack	tt0316654,tt0175880,tt0118749,tt0120679
+nm0000549	Roger Moore	1927	2017	actor,miscellaneous,producer	tt0076752,tt0079574,tt0082398,tt0086034
+nm0000550	Kate Mulgrew	1955	\N	actress,producer,writer	tt0253754,tt0112178,tt0089901,tt2372162
+nm0000551	Dermot Mulroney	1963	\N	actor,soundtrack,music_department	tt0096487,tt0119738,tt0356680,tt1322269
+nm0000552	Eddie Murphy	1961	\N	actor,writer,producer	tt0443489,tt0094898,tt0117218,tt0097481
+nm0000553	Liam Neeson	1952	\N	actor,producer,soundtrack	tt0362269,tt0108052,tt1601913,tt0429493
+nm0000554	Sam Neill	1947	\N	actor,producer,director	tt0104850,tt4698684,tt0107290,tt0163025
+nm0000555	Judd Nelson	1959	\N	actor,writer,producer	tt0102526,tt0088847,tt0090060,tt0092106
+nm0000557	Brigitte Nielsen	1963	\N	actress,soundtrack,producer	tt5073058,tt0089893,tt0092644
+nm0000558	Leslie Nielsen	1926	2010	actor,producer,soundtrack	tt0080339,tt0102510,tt0095705,tt0120901
+nm0000559	Leonard Nimoy	1931	2015	actor,director,producer	tt0092007,tt0102975,tt0796366,tt0088170
+nm0000561	Peter North	1957	\N	actor,director,producer	tt0160323,tt0199096,tt0183057,tt0128316
+nm0000563	Chris O'Donnell	1970	\N	actor,producer,director	tt0190865,tt0118688,tt0108333,tt0105323
+nm0000564	Peter O'Toole	1932	2013	actor,soundtrack,producer	tt0056172,tt0063227,tt0081568,tt0332452
+nm0000567	George Orwell	1903	1950	writer	tt0087803,tt1785318,tt0498637,tt0048918
+nm0000568	Frank Oz	1944	\N	actor,miscellaneous,soundtrack	tt0063951,tt0087755,tt0074028,tt0121765
+nm0000569	Gwyneth Paltrow	1972	\N	actress,producer,soundtrack	tt0138097,tt0120148,tt1300854,tt0116191
+nm0000570	Alan Parker	1944	2020	director,soundtrack,writer	tt0077928,tt0095647,tt0116250,tt0092563
+nm0000573	Dolly Parton	1946	\N	music_artist,soundtrack,music_department	tt0073984,tt0092342,tt0080319,tt0162822
+nm0000575	Alexandra Paul	1963	\N	actress,producer,writer	tt0092925,tt0096542,tt0106689,tt0085333
+nm0000576	Sean Penn	1960	\N	actor,producer,director	tt1013753,tt0112818,tt0327056,tt0315733
+nm0000577	George Peppard	1928	1994	actor,assistant_director,soundtrack	tt0057917,tt0060177,tt0068663,tt0054698
+nm0000578	Anthony Perkins	1932	1992	actor,soundtrack,director	tt0086154,tt0078869,tt0054215,tt0091799
+nm0000579	Ron Perlman	1950	\N	actor,producer,soundtrack	tt0411477,tt0167190,tt3973768,tt0092319
+nm0000580	Luke Perry	1966	2019	actor,producer,soundtrack	tt0098749,tt0103893,tt0109021,tt0119116
+nm0000581	Joseph L. Mankiewicz	1909	1993	writer,producer,director	tt0042192,tt0069281,tt0056937,tt0041587
+nm0000583	Wolfgang Petersen	1941	2022	director,producer,writer	tt0088323,tt0082096,tt0114069,tt0089092
+nm0000585	Robert Picardo	1953	\N	actor,soundtrack,writer	tt0117731,tt0112178,tt0094433,tt0093260
+nm0000586	Jada Pinkett Smith	1971	\N	producer,actress,writer	tt0234215,tt0242653,tt0114608,tt0120082
+nm0000587	Donald Pleasence	1919	1995	actor,writer,soundtrack	tt0062512,tt0057115,tt0077651,tt0082495
+nm0000588	Martha Plimpton	1970	\N	actress,soundtrack,writer	tt0115639,tt0096018,tt0089218,tt0091557
+nm0000590	Edgar Allan Poe	1809	1849	writer,soundtrack,miscellaneous	tt21321726,tt0024894,tt1663656,tt1772264
+nm0000591	Roman Polanski	1933	\N	director,actor,writer	tt1692486,tt0074811,tt1139328,tt0071315
+nm0000594	Jason Priestley	1969	\N	actor,producer,director	tt2334593,tt5722298,tt0098749,tt1558182
+nm0000597	Bill Pullman	1953	\N	actor,director,soundtrack	tt0116629,tt1628841,tt0094012,tt0116922
+nm0000598	Dennis Quaid	1954	\N	actor,producer,soundtrack	tt0319262,tt0297884,tt0093260,tt0186151
+nm0000599	Kathleen Quinlan	1954	\N	actress,producer,director	tt0120633,tt0101761,tt0112384,tt0118771
+nm0000600	Sam Raimi	1959	\N	producer,writer,actor	tt0083907,tt0099365,tt0106308,tt0145487
+nm0000601	Harold Ramis	1944	2014	writer,actor,producer	tt0087332,tt0107048,tt0478311,tt0083131
+nm0000602	Robert Redford	1936	\N	producer,actor,director	tt0081283,tt0064115,tt0074119,tt0087781
+nm0000603	Vanessa Redgrave	1937	\N	actress,soundtrack,producer	tt0783233,tt0892318,tt0104454,tt1372686
+nm0000604	John C. Reilly	1965	\N	actor,writer,producer	tt0841046,tt0299658,tt2015381,tt0118749
+nm0000605	Brad Renfro	1982	2008	actor,soundtrack,writer	tt0117665,tt0109446,tt0118636,tt0112757
+nm0000607	Paul Reubens	1952	2023	actor,writer,soundtrack	tt0091059,tt0090500,tt0089791,tt0094744
+nm0000608	Burt Reynolds	1936	2018	actor,director,producer	tt0118749,tt0076729,tt0082136,tt0117765
+nm0000609	Ving Rhames	1959	\N	actor,producer,writer	tt0110912,tt0120755,tt0163988,tt2381249
+nm0000610	Giovanni Ribisi	1974	\N	actor,producer,cinematographer	tt0499549,tt0346156,tt0219699,tt0181984
+nm0000614	Alan Rickman	1946	2016	actor,soundtrack,writer	tt0408236,tt0102798,tt0095016,tt0177789
+nm0000615	John Ritter	1948	2003	actor,producer,soundtrack	tt0100419,tt0117666,tt0075596,tt0307987
+nm0000618	Isabella Rossellini	1952	\N	actress,director,writer	tt2316411,tt0090756,tt0104070,tt0106881
+nm0000619	Tim Roth	1961	\N	actor,producer,soundtrack	tt0110912,tt3460252,tt0133152,tt0114287
+nm0000620	Mickey Rourke	1952	\N	actor,writer,producer	tt1125849,tt1228705,tt0092563,tt0401792
+nm0000621	Kurt Russell	1951	\N	actor,producer,soundtrack	tt0116225,tt0084787,tt0082340,tt3460252
+nm0000625	Fred Savage	1976	\N	actor,director,producer	tt0094582,tt0093779,tt0295178,tt0090768
+nm0000626	John Sayles	1950	\N	writer,actor,director	tt0116905,tt0095082,tt0119657,tt0087004
+nm0000628	Johnathon Schaech	1969	\N	actor,writer,producer	tt0159276,tt11695190,tt0117887,tt0926129
+nm0000630	Liev Schreiber	1967	\N	actor,producer,miscellaneous	tt0368008,tt0404030,tt0458525,tt1895587
+nm0000631	Ridley Scott	1937	\N	producer,director,production_designer	tt0103074,tt3659388,tt0083658,tt2193215
+nm0000632	Jerry Seinfeld	1954	\N	producer,writer,actor	tt0389790,tt2314952,tt12117854,tt0098904
+nm0000633	Tom Selleck	1945	\N	actor,producer,writer	tt0119360,tt0080240,tt1595859,tt0094137
+nm0000634	Peter Sellers	1925	1980	actor,soundtrack,writer	tt0078841,tt0057012,tt0072081,tt0075066
+nm0000635	Yahoo Serious	1953	\N	director,actor,writer	tt0107930,tt0096486,tt0156807,tt6893696
+nm0000636	William Shakespeare	1564	1616	writer,soundtrack,miscellaneous	tt14297038,tt20711868,tt8632012,tt10095582
+nm0000637	Tupac Shakur	1971	1996	music_artist,soundtrack,composer	tt0109035,tt0118900,tt0107840,tt0104573
+nm0000638	William Shatner	1931	\N	actor,producer,writer	tt0088170,tt0092007,tt0098382,tt0084726
+nm0000640	Martin Sheen	1940	\N	actor,producer,soundtrack	tt0407887,tt1441912,tt0078788,tt0069762
+nm0000641	Gary Sinise	1955	\N	actor,producer,director	tt0112384,tt0109830,tt0117438,tt0105046
+nm0000643	Tom Skerritt	1933	\N	actor,director,producer	tt0078748,tt0092099,tt0098384,tt0118884
+nm0000644	Helen Slater	1963	\N	actress,soundtrack,writer	tt0091877,tt0089470,tt0093936,tt0088206
+nm0000645	Anna Nicole Smith	1967	2007	actress,miscellaneous,producer	tt0110622,tt0114467,tt0758754,tt0377471
+nm0000647	Alan Smithee	1986	\N	director,actor,producer	tt4591238,tt27881541,tt2076794,tt0118577
+nm0000649	Paul Sorvino	1939	2022	actor,soundtrack,director	tt0099685,tt0113987,tt0102803,tt0963194
+nm0000651	Sissy Spacek	1949	\N	actress,soundtrack,art_department	tt0074285,tt0247425,tt0080549,tt1454029
+nm0000653	Brent Spiner	1949	\N	actor,soundtrack,director	tt0253754,tt1628841,tt0117731,tt0111280
+nm0000654	Terence Stamp	1938	\N	actor,soundtrack,director	tt1047011,tt1385826,tt0109045,tt0165854
+nm0000655	Eric Stoltz	1961	\N	actor,producer,director	tt0110912,tt0094006,tt0289879,tt0089560
+nm0000656	Madeleine Stowe	1958	\N	actress,director,writer	tt0108122,tt0144214,tt0114746,tt0104691
+nm0000659	Barbra Streisand	1942	\N	music_artist,soundtrack,actress	tt0062994,tt0086619,tt0070903,tt0117057
+nm0000661	Donald Sutherland	1935	\N	actor,soundtrack,producer	tt0414387,tt0066026,tt1951265,tt1951264
+nm0000662	Kiefer Sutherland	1966	\N	actor,producer,miscellaneous	tt1527186,tt0285331,tt0183649,tt0790686
+nm0000665	D.B. Sweeney	\N	\N	actor,soundtrack,director	tt0104040,tt0106912,tt0463963,tt10128846
+nm0000666	Lili Taylor	1967	\N	actress,writer,soundtrack	tt1457767,tt0116594,tt3488298
+nm0000667	David Thewlis	1963	\N	actor,soundtrack,writer	tt0466909,tt1201607,tt0107653,tt2980516
+nm0000668	Emma Thompson	1959	\N	actress,writer,soundtrack	tt0107943,tt0314331,tt2140373,tt0114388
+nm0000670	Lea Thompson	1961	\N	actress,director,producer	tt1758772,tt5039578,tt1727381,tt0088763
+nm0000671	Billy Bob Thornton	1955	\N	actor,writer,soundtrack	tt0117666,tt0120324,tt0285742,tt0243133
+nm0000672	Meg Tilly	1960	\N	actress,writer	tt0088683,tt0106452,tt0085244,tt0086154
+nm0000674	Tamlyn Tomita	1966	\N	actress,writer,producer	tt0406759,tt0411951,tt0091326,tt0319262
+nm0000676	Chris Tucker	1971	\N	actor,soundtrack,writer	tt0119695,tt0120812,tt0266915,tt1045658
+nm0000678	Kathleen Turner	1954	\N	actress,soundtrack,producer	tt0111127,tt0088011,tt0082089,tt0091738
+nm0000680	Casper Van Dien	1968	\N	actor,producer,director	tt0120856,tt0162661,tt0120201,tt0437086
+nm0000681	Vince Vaughn	1970	\N	producer,actor,writer	tt0452594,tt5657856,tt0396269,tt1078940
+nm0000682	Paul Verhoeven	1938	\N	director,producer,writer	tt3716530,tt0164052,tt0093870,tt0389557
+nm0000683	Gore Vidal	1925	2012	writer,actor	tt0080491,tt0111732,tt0119177,tt0041061
+nm0000685	Jon Voight	1938	\N	actor,producer,writer	tt0118615,tt0064665,tt0089941,tt0068473
+nm0000686	Christopher Walken	1943	\N	actor,soundtrack,producer	tt0264464,tt1931533,tt0077416,tt0427327
+nm0000689	Julie Warner	1965	\N	actress,director,producer	tt0430634,tt0101745,tt0114694,tt0099582
+nm0000691	John Waters	1946	\N	actor,writer,director	tt0387575,tt0069089,tt0095270,tt0126604
+nm0000693	Peter Weller	1947	\N	actor,director,soundtrack	tt0100502,tt0102511,tt0093870,tt0086856
+nm0000694	Wim Wenders	1945	\N	director,producer,writer	tt0107209,tt0087884,tt0101458,tt0093191
+nm0000696	Wil Wheaton	1972	\N	actor,writer,producer	tt0103112,tt0092455,tt0092005,tt0084649
+nm0000697	Billy Wilder	1906	2002	writer,director,producer	tt0053604,tt0053291,tt0047437,tt0043014
+nm0000698	Gene Wilder	1933	2016	actor,soundtrack,writer	tt0072431,tt0075223,tt0067992,tt0063462
+nm0000701	Kate Winslet	1975	\N	actress,producer,soundtrack	tt0959337,tt0338013,tt0114388,tt0120338
+nm0000702	Reese Witherspoon	1976	\N	producer,actress,soundtrack	tt2305051,tt0126886,tt0250494,tt0358273
+nm0000703	BD Wong	1960	\N	actor,soundtrack,director	tt0120762,tt4158110,tt0107290,tt0369610
+nm0000705	Robin Wright	1966	\N	actress,producer,director	tt0109830,tt0442933,tt0217869,tt0093779
+nm0000706	Michelle Yeoh	1962	\N	actress,producer,writer	tt0190332,tt3104988,tt6710474,tt0120347
+nm0000707	Sean Young	1959	\N	actress,miscellaneous,director	tt0093640,tt1856101,tt0087182,tt0083658
+nm0000708	Billy Zane	1966	\N	actor,producer,soundtrack	tt0096874,tt0120338,tt0097162,tt0117331
+nm0000709	Robert Zemeckis	1952	\N	producer,writer,director	tt0088763,tt0118884,tt1907668,tt0109830
+nm0000712	Steve Cohen	\N	\N	assistant_director,director,miscellaneous	tt0089218,tt0143213,tt0098844,tt0363685
+nm0000713	Joel Oliansky	1935	2002	writer,director,actor	tt0069599,tt0205655,tt0096108,tt0065278
+nm0000714	Willie Aames	1960	\N	actor,writer,director	tt0086681,tt0084945,tt0075500,tt21193618
+nm0000717	Kareem Abdul-Jabbar	1947	\N	actor,producer,writer	tt0113097,tt11564570,tt0080339,tt0089155
+nm0000720	Jim Abrahams	1944	\N	writer,producer,director	tt0083466,tt0088286,tt0080339,tt0102059
+nm0000724	Brooke Adams	1949	\N	actress,producer,writer	tt0077405,tt0085407,tt0103157,tt0077745
+nm0000725	Joey Lauren Adams	1968	\N	actress,soundtrack,director	tt2996684,tt0118842,tt0106677,tt0142342
+nm0000726	Maud Adams	1945	\N	actress,director	tt0083178,tt0086034,tt0073631,tt0071807
+nm0000727	Percy Adlon	1935	\N	director,writer,producer	tt0090377,tt0095801,tt0108636,tt0082225
+nm0000728	Mario Adorf	1930	\N	actor,soundtrack,writer	tt0067315,tt0078875,tt0112154,tt0103432
+nm0000729	Casey Affleck	1975	\N	actor,producer,writer	tt4034228,tt0443680,tt6265828,tt6063090
+nm0000732	Danny Aiello	1933	2019	actor,producer,soundtrack	tt0097216,tt0099871,tt0110413,tt0093565
+nm0000734	Eddie Albert	1906	2005	actor,soundtrack,producer	tt0056197,tt0058808,tt0068687,tt0046250
+nm0000735	Brian Aldiss	1925	2017	writer,actor	tt0432260,tt0212720,tt0099612,tt1590816
+nm0000736	Robert Aldrich	1918	1983	director,assistant_director,producer	tt0070030,tt0061578,tt0071771,tt0056687
+nm0000738	Muhammad Ali	1942	2016	actor,soundtrack,writer	tt0076111,tt0077003,tt0118147,tt0056406
+nm0000739	Debbie Allen	1950	\N	producer,actress,director	tt0118607,tt0413573,tt0080716,tt0083412
+nm0000740	Irwin Allen	1916	1991	writer,producer,director	tt0044009,tt0057798,tt0072308,tt0069113
+nm0000741	Tim Allen	1953	\N	actor,producer,miscellaneous	tt0177789,tt0101120,tt0111070,tt0114709
+nm0000743	Néstor Almendros	1930	1992	cinematographer,director,camera_department	tt0080453,tt0077405,tt0079417,tt0084707
+nm0000747	Don Ameche	1908	1993	actor,soundtrack,director	tt0086465,tt0088933,tt0035979,tt0107131
+nm0000749	Mädchen Amick	1970	\N	actress,director,producer	tt5420376,tt0105665,tt0109665,tt0098936
+nm0000750	Jon Amiel	1948	\N	director,producer,writer	tt0298814,tt0137494,tt0112722,tt0100822
+nm0000753	Juliet Anderson	1938	2010	actress,director,producer	tt0082707,tt0183031,tt0082069,tt0265023
+nm0000755	Lindsay Anderson	1923	1994	director,actor,writer	tt0063850,tt0083694,tt0057578,tt0082158
+nm0000759	Paul Thomas Anderson	1970	\N	director,writer,producer	tt0118749,tt1791528,tt0272338,tt0469494
+nm0000766	Theodoros Angelopoulos	1935	2012	director,writer,producer	tt0096288,tt0114863,tt0081148,tt0156794
+nm0000767	Jean-Hugues Anglade	1955	\N	actor,director,writer	tt0090563,tt0100263,tt0110963,tt0090095
+nm0000770	David Anspaugh	1946	\N	producer,director	tt0081873,tt0091217,tt0108002,tt4196848
+nm0000774	Michelangelo Antonioni	1912	2007	writer,director,editor	tt0073580,tt0060176,tt0053619,tt0047821
+nm0000776	Michael Apted	1941	2021	director,producer,miscellaneous	tt0384766,tt0454776,tt0095243,tt0157583
+nm0000777	Gregg Araki	1959	\N	writer,director,producer	tt2238050,tt1523483,tt0370986,tt0094134
+nm0000778	Alfonso Arau	1932	\N	actor,director,writer	tt0103994,tt2380307,tt0114887,tt0092086
+nm0000779	Roscoe 'Fatty' Arbuckle	1887	1933	actor,director,writer	tt0009123,tt0007819,tt0007761,tt0012382
+nm0000780	Denys Arcand	1941	\N	writer,director,actor	tt0090985,tt0097635,tt7231342,tt0338135
+nm0000782	Asia Argento	1975	\N	actress,director,writer	tt0418819,tt0804507,tt0368774,tt0295701
+nm0000783	Dario Argento	1940	\N	writer,director,producer	tt0084777,tt0065143,tt0087909,tt0073582
+nm0000786	George Armitage	1942	\N	producer,writer,director	tt0119229,tt0065760,tt0075393,tt0100143
+nm0000788	Gillian Armstrong	1950	\N	director,producer,writer	tt0117206,tt0079596,tt0245046,tt0110367
+nm0000789	Desi Arnaz	1917	1986	producer,actor,production_manager	tt1243974,tt0047191,tt0041475,tt0043208
+nm0000791	Jack Arnold	1912	1992	director,producer,writer	tt0050539,tt0045920,tt0046876,tt0043138
+nm0000792	Tom Arnold	1959	\N	actor,producer,writer	tt0119640,tt0117768,tt0111503,tt0242445
+nm0000794	Lewis Arquette	1935	2001	actor,writer,producer	tt0098439,tt0118111,tt0185431,tt0078966
+nm0000796	Dana Ashbrook	1967	\N	actor,writer	tt0095990,tt5334704,tt0105665,tt0098936
+nm0000797	Hal Ashby	1929	1988	director,editorial_department,actor	tt0067185,tt0078841,tt0061811,tt0070290
+nm0000798	Linden Ashby	1960	\N	actor,director	tt0432021,tt1567432,tt0111756,tt0113855
+nm0000801	Olivier Assayas	1955	\N	writer,director,producer	tt2452254,tt4714782,tt0401711,tt1321865
+nm0000803	Christopher Atkins	1961	\N	actor,writer,producer	tt0086011,tt0084504,tt0493406,tt0080453
+nm0000806	Bille August	1948	\N	director,writer,cinematographer	tt0438859,tt0107151,tt0093713,tt0119683
+nm0000807	Jane Austen	1775	1817	writer	tt0414387,tt0116191,tt0114388,tt13456318
+nm0000808	Paul Auster	1947	\N	writer,director,producer	tt0479074,tt0125879,tt0114478,tt3350042
+nm0000809	Daniel Auteuil	1950	\N	actor,director,writer	tt0387898,tt0091288,tt1473063,tt0243493
+nm0000810	Gene Autry	1907	1998	music_artist,soundtrack,actor	tt0042110,tt0026867,tt0034106,tt0027361
+nm0000812	Roger Avary	1965	\N	producer,writer,director	tt0105236,tt0110265,tt0110912,tt0442933
+nm0000813	Tex Avery	1908	1980	director,actor,writer	tt0038595,tt0032243,tt0033260,tt0038702
+nm0000814	John G. Avildsen	1935	2017	director,editor,producer	tt0087538,tt0100507,tt0097647,tt0075148
+nm0000815	Mili Avital	1972	\N	actress,director,editor	tt0120723,tt0181199,tt0112817,tt0111282
+nm0000816	Jon Avnet	1949	\N	producer,director,writer	tt0101921,tt0947798,tt0118055,tt0086200
+nm0000817	Lew Ayres	1908	1996	actor,soundtrack,director	tt0030241,tt0020629,tt0040495,tt0069768
+nm0000821	Amitabh Bachchan	1942	\N	actor,producer,writer	tt0375611,tt0337578,tt0213890,tt5571734
+nm0000822	Jim Backus	1913	1989	actor,soundtrack,writer	tt0057193,tt0048545,tt0076538,tt0057751
+nm0000824	John Badham	1939	\N	director,producer,actor	tt0076666,tt0086567,tt0091949,tt0094025
+nm0000829	Stuart Baird	1947	\N	editor,editorial_department,director	tt0381061,tt1074638,tt0078346,tt0253754
+nm0000835	Ralph Bakshi	1938	\N	director,animation_department,writer	tt0085542,tt0068612,tt0077869,tt0076929
+nm0000836	Scott Bakula	1954	\N	actor,producer,soundtrack	tt0169547,tt0096684,tt1291580,tt0244365
+nm0000837	Bob Balaban	1945	\N	actor,director,producer	tt0379725,tt0280707,tt0310281,tt0075860
+nm0000838	Daniel Baldwin	1960	\N	actor,producer,director	tt0758751,tt1830617,tt1600194,tt0368479
+nm0000839	Ina Balin	1937	1990	actress,writer,producer	tt0076984,tt0053841,tt0054757,tt0058456
+nm0000840	Lucille Ball	1911	1989	producer,actress,production_manager	tt0047191,tt0055686,tt0062570,tt0043208
+nm0000841	Michael Ballhaus	1935	2017	cinematographer,director,actor	tt0088680,tt0099685,tt0103874,tt0106226
+nm0000843	Anne Bancroft	1931	2005	actress,soundtrack,director	tt0056241,tt0119223,tt0061722,tt0076843
+nm0000844	Tamasaburô Bandô	1950	\N	actor,director,writer	tt0230866,tt0108639,tt0184507,tt0079041
+nm0000847	Theda Bara	1885	1955	actress,writer	tt0005100,tt0007769,tt0005339,tt0009792
+nm0000848	Olivia Barash	\N	\N	actress,soundtrack,producer	tt0083412,tt0090213,tt0087995,tt0101761
+nm0000850	Clive Barker	1952	\N	writer,producer,actor	tt0103919,tt0093177,tt0100260,tt0887261
+nm0000852	Jean-Marc Barr	1960	\N	actor,producer,director	tt1462411,tt0178721,tt0095250,tt1692227
+nm0000853	Bruno Barreto	1955	\N	director,producer,writer	tt0119815,tt2217458,tt0077452,tt0086871
+nm0000854	Majel Barrett	1932	2008	actress,producer,writer	tt0117731,tt0253754,tt0070909,tt0111280
+nm0000857	John Drew Barrymore	1932	2004	actor,director	tt0049949,tt0055866,tt0055855,tt0043340
+nm0000858	John Barrymore	1882	1942	actor,soundtrack,writer	tt0025919,tt0014702,tt0022958,tt0022454
+nm0000859	Lionel Barrymore	1878	1954	actor,director,soundtrack	tt0040506,tt0030993,tt0021885,tt0038650
+nm0000860	Paul Bartel	1938	2000	actor,director,writer	tt0114814,tt0116225,tt0098261,tt0083869
+nm0000861	Freddie Bartholomew	1924	1992	producer,actor,soundtrack	tt0030384,tt0026266,tt0036061,tt0028691
+nm0000863	Billy Barty	1924	2000	actor,soundtrack,director	tt0089469,tt0093507,tt0096446,tt0083254
+nm0000864	Mikhail Baryshnikov	1948	\N	actor,producer,miscellaneous	tt0076843,tt0090319,tt0136439,tt0101606
+nm0000865	Richard Basehart	1914	1984	actor,director,miscellaneous	tt0049513,tt0047528,tt0043560,tt0057798
+nm0000866	Saul Bass	1920	1996	miscellaneous,art_department,animation_department	tt0070531,tt0086162,tt0053125,tt0063804
+nm0000867	Jason Bateman	1969	\N	actor,producer,director	tt2170299,tt2948356,tt2704998,tt0367279
+nm0000868	Justine Bateman	1966	\N	actress,producer,soundtrack	tt6662050,tt0367279,tt6852672,tt0083413
+nm0000870	Kathy Bates	1948	\N	actress,director,soundtrack	tt0257360,tt0100157,tt0120338,tt0109642
+nm0000871	Randall Batinkoff	1968	\N	actor,producer,director	tt2357144,tt0105327,tt0103893,tt0119874
+nm0000872	Patrick Bauchau	\N	\N	actor,writer,producer	tt0115320,tt0319969,tt0258000,tt0090264
+nm0000875	L. Frank Baum	1856	1919	writer,producer,miscellaneous	tt0032138,tt0000679,tt0004207,tt0089908
+nm0000876	Noah Baumbach	1969	\N	writer,director,producer	tt1517268,tt0367089,tt6160448,tt7653254
+nm0000877	Lamberto Bava	1944	\N	director,assistant_director,producer	tt0084777,tt0089013,tt0090930,tt0101493
+nm0000878	Mario Bava	1914	1980	cinematographer,special_effects,director	tt0067656,tt0055022,tt0059792,tt0068863
+nm0000881	Michael Bay	1965	\N	producer,director,actor	tt2109248,tt1055369,tt0120591,tt0117500
+nm0000882	Nathalie Baye	1948	\N	actress,soundtrack,writer	tt0174330,tt1650048,tt0264464,tt0204709
+nm0000886	Warren Beatty	1937	\N	actor,soundtrack,producer	tt0118798,tt0061418,tt0077663,tt0082979
+nm0000887	Harold Becker	1928	\N	director,producer,cinematographer	tt0098273,tt0249478,tt0120749,tt0107497
+nm0000891	Wallace Beery	1885	1949	actor,director,soundtrack	tt0023948,tt0022958,tt0025948,tt0040271
+nm0000893	Ed Begley Jr.	1949	\N	actor,producer,director	tt0310281,tt0218839,tt1178663,tt0910936
+nm0000894	Jean-Jacques Beineix	1946	2022	assistant_director,producer,director	tt0090563,tt0104473,tt0098226,tt0082269
+nm0000902	Jim Belushi	1954	\N	actor,music_department,producer	tt0117468,tt0072562,tt0095963,tt0097637
+nm0000903	Brian Benben	1956	\N	actor,producer,writer	tt0167547,tt0098780,tt0099817,tt0110939
+nm0000904	William Bendix	1906	1964	actor,soundtrack,writer	tt0034798,tt0037017,tt0044863,tt0035530
+nm0000905	Roberto Benigni	1952	\N	actor,writer,director	tt0090967,tt0102164,tt0118799,tt0419198
+nm0000907	Richard Benjamin	1938	\N	actor,director,producer	tt0070909,tt0070291,tt0118954,tt0065636
+nm0000911	Nigel Bennett	1949	\N	actor,director,soundtrack	tt0103417,tt0284978,tt5580390,tt0115243
+nm0000913	Robby Benson	1956	\N	actor,director,soundtrack	tt0108778,tt0040053,tt0101414,tt0076500
+nm0000914	Robert Benton	1932	\N	writer,director,producer	tt0061418,tt0078346,tt0087921,tt0079417
+nm0000915	Bruce Beresford	1940	\N	director,producer,writer	tt0080310,tt0097239,tt4196848,tt0091081
+nm0000916	Peter Berg	1964	\N	producer,actor,writer	tt1091191,tt0108724,tt0124198,tt0369339
+nm0000917	Polly Bergen	1930	2014	actress,soundtrack,miscellaneous	tt0057329,tt0048893,tt0055824,tt0099329
+nm0000921	Andrew Bergman	1945	\N	writer,director,producer	tt0089155,tt0117765,tt0110167,tt0071230
+nm0000923	Busby Berkeley	1895	1976	miscellaneous,director,music_department	tt0027686,tt12403068,tt0029725,tt0026421
+nm0000925	Steven Berkoff	1937	\N	actor,writer,director	tt1243957,tt0086960,tt0086034,tt0066921
+nm0000926	Milton Berle	1908	2002	actor,producer,soundtrack	tt0040041,tt0060801,tt0079588,tt0057193
+nm0000927	Irving Berlin	1888	1989	soundtrack,music_department,composer	tt0029852,tt0034862,tt0038370,tt0036430
+nm0000928	Sandra Bernhard	1955	\N	actress,soundtrack,writer	tt0102070,tt0138967,tt0085794,tt0120901
+nm0000929	Corbin Bernsen	1954	\N	actor,producer,writer	tt0116075,tt0110442,tt0373469,tt0097815
+nm0000932	Halle Berry	1966	\N	actress,producer,director	tt0246460,tt0285742,tt0327554,tt0348836
+nm0000934	Bernardo Bertolucci	1941	2018	writer,director,producer	tt0070849,tt0065571,tt0093389,tt0117737
+nm0000937	Richard Beymer	1939	\N	actor,cinematographer,editor	tt0056197,tt0226836,tt0098936,tt0055614
+nm0000940	Bigas Luna	1946	2013	writer,director,producer	tt0104545,tt0090644,tt0078934,tt0129923
+nm0000941	Kathryn Bigelow	1951	\N	director,producer,writer	tt0114558,tt0093605,tt1790885,tt0887912
+nm0000942	Theodore Bikel	1924	2015	actor,soundtrack,director	tt0051525,tt0058385,tt0050356,tt0043265
+nm0000944	Antonia Bird	1951	2013	director,producer	tt0119092,tt0263181,tt0129332,tt0110889
+nm0000945	Jane Birkin	1946	2023	soundtrack,actress,director	tt0901473,tt0077413,tt0083908,tt0060176
+nm0000947	Karen Black	1939	2013	actress,soundtrack,writer	tt0065724,tt0071577,tt0073440,tt0251736
+nm0000948	Shane Black	1961	\N	writer,actor,director	tt0093773,tt0373469,tt1300854,tt3799694
+nm0000949	Cate Blanchett	1969	\N	actress,producer,writer	tt2334873,tt0127536,tt0120737,tt2402927
+nm0000950	Brenda Blethyn	1946	\N	actress,soundtrack,writer	tt0117589,tt0147004,tt0195234,tt0414387
+nm0000952	Hart Bochner	1956	\N	actor,director,writer	tt0095016,tt0106364,tt0088206,tt0078902
+nm0000953	Peter Bogdanovich	1939	2022	actor,director,writer	tt0079843,tt0067328,tt0070510,tt0063671
+nm0000954	Jon Bon Jovi	1962	\N	music_artist,soundtrack,actor	tt1389096,tt0141926,tt0100994,tt0384286
+nm0000956	Lisa Bonet	1967	\N	actress,director,soundtrack	tt0146882,tt0086687,tt0092563,tt0120660
+nm0000957	Jan de Bont	1943	\N	cinematographer,camera_department,producer	tt0111257,tt0117998,tt0171363,tt0181689
+nm0000958	John Boorman	1933	\N	producer,director,writer	tt0068473,tt0120706,tt0093209,tt0082348
+nm0000962	Carole Bouquet	1957	\N	actress,director,soundtrack	tt0082398,tt0098520,tt0398664,tt0281364
+nm0000965	Danny Boyle	1956	\N	director,producer,actor	tt1542344,tt1010048,tt0111149,tt0289043
+nm0000966	Lorraine Bracco	1954	\N	actress,producer,director	tt0104839,tt0099685,tt0141842,tt0112461
+nm0000970	Jonathan Brandis	1976	2003	actor,miscellaneous,director	tt0100240,tt0099864,tt0104670,tt0106126
+nm0000972	Tinto Brass	1933	\N	actor,writer,director	tt0057942,tt0065161,tt0080491,tt0104014
+nm0000973	Benjamin Bratt	1963	\N	actor,producer,director	tt2380307,tt0181865,tt0212346,tt0098844
+nm0000975	Robert Bresson	1901	1999	writer,director,assistant_director	tt0049902,tt0042619,tt0060138,tt0061996
+nm0000976	Martin Brest	1951	\N	director,producer,actor	tt0105323,tt0119643,tt0095631,tt0086960
+nm0000977	Beau Bridges	1941	\N	actor,director,producer	tt0097322,tt1033575,tt0467197,tt2097307
+nm0000978	Lloyd Bridges	1913	1998	actor,soundtrack,director	tt0083530,tt0107144,tt0102059,tt0080339
+nm0000980	Jim Broadbent	1949	\N	actor,writer,soundtrack	tt0217505,tt1007029,tt1431181,tt0203009
+nm0000981	James Brolin	1940	\N	actor,producer,director	tt0070909,tt0181865,tt0078767,tt0077294
+nm0000982	Josh Brolin	1968	\N	actor,producer,director	tt4154756,tt1791528,tt0477348,tt4154796
+nm0000983	Albert Brooks	1947	\N	actor,soundtrack,writer	tt0089504,tt0092699,tt0780504,tt0101698
+nm0000984	Avery Brooks	1948	\N	actor,director,music_department	tt0120586,tt0120609,tt0106145,tt0179626
+nm0000985	James L. Brooks	1940	\N	writer,producer,miscellaneous	tt0086425,tt0119822,tt0092699,tt0371246
+nm0000986	Bryan Brown	1947	\N	actor,producer,writer	tt0094889,tt2404233,tt0145547,tt0080310
+nm0000987	Jim Brown	1936	2023	actor,producer,director	tt0061578,tt0146838,tt0093894,tt0116996
+nm0000989	Yul Brynner	1920	1985	actor,director,producer	tt0049408,tt0054047,tt0049833,tt0070909
+nm0000991	Geneviève Bujold	1942	\N	actress,soundtrack,writer	tt0064030,tt0094964,tt0077355,tt0079592
+nm0000993	Carol Burnett	1933	\N	soundtrack,actress,producer	tt0082405,tt0061240,tt0083564,tt0105017
+nm0000994	Raymond Burr	1917	1993	actor,production_manager,director	tt0087344,tt0197521,tt0047396,tt0061266
+nm0000995	Ellen Burstyn	1932	\N	actress,producer,soundtrack	tt0071115,tt0180093,tt0070047,tt0067328
+nm0000996	LeVar Burton	1957	\N	actor,director,producer	tt0111280,tt0253754,tt0120844,tt0117731
+nm0000999	Red Buttons	1919	2006	actor,soundtrack,writer	tt0076538,tt0069113,tt0056059,tt0050933
+nm0001000	Tom Byron	1961	\N	actor,director,producer	tt0178845,tt2059288,tt0097039,tt0151056
+nm0001001	James Caan	1940	2022	actor,soundtrack,director	tt0068646,tt0073631,tt0083190,tt0100157
+nm0001002	Dean Cain	1966	\N	actor,producer,writer	tt0106057,tt2528814,tt0313443,tt0250687
+nm0001003	Simon Callow	1949	\N	actor,writer,soundtrack	tt0091867,tt0138097,tt0109831,tt0293508
+nm0001005	Jane Campion	1954	\N	writer,director,producer	tt2103085,tt0107822,tt10293406,tt0810784
+nm0001006	John Candy	1950	1994	actor,writer,music_department	tt0094012,tt0093748,tt0098554,tt0080455
+nm0001007	Dyan Cannon	1937	\N	actress,soundtrack,writer	tt0083806,tt0077663,tt0070291,tt0064100
+nm0001008	Frank Capra	1897	1991	director,writer,producer	tt0038650,tt0031679,tt0030993,tt0025316
+nm0001013	Harry Carey Jr.	1921	2012	actor,writer,producer	tt0087363,tt0108358,tt0099528,tt0049730
+nm0001014	Mariah Carey	1969	\N	music_artist,soundtrack,actress	tt4116284,tt0120596,tt0118589,tt0929632
+nm0001015	Robert Carlyle	1961	\N	actor,director,soundtrack	tt2763304,tt0117951,tt0129332,tt0119164
+nm0001016	David Carradine	1936	2009	actor,producer,soundtrack	tt0074235,tt0490086,tt0072856,tt0378194
+nm0001019	Robert Carradine	1954	\N	actor,producer,soundtrack	tt0306841,tt0088000,tt0116225,tt0228333
+nm0001022	Dana Carvey	1955	\N	actor,soundtrack,writer	tt0108525,tt0072562,tt0105793,tt0295427
+nm0001023	John Cassavetes	1929	1989	actor,director,writer	tt0087644,tt0063522,tt0072417,tt0079672
+nm0001024	Nick Cassavetes	1959	\N	actor,director,writer	tt0426883,tt1078588,tt0119094,tt0138304
+nm0001027	Shaun Cassidy	1958	\N	producer,writer,actor	tt0111880,tt0460651,tt0075513,tt0233491
+nm0001031	Claude Chabrol	1930	2010	director,writer,actor	tt0112769,tt0096336,tt0120018,tt0051404
+nm0001032	Marilyn Chambers	1952	2009	actress,writer,soundtrack	tt0076590,tt0085167,tt1328912,tt0087475
+nm0001036	Geraldine Chaplin	1944	\N	actress,writer,soundtrack	tt0287467,tt0073440,tt0059113,tt0464141
+nm0001037	Graham Chapman	1941	1989	writer,actor,soundtrack	tt0079470,tt0063929,tt0071853,tt0085959
+nm0001038	Josh Charles	1971	\N	actor,director,soundtrack	tt0165961,tt0097165,tt0430105,tt0257076
+nm0001040	Joan Chen	1961	\N	actress,director,writer	tt0452631,tt0110725,tt0113492,tt0115005
+nm0001044	Rae Dawn Chong	1961	\N	actress,soundtrack,director	tt0082484,tt1588334,tt0088944,tt0088939
+nm0001045	Tommy Chong	1938	\N	actor,soundtrack,writer	tt0078446,tt2948356,tt0086366,tt0080520
+nm0001047	Michael Cimino	1939	2016	director,writer,producer	tt0077416,tt0067756,tt0080855,tt0090350
+nm0001048	Andrew Dice Clay	1957	\N	actor,producer,writer	tt2334873,tt1517451,tt1674771,tt0098987
+nm0001050	Montgomery Clift	1920	1966	actor,writer,soundtrack	tt0043924,tt0040765,tt0045793,tt0055031
+nm0001051	Bill Clinton	1946	\N	writer,producer,actor	tt28323043,tt0108515,tt7466880,tt12660626
+nm0001052	Kurt Cobain	1967	1994	music_artist,soundtrack,actor	tt4154664,tt0203009,tt1877830,tt3480822
+nm0001053	Ethan Coen	1957	\N	producer,writer,director	tt1019452,tt6412452,tt2042568,tt0116282
+nm0001054	Joel Coen	1954	\N	producer,writer,director	tt0116282,tt10095582,tt6412452,tt2042568
+nm0001057	Toni Collette	1972	\N	actress,producer,soundtrack	tt0274558,tt0276751,tt7784604,tt0167404
+nm0001059	Robbie Coltrane	1950	2022	actor,soundtrack,writer	tt0241527,tt0105977,tt0143145,tt0295297
+nm0001060	Chris Columbus	1958	\N	producer,writer,director	tt1454029,tt0294870,tt0241527,tt0295297
+nm0001061	Holly Marie Combs	1973	\N	actress,producer,writer	tt0096969,tt0158552,tt0104139,tt0103512
+nm0001063	Jeff Conaway	1950	2011	actor,soundtrack,writer	tt0077089,tt0077631,tt0105946,tt0155776
+nm0001064	Jason Connery	1963	\N	actor,director,producer	tt3467914,tt1937506,tt0184894
+nm0001066	Robert Conrad	1935	2020	actor,director,soundtrack	tt0116705,tt0073961,tt0080132,tt0076993
+nm0001067	Jackie Coogan	1914	1984	actor,soundtrack,miscellaneous	tt0126771,tt0014733,tt0013450,tt0012349
+nm0001068	Sofia Coppola	1971	\N	director,actress,writer	tt0099674,tt0335266,tt0159097,tt5592248
+nm0001069	Bud Cort	1948	\N	actor,director,writer	tt0066026,tt0067185,tt0200550,tt0362270
+nm0001070	Bill Cosby	1937	\N	actor,writer,music_department	tt0093405,tt0063871,tt0058816,tt0086687
+nm0001071	Annie Costner	1984	\N	producer,actress,director	tt0119925,tt0099348,tt10918878,tt5994270
+nm0001072	Joseph Cotten	1905	1994	actor,soundtrack,writer	tt0041959,tt0036855,tt0035015,tt0033467
+nm0001073	Courteney Cox	1964	\N	actress,producer,director	tt0120082,tt0134084,tt0117571,tt0108778
+nm0001074	Ronny Cox	1938	\N	actor,soundtrack,writer	tt0100802,tt0086960,tt0068473,tt0093870
+nm0001075	Peter Coyote	1941	\N	actor,producer,miscellaneous	tt0281358,tt0120184,tt0104779,tt0083866
+nm0001076	Joan Crawford	1906	1977	actress,soundtrack,writer	tt0056687,tt0037913,tt0046446,tt0042376
+nm0001077	Richard Crenna	1926	2003	actor,director,soundtrack	tt0107144,tt0095956,tt0083944,tt0062467
+nm0001081	Cameron Crowe	1957	\N	writer,producer,director	tt0181875,tt0105415,tt0259711,tt0116695
+nm0001083	Jon Cryer	1965	\N	actor,soundtrack,producer	tt0091790,tt0369179,tt0102059,tt0094074
+nm0001084	Ice Cube	1969	\N	music_artist,soundtrack,actor	tt0195945,tt0101507,tt0113118,tt1408253
+nm0001086	Alan Cumming	1965	\N	actor,producer,soundtrack	tt0113189,tt0254099,tt0290334,tt0362165
+nm0001087	Lee Curreri	1961	\N	actor,composer,sound_department	tt0405473,tt0480239,tt0083412,tt0080716
+nm0001088	Peter Cushing	1913	1994	actor,writer,art_department	tt0050280,tt0051554,tt0076759,tt0068713
+nm0001090	Joe D'Amato	1936	1999	director,cinematographer,camera_department	tt0074472,tt0083565,tt0068972,tt0089091
+nm0001092	Mark Dacascos	1964	\N	actor,stunts,director	tt0237534,tt0107750,tt0106761,tt6146586
+nm0001093	John Dahl	1956	\N	director,art_department,writer	tt0110308,tt0097662,tt0128442,tt0105226
+nm0001094	Roald Dahl	1916	1990	writer,soundtrack,actor	tt0100944,tt0067992,tt0062512,tt0062803
+nm0001097	Charles Dance	1946	\N	actor,producer,director	tt2084970,tt0280707,tt0107362,tt0944947
+nm0001098	Rodney Dangerfield	1921	2004	actor,writer,soundtrack	tt0085470,tt0102813,tt0090685,tt0080487
+nm0001099	Jeff Daniels	1955	\N	actor,soundtrack,producer	tt0089853,tt0109686,tt0099052,tt0367089
+nm0001102	Joe Dante	1946	\N	director,producer,miscellaneous	tt0093260,tt0087363,tt0082533,tt0122718
+nm0001103	Tony Danza	1951	\N	actor,producer,director	tt2229499,tt0077089,tt0086827,tt0109127
+nm0001104	Frank Darabont	1959	\N	writer,producer,director	tt0111161,tt0120689,tt1520211,tt0884328
+nm0001106	Racquel Darrian	1968	\N	actress,director	tt0276092,tt0134054,tt0134087,tt0221458
+nm0001108	Robert Davi	1951	\N	actor,producer,director	tt0095016,tt0089218,tt0097742,tt2333784
+nm0001112	Andrew Davis	1946	\N	director,cinematographer,writer	tt0311289,tt0105690,tt0106977,tt0406816
+nm0001115	Ossie Davis	1917	2005	actor,writer,director	tt0109446,tt0107050,tt0097216,tt0281686
+nm0001116	Warwick Davis	1970	\N	actor,writer,producer	tt0371724,tt1201607,tt0096446,tt0107387
+nm0001117	Bruce Davison	1946	\N	actor,director,producer	tt5071412,tt0120903,tt18335752,tt0100049
+nm0001120	Vittorio De Sica	1901	1974	actor,director,writer	tt0045274,tt0040522,tt0047313,tt0053856
+nm0001122	Ellen DeGeneres	1958	\N	producer,writer,actress	tt0108761,tt0266543,tt2796782,tt0379623
+nm0001123	Dom DeLuise	1933	2009	actor,soundtrack,director	tt0082136,tt0096787,tt0071230,tt0084649
+nm0001124	Cecil B. DeMille	1881	1959	producer,director,editor	tt0043014,tt0049833,tt0041838,tt0044672
+nm0001125	Benicio Del Toro	1967	\N	actor,producer,director	tt0114814,tt2015381,tt0181865,tt3397884
+nm0001128	Alain Delon	1935	\N	actor,producer,writer	tt0054189,tt0056736,tt0057091,tt0062229
+nm0001129	Jonathan Demme	1944	2017	director,producer,writer	tt1084950,tt0102926,tt0368008,tt0107818
+nm0001130	Ted Demme	1963	2002	director,producer,actor	tt0342275,tt0110955,tt0115639,tt0221027
+nm0001131	Patrick Dempsey	1966	\N	actor,production_manager,producer	tt0413573,tt1399103,tt0461770,tt0092718
+nm0001132	Judi Dench	1934	\N	actress,music_department,soundtrack	tt0465551,tt1412386,tt0138097,tt1074638
+nm0001133	Brian Dennehy	1938	2020	actor,producer,director	tt0088933,tt0090022,tt0083944,tt0114694
+nm0001135	John Derek	1926	1998	actor,director,cinematographer	tt0099656,tt0086987,tt0049833,tt0041555
+nm0001137	William Devane	1939	\N	actor,writer,director	tt0120784,tt0186566,tt0078638,tt0074860
+nm0001139	Tom DiCillo	1953	\N	director,cinematographer,writer	tt0113677,tt0412637,tt0104567,tt1333667
+nm0001140	Philip K. Dick	1928	1982	writer,actor	tt0083658,tt0405296,tt0181689,tt0100802
+nm0001145	Divine	1945	1988	actor,soundtrack,writer	tt0149261,tt0095270,tt0072979,tt0069089
+nm0001147	Shannen Doherty	1971	\N	actress,producer,director	tt0158552,tt0097493,tt0098749,tt0113749
+nm0001149	Richard Donner	1930	2021	director,producer,actor	tt0093409,tt0839995,tt0078346,tt0089457
+nm0001151	Stephen Dorff	1973	\N	actor,producer,soundtrack	tt0120611,tt1421051,tt1253864,tt0469641
+nm0001152	Illeana Douglas	1961	\N	actress,producer,writer	tt0241760,tt0114681,tt0162346,tt0164181
+nm0001153	Lesley-Anne Down	1954	\N	actress,soundtrack,writer	tt0075066,tt0092325,tt0088583,tt0079240
+nm0001155	Patrick Duffy	1949	\N	actor,director,producer	tt1414382,tt0182576,tt0101205,tt0077000
+nm0001157	Patty Duke	1946	2016	actress,soundtrack,producer	tt0073971,tt0058972,tt0056241,tt0062430
+nm0001159	Faye Dunaway	1941	\N	actress,producer,director	tt0074958,tt0082766,tt0071315,tt0061418
+nm0001160	Adrian Dunbar	1958	\N	actor,producer,soundtrack	tt2303687,tt0097937,tt0104036,tt0102014
+nm0001162	Griffin Dunne	1955	\N	actor,director,producer	tt0082010,tt0790636,tt1333125,tt0088680
+nm0001163	Roy Dupuis	1963	\N	actor,producer,director	tt0460505,tt0472562,tt0118379,tt0114367
+nm0001165	Charles S. Dutton	1951	\N	actor,producer,director	tt0103644,tt1038686,tt0117913,tt0348836
+nm0001166	James Duval	1972	\N	actor,producer,soundtrack	tt0116629,tt0187078,tt0303361,tt0246578
+nm0001167	Shelley Duvall	1949	\N	actress,producer,writer	tt0075612,tt0081353,tt0081505,tt0075686
+nm0001168	Bob Dylan	1941	\N	music_artist,soundtrack,music_department	tt0319829,tt0070518,tt0185014,tt0078151
+nm0001170	Roger Ebert	1942	2013	writer,actor,producer	tt0075583,tt0090523,tt2382298,tt0065466
+nm0001175	Blake Edwards	1922	2010	writer,producer,director	tt0072081,tt0084865,tt0051301,tt0075066
+nm0001177	Chris Eigeman	1965	\N	actor,director,writer	tt0252076,tt0811128,tt0100142,tt0120728
+nm0001178	Sergei Eisenstein	1898	1948	director,writer,editor	tt0015648,tt0037824,tt0079020,tt0029850
+nm0001180	Britt Ekland	1942	\N	actress,director,writer	tt0067128,tt0071807,tt0070917,tt0067489
+nm0001183	Bodhi Elfman	1969	\N	actor,producer,writer	tt0369339,tt0111686,tt0120660,tt0120749
+nm0001185	Hector Elizondo	1936	\N	actor,soundtrack,director	tt0109254,tt0100405,tt0163187,tt0368933
+nm0001187	Noah Emmerich	1965	\N	actor,director	tt0349825,tt0115639,tt0245562,tt1650062
+nm0001188	Nora Ephron	1941	2012	writer,producer,director	tt1135503,tt0128853,tt0374536,tt0098635
+nm0001191	Adam Sandler	1966	\N	actor,producer,writer	tt0120888,tt0120484,tt0142342,tt0185431
+nm0001192	John Mark Robinson	1949	\N	actor,director,writer	tt0105442,tt14232752,tt0088008,tt0102205
+nm0001195	Douglas Fairbanks Jr.	1909	2000	actor,producer,production_manager	tt0024962,tt0021079,tt0041363,tt0029442
+nm0001196	Douglas Fairbanks	1883	1939	actor,producer,writer	tt0020030,tt0011439,tt0013556,tt0015400
+nm0001200	Gary Farmer	1953	\N	actor,director,miscellaneous	tt0165798,tt0098112,tt0120321,tt0112817
+nm0001202	Rainer Werner Fassbinder	1945	1982	writer,director,actor	tt0072976,tt0071141,tt0064536,tt0079095
+nm0001203	William Faulkner	1897	1962	writer	tt0038355,tt5208974,tt0051055,tt0037382
+nm0001204	Marty Feldman	1934	1982	writer,actor,script_department	tt0072431,tt0076297,tt0129696,tt0080917
+nm0001206	Abel Ferrara	1951	\N	director,actor,writer	tt13432484,tt0099939,tt0133122,tt0103759
+nm0001207	José Ferrer	1912	1992	actor,soundtrack,director	tt0046816,tt0087182,tt0044926,tt0042367
+nm0001208	Miguel Ferrer	1955	2017	actor,director,cinematographer	tt0181865,tt0284718,tt0105665,tt0093870
+nm0001209	William Fichtner	1956	\N	actor,producer,director	tt1502404,tt0265086,tt0120591,tt0375679
+nm0001211	W.C. Fields	1880	1946	actor,writer,soundtrack	tt0032234,tt0026676,tt0033945,tt0025318
+nm0001212	Joseph Fiennes	1970	\N	actor,producer,director	tt0379889,tt0138097,tt0127536,tt3231054
+nm0001213	Harvey Fierstein	1954	\N	actor,soundtrack,writer	tt0120762,tt0116629,tt0107614,tt0109348
+nm0001214	Mike Figgis	1948	\N	director,writer,composer	tt0220100,tt0096180,tt0113627,tt2265565
+nm0001215	Albert Finney	1936	2019	actor,producer,soundtrack	tt0071877,tt0066344,tt0195685,tt0319061
+nm0001216	Tara Fitzgerald	1967	\N	actress,director,producer	tt0115744,tt0111201,tt3569230,tt1528100
+nm0001217	Fionnula Flanagan	1941	\N	actress,soundtrack,producer	tt0430105,tt0230600,tt0166396,tt1540133
+nm0001218	Sean Patrick Flanery	1965	\N	actor,producer,writer	tt1300851,tt0114168,tt0120241,tt0144117
+nm0001219	Gary Fleder	1965	\N	producer,director,miscellaneous	tt0119468,tt0313542,tt0160399,tt0114660
+nm0001220	Ian Fleming	1908	1964	writer,miscellaneous	tt0086006,tt0381061,tt0055928,tt0059800
+nm0001224	Errol Flynn	1909	1959	actor,writer,producer	tt0029843,tt0040076,tt0026174,tt0041955
+nm0001225	Nina Foch	1924	2008	actress,miscellaneous,soundtrack	tt0049833,tt0054331,tt0043278,tt0037932
+nm0001226	James Foley	\N	\N	director,writer,producer	tt0090670,tt1856010,tt0104348,tt0098994
+nm0001227	Megan Follows	1968	\N	actress,director,producer	tt0090021,tt0088727,tt0092571,tt0158466
+nm0001228	Peter Fonda	1940	2019	actor,director,writer	tt0486946,tt0064276,tt0381849,tt0120402
+nm0001232	Milos Forman	1932	2018	director,writer,actor	tt0079261,tt0117318,tt0073486,tt0086879
+nm0001233	Robert Forster	1941	2019	actor,producer,director	tt1033575,tt0119396,tt2302755,tt0166924
+nm0001235	William Forsythe	1955	\N	actor,producer,soundtrack	tt0114660,tt0395584,tt0099422,tt0093822
+nm0001238	Jesús Franco	1930	2013	writer,director,actor	tt0067846,tt0092311,tt0072904,tt0086428
+nm0001239	John Frankenheimer	1930	2002	director,miscellaneous,producer	tt0056218,tt0119189,tt0058576,tt0116654
+nm0001240	Dennis Franz	1944	\N	actor,writer,producer	tt0080661,tt0106079,tt0099423,tt0120632
+nm0001241	Stephen Frears	1941	\N	director,producer,actor	tt0301199,tt0094947,tt0436697,tt2431286
+nm0001242	Matt Frewer	1958	\N	actor,soundtrack,writer	tt0409459,tt0119282,tt0363547,tt0097523
+nm0001243	William Friedkin	1935	2023	director,writer,producer	tt0090180,tt0070047,tt0067116,tt0080569
+nm0001244	Sadie Frost	1965	\N	actress,producer,director	tt0199727,tt0346156,tt0211577,tt0103874
+nm0001246	Dan Futterman	1967	\N	actor,producer,writer	tt0115685,tt0379725,tt0829459,tt0835434
+nm0001250	Charlotte Gainsbourg	1971	\N	actress,soundtrack,writer	tt0870984,tt2382009,tt1527186,tt1937390
+nm0001251	Peter Gallagher	1955	\N	actor,soundtrack,writer	tt0362359,tt0169547,tt0114924,tt0280590
+nm0001252	Vincent Gallo	1961	\N	actor,director,soundtrack	tt0118789,tt0330099,tt1561768,tt0106307
+nm0001258	James Garner	1928	2014	actor,producer,soundtrack	tt0057115,tt0332280,tt0186566,tt0071042
+nm0001259	Jennie Garth	1972	\N	actress,producer,writer	tt0985692,tt0321018,tt0098749,tt0369910
+nm0001261	Rebecca Gayheart	1971	\N	actress,director	tt0155776,tt7131622,tt0146336,tt0119807
+nm0001262	Ben Gazzara	1930	2012	actor,director,soundtrack	tt0052561,tt0074749,tt0098206,tt0118715
+nm0001263	Jason Gedrick	1965	\N	actor,director,writer	tt0773262,tt3502248,tt0101393,tt1578887
+nm0001266	Gil Gerard	1943	\N	actor,producer,director	tt0075648,tt3799694,tt0077278,tt1277731
+nm0001269	Cynthia Gibb	1963	\N	actress,soundtrack,director	tt0083412,tt0091886,tt0096101,tt0107065
+nm0001270	Brian Gibson	1944	2004	director,producer,writer	tt0080469,tt0120679,tt0091778,tt0318224
+nm0001271	Melissa Gilbert	1964	\N	actress,producer,director	tt0071007,tt0087630,tt8205246,tt8650976
+nm0001273	Lillian Gish	1893	1993	actress,writer,soundtrack	tt0094315,tt0014605,tt0048424,tt0038499
+nm0001274	Paul Michael Glaser	1943	\N	actor,producer,director	tt0093894,tt0335438,tt0072567,tt0067093
+nm0001275	Philip Glass	1937	\N	composer,soundtrack,music_department	tt0274558,tt0443543,tt0119485,tt0120382
+nm0001276	Jackie Gleason	1916	1987	music_department,actor,writer	tt0054997,tt0081529,tt0042114,tt0076729
+nm0001279	William Goldman	1931	2018	writer,soundtrack,miscellaneous	tt0116409,tt0064115,tt0074119,tt0093779
+nm0001281	Bobcat Goldthwait	1962	\N	director,actor,writer	tt1912398,tt0119282,tt0096061,tt0102898
+nm0001282	Tony Goldwyn	1960	\N	actor,director,writer	tt0325710,tt0844708,tt0099653,tt0472399
+nm0001283	Louis Gossett Jr.	1936	\N	actor,producer,soundtrack	tt0075572,tt0089092,tt0085750,tt0084434
+nm0001286	Elizabeth Gracen	1961	\N	actress,producer,director	tt8947100,tt2866360,tt0103442,tt0144714
+nm0001287	Heather Graham	1970	\N	actress,producer,soundtrack	tt0131325,tt0118749,tt0145660,tt0120738
+nm0001288	Kelsey Grammer	1955	\N	producer,actor,soundtrack	tt0083399,tt0376994,tt2109248,tt0106004
+nm0001290	Richard E. Grant	1957	\N	actor,director,soundtrack	tt0280707,tt0102070,tt4595882,tt0094336
+nm0001291	Rupert Graves	1963	\N	actor,writer,director	tt0795368,tt0434409,tt1475582,tt0093512
+nm0001293	Seth Green	1974	\N	actor,writer,producer	tt0320244,tt0317740,tt0118655,tt0437745
+nm0001294	Graham Greene	1904	1991	writer,actor,producer	tt0258068,tt0172396,tt0040338,tt0041959
+nm0001295	Graham Greene	1952	\N	actor,writer,miscellaneous	tt0120689,tt0099348,tt5362988,tt0110478
+nm0001298	Richard Grieco	1965	\N	actor,producer,director	tt0120770,tt4702194,tt0102095,tt8804580
+nm0001299	Thomas Ian Griffith	1962	\N	actor,producer,writer	tt0295701,tt0113313,tt0097647,tt0120877
+nm0001300	John Grisham	1955	\N	writer,producer,actor	tt0313542,tt0119978,tt0117913,tt0106918
+nm0001301	Charles Grodin	1935	2021	actor,writer,soundtrack	tt0074751,tt0081480,tt0095631,tt0068687
+nm0001302	Christopher Guest	1948	\N	actor,writer,soundtrack	tt0088258,tt0310281,tt0218839,tt0118111
+nm0001304	Fred Gwynne	1926	1993	actor,soundtrack,writer	tt0104952,tt0057773,tt0098084,tt0054528
+nm0001306	Larry Hagman	1931	2012	actor,producer,director	tt0113987,tt0119942,tt0078346,tt0077000
+nm0001309	Anthony Michael Hall	1968	\N	actor,producer,soundtrack	tt2361317,tt1100089,tt0468569,tt4758646
+nm0001312	Geri Horner	1972	\N	soundtrack,actress,writer	tt8106534,tt4495098,tt1121931,tt0120185
+nm0001316	Oliver Hardy	1892	1957	actor,soundtrack,writer	tt0024601,tt0027376,tt0029747,tt0033022
+nm0001317	Renny Harlin	1959	\N	producer,director,writer	tt0132245,tt0112760,tt1905040,tt0106582
+nm0001319	Mark Harmon	1951	\N	actor,producer,director	tt0322330,tt0364845,tt0360139,tt0094072
+nm0001320	Valerie Harper	1939	2019	actress,soundtrack,writer	tt0065314,tt0086973,tt0071521,tt0071040
+nm0001321	Richard Harris	1930	2002	actor,soundtrack,producer	tt0061439,tt0105695,tt0172495,tt0245844
+nm0001323	Debbie Harry	1945	\N	soundtrack,actress,composer	tt0100740,tt0314412,tt0086541,tt0095270
+nm0001324	Ian Hart	1964	\N	actor,writer,soundtrack	tt0241527,tt0106339,tt0120660,tt5797184
+nm0001325	Hal Hartley	1959	\N	director,producer,writer	tt0103130,tt0388973,tt0109093,tt0444628
+nm0001327	David Hasselhoff	1952	\N	actor,producer,writer	tt1714203,tt3896198,tt0083437,tt0096542
+nm0001328	Howard Hawks	1896	1977	director,producer,writer	tt0061619,tt0040724,tt0037382,tt0053221
+nm0001330	Sterling Hayden	1916	1986	actor,writer,soundtrack	tt0049406,tt0068646,tt0057012,tt0042208
+nm0001331	Todd Haynes	1961	\N	director,writer,producer	tt0120879,tt2402927,tt0368794,tt0297884
+nm0001332	Robert Hays	1947	\N	actor,producer,director	tt0088889,tt0426592,tt0083530,tt0080339
+nm0001338	Brian Helgeland	\N	\N	writer,director,script_department	tt7991508,tt3569230,tt0453562,tt0183790
+nm0001340	Katherine Helmond	1929	2019	actress,director	tt0088846,tt0093693,tt0075584,tt0086827
+nm0001341	Florence Henderson	1934	2016	actress,soundtrack,producer	tt0075485,tt0102898,tt0063878,tt0112572
+nm0001345	Jim Henson	1936	1990	soundtrack,actor,writer	tt0083791,tt0063951,tt0074028,tt0079588
+nm0001348	Werner Herzog	1942	\N	director,writer,actor	tt0083946,tt0790724,tt0068182,tt1095217
+nm0001349	Jennifer Love Hewitt	1979	\N	actress,producer,soundtrack	tt0290095,tt0125022,tt0130018,tt0119345
+nm0001350	Benny Hill	1924	1992	soundtrack,writer,actor	tt0059797,tt0063869,tt0064505,tt0062803
+nm0001351	George Roy Hill	1921	2002	director,actor,writer	tt0069280,tt0064115,tt0070735,tt0076723
+nm0001352	Terence Hill	1939	\N	actor,director,miscellaneous	tt0070215,tt0067355,tt0069697,tt0057091
+nm0001353	Walter Hill	1942	\N	producer,writer,director	tt0103644,tt0088194,tt0083511,tt0090605
+nm0001355	Michael Hoffman	1956	\N	director,writer,producer	tt0117247,tt0824758,tt0140379,tt0095916
+nm0001357	Paul Hogan	1939	\N	actor,writer,producer	tt0099018,tt0092493,tt0231402,tt0090555
+nm0001358	Hal Holbrook	1925	2021	actor,director,writer	tt0074119,tt0443272,tt0083767,tt0758758
+nm0001360	John Holmes	1944	1988	actor,production_manager,assistant_director	tt0125269,tt0128724,tt0127170,tt0074803
+nm0001361	Tobe Hooper	1943	2017	director,writer,producer	tt0089489,tt0084516,tt0092076,tt0072271
+nm0001362	Bob Hope	1903	2003	actor,producer,soundtrack	tt0045094,tt0031143,tt0032520,tt0039645
+nm0001363	Jane Horrocks	1964	\N	actress,soundtrack,writer	tt0121164,tt0147004,tt0120630,tt0100024
+nm0001364	Bob Hoskins	1942	2014	actor,soundtrack,director	tt0081070,tt0096438,tt0091538,tt0108255
+nm0001366	Leslie Howard	1893	1943	actor,producer,director	tt0030637,tt0025748,tt0031381,tt0034027
+nm0001367	C. Thomas Howell	1966	\N	actor,producer,director	tt0086066,tt0091209,tt0083866,tt0087985
+nm0001368	Ernie Hudson	1945	\N	actor,producer,soundtrack	tt0109506,tt0097428,tt0087332,tt7146326
+nm0001370	Finola Hughes	1959	\N	actress,producer,director	tt0065272,tt1758692,tt0086361,tt0056758
+nm0001372	Bonnie Hunt	1961	\N	producer,writer,actress	tt0116695,tt0113497,tt0120689,tt0095953
+nm0001378	Anjelica Huston	1951	\N	actress,producer,director	tt0120631,tt0099703,tt0100944,tt0101272
+nm0001379	John Huston	1906	1987	actor,director,writer	tt0042208,tt0089841,tt0040897,tt0071315
+nm0001382	Peter Hyams	1943	\N	director,cinematographer,writer	tt0120004,tt0111438,tt0086837,tt0082869
+nm0001383	David Hyde Pierce	1959	\N	actor,soundtrack,writer	tt0243655,tt0309530,tt0106004,tt0120623
+nm0001384	Ice-T	1958	\N	actor,producer,soundtrack	tt0113481,tt0102526,tt0114614,tt0111323
+nm0001385	Eric Idle	1943	\N	actor,writer,soundtrack	tt0079470,tt0096764,tt0085959,tt0071853
+nm0001389	Chris Isaak	1956	\N	music_artist,soundtrack,actor	tt0105665,tt0100935,tt0107426,tt0120663
+nm0001390	Janet Jackson	1966	\N	music_artist,soundtrack,actress	tt0107840,tt0144528,tt0906108
+nm0001391	Michael Jackson	1958	2009	music_artist,soundtrack,actor	tt0078504,tt1477715,tt0095655
+nm0001392	Peter Jackson	1961	\N	producer,director,writer	tt0092610,tt0120737,tt0167260,tt0360717
+nm0001396	Mick Jagger	1943	\N	music_artist,soundtrack,composer	tt0066214,tt0434409,tt0104299,tt0375173
+nm0001398	Jenna Jameson	1974	\N	actress,producer,director	tt0960890,tt0317688,tt0119951,tt0368859
+nm0001399	Marianne Jean-Baptiste	1967	\N	actress,director,producer	tt0117589,tt10310140,tt0321021,tt0266987
+nm0001401	Angelina Jolie	1975	\N	actress,producer,director	tt0172493,tt0944835,tt1587310,tt0824747
+nm0001402	Terry Jones	1942	2020	writer,actor,soundtrack	tt0085959,tt0118172,tt0071853,tt0079470
+nm0001403	Neil Jordan	1950	\N	writer,producer,director	tt0411195,tt2639336,tt0117039,tt0104036
+nm0001405	Janusz Kaminski	1959	\N	cinematographer,camera_department,director	tt0120815,tt0108052,tt1568911,tt0181689
+nm0001407	Mitzi Kapture	1962	\N	actress,director,producer	tt0101198,tt4560374,tt0119882,tt0790772
+nm0001408	Shekhar Kapur	1945	\N	director,actor,producer	tt0127536,tt0414055,tt0240510,tt0109206
+nm0001410	Lawrence Kasdan	1949	\N	writer,producer,director	tt0111756,tt0090022,tt0082971,tt0085244
+nm0001411	William Katt	1951	\N	actor,director,writer	tt0756683,tt0091223,tt0074285,tt0081871
+nm0001412	Andy Kaufman	1949	1984	actor,soundtrack,writer	tt0125664,tt0080917,tt0077089,tt0082507
+nm0001414	Danny Kaye	1911	1987	soundtrack,actor,director	tt0056748,tt0049096,tt0047673,tt0052809
+nm0001415	Elia Kazan	1909	2003	director,writer,producer	tt0044081,tt0056825,tt0047296,tt0048028
+nm0001417	Brian Keith	1921	1997	actor,director,soundtrack	tt0055277,tt0062185,tt0073906,tt0096487
+nm0001418	David Keith	1954	\N	actor,music_department,director	tt0287978,tt0159273,tt0113419,tt0084434
+nm0001423	Richard Kiel	1939	2014	actor,writer,producer	tt0398286,tt0079574,tt0089767,tt0116483
+nm0001424	Udo Kier	\N	\N	actor,soundtrack,writer	tt10832274,tt1389072,tt7456722,tt2762506
+nm0001425	Krzysztof Kieslowski	1941	1996	writer,director,actor	tt0095468,tt0111495,tt0108394,tt0101765
+nm0001427	Greg Kinnear	1963	\N	actor,producer,writer	tt0114319,tt0119822,tt0128853,tt0449059
+nm0001428	Klaus Kinski	1926	1991	actor,writer,miscellaneous	tt0059578,tt0083946,tt0079641,tt0068182
+nm0001429	Takeshi Kitano	1947	\N	actor,writer,director	tt0108188,tt0119250,tt0199683,tt0363226
+nm0001430	Jack Klugman	1922	2012	actor,writer,director	tt0074042,tt0055895,tt0065329,tt0050083
+nm0001433	Yaphet Kotto	1939	2021	actor,writer,director	tt0070328,tt0078748,tt0095631,tt0106028
+nm0001435	Lisa Kudrow	1963	\N	actress,producer,writer	tt0120777,tt0120032,tt0434672,tt0108778
+nm0001437	Emir Kusturica	1954	\N	director,writer,actor	tt0097223,tt0114787,tt0118843,tt0106307
+nm0001438	Neil LaBute	1963	\N	writer,producer,director	tt4277268,tt18224610,tt0119517,tt0119361
+nm0001439	Anthony LaPaglia	1959	\N	actor,producer,writer	tt0321021,tt0108174,tt0112950,tt0259393
+nm0001440	Cheryl Ladd	1951	\N	actress,soundtrack,writer	tt0073972,tt3462710,tt0097883,tt0105156
+nm0001441	Christine Lahti	1950	\N	actress,director,soundtrack	tt0088213,tt0096018,tt0108724,tt0410997
+nm0001444	Lorenzo Lamas	1958	\N	actor,producer,director	tt0086985,tt0493406,tt0081858,tt0077631
+nm0001446	Michael Landon	1936	1991	actor,producer,writer	tt0086730,tt0071007,tt0052451,tt0087631
+nm0001451	Queen Latifah	1970	\N	actress,producer,music_department	tt0427327,tt0316732,tt0299658,tt0305669
+nm0001452	Charles Laughton	1899	1962	actor,soundtrack,writer	tt0051201,tt0024473,tt0054331,tt0026752
+nm0001453	Piper Laurie	1932	2023	actress,soundtrack,director	tt0133751,tt0098936,tt0074285,tt0054997
+nm0001454	Martin Lawrence	1965	\N	actor,writer,producer	tt0112442,tt0103488,tt0208003,tt0172156
+nm0001459	Denis Leary	1957	\N	writer,actor,producer	tt0381798,tt0155267,tt0110955,tt0948470
+nm0001460	Mimi Leder	1952	\N	producer,director,script_department	tt4669788,tt0120647,tt7203552,tt0119874
+nm0001465	Elmore Leonard	1925	2013	writer,producer,miscellaneous	tt0120780,tt0119396,tt0113161,tt1489428
+nm0001466	Sergio Leone	1929	1989	assistant_director,writer,director	tt0067140,tt0064116,tt0087843,tt0058461
+nm0001467	Jared Leto	1971	\N	actor,producer,soundtrack	tt5108870,tt1386697,tt0180093,tt0790636
+nm0001468	David Letterman	1947	\N	writer,producer,actor	tt0083441,tt0115641,tt0106053,tt0119951
+nm0001469	Barry Levinson	1942	\N	producer,writer,director	tt1933667,tt0120885,tt0095953,tt0101516
+nm0001471	Jerry Lewis	1926	2017	actor,writer,soundtrack	tt0057372,tt0106307,tt0059166,tt0085794
+nm0001472	Jet Li	1963	\N	actor,producer,miscellaneous	tt0267804,tt0913968,tt0446059,tt0271027
+nm0001473	Laura Linney	1964	\N	actress,producer,miscellaneous	tt1515193,tt0775529,tt0203230,tt0362269
+nm0001475	John Lithgow	1945	\N	actor,soundtrack,producer	tt0084917,tt0086856,tt2639344,tt0106582
+nm0001484	Jon Lovitz	1957	\N	actor,soundtrack,writer	tt0104694,tt0147612,tt0250687,tt0837562
+nm0001486	Sidney Lumet	1924	2011	director,producer,writer	tt0070666,tt0072890,tt0292963,tt0050083
+nm0001487	John Lynch	1961	\N	actor,writer,assistant_director	tt0181311,tt0108071,tt1181791,tt0107207
+nm0001489	Paul Lynde	1926	1982	actor,soundtrack,writer	tt0070016,tt0058953,tt0056891,tt0058571
+nm0001490	Adrian Lyne	1941	\N	director,writer,producer	tt0107211,tt0093010,tt0099871,tt0085549
+nm0001492	Kyle MacLachlan	1959	\N	actor,soundtrack,director	tt0087182,tt0090756,tt1780441,tt4093826
+nm0001493	Peter MacNicol	1954	\N	actor,soundtrack,director	tt0084707,tt0118254
+nm0001494	Ralph Macchio	1961	\N	actor,producer,director	tt0097647,tt0087538,tt0086066,tt0091326
+nm0001497	Tobey Maguire	1975	\N	actor,producer,director	tt0765010,tt0185014,tt0120789,tt0145487
+nm0001500	Karl Malden	1912	2009	actor,soundtrack,director	tt0066206,tt0048973,tt0044081,tt0047296
+nm0001501	Louis Malle	1932	1995	director,writer,producer	tt0051378,tt0080388,tt0071733,tt0092593
+nm0001502	Luis Mandoki	1954	\N	director,producer,writer	tt2062575,tt0387914,tt14212142,tt0139462
+nm0001503	Dinah Manoff	1956	\N	actress,director,soundtrack	tt0081283,tt0077631,tt0094455,tt0094862
+nm0001504	Marilyn Manson	1969	\N	music_artist,soundtrack,actor	tt2911666,tt0133093,tt0114558,tt0165710
+nm0001505	Joe Mantegna	1947	\N	actor,producer,director	tt0120533,tt0108065,tt0099674,tt0109190
+nm0001507	Cheech Marin	1946	\N	actor,soundtrack,writer	tt0116367,tt0117918,tt0092690,tt0078446
+nm0001508	Penny Marshall	1943	2018	actress,director,producer	tt0074016,tt0099077,tt0094737,tt0104694
+nm0001513	Tim Matheson	1947	\N	actor,director,producer	tt1832979,tt0200276,tt9077530,tt0077975
+nm0001515	Joseph Mazzello	1983	\N	actor,director,writer	tt1285016,tt0112757,tt0107290,tt0110997
+nm0001517	Catherine McCormack	1972	\N	actress,director,writer	tt0266987,tt0463854,tt0112573,tt0318081
+nm0001518	Dylan McDermott	1961	\N	actor,director,writer	tt1659337,tt0110527,tt2302755,tt0118437
+nm0001520	Christopher McDonald	\N	\N	actor,producer,soundtrack	tt0103074,tt0110932,tt1582453,tt0116483
+nm0001522	Roddy McDowall	1928	1998	actor,producer,soundtrack	tt0068408,tt0033729,tt0056937,tt0089175
+nm0001524	Paul McGann	1959	\N	actor,soundtrack,director	tt0238546,tt0103644,tt0108333,tt0094336
+nm0001525	John C. McGinley	1959	\N	actor,producer,soundtrack	tt0091763,tt0285403,tt0114369,tt0102685
+nm0001526	Patrick McGoohan	1928	2009	actor,producer,director	tt0079116,tt0117913,tt0061287,tt0112573
+nm0001527	Elizabeth McGovern	1961	\N	actress,producer,writer	tt6398184,tt0087843,tt0081283,tt0099731
+nm0001528	Don McKellar	1963	\N	actor,director,producer	tt0120802,tt0861689,tt0156729,tt0120907
+nm0001529	Nancy McKeon	1966	\N	actress,producer,director	tt0286283,tt0272376,tt0083913,tt0078610
+nm0001530	William McNamara	\N	\N	actor,producer,director	tt11416582,tt0110936,tt0096171,tt0112722
+nm0001532	John McTiernan	1951	\N	director,producer,writer	tt0095016,tt0107362,tt0246894,tt0093773
+nm0001533	Meat Loaf	1947	2022	music_artist,actor,soundtrack	tt0137523,tt0120185,tt0073629,tt0227984
+nm0001536	Toshirô Mifune	1920	1997	actor,producer,director	tt0055630,tt0047478,tt0057565,tt0050613
+nm0001537	Ray Milland	1907	1986	actor,director,soundtrack	tt0046912,tt0037415,tt0066011,tt0037884
+nm0001538	Jonny Lee Miller	1972	\N	actor,director,soundtrack	tt0117951,tt0402022,tt0297284,tt0219653
+nm0001541	Kylie Minogue	1968	\N	music_artist,soundtrack,actress	tt0088580,tt2126355,tt0111301,tt0203009
+nm0001542	Jay Mohr	1970	\N	actor,writer,producer	tt0180052,tt0223897,tt0116695,tt0139239
+nm0001544	Ricardo Montalban	1920	2009	actor,soundtrack,director	tt0095705,tt0068408,tt0067065,tt0084726
+nm0001545	Dudley Moore	1935	2002	actor,writer,music_department	tt0082031,tt0061391,tt0076161,tt0078721
+nm0001546	Mary Tyler Moore	1936	2017	actress,soundtrack,producer	tt0065314,tt0081283,tt0054533,tt0062362
+nm0001548	Rick Moranis	1953	\N	actor,writer,producer	tt0086373,tt0087332,tt0094012,tt0098067
+nm0001551	Alanis Morissette	1974	\N	music_artist,soundtrack,actress	tt0120655,tt0120632,tt0352277,tt0363771
+nm0001552	Pat Morita	1932	2005	actor,soundtrack,writer	tt0087538,tt0091326,tt0110657,tt0097647
+nm0001554	Errol Morris	1948	\N	director,producer,writer	tt0096257,tt0119107,tt0896866,tt0317910
+nm0001555	Rob Morrow	1962	\N	actor,director,producer	tt0110932,tt0433309,tt0246072,tt0098878
+nm0001556	David Morse	1953	\N	actor,producer,director	tt0816711,tt0887912,tt0120689,tt0118884
+nm0001557	Viggo Mortensen	1958	\N	actor,soundtrack,producer	tt0765443,tt3553976,tt0167261,tt0167260
+nm0001559	Audie Murphy	1924	1971	actor,producer,soundtrack	tt0052002,tt0046906,tt0048729,tt0052135
+nm0001562	Kathy Najimy	1957	\N	actress,producer,soundtrack	tt0107120,tt0108147,tt0250687,tt0105417
+nm0001564	Bebe Neuwirth	1958	\N	actress,soundtrack,director	tt0251127,tt0162677,tt0083399,tt0113497
+nm0001565	Mike Newell	1942	\N	director,producer,executive	tt0330373,tt0104522,tt0109831,tt0119008
+nm0001566	Mike Nichols	1931	2014	director,producer,miscellaneous	tt0061722,tt0061184,tt0376541,tt0115685
+nm0001567	Connie Nielsen	1965	\N	actress,producer,writer	tt0451279,tt0264395,tt0172495,tt0265459
+nm0001568	Lisa Niemi	1956	\N	actress,director,miscellaneous	tt0157191,tt0098917,tt0096094,tt0092402
+nm0001569	Chuck Norris	1940	\N	actor,music_department,producer	tt0089348,tt0068935,tt1764651,tt0106168
+nm0001570	Edward Norton	1969	\N	actor,producer,writer	tt0117381,tt0137523,tt2562232,tt0120586
+nm0001572	Danny Nucci	1968	\N	actor,director,soundtrack	tt0112740,tt0106246,tt0120338,tt0116213
+nm0001573	Catherine O'Hara	1954	\N	actress,writer,producer	tt1142977,tt0218839,tt0472160,tt0310281
+nm0001574	Michael O'Keefe	1955	\N	actor,director,soundtrack	tt0465538,tt0079239,tt0080487,tt0237572
+nm0001578	Annette O'Toole	1952	\N	actress,soundtrack,writer	tt0086393,tt0083722,tt0083511,tt0310281
+nm0001579	Edward James Olmos	1947	\N	actor,producer,director	tt0083658,tt0120094,tt0094027,tt0407362
+nm0001587	Alan J. Pakula	1928	1998	producer,director,writer	tt0100404,tt0084707,tt0074119,tt0056592
+nm0001588	Jack Palance	1919	2006	actor,soundtrack,director	tt0098439,tt0046303,tt0057345,tt0101587
+nm0001589	Michael Palin	1943	\N	actor,writer,soundtrack	tt0071853,tt0081633,tt0085959,tt0079470
+nm0001590	Chazz Palminteri	1952	\N	actor,writer,producer	tt0106489,tt0473488,tt0114814,tt0109348
+nm0001591	Bruce Paltrow	1943	2002	producer,writer,director	tt0077101,tt0084259,tt0094563,tt0083483
+nm0001592	Joe Pantoliano	1951	\N	actor,producer,writer	tt0133093,tt0112442,tt0115736,tt0209144
+nm0001594	Anne Parillaud	1960	\N	actress,soundtrack,director	tt0104511,tt0120744,tt0100263,tt0104812
+nm0001595	Michael Paré	1958	\N	actor,director,producer	tt0159097,tt1189340,tt1838544,tt0119313
+nm0001596	Pier Paolo Pasolini	1922	1975	writer,director,actor	tt0058715,tt0050783,tt0073650,tt0065622
+nm0001600	Adrian Paul	1959	\N	actor,producer,director	tt0812352,tt0299981,tt0144964,tt0103442
+nm0001601	David Paymer	1954	\N	actor,director,producer	tt0113161,tt0385267,tt0120202,tt0112346
+nm0001602	Guy Pearce	1967	\N	actor,soundtrack,director	tt2345737,tt0119488,tt0887912,tt0209144
+nm0001603	Sam Peckinpah	1925	1984	writer,director,producer	tt0067800,tt0049366,tt0086058,tt0065214
+nm0001604	Nia Peeples	1961	\N	actress,soundtrack,producer	tt0297162,tt0097179,tt0106168,tt0083412
+nm0001605	Amanda Peet	1972	\N	actress,writer,producer	tt1190080,tt0309698,tt0391304,tt0190138
+nm0001606	Chris Penn	1965	2006	actor,producer,soundtrack	tt0087277,tt0105236,tt0108122,tt0108399
+nm0001607	Sydney Penny	1971	\N	actress,producer,director	tt0065272,tt0089767,tt0085101,tt1578873
+nm0001609	Rosie Perez	1964	\N	actress,miscellaneous,director	tt0105812,tt0108451,tt0102536,tt0106881
+nm0001612	Matthew Perry	1969	2023	actor,producer,writer	tt0108778,tt0190138,tt0485842,tt0473389
+nm0001614	Lori Petty	1963	\N	actress,writer,producer	tt0106965,tt0114614,tt0104694,tt0102685
+nm0001615	Elizabeth Peña	1959	2014	actress,director	tt0317705,tt0093378,tt0116905,tt0120812
+nm0001616	Mekhi Phifer	1974	\N	actor,producer,soundtrack	tt0363547,tt0108757,tt0322589,tt0298203
+nm0001617	Lou Diamond Phillips	1962	\N	actor,director,soundtrack	tt0094027,tt0093378,tt0115956,tt0120609
+nm0001618	Joaquin Phoenix	1974	\N	actor,producer,writer	tt0172495,tt0358273,tt1560747,tt1798709
+nm0001620	Slim Pickens	1919	1983	actor,soundtrack,writer	tt0078723,tt0068638,tt0057012,tt0071230
+nm0001625	Amanda Plummer	1957	\N	actress,writer	tt2190165,tt0110912,tt0101889,tt8806524
+nm0001627	Sidney Poitier	1927	2022	actor,director,producer	tt0061811,tt0051525,tt0061735,tt0057251
+nm0001628	Sydney Pollack	1934	2008	director,producer,actor	tt0465538,tt0120663,tt0084805,tt0089755
+nm0001629	Kevin Pollak	1957	\N	actor,producer,writer	tt0146675,tt0104257,tt0114814,tt0327247
+nm0001631	Sarah Polley	1979	\N	actress,director,writer	tt0139239,tt0314412,tt0363547,tt0120255
+nm0001636	Priscilla Presley	1945	\N	actress,producer,writer	tt0098987,tt0102510,tt0110622,tt0095705
+nm0001637	Vincent Price	1911	1993	actor,soundtrack,miscellaneous	tt0049833,tt0051744,tt0066740,tt0037008
+nm0001639	Alex Proyas	1963	\N	director,producer,writer	tt0118929,tt0343818,tt0448011,tt0109506
+nm0001640	Richard Pryor	1940	2005	actor,writer,producer	tt0081562,tt0082121,tt0086393,tt0098282
+nm0001641	Vincent Perez	1964	\N	actor,director,writer	tt26656821,tt28106865,tt0110963,tt3026488
+nm0001642	Randy Quaid	1950	\N	actor,soundtrack,producer	tt0116778,tt0070290,tt0097958,tt0116629
+nm0001644	Aidan Quinn	1959	\N	actor,producer,director	tt0110322,tt0106387,tt0120791,tt0817177
+nm0001645	Serge Ladouceur	1952	\N	cinematographer,producer,camera_department	tt0310851,tt21275092,tt0460681,tt0120574
+nm0001646	Ted Raimi	1965	\N	actor,writer,director	tt7325622,tt18815410,tt0098936,tt8762206
+nm0001648	Charlotte Rampling	1946	\N	actress,soundtrack,writer	tt3544082,tt2094766,tt1527186,tt0324133
+nm0001650	Michael Rapaport	1970	\N	actor,director,soundtrack	tt0216216,tt0108399,tt0115639,tt0149261
+nm0001651	Basil Rathbone	1892	1967	actor,writer,soundtrack	tt0029843,tt0032762,tt0035318,tt0036348
+nm0001652	John Ratzenberger	1947	\N	actor,director,soundtrack	tt0083399,tt0114709,tt0317219,tt1453405
+nm0001653	Stephen Rea	1946	\N	actor,writer,soundtrack	tt0434409,tt1496025,tt0104036,tt0110148
+nm0001658	Robert Reed	1932	1992	actor,soundtrack,director	tt0075572,tt0075485,tt0063878,tt0074048
+nm0001659	Christopher Reeve	1952	2004	actor,producer,miscellaneous	tt0086393,tt0081534,tt0094074,tt0078346
+nm0001660	George Reeves	1914	1959	actor,director,soundtrack	tt0041096,tt0031381,tt0044091,tt0044231
+nm0001661	Rob Reiner	1947	\N	actor,writer,producer	tt0066626,tt0993846,tt0160916,tt0088258
+nm0001662	Judge Reinhold	\N	\N	actor,soundtrack,producer	tt0092644,tt0111070,tt0086960,tt0083929
+nm0001663	Paul Reiser	1956	\N	actor,writer,producer	tt0103484,tt2582802,tt0090605,tt0086960
+nm0001666	Debbie Reynolds	1932	2016	actress,soundtrack,producer	tt0058708,tt0119360,tt0051051,tt0045152
+nm0001672	Joan Rivers	1933	2014	writer,actress,producer	tt0078133,tt0094012,tt0111127,tt1300854
+nm0001674	Chris Rock	1965	\N	producer,actor,writer	tt0398165,tt0325537,tt0351283,tt2784678
+nm0001675	Robert Rodriguez	1968	\N	producer,writer,director	tt0104815,tt0287717,tt0458481,tt0462322
+nm0001676	Nicolas Roeg	1928	2018	camera_department,director,cinematographer	tt0067959,tt0100944,tt0069995,tt0074851
+nm0001678	Roy Rogers	1911	1998	soundtrack,actor,producer	tt0036725,tt1409024,tt0035364,tt0037018
+nm0001679	Mark Rolston	1956	\N	actor,sound_department,writer	tt0120812,tt0090605,tt0111161,tt0407887
+nm0001681	George A. Romero	1940	2017	producer,writer,director	tt0063350,tt0848557,tt0418819,tt0095652
+nm0001682	Mickey Rooney	1920	2014	actor,soundtrack,producer	tt0057193,tt0054698,tt0031066,tt0076538
+nm0001683	Roseanne Barr	1952	\N	producer,actress,writer	tt0094540,tt0098309,tt0100050,tt0101917
+nm0001684	Katharine Ross	1940	\N	actress,writer,soundtrack	tt0246578,tt0073747,tt0064115,tt0061722
+nm0001686	Cynthia Rothrock	1957	\N	actress,producer,director	tt9626986,tt0099260,tt3393762,tt8840400
+nm0001687	Gena Rowlands	1930	\N	actress,miscellaneous,writer	tt0119313,tt0332280,tt0397101,tt0072417
+nm0001691	Geoffrey Rush	1951	\N	actor,producer,soundtrack	tt0180073,tt1504320,tt0325980,tt0138097
+nm0001692	Ken Russell	1927	2011	director,writer,actor	tt0066858,tt0073812,tt0066993,tt0080360
+nm0001695	George Sanders	1906	1972	actor,soundtrack,writer	tt0042192,tt0037988,tt0032976,tt0033873
+nm0001699	Telly Savalas	1922	1994	actor,soundtrack,director	tt0065938,tt0064757,tt0077294,tt0069599
+nm0001700	Nancy Savoca	1959	\N	director,writer,producer	tt0359161,tt0138279,tt0107152,tt0098528
+nm0001701	Devon Sawa	1978	\N	actor,producer,director	tt0138510,tt0195714,tt0112642,tt0114011
+nm0001703	Maximilian Schell	1930	2014	actor,director,writer	tt0120877,tt0120647,tt0078869,tt0055031
+nm0001705	Rob Schneider	1963	\N	actor,writer,producer	tt0205000,tt0255798,tt0302640,tt0367652
+nm0001707	Paul Schrader	1946	\N	writer,director,soundtrack	tt11196036,tt0075314,tt6053438,tt0118564
+nm0001708	Joel Schumacher	1939	2020	director,writer,producer	tt0183649,tt0118688,tt0134273,tt0293508
+nm0001709	Til Schweiger	1963	\N	actor,producer,director	tt0361748,tt0133189,tt0119472,tt0960790
+nm0001710	David Schwimmer	1966	\N	actor,director,producer	tt0185906,tt0488085,tt0108778,tt0120828
+nm0001712	Tracy Scoggins	\N	\N	actress,writer,producer	tt0149437,tt0871427,tt0106057,tt0106145
+nm0001714	Campbell Scott	1961	\N	actor,producer,director	tt1872181,tt0299117,tt0105415,tt0115678
+nm0001715	George C. Scott	1927	1999	actor,director,producer	tt0099528,tt0066206,tt0080516,tt0054997
+nm0001716	Tony Scott	1944	2012	producer,director,actor	tt0092099,tt0477080,tt0108399,tt0421054
+nm0001717	Kyle Secor	1957	\N	actor,director	tt0106028,tt0102945,tt0101587,tt0109676
+nm0001718	Kyra Sedgwick	1965	\N	actress,producer,director	tt0361127,tt0117333,tt0114496,tt0458253
+nm0001720	Ivan Sergei	1971	\N	actor,director,writer	tt0207889,tt7335154,tt0284718,tt0120777
+nm0001721	Chloë Sevigny	\N	\N	actress,soundtrack,director	tt8695030,tt0171804,tt0421030,tt9848536
+nm0001723	Tom Shadyac	1958	\N	producer,director,actor	tt1741225,tt0117218,tt0259288,tt0109040
+nm0001724	Tony Shalhoub	1953	\N	actor,producer,soundtrack	tt0312172,tt1291150,tt0243133,tt0120912
+nm0001725	Omar Sharif	1932	2015	actor,soundtrack,writer	tt0056172,tt0088286,tt0059113,tt0329388
+nm0001726	Helen Shaver	1951	\N	actress,director,producer	tt0089015,tt0078767,tt0095489,tt0115317
+nm0001727	Robert Shaw	1927	1978	actor,writer,soundtrack	tt0073195,tt0057076,tt0070735,tt0060665
+nm0001728	Wallace Shawn	1943	\N	actor,writer,soundtrack	tt0082783,tt0120434,tt0093779,tt0317705
+nm0001729	Craig Sheffer	1960	\N	actor,producer,director	tt0105265,tt0106912,tt0094006,tt0100260
+nm0001730	Deborah Shelton	1948	\N	actress,music_department,writer	tt0086984,tt0111191,tt0108143,tt0107668
+nm0001731	Sam Shepard	1943	2017	actor,writer,soundtrack	tt0086197,tt0265086,tt1935179,tt1322269
+nm0001732	Cybill Shepherd	1950	\N	actress,producer,soundtrack	tt0111932,tt0088571,tt0075314,tt0067328
+nm0001733	Nicollette Sheridan	1963	\N	actress,producer,soundtrack	tt0117723,tt0078638,tt0410975,tt0462229
+nm0001734	Armin Shimerman	1949	\N	actor,soundtrack,writer	tt1430111,tt0091209,tt0106145,tt1094581
+nm0001735	Talia Shire	1946	\N	actress,producer,director	tt0099674,tt0075148,tt0068646,tt0089927
+nm0001736	Pauly Shore	1968	\N	actor,writer,producer	tt0284674,tt0115683,tt0108186,tt0104187
+nm0001737	Martin Short	1950	\N	actor,writer,producer	tt0092086,tt0093260,tt0452681,tt1791528
+nm0001738	Jonathan Silverman	1966	\N	actor,miscellaneous,producer	tt0098627,tt0106188,tt1870372,tt0090774
+nm0001741	Bryan Singer	1965	\N	producer,director,actor	tt0348150,tt0114814,tt0120903,tt1877832
+nm0001742	Lori Singer	\N	\N	actress,soundtrack,producer	tt0087277,tt0108122,tt2111478
+nm0001743	Marc Singer	1948	\N	actor,soundtrack,director	tt0083630,tt0085106,tt0086822,tt0101412
+nm0001744	Tom Sizemore	1961	2023	actor,producer,writer	tt0113277,tt0120815,tt0120004,tt0265086
+nm0001745	Stellan Skarsgård	1951	\N	actor,producer,soundtrack	tt0118607,tt0119217,tt1937390,tt2382009
+nm0001746	Ione Skye	1970	\N	actress,writer,soundtrack	tt0098258,tt0332047,tt0091860,tt0113101
+nm0001747	Charles Martin Smith	1953	\N	actor,director,writer	tt0069704,tt0094226,tt0086005,tt1564349
+nm0001752	Steven Soderbergh	1963	\N	producer,director,cinematographer	tt0195685,tt0098724,tt1291580,tt0181865
+nm0001754	Todd Solondz	1959	\N	director,writer,actor	tt0808526,tt0114906,tt4144190,tt0147612
+nm0001755	Suzanne Somers	1946	2023	actress,composer,soundtrack	tt0075596,tt0092449,tt0111127,tt0101205
+nm0001756	Barry Sonnenfeld	1953	\N	producer,director,cinematographer	tt1409024,tt0119654,tt0113161,tt0120891
+nm0001757	Kevin Sorbo	1958	\N	actor,producer,director	tt5804314,tt0110016,tt0213327,tt1714827
+nm0001758	Timothy Spall	1957	\N	actor,soundtrack,producer	tt0259711,tt0117589,tt2473794,tt0408236
+nm0001759	Vincent Spano	\N	\N	actor,director,producer	tt0085208,tt0088960,tt0106246,tt0086216
+nm0001760	Tori Spelling	1973	\N	actress,producer,music_department	tt0257106,tt0098749,tt0162710,tt0119324
+nm0001761	Jerry Springer	1944	2023	producer,writer,actor	tt0145660,tt0402127,tt0165494,tt0421054
+nm0001764	John Stamos	1963	\N	actor,producer,soundtrack	tt0262994,tt4465368,tt0092359,tt3986586
+nm0001769	Howard Stern	1954	\N	producer,actor,writer	tt0119951,tt0103466,tt2248835,tt0474499
+nm0001770	Fisher Stevens	1963	\N	actor,producer,director	tt0096101,tt0108255,tt0091949,tt0113243
+nm0001771	Stella Stevens	1938	2023	actress,soundtrack,director	tt0057372,tt0063800,tt0060980,tt0069113
+nm0001772	Patrick Stewart	1940	\N	actor,producer,soundtrack	tt3315342,tt0120844,tt0117731,tt0092455
+nm0001773	David Ogden Stiers	1942	2018	actor,soundtrack,director	tt0068098,tt0275847,tt0114148,tt0101414
+nm0001774	Ben Stiller	1965	\N	producer,actor,director	tt0942385,tt0359950,tt0196229,tt1608290
+nm0001775	Whit Stillman	1952	\N	director,writer,actor	tt0120728,tt0109219,tt3068194,tt0100142
+nm0001776	Sting	1951	\N	music_artist,soundtrack,actor	tt0159365,tt0120917,tt0087182,tt1608290
+nm0001777	Dean Stockwell	1936	2021	actor,soundtrack,director	tt0096684,tt0087884,tt0095593,tt0087182
+nm0001778	Matt Stone	1971	\N	soundtrack,music_department,writer	tt0372588,tt0158983,tt0124819,tt0121955
+nm0001779	Tom Stoppard	1937	\N	writer,script_department,producer	tt1781769,tt0138097,tt0088846,tt0100519
+nm0001780	Peter Stormare	1953	\N	actor,writer,producer	tt0120591,tt0116282,tt0355295,tt0360486
+nm0001781	Julie Strain	1962	2021	actress,producer,director	tt0106922,tt0110622,tt0109254,tt0119273
+nm0001786	George Takei	1937	\N	actor,miscellaneous,soundtrack	tt0102975,tt0088170,tt0084726,tt0060028
+nm0001789	Andrei Tarkovsky	1932	1986	miscellaneous,writer,director	tt0091670,tt0086022,tt0060107,tt0069293
+nm0001791	Robert Taylor	1911	1969	actor,soundtrack,director	tt0033238,tt0041207,tt0033774,tt0043949
+nm0001792	Rod Taylor	1930	2015	actor,music_department,soundtrack	tt0055254,tt0056869,tt0054387,tt0361748
+nm0001795	Jonathan Taylor Thomas	1981	\N	actor,director,soundtrack	tt0112302,tt0110357,tt0101120,tt0115472
+nm0001796	Richard Thomas	1951	\N	actor,director,producer	tt0099864,tt0185014,tt0080421,tt0068149
+nm0001798	Kevin Tighe	1944	\N	actor,director,stunts	tt0068067,tt0098206,tt0097637,tt0099044
+nm0001800	Rip Torn	1931	2019	actor,soundtrack,director	tt0107978,tt0103466,tt0240515,tt0119654
+nm0001801	Robert Towne	1934	\N	writer,producer,actor	tt0070290,tt0117060,tt0096244,tt0071315
+nm0001804	Stanley Tucci	1960	\N	actor,producer,soundtrack	tt0380510,tt0115678,tt1135503,tt1895587
+nm0001806	John Turturro	1957	\N	actor,writer,producer	tt2258345,tt0110932,tt0190590,tt0101410
+nm0001808	Tracey Ullman	1959	\N	actress,writer,producer	tt0109348,tt2180411,tt0196216,tt0092469
+nm0001810	Robert Urich	1946	2002	actor,producer,soundtrack	tt0096639,tt0087451,tt0070355,tt0077093
+nm0001811	Peter Ustinov	1921	2004	actor,writer,director	tt0055796,tt0074812,tt0077413,tt0054331
+nm0001813	Dick Van Dyke	1925	\N	actor,producer,soundtrack	tt0058331,tt5028340,tt0054533,tt0062803
+nm0001814	Gus Van Sant	1952	\N	director,producer,actor	tt0102494,tt0363589,tt0842929,tt0097240
+nm0001815	Jim Varney	1949	2000	actor,soundtrack,writer	tt0092974,tt0230011,tt0114709,tt0095107
+nm0001816	Robert Vaughn	1932	2016	actor,director	tt0054047,tt0062765,tt0072308,tt0086393
+nm0001817	Reginald VelJohnson	1952	\N	actor,writer,soundtrack	tt0099423,tt0096579,tt0095016,tt0087332
+nm0001823	Tom Waits	1949	\N	music_artist,soundtrack,actor	tt0090967,tt1931533,tt6412452,tt0108122
+nm0001824	Ally Walker	1961	\N	actress,writer,producer	tt0116756,tt0114924,tt0115322,tt0105698
+nm0001825	Andrew Kevin Walker	1964	\N	writer,actor,producer	tt0114369,tt14636170,tt1136617,tt0162661
+nm0001828	Melora Walters	1960	\N	actress,director,writer	tt0118749,tt0175880,tt0097165,tt0289879
+nm0001829	Rachel Ward	1957	\N	actress,director,writer	tt0085101,tt0086859,tt0083798,tt0083064
+nm0001832	Sam Waterston	1940	\N	actor,producer,director	tt0098844,tt0111127,tt0071577,tt0087553
+nm0001834	Damon Wayans	1960	\N	actor,writer,producer	tt0102266,tt0273855,tt0104897,tt0110443
+nm0001835	Carl Weathers	1948	\N	actor,director,soundtrack	tt0093773,tt0116483,tt0075148,tt0089927
+nm0001836	Steven Weber	1961	\N	actor,producer,soundtrack	tt0105414,tt0112896,tt0093137,tt0118460
+nm0001837	Peter Weir	1944	\N	director,writer,producer	tt0311113,tt0090329,tt1023114,tt0120382
+nm0001838	Rachel Weisz	1970	\N	actress,producer,soundtrack	tt0387131,tt3464902,tt6108178,tt0414993
+nm0001841	George Wendt	1948	\N	actor,soundtrack,director	tt0083399,tt0091223,tt0104291,tt0089155
+nm0001842	Adam West	1928	2017	actor,soundtrack,director	tt0060153,tt0059968,tt0371606,tt0157503
+nm0001843	James Whale	1889	1957	director,miscellaneous,art_director	tt0021884,tt0024184,tt0028249,tt0026138
+nm0001844	Frank Whaley	1963	\N	actor,director,writer	tt0110912,tt0452702,tt0101761,tt0115759
+nm0001845	Forest Whitaker	1961	\N	actor,producer,director	tt0185183,tt0455590,tt1327773,tt1825683
+nm0001847	Richard Widmark	1914	2008	actor,producer,soundtrack	tt0055031,tt0053580,tt0039536,tt0071877
+nm0001849	Kathleen Wilhoite	1964	\N	actress,soundtrack,music_department	tt0106912,tt0119051,tt0098206,tt0091575
+nm0001850	Billy Dee Williams	1937	\N	actor,soundtrack,writer	tt4116284,tt0086190,tt2527338,tt0080684
+nm0001851	JoBeth Williams	1948	\N	actress,producer,soundtrack	tt0084516,tt0085244,tt0091778,tt0079417
+nm0001852	Treat Williams	1951	2023	actor,soundtrack,director	tt0118956,tt0117331,tt0114660,tt0079261
+nm0001854	Rita Wilson	1956	\N	actress,soundtrack,producer	tt0114011,tt0116705,tt0108160,tt0163187
+nm0001855	Tom Wilson	1959	\N	actor,writer,soundtrack	tt2404463,tt0099088,tt0088763,tt0096874
+nm0001856	Oprah Winfrey	1954	\N	producer,actress,miscellaneous	tt1327773,tt1620680,tt0088939,tt0090493
+nm0001857	Henry Winkler	1945	\N	actor,producer,writer	tt0367279,tt0084412,tt0120484,tt0389860
+nm0001860	Alicia Witt	1975	\N	actress,soundtrack,music_department	tt0146336,tt0411061,tt0313737,tt0087182
+nm0001861	Katarina Witt	1965	\N	actress,producer,soundtrack	tt0134269,tt0116695,tt0122690,tt0243164
+nm0001862	Mary Woronov	1943	\N	actress,writer,director	tt0083869,tt0087799,tt0079813,tt0072856
+nm0001864	Noah Wyle	1971	\N	actor,producer,director	tt1146438,tt0108757,tt0246578,tt0104257
+nm0001866	Bolo Yeung	1946	\N	actor,stunts,director	tt0164441,tt0070034,tt0092675,tt0101764
+nm0001873	Steven Zaillian	1953	\N	writer,producer,director	tt1568346,tt0108065,tt0120633,tt1302006
+nm0001874	Franco Zeffirelli	1923	2019	miscellaneous,production_designer,director	tt0099726,tt0084821,tt0063518,tt0061407
+nm0001878	David Zucker	1947	\N	writer,producer,director	tt0080339,tt0095705,tt0102510,tt0362120
+nm0001879	Daphne Zuniga	1962	\N	actress,producer,soundtrack	tt0368530,tt0094012,tt0103491
+nm0001880	Edward Zwick	1952	\N	producer,writer,director	tt0115956,tt0138097,tt0325710,tt0092492
+nm0001881	Maryam d'Abo	1960	\N	actress,producer,director	tt1235124,tt10022782,tt0105395,tt0093428
+nm0001883	Jenna von Oÿ	1977	\N	actress,writer,producer	tt0113198,tt0101050,tt0096969,tt0200353
+nm0001884	Max von Sydow	1929	2020	actor,miscellaneous,soundtrack	tt0181689,tt0080745,tt0477302,tt0050976
+nm0001885	Lars von Trier	1956	\N	writer,director,producer	tt0276919,tt0168629,tt1527186,tt4003440
+nm0001887	Paul Brickman	1949	\N	writer,director,producer	tt0139668,tt0100134,tt0250798,tt0086200
+nm0001888	Robert Douglas	1909	1999	director,actor,producer	tt0040076,tt0044760,tt0041386,tt0053335
+nm0001889	Charles Hawtrey	1914	1988	actor,soundtrack,director	tt0057918,tt0062782,tt0060330,tt0060214
+nm0001890	Hugh Herbert	1884	1952	actor,soundtrack,writer	tt0035427,tt0020953,tt0033397,tt0029541
+nm0001894	Danny Dayton	1923	1999	actor,director,soundtrack	tt0048140,tt0074074,tt0045267,tt0109707
+nm0001898	Bryan Adams	1959	\N	music_artist,soundtrack,actor	tt0108333,tt0406816,tt0102798,tt0166813
+nm0001900	Danny Aiello III	1957	2010	stunts,assistant_director,actor	tt0087781,tt0822854,tt0368008,tt0338013
+nm0001901	Chantal Akerman	1950	2015	director,writer,actress	tt0073198,tt0078152,tt0118018,tt0071690
+nm0001903	Norma Aleandro	1936	\N	actress,writer	tt0117684,tt0292542,tt0089276,tt0346765
+nm0001904	Corey Allen	1934	2010	director,actor,writer	tt0092455,tt0081873,tt0048545,tt0068135
+nm0001905	Yves Allégret	1905	1987	director,writer,assistant_director	tt0046149,tt0049491,tt0056569,tt0039344
+nm0001907	Eric Ambler	1909	1998	writer,producer,director	tt0042553,tt0051994,tt0045659,tt0047376
+nm0001908	Gilbert M. 'Broncho Billy' Anderson	1880	1971	director,actor,producer	tt0003719,tt0001706,tt0176832,tt0183803
+nm0001910	Kenneth Anger	1927	2023	director,writer,editor	tt0489572,tt1568152,tt0039383,tt0489546
+nm0001912	Paul Anka	1941	\N	soundtrack,actor,composer	tt0093640,tt0073195,tt0427969,tt0056197
+nm0001915	Emile Ardolino	1943	1993	director,producer,miscellaneous	tt0092890,tt0149439,tt0098966,tt0085655
+nm0001920	Isaac Asimov	1920	1992	writer,miscellaneous	tt0804484,tt0182789,tt0079945,tt0343818
+nm0001921	Paul Attanasio	1959	\N	writer,producer,script_department	tt0110932,tt0119008,tt0120184,tt0109635
+nm0001922	Jean-Pierre Aumont	1911	2001	actor,writer,soundtrack	tt0035651,tt0046000,tt0070460,tt0228319
+nm0001928	Roy Ward Baker	1916	2010	director,assistant_director,miscellaneous	tt0081178,tt0068230,tt0057610,tt0051994
+nm0001929	Josiane Balasko	1950	\N	actress,writer,director	tt1442519,tt0113149,tt1091992,tt0074811
+nm0001930	Russell Banks	1940	2023	writer,producer,actor	tt3750408,tt0120255,tt2150507,tt0118564
+nm0001934	Kabir Bedi	1946	\N	actor,writer,miscellaneous	tt0086034,tt5832544,tt4535650,tt0074050
+nm0001938	Richard Belzer	1944	2023	actor,writer,producer	tt0086250,tt0203259,tt0106028,tt0120841
+nm0001940	Peter Benchley	1940	2006	writer,producer,actor	tt0093300,tt0073195,tt0077766,tt0085750
+nm0001942	Luca Bercovici	\N	\N	producer,actor,writer	tt3148266,tt0089200,tt0094884,tt1564777
+nm0001944	Edgar Bergen	1903	1978	actor,soundtrack,writer	tt0079588,tt0037297,tt0039404,tt0030359
+nm0001945	Claude Berri	1934	2009	producer,actor,writer	tt0091288,tt0063771,tt0792965,tt0107002
+nm0001949	Andrew Birkin	1945	\N	writer,miscellaneous,director	tt0094816,tt0091605,tt0106535,tt0396171
+nm0001951	Björk	1965	\N	music_artist,soundtrack,composer	tt0168629,tt11138512,tt0110413,tt0138545
+nm0001952	Rubén Blades	1948	\N	actor,soundtrack,composer	tt2193215,tt0285823,tt0109456,tt1599348
+nm0001953	Moritz Bleibtreu	1971	\N	actor,producer,director	tt0130827,tt0250258,tt0177858,tt0119472
+nm0001958	Dirk Bogarde	1921	1999	actor,writer,soundtrack	tt0059084,tt0057490,tt0075784,tt0067445
+nm0001960	Romane Bohringer	1973	\N	actress,director,writer	tt0105032,tt8792898,tt0114702,tt0115561
+nm0001962	Lizzie Borden	1958	\N	director,writer,producer	tt0144642,tt0085267,tt0092238,tt0102340
+nm0001963	Jesse Borrego	1962	\N	actor,soundtrack,producer	tt0083412,tt0106469,tt0118880,tt1657507
+nm0001969	Ray Bradbury	1920	2012	writer,producer,actor	tt0086336,tt0060390,tt0088591,tt0049513
+nm0001970	Klaus Maria Brandauer	1943	\N	actor,director,soundtrack	tt0097417,tt0089755,tt0082736,tt0086006
+nm0001974	Blair Brown	1946	\N	actress,soundtrack,director	tt0138304,tt0080360,tt0092336,tt0186566
+nm0001977	Charles Bukowski	1920	1994	writer,soundtrack,actor	tt17075398,tt26657933,tt0417658,tt0092618
+nm0001980	Carter Burwell	1954	\N	composer,music_department,soundtrack	tt11813216,tt2402927,tt0116282,tt5027774
+nm0001983	Rory Calhoun	1922	1999	actor,producer,writer	tt0039133,tt0105191,tt0081184,tt0045891
+nm0001984	Naomi Campbell	1970	\N	actress,producer,soundtrack	tt6791096,tt0114682,tt1608290,tt1844624
+nm0001986	Truman Capote	1924	1984	writer,actor,soundtrack	tt0061809,tt0054698,tt0074937,tt0055018
+nm0001987	Tantoo Cardinal	1950	\N	actress,director,producer	tt0110322,tt5362988,tt1646225,tt0099348
+nm0001988	Marc Caro	1956	\N	director,writer,actor	tt0118583,tt0112682,tt0101700,tt0487928
+nm0001990	Elpidia Carrillo	1961	\N	actress,producer,director	tt0091886,tt0420015,tt0093773,tt0100403
+nm0001992	Johnny Carson	1925	2005	soundtrack,actor,writer	tt0260758,tt0055708,tt0116282,tt0059398
+nm0001993	Vincent Cassel	1966	\N	actor,producer,soundtrack	tt1259014,tt0947798,tt0113247,tt0411272
+nm0001994	Michael Caton-Jones	1957	\N	director,producer,actor	tt0119395,tt0269095,tt0430912,tt0100133
+nm0002000	Leslie Cheung	1956	2003	actor,music_department,soundtrack	tt0101258,tt0106332,tt0093978,tt0118845
+nm0002001	Maurice Chevalier	1888	1972	soundtrack,actor,writer	tt0051658,tt0025493,tt0023303,tt0050658
+nm0002002	Shin'ichi Chiba	1939	2021	actor,stunts,miscellaneous	tt0463985,tt0266697,tt0378194,tt0078513
+nm0002005	Agatha Christie	1890	1976	writer	tt1869347,tt0051201,tt1349600,tt0071877
+nm0002006	Thomas Haden Church	1960	\N	actor,miscellaneous,producer	tt0375063,tt10872600,tt0413300,tt1282140
+nm0002007	Tom Clancy	1947	2013	writer,producer,actor	tt0164184,tt0099810,tt0105112,tt0109444
+nm0002009	Arthur C. Clarke	1917	2008	writer,actor,art_department	tt6076524,tt0062622,tt0134933,tt0086837
+nm0002010	Christian Clavier	1952	\N	actor,writer,producer	tt0133385,tt0189192,tt0108500,tt0250223
+nm0002011	Lee J. Cobb	1911	1976	actor,director,soundtrack	tt0047296,tt0070047,tt0053804,tt0050083
+nm0002015	Phil Collins	1951	\N	music_artist,soundtrack,actor	tt0086759,tt0094819,tt0328880,tt0120855
+nm0002016	William Conrad	1920	1994	actor,director,producer	tt0066636,tt0047264,tt0038669,tt0102070
+nm0002017	Richard Conte	1910	1975	actor,soundtrack,director	tt0041958,tt0047878,tt0038235,tt0068646
+nm0002019	Kevin Corcoran	1949	2015	assistant_director,actor,producer	tt0054195,tt0054357,tt0050798,tt0054390
+nm0002020	Costa-Gavras	1933	\N	director,writer,producer	tt0065234,tt0422015,tt0084335,tt0280653
+nm0002021	Noël Coward	1899	1973	writer,soundtrack,actor	tt0037558,tt0034891,tt0048960,tt0064505
+nm0002025	Hume Cronyn	1911	2003	actor,producer,writer	tt0092494,tt0036342,tt0088850,tt0088933
+nm0002028	Sheryl Crow	1962	\N	music_artist,soundtrack,actress	tt2719848,tt0272152,tt0120347,tt0117333
+nm0002029	Maria Grazia Cucinotta	1968	\N	actress,producer,director	tt1161864,tt0143145,tt0118782,tt0110877
+nm0002030	George Cukor	1899	1983	director,miscellaneous,assistant_director	tt0032904,tt0050631,tt0058385,tt0036855
+nm0002031	Michael Curtiz	1886	1962	director,writer,actor	tt0026174,tt0029843,tt0034583,tt0047673
+nm0002033	Tyne Daly	1946	\N	actress,soundtrack,writer	tt2250912,tt0209069,tt0083395,tt0074483
+nm0002035	Sammy Davis Jr.	1925	1990	soundtrack,actor,producer	tt0082136,tt0087032,tt0063534,tt0053182
+nm0002039	Ruby Dee	1922	2014	actress,soundtrack,writer	tt0102175,tt0765429,tt0097216,tt0055353
+nm0002040	Vanessa del Rio	1952	\N	actress,director,miscellaneous	tt0179505,tt1111948,tt0082287,tt0090939
+nm0002041	Dean Devlin	1962	\N	producer,writer,actor	tt0111282,tt0120685,tt0116629,tt1628841
+nm0002042	Charles Dickens	1812	1870	writer,soundtrack,miscellaneous	tt0038574,tt0096061,tt0095776,tt0063385
+nm0002044	Roger Donaldson	1945	\N	director,producer,writer	tt0093640,tt0086993,tt0412080,tt0114508
+nm0002045	Stanley Donen	1924	2019	director,miscellaneous,producer	tt0062407,tt0050419,tt0056923,tt0045152
+nm0002047	Diana Dors	1931	1984	actress,soundtrack,writer	tt0050653,tt0068200,tt0047841,tt0040662
+nm0002049	Robert Downey Sr.	1936	2021	actor,director,writer	tt0218967,tt0118749,tt0064855,tt0090180
+nm0002055	Alison Eastwood	1972	\N	actress,writer,producer	tt0118548,tt0119668,tt1880415,tt7959026
+nm0002057	Richard Edson	1954	\N	actor,camera_department,writer	tt0114558,tt0097216,tt0108255,tt0091042
+nm0002059	Lisa Eichhorn	1952	\N	actress,writer,producer	tt0108473,tt0082220,tt0079123,tt2194499
+nm0002061	Maurice Elvey	1887	1967	director,producer,writer	tt0325379,tt0017998,tt0325470,tt0023145
+nm0002064	Giancarlo Esposito	1958	\N	music_department,actor,producer	tt0097216,tt3040964,tt0903747,tt0114814
+nm0002065	Gloria Estefan	1957	\N	music_artist,soundtrack,music_department	tt0113845,tt0111255,tt0409182,tt0166943
+nm0002066	Ramon Estevez	1963	\N	producer,actor,writer	tt6360810,tt4820224,tt1986770,tt0101531
+nm0002068	Frances Farmer	1913	1970	actress,soundtrack,writer	tt0035360,tt0028817,tt0032481,tt0029675
+nm0002069	Mimsy Farmer	1945	\N	actress,art_department,writer	tt0067681,tt1298650,tt0064694,tt2015381
+nm0002071	Will Ferrell	1967	\N	producer,actor,soundtrack	tt1229340,tt0415306,tt0445934,tt0357413
+nm0002072	Mel Ferrer	1917	2008	actor,director,miscellaneous	tt0046000,tt0049934,tt0053454,tt0062467
+nm0002075	Peter Finch	1916	1977	actor,director,writer	tt0074958,tt0067805,tt0054403,tt0049871
+nm0002076	Jason Flemyng	1966	\N	actor,producer,soundtrack	tt0421715,tt0311429,tt0120735,tt0118956
+nm0002077	Dexter Fletcher	1966	\N	actor,producer,director	tt1083452,tt2066051,tt15326988,tt1727824
+nm0002080	Bob Fosse	1927	1987	miscellaneous,soundtrack,actor	tt0256153,tt0078754,tt0068327,tt0071746
+nm0002082	James Franciscus	1934	1991	actor,producer,writer	tt0079227,tt0070248,tt0065462,tt0065761
+nm0002083	Carl Franklin	1949	\N	actor,director,writer	tt0112857,tt13207736,tt0102592,tt0313443
+nm0002085	Gert Fröbe	1913	1988	actor,soundtrack,writer	tt0058150,tt0062803,tt0060814,tt0051588
+nm0002086	Lucio Fulci	1927	1996	writer,director,actor	tt0081318,tt0080057,tt0087759,tt0084719
+nm0002087	Samuel Fuller	1912	1997	writer,director,actor	tt0044072,tt0046187,tt0057495,tt0047073
+nm0002088	Annette Funicello	1942	2013	actress,soundtrack,writer	tt0058384,tt0059287,tt0058440,tt0058953
+nm0002089	Sidney J. Furie	1933	\N	director,writer,producer	tt0059319,tt0091278,tt0094074,tt0060120
+nm0002090	Zach Galligan	1964	\N	actor,director	tt0096426,tt0090106,tt0087363,tt6038042
+nm0002094	Vittorio Gassman	1922	2000	actor,writer,director	tt0072037,tt0117665,tt0049399,tt0056512
+nm0002097	Bob Geldof	1951	\N	soundtrack,actor,composer	tt0120185,tt0120783,tt0084503,tt0437863
+nm0002100	Marie Gillain	1975	\N	actress,soundtrack,director	tt0115478,tt0112387,tt1035736,tt0102465
+nm0002101	Robin Givens	1964	\N	actress,director,soundtrack	tt0103859,tt0109288,tt0325537,tt5478918
+nm0002105	Judith Godrèche	1972	\N	actress,writer,director	tt3844362,tt0120744,tt0117477,tt0283900
+nm0002106	Ruth Gordon	1896	1985	actress,writer,soundtrack	tt0059314,tt0063522,tt0067185,tt0077523
+nm0002111	Karen Grassle	1942	\N	actress,writer	tt0087631,tt0071007,tt9815554,tt0111756
+nm0002116	Paul Guilfoyle	1902	1961	actor,director,miscellaneous	tt0032551,tt0030760,tt0037263,tt0034145
+nm0002118	Alan Hale	1892	1950	actor,soundtrack,director	tt0040076,tt0029843,tt0033149,tt0033028
+nm0002119	Arsenio Hall	1956	\N	producer,actor,writer	tt0097481,tt6802400,tt1190536,tt0094898
+nm0002120	Lasse Hallström	1946	\N	director,writer,editor	tt0108550,tt0089606,tt2980648,tt0241303
+nm0002122	Harry Hamlin	1951	\N	actor,producer,writer	tt0082186,tt0077952,tt0804503,tt0090466
+nm0002123	Adam Hann-Byrd	1982	\N	writer,miscellaneous,actor	tt0119349,tt0120694,tt0113497,tt0102316
+nm0002124	Melora Hardin	1967	\N	actress,director,soundtrack	tt1114677,tt0386676,tt0974661,tt0988595
+nm0002127	Mariska Hargitay	1964	\N	actress,producer,director	tt0203259,tt0495596,tt0113627,tt0139414
+nm0002129	Gregory Harrison	1950	\N	actor,producer,director	tt0174119,tt0087981,tt0078704,tt0076993
+nm0002131	Laurence Harvey	1928	1973	actor,director,producer	tt0056700,tt0056671,tt0056218,tt0053226
+nm0002132	Amy Heckerling	\N	\N	writer,director,producer	tt0083929,tt0115137,tt0097778,tt3973820
+nm0002133	Ernest Hemingway	1899	1961	writer,actor	tt0035896,tt0037382,tt0038669,tt30330602
+nm0002134	Paul Henreid	1908	1992	director,actor,producer	tt0040444,tt0035140,tt0034583,tt0076009
+nm0002137	Arthur Hiller	1923	2016	director,producer,actor	tt0079336,tt0098282,tt0067217,tt0066011
+nm0002138	Gregory Hines	1946	2003	actor,soundtrack,miscellaneous	tt0091875,tt0082517,tt0110971,tt0157246
+nm0002140	Agnieszka Holland	1948	\N	director,writer,producer	tt6828390,tt0099776,tt5328350,tt27722543
+nm0002144	John Houseman	1902	1988	actor,producer,writer	tt0080749,tt0073631,tt0070509,tt0073802
+nm0002146	James Wong Howe	1899	1976	cinematographer,camera_department,director	tt0025878,tt0052027,tt0048563,tt0060955
+nm0002147	Tab Hunter	1931	2018	actor,producer,soundtrack	tt0051516,tt0049036,tt0082926,tt0084021
+nm0002149	Betty Hutton	1921	2007	actress,soundtrack,writer	tt0038119,tt0037077,tt0042200,tt0044672
+nm0002153	Jack Cardiff	1914	2009	cinematographer,camera_department,director	tt0049934,tt0054326,tt0039192,tt0059930
+nm0002154	Alfred Abel	1879	1937	actor,director,miscellaneous	tt0021128,tt0013086,tt0013496,tt0017136
+nm0002155	Edward M. Abroms	1935	2018	editor,director,editorial_department	tt0085255,tt1466074,tt0111301,tt0089370
+nm0002156	Tengiz Abuladze	1924	1994	director,writer	tt0057695,tt0048324,tt0075963,tt0093754
+nm0002157	Herbert Achternbusch	1938	2022	actor,writer,director	tt0085585,tt0113244,tt0082651,tt0081221
+nm0002158	Edvin Adolphson	1893	1979	actor,director,soundtrack	tt0026366,tt0024726,tt0021194,tt0036012
+nm0002159	Alejandro Agresti	1961	\N	director,writer,cinematographer	tt0296915,tt0115773,tt0385889,tt0169364
+nm0002160	Moustapha Akkad	1930	2005	producer,miscellaneous,director	tt0074896,tt0085636,tt0097474,tt0220506
+nm0002162	Henri Alekan	1909	2001	cinematographer,camera_department,director	tt0038348,tt0046250,tt0093191,tt0084829
+nm0002164	Irving Allen	1905	1987	producer,miscellaneous,director	tt0039462,tt0041242,tt0039267,tt0047072
+nm0002165	Marc Allégret	1900	1973	director,writer,art_director	tt0045942,tt0048103,tt0044385,tt0030100
+nm0002166	John A. Alonzo	1934	2001	cinematographer,actor,camera_department	tt0067927,tt0111280,tt0054047,tt0071315
+nm0002167	Gianni Amelio	1945	\N	director,writer,assistant_director	tt0110299,tt0104663,tt0345032,tt0100389
+nm0002168	Willeke van Ammelrooy	1944	\N	actress,director,writer	tt0181194,tt0198654,tt0410297,tt0112379
+nm0002169	Tori Amos	1963	\N	soundtrack,composer,actress	tt0304415,tt0114857,tt0116225,tt0117998
+nm0002170	Ashok Amritraj	1957	\N	producer,actor,writer	tt0144117,tt0985694,tt0218817,tt0208988
+nm0002171	Franco Amurri	1958	\N	director,writer,assistant_director	tt0099581,tt1010004,tt0164519,tt0110557
+nm0002172	Mukul Anand	1951	1997	director,writer,producer	tt13782010,tt0104607,tt0098999,tt0092026
+nm0002173	Laurie Anderson	1947	\N	soundtrack,composer,actress	tt9495224,tt0091216,tt4935446,tt0819103
+nm0002174	Yves Angelo	1956	\N	cinematographer,camera_department,director	tt0109454,tt0119853,tt0153588,tt0297301
+nm0002175	Ken Annakin	1914	2009	director,writer,producer	tt0084504,tt0056197,tt0049847,tt0059797
+nm0002177	Oscar Apfel	1878	1938	actor,director,writer	tt0007028,tt0021873,tt0004635,tt0006403
+nm0002178	Alexandre Arcady	1947	\N	producer,writer,director	tt3600588,tt0090932,tt1558741,tt1934205
+nm0002179	George Archainbaud	1890	1959	director,assistant_director,writer	tt0013463,tt0013944,tt0023327,tt0037742
+nm0002180	Francesca Archibugi	1960	\N	writer,director,actress	tt0095633,tt1261056,tt0143093,tt0107040
+nm0002181	Imanol Arias	1956	\N	actor,director,producer	tt0093458,tt0119974,tt0222534,tt0302447
+nm0002183	George Arliss	1868	1946	actor,writer,soundtrack	tt0023537,tt0019823,tt0020938,tt0021595
+nm0002184	Vic Armstrong	1946	\N	stunts,assistant_director,actor	tt2467046,tt0948470,tt0480249,tt0246460
+nm0002188	Dorothy Arzner	1897	1979	director,editor,writer	tt0023213,tt0017865,tt0020645,tt0023891
+nm0002189	Giuliano Carnimeo	1932	2016	director,assistant_director,writer	tt0063158,tt0055577,tt0085514,tt0073713
+nm0002190	Anthony Asquith	1902	1968	director,writer,actor	tt0052033,tt0030637,tt0038238,tt0043362
+nm0002191	Jacques Audiard	1952	\N	writer,director,producer	tt1235166,tt4971344,tt4082068,tt2053425
+nm0002192	Michel Audiard	1920	1985	writer,director,actor	tt0057344,tt0164212,tt0089726,tt0082436
+nm0002193	Claude Autant-Lara	1901	2000	director,writer,costume_designer	tt0047432,tt0038476,tt0045569,tt0049877
+nm0002194	Pupi Avati	1938	\N	writer,director,producer	tt1267498,tt1249306,tt0098390,tt0085597
+nm0002195	Hy Averback	1920	1997	director,producer,actor	tt0043435,tt0050053,tt0068098,tt0053547
+nm0002196	Gabriel Axel	1918	2014	director,actor,writer	tt0050464,tt0092603,tt0125695,tt0063531
+nm0002198	Charles Aznavour	1924	2018	soundtrack,actor,music_department	tt0125439,tt10749896,tt0054389,tt0120663
+nm0002199	Hector Babenco	1946	2016	director,writer,producer	tt0293007,tt0120674,tt0082912,tt0077878
+nm0002201	John Debney	1956	\N	composer,music_department,soundtrack	tt0335345,tt3040964,tt1485796,tt1228705
+nm0002203	Loren Miller	\N	\N	editor,director,writer	tt0190795,tt8686236,tt0190355,tt9394858
+nm0002206	Kevin Brownlow	1938	\N	producer,director,miscellaneous	tt0055024,tt0073911,tt0172202,tt0364151
+nm0002207	Richard Franklin	1948	2007	director,producer,writer	tt0113337,tt0091415,tt0080453,tt0078067
+nm0002209	John McDermott	1893	1946	actor,writer,director	tt0018381,tt0011117,tt0017084,tt0012559
+nm0002210	Frank DeCaro	1962	\N	actor,writer,producer	tt0296065,tt8900306,tt0289785,tt0283427
+nm0002211	Christopher DeFaria	1959	\N	producer,production_manager,actor	tt2386490,tt1392190,tt1454468,tt1677720
+nm0002212	Anders Bohman	1965	\N	cinematographer,camera_department,director	tt0496546,tt0171851,tt0341151,tt0116149
+nm0002216	Yves Robert	1920	2002	actor,writer,producer	tt0054949,tt0068655,tt0076470,tt0242775
+nm0002218	Claude Miller	1942	2012	writer,director,actor	tt0098087,tt0089072,tt0082436,tt0164212
+nm0002220	Alexander Scherer	\N	\N	director,writer,producer	tt0110275,tt2879912
+nm0002222	Christopher Bradley	1961	\N	actor,writer,director	tt0087472,tt0119508,tt4287236,tt0096426
+nm0002224	James Moll	1963	\N	producer,director,editor	tt0827507,tt4329396,tt1853563,tt0795174
+nm0002225	Axel Sand	1961	\N	cinematographer,director,camera_department	tt5567494,tt0458349,tt1305627,tt0258827
+nm0002230	Carlos Gallardo	\N	\N	producer,actor,writer	tt27806093,tt0104815,tt2034176,tt0112851
+nm0002231	Gian Maria Volontè	1933	1994	actor,director,writer	tt0065531,tt0065889,tt0059578,tt0058461
+nm0002233	Erich von Stroheim	1885	1957	actor,writer,director	tt0009937,tt0043014,tt0019558,tt0028950
+nm0002234	Scott Robertson Price	\N	\N	assistant_director,miscellaneous,producer	tt1084733,tt0097474,tt0106881,tt0285439
+nm0002236	Eric M. Klein	\N	\N	editorial_department,sound_department,visual_effects	tt17736322,tt27999888,tt14865290
+nm0002237	John David Allen	\N	\N	editor,editorial_department,director	tt0306734,tt1440379,tt0384686,tt2707792
+nm0002238	John A. Kuri	\N	\N	producer,writer,director	tt0092721,tt0101609,tt0092418,tt0110734
+nm0002239	Prince	1958	2016	music_artist,soundtrack,composer	tt0099691,tt0096895,tt0092133,tt0087957
+nm0002240	Katt Shea	\N	\N	director,actress,writer	tt0144814,tt11278476,tt0105156,tt8323104
+nm0002246	Harry Van Gorkum	\N	\N	actor,miscellaneous,writer	tt0314353,tt1538403,tt0838232,tt0118688
+nm0002247	Alan Natale	\N	\N	actor,director,writer	tt0292887,tt25809514,tt25817532
+nm0002248	Gerard Kelly	1959	2010	actor,director,soundtrack	tt0197152,tt0088621,tt0090401,tt1380818
+nm0002252	David A. Armstrong	\N	\N	camera_department,cinematographer,writer	tt6170804,tt0432348,tt0387564,tt1551630
+nm0002253	John Carroll Lynch	1963	\N	actor,director,soundtrack	tt1092026,tt0116282,tt4276820,tt5859238
+nm0002254	King Hu	1932	1997	actor,director,writer	tt0079886,tt0084793,tt0064451,tt0192213
+nm0002257	Håkan Holmberg	1957	\N	cinematographer,camera_department,miscellaneous	tt13370748,tt10540142,tt0228871,tt0127382
+nm0002261	Alexander Kiening	1973	\N	producer,camera_department,production_manager	tt4670580,tt0133385,tt5314232,tt8629136
+nm0002262	J.P. Manoux	\N	\N	actor,director,writer	tt0340281,tt0108757,tt0356150,tt1759761
+nm0002263	Ken Rudolph	1941	\N	editorial_department,miscellaneous,visual_effects	tt0095655,tt0116225,tt0109190,tt0065611
+nm0002266	Jak Osmond	1966	\N	special_effects,assistant_director,actor	tt1772240,tt0449487,tt0253556,tt0120657
+nm0002267	Franco Barbeite	\N	\N	editorial_department,director,cinematographer	tt0183659,tt0176579,tt0111453,tt1437336
+nm0002268	Gary Vermeir	\N	\N	writer,actor	tt0808080,tt0118002,tt0115243,tt0446636
+nm0002271	Rex Ingram	1892	1950	director,actor,writer	tt0019469,tt0006740,tt0201452,tt0017103
+nm0002272	Glenn M. Benest	\N	\N	writer,producer,miscellaneous	tt0453463,tt0294631,tt0181804,tt0082245
+nm0002273	Brett Boydstun	1966	\N	miscellaneous,production_manager,producer	tt0163025,tt0120903,tt0120828,tt0114194
+nm0002275	Mark Parry	\N	\N	cinematographer,camera_department,producer	tt2159538,tt0104438,tt27923719,tt0104922
+nm0002278	Simon Marshall	\N	\N	director,writer	tt0179400,tt0197948,tt5514364
+nm0002280	Charles McClelland	\N	\N	editor,editorial_department,director	tt1319735,tt0286788,tt0115237,tt0118437
+nm0002286	Michael W. Abbott	\N	\N	producer,director,cinematographer	tt10584528,tt4247938,tt0488535
+nm0002290	Loren Avedon	1962	\N	actor,stunts,producer	tt0097991,tt0118944,tt0114447,tt0102217
+nm0002293	Heather Lee	\N	\N	miscellaneous,actress,writer	tt0844441,tt0497502,tt1442437
+nm0002295	Karin Thayer	1971	\N	director,cinematographer,writer	tt0202394,tt0202332,tt0202631,tt0177211
+nm0002296	Folmer Wiesinger	\N	\N	editor,editorial_department,sound_department	tt14825858,tt5665418,tt9654080,tt23219382
+nm0002301	Carl Davis	1936	2023	composer,music_department,soundtrack	tt0021749,tt0017925,tt0082416,tt0397786
+nm0002302	James Bernard	1925	2001	composer,soundtrack,writer	tt0013442,tt0050280,tt0042949,tt0051554
+nm0002305	Patrick Williams	1939	2018	composer,music_department,soundtrack	tt0108162,tt0078902,tt0099329,tt0075528
+nm0002306	Boris Paval Conen	1968	\N	director,writer,editor	tt0938293,tt6242270,tt0486185,tt0756342
+nm0002312	Obie Benz	1949	\N	producer,miscellaneous,director	tt5278426,tt0095289,tt0082315,tt0082012
+nm0002315	Roger Wielgus	1951	\N	director,writer,producer	tt0205042,tt0204965,tt21875032,tt0205207
+nm0002316	Alice D.G. Miller	1894	1985	writer	tt0019501,tt0017166,tt0023951,tt0017509
+nm0002317	Alice Duer Miller	1874	1942	writer,actress,miscellaneous	tt0044855,tt0026942,tt0032638,tt0032205
+nm0002318	John Foster	\N	\N	camera_department,cinematographer,producer	tt0274812,tt0420291,tt0082418,tt0120244
+nm0002320	Fred Murphy	1942	\N	cinematographer,camera_department,director	tt0363988,tt0113870,tt0119664,tt0164181
+nm0002327	Brett Lewis	\N	\N	actor,writer,assistant_director	tt0197753,tt0077597
+nm0002329	Christopher Prince	\N	\N	editorial_department,editor,producer	tt0129117,tt1437346,tt0173760,tt0309905
+nm0002332	Stephen Lang	1952	\N	actor,producer,writer	tt0499549,tt4160708,tt1630029,tt0091474
+nm0002335	Brahm Wenger	\N	\N	composer,music_department,soundtrack	tt4885044,tt0113313,tt14038512,tt1544572
+nm0002337	Roger Christian	1944	\N	art_department,director,writer	tt0120915,tt0076759,tt0084658,tt0110689
+nm0002338	Jack Clayton	1921	1995	producer,director,assistant_director	tt0297626,tt0071577,tt0062089,tt0055018
+nm0002339	Allen Coulter	\N	\N	director,producer,assistant_director	tt0427969,tt0914387,tt0141842,tt1403981
+nm0002340	Stuart Gordon	1947	2020	writer,director,producer	tt0091083,tt0106950,tt0089885,tt0758786
+nm0002342	Richard Whelan	\N	\N	assistant_director,producer,miscellaneous	tt0121765,tt0458339,tt0113189,tt2094766
+nm0002343	Adrian G. Griffiths	1964	\N	actor,stunts,director	tt0458525,tt0822854,tt3385516,tt0118480
+nm0002344	Tom Judson	1960	\N	composer,actor,music_department	tt1156149,tt0100142,tt0470272,tt0113416
+nm0002345	Jonathan Southard	1960	\N	assistant_director,miscellaneous,producer	tt3963816,tt13153678,tt0120338,tt6513656
+nm0002349	Kevin Inch	1953	\N	producer,director,assistant_director	tt0993840,tt0083470,tt0101199,tt0096583
+nm0002350	Jim Meskimen	\N	\N	actor,animation_department,miscellaneous	tt0170016,tt0098800,tt0112384,tt1266020
+nm0002352	Raul daSilva	1933	\N	director,writer,camera_department	tt0385613,tt0307686,tt0207703,tt0307463
+nm0002356	Gregory Avellone	\N	\N	actor,director,producer	tt0103855,tt0119925,tt0093640,tt0114898
+nm0002357	JD Roberto	1969	\N	actor,stunts,producer	tt0115289,tt0990407,tt0120746,tt0106004
+nm0002360	Matthias Maaß	\N	\N	camera_department,cinematographer,director	tt2363241,tt1858812,tt1161645,tt0093191
+nm0002364	Dante Basco	1975	\N	actor,producer,writer	tt2139965,tt0446046,tt0179116,tt0102057
+nm0002365	Dionysio Basco	1977	\N	actor,director,producer	tt0285728,tt13322120,tt3120560,tt4065382
+nm0002368	Tom Flynn	\N	\N	writer,director	tt5116302,tt4481414,tt0194008,tt0108521
+nm0002371	Karen Arbeeny	\N	\N	producer,director,assistant_director	tt0093692,tt1233611,tt0124800,tt0106258
+nm0002376	David Hare	1947	\N	writer,director,producer	tt0090310,tt1797469,tt0274558,tt0976051
+nm0002377	Stephen Semel	\N	\N	producer,editor,editorial_department	tt0411008,tt0245844,tt1839578,tt0475784
+nm0002379	Hans Moser	1880	1964	actor,soundtrack,writer	tt0028878,tt0033049,tt0036333,tt0048684
+nm0002382	Paul Chart	1961	\N	director,writer,producer	tt6131682,tt2295748,tt0200910,tt0118603
+nm0002384	Samuel Vartek	1969	\N	editor,writer,sound_department	tt7374370,tt0206811,tt1137439,tt5628870
+nm0002388	Patrick J. Doody	\N	\N	producer,writer,editor	tt0206397,tt1647865,tt6987788,tt0205900
+nm0002391	Dwayne Adway	1969	\N	actor,producer,director	tt15800256,tt0378109,tt0361620,tt28024986
+nm0002392	Brad Kersch	\N	\N	producer,director,writer	tt3337918,tt0207113,tt3481732,tt1429060
+nm0002396	Scott Shaw	\N	\N	producer,director,editor	tt0105310,tt0102804,tt0286668,tt0342750
+nm0002399	Alik Sakharov	1959	\N	cinematographer,director,producer	tt0141842,tt1856010,tt0944947,tt5071412
+nm0002400	Suresh Jindal	1942	2022	producer,director,actor	tt0072064,tt0085776,tt0076696,tt0083987
+nm0002401	David Max Steinberg	1958	\N	cinematographer,producer,camera_department	tt0122106,tt0096074,tt0108136,tt9459336
+nm0002402	Mark D. Allen	\N	\N	visual_effects,producer,director	tt3956230,tt0280665,tt29538091,tt14602326
+nm0002403	Todd Baker	\N	\N	producer,miscellaneous,actor	tt8134184,tt5827228,tt0775407,tt0474499
+nm0002406	Harry Jay Knowles	1971	\N	producer,actor,writer	tt7171224,tt0306846,tt1707821,tt0133751
+nm0002409	Paul Blomdahl	1976	\N	visual_effects,producer,director	tt0392690,tt0386620
+nm0002411	Mani Kaul	1944	2011	director,writer,actor	tt0066514,tt0066787,tt0070009,tt0207626
+nm0002412	Michael Fallavollita	\N	\N	editor,producer,editorial_department	tt0107290,tt0120647,tt3358964,tt0380008
+nm0002413	David Jackson	\N	\N	director,writer,producer	tt0088513,tt0115277,tt0349358,tt0086759
+nm0002416	John O'Hagan	1968	\N	cinematographer,director,miscellaneous	tt0120529,tt0109504,tt0102687,tt0207474
+nm0002417	Daniel Pyne	\N	\N	writer,producer,director	tt0164184,tt0368008,tt0118150,tt0488120
+nm0002418	Colin Brunton	1955	\N	producer,assistant_director,production_manager	tt0808447,tt9726452,tt27990867,tt3526078
+nm0002420	Barry Stone	1945	\N	cinematographer,camera_department,producer	tt0107779,tt0081383,tt0114305,tt1573207
+nm0002421	Robert McDonaugh	\N	\N	director,producer	tt0207403,tt0207420,tt0207770,tt0207799
+nm0002428	Nick Davis	\N	\N	visual_effects,assistant_director,writer	tt0468569,tt0332452,tt0241527,tt1631867
+nm0002429	Lloyd A. Silverman	\N	\N	producer,writer,actor	tt0207745,tt0143874,tt2002631,tt0120834
+nm0002431	Nicholas Tabarrok	\N	\N	producer,writer,actor	tt1303828,tt2172985,tt3917710,tt4470266
+nm0002433	Scott Smith	\N	\N	director,producer,miscellaneous	tt4254242,tt1558182,tt1755893,tt0169190
+nm0002435	Volkan Gücer	1964	\N	composer,director,music_department	tt14584450,tt0448352,tt3516438,tt14540234
+nm0002436	Shannon Elizabeth	1973	\N	actress,producer,director	tt0175142,tt0314331,tt6521876,tt0163651
+nm0002437	Michael Kevin Walker	\N	\N	actor,writer,producer	tt0195582,tt0117894,tt1156394,tt0410626
+nm0002438	Burnie Burns	1973	\N	producer,writer,actor	tt5707408,tt3864024,tt0401747,tt8390938
+nm0002439	Guy Camara	1964	\N	producer,actor,writer	tt1059897,tt2328797,tt0119361,tt2338283
+nm0002442	Fredrik Klasson	\N	\N	director,actor,cinematographer	tt0145830,tt0140295,tt0157584,tt0135042
+nm0002443	Franz Hohler	1943	\N	writer,actor,director	tt0136795,tt0206702,tt0107338,tt11329008
+nm0002444	Frederick Long	1948	2004	actor,writer,casting_department	tt0080354,tt0098944,tt0284225,tt0089835
+nm0002445	Bob Shayne	\N	\N	writer,producer,miscellaneous	tt0108219,tt0093850,tt0085110,tt0081930
+nm0002448	Stephen McPherson	\N	\N	writer,miscellaneous,assistant_director	tt0078579,tt0094890,tt0085078,tt0115317
+nm0002449	Martin Veselich	\N	\N	assistant_director,actor,producer	tt0133752,tt0228953,tt0272652,tt0329539
+nm0002457	David Brady	\N	\N	producer,writer,director	tt1153114,tt2609544,tt0207258,tt0085622
+nm0002458	Richard G. Owen	\N	\N	art_department,director,writer	tt0369918,tt0209020,tt0247290,tt0167215
+nm0002459	T.C. Christensen	\N	\N	cinematographer,director,camera_department	tt1909270,tt2509298,tt0136523,tt0214723
+nm0002461	Mike Cheda	\N	\N	producer,writer,script_department	tt0076920,tt0079894,tt0105063,tt0163579
+nm0002463	Guillermo Fernández Groizard	1960	\N	director,producer,visual_effects	tt0231040,tt14011664,tt2732140,tt0791231
+nm0002464	Karen F. McCarthy	\N	\N	producer,writer,production_manager	tt0274023,tt0111418,tt0832525,tt0476988
+nm0002465	Tyler Tharpe	1968	\N	director,writer,actor	tt0103783,tt3323838,tt0151305,tt0889218
+nm0002466	Ryan B. Smith	\N	\N	director,producer	tt0193254
+nm0002471	Jeanne Slater	\N	\N	editor,editorial_department,production_manager	tt0422134,tt2529866,tt8338494,tt2649680
+nm0002472	Scott Shiffman	\N	\N	producer,miscellaneous,director	tt0119675,tt0313043,tt0103893,tt0175526
+nm0002475	Barry Dignam	1971	\N	director,producer,writer	tt0272034,tt0191492,tt0211427,tt0208920
+nm0002478	Ernst Gossner	\N	\N	director,writer,actor	tt2014295,tt0478273,tt4474270,tt0208969
+nm0002485	William Preston Robertson	\N	\N	actor,miscellaneous,writer	tt0101410,tt0092991,tt0118715,tt0116282
+nm0002489	Karl Anton	1898	1979	director,writer,producer	tt0036541,tt0033878,tt0038835,tt0165519
+nm0002491	Michael A. Martinez	1980	\N	visual_effects,camera_department,cinematographer	tt9873892,tt0362502,tt8851668,tt0252060
+nm0002492	John Bowker	\N	\N	actor,writer,director	tt1199558,tt21209736,tt0220451,tt0375160
+nm0002498	Matthew L. Weiss	\N	\N	editor,actor,cinematographer	tt11394186,tt4840804,tt9601220,tt0428649
+nm0002499	John Lvoff	1954	\N	assistant_director,director,writer	tt0250427,tt0384389,tt0106618,tt0098245
+nm0002503	Harry Carey	1878	1947	actor,writer,producer	tt0032247,tt0040724,tt0031679,tt0022495
+nm0002504	Herbert Beerbohm Tree	1852	1917	actor,director,writer	tt0004728,tt1986989,tt0001658,tt0000247
+nm0002505	Michael Horowitz	\N	\N	producer,writer,director	tt0245503,tt0455275,tt0810788,tt4396630
+nm0002506	Jessica Landaw	\N	\N	director,editor,editorial_department	tt0117429,tt0113820,tt1554369,tt0189168
+nm0002508	John Hays	\N	\N	sound_department,editor,director	tt1276104,tt1214962,tt0356910,tt0331811
+nm0002509	Ramesh Iyer	\N	\N	director,writer,miscellaneous	tt0153098,tt0203957,tt0120118,tt0203325
+nm0002510	David Avallone	1965	\N	director,producer,writer	tt4513850,tt3163414,tt2364947,tt2112164
+nm0002511	Scott Schneid	\N	\N	writer,producer,director	tt0098089,tt0961721,tt0088117,tt0101188
+nm0002515	Sabine El Gemayel	\N	\N	editor,editorial_department,director	tt6264018,tt22093574,tt1291643,tt0117497
+nm0002517	Lee Purcell	\N	\N	actress,producer,director	tt0077235,tt3500724,tt5321174,tt0086525
+nm0002518	Ryan Koch	1981	\N	actor,writer,producer	tt0209779,tt0113100,tt1482403,tt10551078
+nm0002520	Jeff Mazzola	\N	\N	art_department,producer,actor	tt14795768,tt0887966,tt0486620,tt0139388
+nm0002522	Jonathan Buss	1972	\N	producer,director,camera_department	tt13653972,tt0480244,tt3895884,tt3268200
+nm0002526	Robert Zappia	\N	\N	writer,miscellaneous,producer	tt0120694,tt0101120,tt1116184,tt9271672
+nm0002531	Pascal Maeder	1965	\N	producer,director,writer	tt0200483,tt0344337,tt0481398,tt0210183
+nm0002533	Judy Dennis	\N	\N	casting_department,casting_director,director	tt0090350,tt0118421,tt0084707,tt0210220
+nm0002534	Alex Erkiletian	1974	\N	producer,director,writer	tt0367854,tt0163894,tt0210223,tt0140067
+nm0002536	Emmy Rossum	1986	\N	actress,producer,soundtrack	tt0319262,tt0293508,tt0327056,tt1586680
+nm0002537	Miles Davis	1926	1991	music_artist,soundtrack,music_department	tt0051378,tt0105435,tt0107206,tt6306064
+nm0002538	David Mercy	\N	\N	actor,director,writer	tt0110970,tt29137306
+nm0002542	Terry O. Morse	1906	1984	editor,director,editorial_department	tt0032113,tt0197521,tt0044167,tt0037711
+nm0002544	Michael Armstrong	1953	\N	director,writer,script_department	tt0212740,tt0213263,tt0213255,tt0206580
+nm0002545	Preston Sturges	1898	1959	writer,director,producer	tt0037077,tt0036891,tt0032554,tt0034240
+nm0002547	Mark Bedrosian	\N	\N	camera_department,cinematographer,director	tt1545520,tt1513199,tt3738134,tt6958814
+nm0002548	Ruby Yang	\N	\N	editor,producer,director	tt3804012,tt1744887,tt5514242,tt0859595
+nm0002558	Ken Brooker	1973	\N	location_management,production_manager,miscellaneous	tt0401855,tt5097410,tt11952606,tt2188671
+nm0002559	Peter De Kock	1967	\N	camera_department,cinematographer,director	tt0102254,tt0101125,tt0177908,tt0210725
+nm0002562	Maciek Wszelaki	\N	\N	director,cinematographer,editorial_department	tt0151384,tt0210878,tt0289470,tt0353985
+nm0002569	Carl Koch	1892	1963	writer,miscellaneous,cinematographer	tt0028950,tt0127284,tt0031885,tt0033177
+nm0002572	Christopher Alender	1977	\N	director,producer,miscellaneous	tt10857210,tt12829958,tt4267492,tt2072092
+nm0002573	Bill Corcoran	\N	\N	director,assistant_director,producer	tt0160277,tt0138959,tt0118480,tt0115763
+nm0002576	Walter Fasano	1970	\N	editor,director,assistant_director	tt10686204,tt2056771,tt1034415,tt5726616
+nm0002577	Dave Halls	\N	\N	assistant_director,actor,director	tt0116282,tt5657856,tt0234215,tt0307987
+nm0002580	Eric A. Pot	\N	\N	assistant_director,director,miscellaneous	tt0337978,tt1378167,tt1144884,tt0322330
+nm0002582	Christopher Rouse	1958	\N	editor,editorial_department,producer	tt0475276,tt0440963,tt0317740,tt1535109
+nm0002585	Stephen White	\N	\N	writer,soundtrack,composer	tt0120598,tt0144701,tt29780587,tt0202675
+nm0002589	George Larkin	\N	\N	producer,director,writer	tt4043308,tt27912549,tt1385645,tt1687914
+nm0002592	David Fickas	\N	\N	producer,director,editor	tt0925435,tt0810788,tt9046022
+nm0002593	Rick Johnson	1961	\N	actor,miscellaneous,director	tt0146838,tt0213205,tt0116695,tt0404203
+nm0002597	Sreedevi Mina	\N	\N	actress,director,camera_department	tt11006642,tt27428598,tt11097240
+nm0002598	Robert Benedetti	1939	\N	actor,producer,writer	tt0095687,tt0179940,tt0119679,tt0095088
+nm0002601	Gary S. Lipsky	\N	\N	producer,director,writer	tt0211323,tt0351234,tt0109254,tt0138474
+nm0002602	Armin Hofmann	\N	\N	producer,writer,director	tt2972766,tt1291131,tt0454898,tt0119286
+nm0002604	Robert Blanche	1962	2020	actor,writer,producer	tt0469641,tt5891062,tt0203019,tt0259153
+nm0002605	Michael A. Levine	1964	\N	composer,music_department,soundtrack	tt2362866,tt0368479,tt5615700,tt3569570
+nm0002606	David Price	1961	\N	director,actor,producer	tt0112895,tt0107387,tt0106557,tt0083929
+nm0002607	Nico Lypitkas	1974	\N	director,actor,assistant_director	tt0396958,tt0284433,tt0211474,tt0205469
+nm0002611	Claus Drexel	1968	\N	director,writer,cinematographer	tt2914068,tt1068676,tt0211505,tt11018044
+nm0002615	Siegmund Lubin	1851	1923	producer,director,actor	tt0238498,tt0000472,tt0780034,tt0287024
+nm0002616	Anita Loos	1889	1981	writer,producer,actress	tt0013540,tt0010185,tt0045810,tt0029516
+nm0002620	Dorian Ramírez	\N	\N	director,actor,writer	tt0119966
+nm0002621	Tucker Dansie	1978	\N	editorial_department,production_manager,director	tt14933338,tt0196133,tt0195892,tt0179739
+nm0002622	Paul Maslak	\N	\N	producer,stunts,writer	tt0109125,tt0107762,tt0107937,tt0117803
+nm0002627	Monty Berman	1913	2006	producer,writer,cinematographer	tt1139293,tt0053961,tt0062551,tt0063893
+nm0002628	Félix de Pomés	1889	1969	actor,director,writer	tt0211614,tt0033862,tt0037387,tt0043903
+nm0002631	Patrick McIntire	\N	\N	producer,location_management,production_manager	tt0429493,tt0910936,tt2436386,tt2304933
+nm0002634	Imogen Murphy	\N	\N	director,writer,producer	tt10413648,tt10270200,tt7286848,tt5674872
+nm0002637	Steven Warren Hill	1966	\N	actor,writer,camera_department	tt0156946,tt0164145,tt0808519,tt1733304
+nm0002641	Erik MacArthur	1976	\N	actor,director,writer	tt0212555,tt1591613,tt0120789
+nm0002642	Warwick Young	1973	\N	actor,writer,producer	tt1418646,tt3469750,tt2973554,tt0348150
+nm0002645	Paolo Genovese	1966	\N	writer,director	tt0212426,tt7063210,tt4901306,tt1630637
+nm0002647	Barrie Hemsley	\N	\N	visual_effects,writer,producer	tt0382625,tt0384766,tt1587310,tt3659388
+nm0002650	Dylan Pank	1971	\N	sound_department,writer,director	tt1301163,tt0213537,tt0214644,tt1293596
+nm0002651	Gary Rosen	\N	\N	writer,producer,director	tt0119244,tt11266702,tt3663490,tt0110443
+nm0002653	Joe Johnston	1950	\N	director,visual_effects,producer	tt0458339,tt0132477,tt0102803,tt0082971
+nm0002657	Gary Ross	1956	\N	writer,producer,director	tt0329575,tt0094737,tt1392170,tt0120789
+nm0002659	Les Weldon	\N	\N	producer,writer,actor	tt6189022,tt1959563,tt1206885,tt1320253
+nm0002661	Chris Angel	1972	\N	editor,editorial_department,director	tt7250628,tt0209160,tt7251532,tt0915473
+nm0002662	Orestes Matacena	1941	\N	actor,writer,producer	tt0110475,tt0096213,tt0120891,tt2076974
+nm0002663	Diane Ladd	1935	\N	actress,soundtrack,director	tt2446980,tt0071115,tt0071315,tt0100935
+nm0002664	David Diliberto	1970	\N	producer,editorial_department,visual_effects	tt0477348,tt7137380,tt0190590,tt0116282
+nm0002665	Benjamin Parmentier	\N	\N	writer,miscellaneous	tt3743444,tt0191565
+nm0002668	George 'Buck' Flower	1937	2004	actor,writer,producer	tt0088763,tt0088172,tt0114852,tt0096256
+nm0002674	C. Davis Smith	1930	2017	cinematographer,editor,camera_department	tt0212155,tt0128
 nm0629272	Andrew Niccol	1964	\N	writer,director,producer	tt0120382,tt1517260,tt1637688,tt0119177	https:/image.tmdb.org/t/p/{width_variable}/jTNhskoCvZsLqZwk5CFIrMpCftx.jpg
 nm0821205	Zach Staenberg	1954	\N	editor,editorial_department,producer	tt0133093,tt1637688,tt0811080,tt1731141
 nm0005493	Justin Timberlake	1981	\N	music_artist,soundtrack,actor	tt6587640,tt1285016,tt1679335,tt1637688	https:/image.tmdb.org/t/p/{width_variable}/hFfgtpXWlsbuzgwBKdRWdvrcRad.jpg
@@ -9,7 +1531,6 @@ nm0008953	Marc Abraham	\N	\N	producer,writer,director	tt1637688,tt1320244,tt1234
 nm0628080	Eric Newman	\N	\N	producer,writer,miscellaneous	tt1320244,tt9783600,tt1637688,tt0206634
 nm0035661	Craig Armstrong	1959	\N	soundtrack,composer,music_department	tt0350258,tt1343092,tt0203009,tt0800080
 nm0005683	Roger Deakins	1949	\N	cinematographer,camera_department,miscellaneous	tt8579674,tt1856101,tt0477348,tt1074638	https:/image.tmdb.org/t/p/{width_variable}/pSCN7CfILlfQrxX43Kgqrx5mBYQ.jpg
-
 nm0002018	Tom Conti	1941	\N	actor,soundtrack,miscellaneous	tt15398776,tt0084591,tt0085933,tt0398017	https:/image.tmdb.org/t/p/{width_variable}/aeyH3jaaauYakZS3CWbmRPg6J10.jpg
 nm0008468	Luisa Abel	\N	\N	make_up_department	tt0816692,tt1440345,tt15398776,tt1375666
 nm0027516	Tina Anderson	\N	\N	production_manager,editorial_department,producer	tt7131622,tt1024648,tt0361748,tt15398776
