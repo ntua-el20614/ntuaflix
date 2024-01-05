@@ -67,8 +67,8 @@ CREATE TABLE title_principals (
     characters VARCHAR(255),
     img_url_asset VARCHAR(255),
     PRIMARY KEY (tconst, ordering),
-    FOREIGN KEY (tconst) REFERENCES Titles(tconst),
-    FOREIGN KEY (nconst) REFERENCES people(nconst)
+    FOREIGN KEY (tconst) REFERENCES Titles(tconst)
+    -- FOREIGN KEY (nconst) REFERENCES people(nconst)
 );
 
 CREATE TABLE title_akas (
