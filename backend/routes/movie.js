@@ -19,5 +19,7 @@ router.post('/bygenre', movieController.getGenre)
 
 //top 20 recent movies
 router.get('/topmovies', movieController.getTopMovies)
+//get episodes by series id
+router.get('/episodes/:titleID', movieController.getEpisodes)
 
 module.exports = router;

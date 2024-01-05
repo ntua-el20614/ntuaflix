@@ -199,7 +199,7 @@ exports.getTopTenPeople = async (req,res,next)=>{
     FROM people p
     JOIN title_principals tp ON p.nconst = tp.nconst
     JOIN title_ratings tr ON tp.tconst = tr.titleid
-    where p.img_url_asset is not null
+    where p.img_url_asset is not null and p.img_url_asset != '\\\\N'
     GROUP BY p.nconst, p.primaryName
     ORDER BY avgRating DESC
     LIMIT 10;

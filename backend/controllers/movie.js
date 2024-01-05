@@ -100,7 +100,7 @@ GROUP BY T.tconst;
     
     `;
 
-    
+
     try {
         const [rows] = await pool.query(query);
         res.status(200).json(rows);
@@ -127,14 +127,14 @@ exports.getPrimaryTitle = async (req, res, next) => {
 };
 
 
-exports.getGenre = async (req,res,next)=>{
+exports.getGenre = async (req, res, next) => {
 
     const qgenre = req.body.qgenre;
     const minrating = req.body.minrating;
     const yrFrom = req.body.yrFrom;
     const yrTo = req.body.yrTo;
 
-    
+
     /* 
     if (!qgenre || !minrating) {
         return res.status(400).json({ message: 'No genre or minrating given' });
@@ -153,7 +153,7 @@ exports.getGenre = async (req,res,next)=>{
     AND ( '${yrFrom}' = '' OR CAST(Titles.startYear AS UNSIGNED) >= CAST('${yrFrom}' AS UNSIGNED) )
     AND ( '${yrTo}' = '' OR CAST(Titles.startYear AS UNSIGNED) <= CAST('${yrTo}' AS UNSIGNED) );
     `;
-    
+
 
     try {
         const [rows] = await pool.query(query);
@@ -164,17 +164,35 @@ exports.getGenre = async (req,res,next)=>{
 
 }
 
-exports.getTopMovies = async (req,res,next)=>{
+exports.getTopMovies = async (req, res, next) => {
 
     const query = `
     SELECT t.tconst, t.primarytitle, tr.averageRate, t.genres, t.img_url_asset, t.startYear, t.titletype
     FROM Titles t
         JOIN title_ratings tr ON t.tconst = tr.titleid
-    WHERE t.img_url_asset IS NOT NULL
+    WHERE t.img_url_asset IS NOT NULL and t.img_url_asset != '\\\\N'
     ORDER BY t.startYear DESC, tr.averageRate DESC
     LIMIT 100;
     `;
-    
+
+    try {
+        const [rows] = await pool.query(query);
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+}
+
+exports.getEpisodes = async (req, res, next) => {
+    const titleID = req.params.titleID;
+
+    const query = `
+    SELECT tconst,seasonN,episodeN
+    FROM Episodes
+    WHERE parentTconst = '${titleID}';
+    `;
+
     try {
         const [rows] = await pool.query(query);
         res.status(200).json(rows);

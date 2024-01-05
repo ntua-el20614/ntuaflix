@@ -235,7 +235,7 @@ exports.uploadTitleEpisode = async (req, res, next) => {
             complete: async (results) => {
                 try {
                     for (const row of results.data) {
-                        const { tconst, parentTconst, seasonN, episodeN } = row;
+                        const { tconst, parentTconst, seasonNumber, episodeNumber } = row;
 
                         if (!tconst || tconst == '\n') {
                             continue;
@@ -248,7 +248,7 @@ exports.uploadTitleEpisode = async (req, res, next) => {
                             seasonN = VALUES(seasonN),
                             episodeN = VALUES(episodeN);
                     `;
-                        await pool.query(query, [tconst, parentTconst, seasonN, episodeN]);
+                        await pool.query(query, [tconst, parentTconst, seasonNumber, episodeNumber]);
 
 
                     }
