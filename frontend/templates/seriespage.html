@@ -72,7 +72,9 @@
 
     .movie-poster-section {
         flex: 1;
-        padding-right: 50px;
+        padding-right: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
 
@@ -203,8 +205,8 @@
                     htmlContent += `<p>Genres: ${movieData.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
                 }
 
-                console.log(movieData)
 
+                
 
 
                 // Add titleAkas if available
@@ -228,7 +230,7 @@
                 // Add the movie poster if available
                 if (movieData.titlePoster) {
                     htmlContent += `<div class="movie-poster-section">
-            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400').replace('w500', 'w400')}" alt="${movieData.originalTitle}">` : ''}
+            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">` : ''}
                 </div>`;
                 }
                 htmlContent += `</div>`;
@@ -242,8 +244,8 @@
                     div.setAttribute('id', principal.nameID);
 
                     // Check if image URL is available and not null
-                    if (personInfo.img_url_asset) {
-                        div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200').replace('w500', 'w200')}" alt="${personInfo.primaryName}">`;
+                    if (personInfo.img_url_asset && personInfo.img_url_asset !== '\\N') {
+                        div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
                     }
 
                     div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
@@ -286,9 +288,10 @@
                     div.classList.add('cast-item');
                     div.setAttribute('id', crewMember.nconst);
 
+
                     // Check if image URL is available and not null
-                    if (crewMember.img_url_asset) {
-                        div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200').replace('w500', 'w200')}" alt="${crewMember.primaryName}">`;
+                    if (crewMember.img_url_asset && crewMember.img_url_asset !== '\\N' ) {
+                        div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
                     }
 
                     div.innerHTML += `<h3>${crewMember.primaryName}</h3>`;
@@ -319,10 +322,12 @@
                 function combineCrewData(directors, writers) {
                     let combinedCrew = {};
 
+                    if (!directors) directors = [];
                     directors.forEach(director => {
                         combinedCrew[director.nconst] = { ...director, roles: ['Director'] };
                     });
 
+                    if (!writers) writers = [];
                     writers.forEach(writer => {
                         if (combinedCrew[writer.nconst]) {
                             combinedCrew[writer.nconst].roles.push('Writer');
@@ -365,7 +370,7 @@
                 if (movieData.principals && movieData.principals.length > 0) {
 
                     for (const principal of movieData.principals) {
-                        if (principal.category !== 'actor' && principal.category !== 'actress') {
+                        if (principal.category !== 'actor' && principal.category !== 'actress' && principal.category !== 'writer' && principal.category !== 'director') {
                             if (flag) {
 
                                 const castContainer = document.createElement('div');
