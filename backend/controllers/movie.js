@@ -170,7 +170,7 @@ exports.getTopMovies = async (req, res, next) => {
     SELECT t.tconst, t.primarytitle, tr.averageRate, t.genres, t.img_url_asset, t.startYear, t.titletype
     FROM Titles t
         JOIN title_ratings tr ON t.tconst = tr.titleid
-    WHERE t.img_url_asset IS NOT NULL and t.img_url_asset != '\\\\N'
+    WHERE t.img_url_asset IS NOT NULL and t.img_url_asset != '\\\\N' and t.img_url_asset != ''
     ORDER BY t.startYear DESC, tr.averageRate DESC
     LIMIT 100;
     `;
