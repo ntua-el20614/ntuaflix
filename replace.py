@@ -11,12 +11,12 @@ def replace_in_file(file_path, old_string, new_string):
         file.write(filedata)
 
 def main():
-    if len(sys.argv) not in [2, 3]:
-        print("Usage: python script.py <ip_address> [localhost]")
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <old_string> <new_string>")
         sys.exit(1)
 
-    ip_address = sys.argv[1]
-    replace_localhost = len(sys.argv) == 2
+    old_string = sys.argv[1]
+    new_string = sys.argv[2]
     target_extensions = {'.html', '.js', '.py'}
 
     for root, dirs, files in os.walk('.'):
@@ -27,10 +27,7 @@ def main():
                 continue
             if file.endswith(tuple(target_extensions)):
                 file_path = os.path.join(root, file)
-                if replace_localhost:
-                    replace_in_file(file_path, 'localhost', ip_address)
-                else:
-                    replace_in_file(file_path, ip_address, 'localhost')
+                replace_in_file(file_path, old_string, new_string)
 
 if __name__ == "__main__":
     main()
