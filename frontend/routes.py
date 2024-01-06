@@ -23,3 +23,9 @@ def series():
 def person():
     return render_template("personpage.html", pageTitle="Person Page")
 
+
+
+@app.route("/adminpage")
+def admin():
+    return render_template("admin.html", pageTitle="Person Page")
+

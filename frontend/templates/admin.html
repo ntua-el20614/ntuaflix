@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTUAFlix Admin</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="../static/logo.png">
+    <link rel="stylesheet" href="/static/css/landing.css">
+    <style>
+        .upload-section {
+            margin-bottom: 30px;
+        }
+
+        .admin-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .drop-zone {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            min-width: 100px;
+            cursor: pointer;
+        }
+
+        .drop-zone.dragover {
+            border-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <img src="../static/logo.png" alt="NTUAFlix Logo">
+        <h1>Admin Dashboard</h1>
+    </header>
+
+    <div class="admin-container">
+        <!-- Upload Title Basics -->
+        <div class="upload-section">
+            <h2>Upload Title Basics</h2>
+            <div id="title-basics-drop-zone" class="drop-zone">
+                Drag and drop a file here or click to select a file
+            </div>
+            <h2>Upload Name Basics</h2>
+            <div id="name-basics-drop-zone" class="drop-zone">
+                Drag and drop a file here or click to select a file
+            </div>
+            <h2>Upload Title Akas</h2>
+            <div id="title-akas-drop-zone" class="drop-zone">
+                Drag and drop a file here or click to select a file
+            </div>
+            <h2>Upload Title Crew</h2>
+            <div id="title-crew-drop-zone" class="drop-zone">
+                Drag and drop a file here or click to select a file
+            </div>
+            <h2>Upload Title Episode</h2>
+            <div id="title-episode-drop-zone" class="drop-zone">
+                Drag and drop a file here or click to select a file
+            </div>
+            <h2>Upload Title Principals</h2>
+            <div id="title-principals-drop-zone" class="drop-zone">
+                Drag and drop a file here or click to select a file
+            </div>
+            <h2>Upload Title Ratings</h2>
+            <div id="title-ratings-drop-zone" class="drop-zone">
+                Drag and drop a file here or click to select a file
+            </div>
+        </div>
+        <button onclick="uploadAllFiles()">Upload All</button>
+
+
+    </div>
+
+    <script>
+        // Setup for each drop zone
+        document.querySelectorAll('.drop-zone').forEach(dropZone => {
+          dropZone.addEventListener('click', () => {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.tsv';
+            fileInput.onchange = () => {
+              dropZone.file = fileInput.files[0];
+              dropZone.textContent = fileInput.files[0].name;
+            };
+            fileInput.click();
+          });
+      
+          dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+          });
+      
+          dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+          });
+      
+          dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            dropZone.file = e.dataTransfer.files[0];
+            dropZone.textContent = e.dataTransfer.files[0].name;
+          });
+        });
+      
+        function uploadFile(file, endpoint) {
+          return new Promise((resolve, reject) => {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
+      
+            fetch(endpoint, {
+              method: 'POST',
+              body: formData
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              resolve(data.message);
+            })
+            .catch(error => {
+              reject(error);
+            });
+          });
+        }
+      
+      
+        function uploadAllFiles() {
+    const endpoints = {
+      'title-basics-drop-zone': 'http://localhost:7117/admin/upload/titlebasics',
+      'name-basics-drop-zone': 'http://localhost:7117/admin/upload/namebasics',
+      'title-akas-drop-zone': 'http://localhost:7117/admin/upload/titleakas',
+      'title-Crew-drop-zone': 'http://localhost:7117/admin/upload/titlecrew',
+      'title-episode-drop-zone': 'http://localhost:7117/admin/upload/titleepisode',
+      'title-principals-drop-zone': 'http://localhost:7117/admin/upload/titleprincipals',
+      'title-ratings-drop-zone': 'http://localhost:7117/admin/upload/titleratings'
+    };
+
+    let uploads = [];
+    let allZonesEmpty = true;
+
+    for (const [dropZoneId, endpoint] of Object.entries(endpoints)) {
+      const dropZone = document.getElementById(dropZoneId);
+      if (dropZone && dropZone.file) {
+        uploads.push(uploadFile(dropZone.file, endpoint));
+        allZonesEmpty = false;
+      }
+    }
+
+    if (allZonesEmpty) {
+      alert('Please upload at least one file.');
+      return;
+    }
+
+    Promise.all(uploads)
+      .then(results => {
+        results.forEach(result => alert(result));
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Some uploads failed.');
+      });
+}
+
+      </script>
+      
+</body>
+
+</html>

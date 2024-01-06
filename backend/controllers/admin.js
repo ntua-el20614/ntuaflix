@@ -23,6 +23,7 @@ exports.getHealth = async (req, res, next) => {
 
 exports.uploadTitleBasics = async (req, res, next) => {
 
+    
     if (!req.files || !req.files.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
@@ -45,7 +46,6 @@ exports.uploadTitleBasics = async (req, res, next) => {
                         if (!tconst || tconst == '\n') {
                             continue;
                         }
-
                         const query = `
                         INSERT INTO Titles (tconst, titletype, primarytitle, originaltitle, isAdult, startYear, endYear, runtimeMinutes, genres, img_url_asset)
                         VALUES (?,?,?,?,?,?,?,?,?,?)
@@ -60,6 +60,7 @@ exports.uploadTitleBasics = async (req, res, next) => {
                             genres = VALUES(genres),
                             img_url_asset = VALUES(img_url_asset);
                     `;
+                    console.log(query,img_url_asset)
                         await pool.query(query, [tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres, img_url_asset]);
 
 
