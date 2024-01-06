@@ -14,9 +14,18 @@ def main():
     if len(sys.argv) != 3:
         print("Usage: python script.py <old_string> <new_string>")
         sys.exit(1)
+    elif len(sys.argv) == 2 and sys.argv[1]=="go_online":
+        
+        old_string = "localhost"
+        new_string = "http://uniportal.sytes.net/"
 
-    old_string = sys.argv[1]
-    new_string = sys.argv[2]
+    elif len(sys.argv) == 2 and sys.argv[1]=="go_offline":
+
+        old_string = "http://uniportal.sytes.net/"
+        new_string = "localhost"
+    else:
+        old_string = sys.argv[1]
+        new_string = sys.argv[2]
     target_extensions = {'.html', '.js', '.py'}
 
     for root, dirs, files in os.walk('.'):
