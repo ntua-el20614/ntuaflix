@@ -60,8 +60,8 @@ exports.uploadTitleBasics = async (req, res, next) => {
                             genres = VALUES(genres),
                             img_url_asset = VALUES(img_url_asset);
                     `;
-                    console.log(query,img_url_asset)
-                        await pool.query(query, [tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres, img_url_asset]);
+
+                    await pool.query(query, [tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres, img_url_asset]);
 
 
                     }
@@ -331,7 +331,7 @@ exports.uploadTitleRatings = async (req, res, next) => {
             complete: async (results) => {
                 try {
                     for (const row of results.data) {
-                        //console.log(row)
+
                         const { tconst, averageRating, numVotes } = row;
 
                         if (!tconst || tconst == '\n') {
