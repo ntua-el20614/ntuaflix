@@ -15,16 +15,13 @@
         overflow-x: auto;
         margin: 20px;
 
-        /* Hide scrollbar for IE, Edge, and Firefox */
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-
-        /* Hide scrollbar for Chrome, Safari, and Opera */
+        /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
+        -ms-overflow-style: none; 
+        scrollbar-width: none; 
         &::-webkit-scrollbar {
             display: none;
         }
+        */
     }
 
 
@@ -85,7 +82,7 @@
 
         .movie-info-section,
         .movie-poster-section {
-            flex: none;
+        max-width: 100%; /* Full width for smaller screens */
             /* Adjust to stack the sections vertically */
         }
     }

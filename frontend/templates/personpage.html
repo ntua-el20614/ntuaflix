@@ -14,16 +14,17 @@
         overflow-x: auto;
         margin: 20px;
 
-        /* Hide scrollbar for IE, Edge, and Firefox */
+        /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
         -ms-overflow-style: none;
-        /* IE and Edge */
+        
         scrollbar-width: none;
-        /* Firefox */
+        
 
-        /* Hide scrollbar for Chrome, Safari, and Opera */
+
         &::-webkit-scrollbar {
             display: none;
         }
+         */
     }
 
 
@@ -88,21 +89,22 @@
 
         .movie-info-section,
         .movie-poster-section {
-            flex: none;
+            max-width: 100%;
+            /* Full width for smaller screens */
             /* Adjust to stack the sections vertically */
         }
     }
 </style>
 
 <body>
-    
-  <header class="site-header">
-    <img src="../static/logo.png" alt="NTUAFlix Logo">
-  </header>
-  <div class="AllInfoForPerson">
-    <div id="personInfo"></div>
 
-</div>
+    <header class="site-header">
+        <img src="../static/logo.png" alt="NTUAFlix Logo">
+    </header>
+    <div class="AllInfoForPerson">
+        <div id="personInfo"></div>
+
+    </div>
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
