@@ -11,17 +11,17 @@ def replace_in_file(file_path, old_string, new_string):
         file.write(filedata)
 
 def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) > 3 and len(sys.argv) < 2:
         print("Usage: python script.py <old_string> <new_string>")
         sys.exit(1)
     elif len(sys.argv) == 2 and sys.argv[1]=="go_online":
         
         old_string = "localhost"
-        new_string = "http://uniportal.sytes.net/"
+        new_string = "uniportal.sytes.net"
 
     elif len(sys.argv) == 2 and sys.argv[1]=="go_offline":
 
-        old_string = "http://uniportal.sytes.net/"
+        old_string = "uniportal.sytes.net"
         new_string = "localhost"
     else:
         old_string = sys.argv[1]
@@ -33,6 +33,8 @@ def main():
             if file == 'replace.py':
                 continue
             if file == 'database.js':
+                continue
+            if file == 'run.py':
                 continue
             if file.endswith(tuple(target_extensions)):
                 file_path = os.path.join(root, file)
