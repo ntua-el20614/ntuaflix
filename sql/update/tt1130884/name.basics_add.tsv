@@ -1,0 +1,11 @@
+nconst	primaryName	birthYear	deathYear	primaryProfession	knownForTitles	img_url_asset
+nm0000138	Leonardo DiCaprio	1974	\N	producer,actor,soundtrack	tt1375666,tt0120338,tt0407887,tt0993846	https://image.tmdb.org/t/p/{width_variable}/5Brc5dLifH3UInk3wUaCuGXpCqy.jpg
+nm0000217	Martin Scorsese	1942	\N	producer,director,actor	tt0070379,tt0099685,tt0075314,tt5537002	https://image.tmdb.org/t/p/{width_variable}/9U9Y5GQuWX3EZy39B8nkk4NY01S.jpg
+nm0001426	Ben Kingsley	1943	\N	actor,soundtrack,producer	tt0203119,tt0315983,tt1300854,tt0083987	https://image.tmdb.org/t/p/{width_variable}/vQtBqpF2HDdzbfXHDzR4u37i1Ac.jpg
+nm0005219	Mike Medavoy	1941	\N	producer,actor,executive	tt1130884,tt0482546,tt0947798,tt0443706
+nm0436164	Laeta Kalogridis	1965	\N	writer,producer,script_department	tt1340138,tt0346491,tt1130884,tt0437086	https://image.tmdb.org/t/p/{width_variable}/ah2tinnpUoT0bzznmMN4l4HpxCY.jpg
+nm0607865	Emily Mortimer	1971	\N	actress,writer,producer	tt5028340,tt0416320,tt0800241,tt0805564	https://image.tmdb.org/t/p/{width_variable}/wsbq14Pr4jZzHu2fQNISRHpkPtM.jpg
+nm0749263	Mark Ruffalo	1967	\N	actor,producer,soundtrack	tt1895587,tt1100089,tt0842926,tt0848228	https://image.tmdb.org/t/p/{width_variable}/z3dvKqMNDQWk3QLxzumloQVR0pv.jpg
+nm1103781	Arnold Messer	\N	\N	producer,executive	tt1130884,tt0947798,tt0443706,tt0382992
+nm1212331	Dennis Lehane	1965	\N	producer,writer,actor	tt0327056,tt1600196,tt2361317,tt0306414	https://image.tmdb.org/t/p/{width_variable}/9pY4fW3bCG0q6vilEvvswIAbAK0.jpg
+nm1329482	Bradley J. Fischer	\N	\N	producer,executive	tt0443706,tt1034415,tt6654210,tt9777666	https://image.tmdb.org/t/p/{width_variable}/xJbGB0pDWKc4tniAQpFxhL7xLyT.jpg
