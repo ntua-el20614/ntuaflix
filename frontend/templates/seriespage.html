@@ -14,6 +14,7 @@
         display: flex;
         overflow-x: auto;
         margin: 20px;
+        /* Remove this as it's overridden by display: flex */
 
         /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
         -ms-overflow-style: none; 
@@ -22,6 +23,22 @@
             display: none;
         }
         */
+    }
+
+    .episodes-list {
+        border: 1px solid #ccc;
+        display: flex;
+        overflow-x: auto;
+        margin: 20px;
+        /* Hide initially */
+
+        /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    */
     }
 
 
@@ -43,8 +60,34 @@
         transition: transform 0.3s ease;
     }
 
+    .episode-item {
+        margin-right: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 25px;
+
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-right: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        min-width: 250px;
+        max-width: 250px;
+        background-color: #717171;
+        transition: transform 0.3s ease;
+    }
+
+    .hidden {
+        display: none !important;
+        /* Hide when this class is applied */
+    }
 
     .cast-item:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    .episode-item:hover {
         transform: scale(1.05);
         cursor: pointer;
     }
@@ -82,12 +125,17 @@
 
         .movie-info-section,
         .movie-poster-section {
-        max-width: 100%; /* Full width for smaller screens */
+            max-width: 100%;
+            /* Full width for smaller screens */
             /* Adjust to stack the sections vertically */
         }
     }
 
     .cast-item img {
+        margin-top: 20px;
+    }
+
+    .episode-item img {
         margin-top: 20px;
     }
 </style>
@@ -99,6 +147,10 @@
     </header>
     <div id="movieDetailsContainer" class="movieInfo">
         <!-- Movie details will be displayed here -->
+    </div>
+    <div id="tvshowepisodes" class="movieInfo">
+    </div>
+
     </div>
 
     <script>
@@ -132,6 +184,24 @@
                         throw error;
                     });
             }
+
+
+
+
+            async function fetchEpisodesDetails(id) {
+                try {
+                    const response = await fetch(`http://localhost:7117/ntuaflix_api/title/${id}`);
+
+                    const episodeData = await response.json();
+
+                    return episodeData;
+                } catch (error) {
+                    console.error('Error fetching student info:', error);
+                    return null;
+                }
+            }
+
+
             function fetchCharacterDetails(nameID, titleID) {
                 return fetch(`http://localhost:7117/ntuaflix_api/character/${nameID}/${titleID}`)
                     .then(response => {
@@ -175,6 +245,57 @@
                     });
             }
 
+            function groupEpisodesBySeason(episodeData) {
+                return episodeData.reduce((acc, episode) => {
+                    (acc[episode.seasonN] = acc[episode.seasonN] || []).push(episode);
+                    return acc;
+                }, {});
+            }
+
+            function createEpisodeDiv(episode, details) {
+
+                const div = document.createElement('div');
+
+                div.setAttribute('id', episode.tconst);
+
+                div.classList.add('episode-item');
+                let episodeContent
+                if (episode.episodeN === "\\N") {
+                    episodeContent = `<h3>${details.originalTitle}</h3>`;
+
+                } else {
+                    episodeContent = `<h2>Episode ${episode.episodeN}: </h2><h3>${details.originalTitle}</h3>`;
+                }
+                // Add the episode poster if available
+                if (details.titlePoster && details.titlePoster !== '\\N') {
+
+
+                    episodeContent += `<img src="${details.titlePoster.replace('{width_variable}', 'w200')}" alt="${details.originalTitle}">`;
+                }
+
+                // Add genres
+                if (details.genres && details.genres.length > 0) {
+                    episodeContent += `<p>Genres: ${details.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
+                }
+
+                // Add rating information
+                if (details.rating && details.rating.avRating !== "\\N") {
+                    episodeContent += `<p>Rating: ${details.rating.avRating} (${details.rating.nVotes} votes)</p>`;
+                }
+
+
+                div.innerHTML = episodeContent;
+
+
+                // Attach event listener
+                div.addEventListener('click', (event) => {
+
+                    redirectToMoviePage(event.currentTarget.getAttribute('id'));
+                });
+
+                return div;
+            }
+
 
             function calculateAge(birthYear, deathYear) {
                 const currentYear = new Date().getFullYear();
@@ -194,6 +315,9 @@
                 window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
             }
 
+            function redirectToMoviePage(movieId) {
+                window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+            }
             async function displayMovieDetails(movieData) {
                 console.log(movieData);
                 const container = document.getElementById('movieDetailsContainer');
@@ -287,7 +411,7 @@
 
                     // Attach event listener
                     div.addEventListener('click', (event) => {
-                        //console.log(event.currentTarget.getAttribute('id'));
+
                         redirectToPersonPage(event.currentTarget.getAttribute('id'));
                     });
 
@@ -323,7 +447,7 @@
 
                     // Attach event listener
                     div.addEventListener('click', (event) => {
-                        //console.log(event.currentTarget.getAttribute('id'));
+
                         redirectToPersonPage(event.currentTarget.getAttribute('id'));
                     });
 
@@ -362,7 +486,7 @@
 
                                 const castContainer = document.createElement('div');
                                 castContainer.classList.add('cast-container');
-                                castContainer.innerHTML = '<h3>Cast:</h3><div class="cast-list"></div>';
+                                castContainer.innerHTML = '<h1>Cast:</h1><div class="cast-list"></div>';
                                 container.appendChild(castContainer);
 
                                 castListDiv = castContainer.querySelector('.cast-list');
@@ -386,7 +510,7 @@
 
                                 const castContainer = document.createElement('div');
                                 castContainer.classList.add('cast-container');
-                                castContainer.innerHTML = '<h3>Principals:</h3><div class="cast-list"></div>';
+                                castContainer.innerHTML = '<h1>Principals:</h1><div class="cast-list"></div>';
                                 container.appendChild(castContainer);
 
                                 castListDiv = castContainer.querySelector('.cast-list');
@@ -405,14 +529,14 @@
                 let crewData = await fetchCrewDetails(movieData.titleID);
                 crewData = crewData[0].result;
 
-                
+
                 if (crewData && ((crewData.director && crewData.director.length > 0) || (crewData.writer && crewData.writer.length > 0))) {
                     const combinedCrew = combineCrewData(crewData.director, crewData.writer);
 
 
                     const crewContainer = document.createElement('div');
                     crewContainer.classList.add('cast-container');
-                    crewContainer.innerHTML = '<h3>Crew:</h3><div class="cast-list"></div>';
+                    crewContainer.innerHTML = '<h1>Crew:</h1><div class="cast-list"></div>';
                     container.appendChild(crewContainer);
 
                     const crewListDiv = crewContainer.querySelector('.cast-list');
@@ -424,12 +548,59 @@
                     }
                 }
 
-
-                //Display episodes
+                // Display episodes
                 let episodeData = await fetchEpisodeDetails(movieData.titleID);
-                episodeData = episodeData[0];
-                console.log(episodeData)
+                const episodesBySeason = groupEpisodesBySeason(episodeData);
 
+                const seasonsContainer = document.getElementById('tvshowepisodes');
+                let epflag = true;
+                for (const [season, episodes] of Object.entries(episodesBySeason)) {
+                    let episodesListDiv
+                    let seasonContainer
+                    //if (season === '\\N' || episodes === '\\N'){
+                    seasonContainer = document.createElement('div');
+                    seasonContainer.classList.add('cast-container');
+                    if (season === "\\N") {
+                        seasonContainer.innerHTML = `<h1>Special Episodes:</h1><div class="episodes-list hidden"></div>`;
+
+                    } else {
+                        seasonContainer.innerHTML = `<h1>Season ${season}:</h1><div class="episodes-list hidden"></div>`;
+                    }
+                    seasonsContainer.appendChild(seasonContainer);
+                    episodesListDiv = seasonContainer.querySelector('.episodes-list');
+                    episodesListDiv.classList.add('hidden'); // Start with episodes hidden
+
+                    //}
+                    try {
+                        for (const episode of episodes) {
+                            const episodeDetails = await fetchEpisodesDetails(episode.tconst);
+
+
+                            if (episodeDetails && episodeDetails.length > 0) {
+                                const episodeDiv = createEpisodeDiv(episode, episodeDetails[0]);
+                                episodesListDiv.appendChild(episodeDiv);
+                            } else {
+                                console.error('Episode details not found for:', episode.tconst);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error fetching episode details:', error);
+                    }
+
+
+
+                    // Add expand/collapse functionality to the season container
+
+                    const expandBtn = document.createElement('button');
+                    expandBtn.textContent = 'Expand';
+                    expandBtn.addEventListener('click', function () {
+                        const isHidden = episodesListDiv.classList.toggle('hidden');
+                        expandBtn.textContent = isHidden ? 'Expand' : 'Contract';
+                    });
+
+
+                    seasonContainer.insertBefore(expandBtn, episodesListDiv);
+                }
             }
 
             // Fetch and display the details for the provided movie ID
