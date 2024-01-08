@@ -102,8 +102,92 @@ function logout(options) {
 }
 
 // 3 -- adduser
+program
+    .command('adduser')
+    .description('Add a new user or update the password of an existing user')
+    .requiredOption('--username <username>', 'Username for the user')
+    .requiredOption('--password <password>', 'Password for the user')
+    .option('--format <format>', 'Format of the output (json or csv)', 'json')
+    .action(addUser);
+
+
+    async function addUser(options) {
+        try {
+            // Create form data
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', '1');
+    
+            // POST request with form data
+            const response = await axios.post(`http://localhost:7117/admin/usermod/${options.username}/${options.password}`, formData, {
+                headers: formData.getHeaders(),
+            });
+    
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+    
+            const filePath = path.join(dir, `adduser_${options.username}.${options.format}`);
+    
+            // Save the response data
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`User modification details saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error in adding/updating user:', error);
+        }
+    }
+    
 
 // 4 -- user
+program
+    .command('user')
+    .description('Get details of a specific user')
+    .requiredOption('--username <username>', 'Username of the user to retrieve')
+    .option('--format <format>', 'Format of the output (json or csv)', 'json')
+    .action(getUser);
+
+    async function getUser(options) {
+        
+        try {
+            // Create form data
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', '1');
+    
+            // POST request with form data
+            const response = await axios.post(`http://localhost:7117/admin/users/${options.username}`, formData, {
+                headers: formData.getHeaders(),
+            });
+    
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+    
+            const filePath = path.join(dir, `user_${options.username}.${options.format}`);
+    
+            // Save the response data
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`User modification details saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error in user:', error);
+        }
+    }
 
 // 5 -- healthcheck
 program
@@ -584,8 +668,3 @@ async function searchname(options) {
 }
 
 program.parse(process.argv);
-
-
-
-
-
