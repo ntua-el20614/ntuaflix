@@ -9,7 +9,7 @@ body, html {
 .site-header {
     text-align: center;
     padding: 10px 0;
-    background-color: black;
+    background-color: #010A08;
 }
 
 .site-header img {
@@ -162,7 +162,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: #010A08;
     display: flex;
     justify-content: center;
     align-items: center;
