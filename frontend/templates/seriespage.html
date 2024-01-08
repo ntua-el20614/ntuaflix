@@ -25,6 +25,20 @@
         */
     }
 
+    /* Style for the expand button */
+    .expand-button {
+        background-color: #008CBA;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .expand-button:hover {
+        background-color: #005F7F;
+    }
+
     .episodes-list {
         border: 1px solid #ccc;
         display: flex;
@@ -93,7 +107,11 @@
     }
 
     .movieInfo {
-        margin-left: 20px;
+        margin-left: 20px; 
+    }
+    .movieInfoPeople {
+        margin-left: 20px; 
+        margin-bottom: 750px;
     }
 
     .movie-details-flex-container {
@@ -148,7 +166,7 @@
     <div id="movieDetailsContainer" class="movieInfo">
         <!-- Movie details will be displayed here -->
     </div>
-    <div id="tvshowepisodes" class="movieInfo">
+    <div id="tvshowepisodes" class="movieInfoPeople">
     </div>
 
     </div>
@@ -593,6 +611,7 @@
 
                     const expandBtn = document.createElement('button');
                     expandBtn.textContent = 'Expand';
+                    expandBtn.classList.add("expand-button")
                     expandBtn.addEventListener('click', function () {
                         const isHidden = episodesListDiv.classList.toggle('hidden');
                         expandBtn.textContent = isHidden ? 'Expand' : 'Contract';

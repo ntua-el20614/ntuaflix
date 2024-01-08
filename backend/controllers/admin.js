@@ -429,3 +429,34 @@ exports.getTest = async (req, res, next) => {
         res.status(500).json({ status: "failed" });
     }
 }
+
+
+exports.resetAllData = async (req, res, next) => {
+    try {
+        // Adjust the path as necessary to point to your modified SQL file
+        const sqlFilePath = "../sql/testing_data_tables.sql";
+        
+        // Read the content of the SQL file
+        const sqlContent = await fs.readFile(sqlFilePath, 'utf-8');
+        
+        // Split the file content into individual SQL statements
+        const sqlStatements = sqlContent.split(';');
+
+        // Execute each SQL statement
+        for (const statement of sqlStatements) {
+            if (statement.trim()) {
+                await pool.query(statement);
+            }
+        }
+
+        res.json({ status: "OK" });
+    } catch (error) {
+        // Log the error for debugging purposes
+        console.error("Error in resetAllData:", error);
+
+        // Send a response with the error details
+        res.status(500).json({ status: "failed", reason: error.message });
+    }
+};
+
+

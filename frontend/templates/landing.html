@@ -189,12 +189,20 @@
       div.classList.add('item');
       div.innerHTML = '';
 
-      if (containerId === 'movies-container' || containerId === 'people-container') {
+      if (containerId === 'movies-container' ) {
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
-          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primaryName || item.primarytitle}">`;
+          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
         }
 
       }
+      if (  containerId === 'people-container' ) {
+        if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
+          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
+        }
+
+      }
+
+    
 
       if (containerId === 'movies-container') {
         div.setAttribute('data-id', item.tconst); //  Add a data attribute to each item
