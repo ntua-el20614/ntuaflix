@@ -3,7 +3,7 @@ const { write } = require('fs');
 const { pool } = require('../utils/database');
 const fs = require('fs').promises;
 const Papa = require('papaparse');
-
+const bcrypt = require('bcryptjs');
 const util = require('util');
 
 const readFile = util.promisify(fs.readFile);
@@ -411,11 +411,11 @@ exports.chUser = async (req, res, next) => {
 exports.getUser = async (req, res, next) => {
 
     const username = req.params.username;
-    const query = `SELECT * FROM users WHERE username = ?`;
+    const query = `SELECT * FROM users WHERE username = '${username}'`;
 
     try {
-        const [results] = await pool.query(query, [username]);
-        res.status(200).json({ message: 'Operation successful', new_password: `${password}`, data: results });
+        const [results] = await pool.query(query);
+        res.status(200).json(results);
     } catch (err) {
         res.status(500).json({ message: 'Internal server error', error: err.message });
     }
