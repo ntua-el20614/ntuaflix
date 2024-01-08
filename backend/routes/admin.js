@@ -27,7 +27,7 @@ router.post('/resetall', adminController.resetAllData);
 
 //10-11
 router.post('/usermod/:username/:password', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.chUser);
-router.get('/users/:username', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getUser);
+router.post('/users/:username', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getUser);
 
 //more
 router.post('/test', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'data', maxCount: 1 }]), authorize, adminController.getTest);

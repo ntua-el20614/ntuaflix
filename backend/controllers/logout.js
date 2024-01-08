@@ -1,14 +1,12 @@
-const { pool } = require('../utils/database.js');
+// controllers/logout.js
 
 exports.logout = async (req, res) => {
-    // Extract the user's ID from the token, which should be done by middleware before this controller
-    const userId = req.userId;  // This should be set by a middleware that decodes the JWT
-
     try {
-        // Set the token to null in the database for this user
-        await pool.query('UPDATE users SET token = NULL WHERE userID = ?', [userId]);
+        // Perform any server-side cleanup if needed
+        // For example, invalidating server-side session, if you use sessions
 
-        res.status(200).json({message: 'Logout Successfully'});
+        // Respond to the client indicating successful logout
+        res.status(200).json({ message: 'Logout successful' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Something went wrong with the server.' });

@@ -10,21 +10,193 @@ const { hideBin } = require('yargs/helpers');
 
 program.version('1.0.0');
 
+// Helper function to convert JSON to CSV
+function jsonToCSV(json) {
+    // Check if json is an array and not empty
+    if (Array.isArray(json) && json.length > 0) {
+        const rows = [Object.keys(json[0])]; // Header row from keys of the first object
+        json.forEach(object => {
+            rows.push(Object.values(object));
+        });
+        return rows.map(row => row.join(',')).join('\n');
+    } else if (json && typeof json === 'object') {
+        // Handle single object (non-array)
+        const header = Object.keys(json);
+        const values = Object.values(json);
+        return header.join(',') + '\n' + values.join(',');
+    } else {
+        // Handle empty or unexpected data format
+        return 'Unable to convert to CSV: Invalid data format';
+    }
+}
+
 // 1 -- login
+program
+    .command('login')
+    .description('Log in to the ntuaflix API')
+    .requiredOption('--username <username>', 'Your username')
+    .requiredOption('--password <password>', 'Your password')
+    .option('--format <format>', 'Format of the file to save the token (json or csv)', 'json')
+    .action(login);
+
+async function login(options) {
+    try {
+        const response = await axios.post('http://localhost:7117/ntuaflix_api/login', {
+            username: options.username,
+            password: options.password
+        });
+
+        // Directory where the token will be saved
+        const dir = './cli_responses';
+
+        // Create the directory if it doesn't exist
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+
+        // Path for the token file
+        const tokenFilePath = path.join(dir, `token.${options.format}`);
+
+        // Save the token to a file in the specified format
+        if (options.format === 'json') {
+            fs.writeFile(tokenFilePath, JSON.stringify({ token: response.data.token }, null, 2), (err) => {
+                if (err) {
+                    console.error('Error saving token:', err);
+                } else {
+                    console.log('Logged in successfully. Token saved to ' + tokenFilePath);
+                }
+            });
+        } else if (options.format === 'csv') {
+            fs.writeFile(tokenFilePath, `token\n${response.data.token}`, (err) => {
+                if (err) {
+                    console.error('Error saving token:', err);
+                } else {
+                    console.log('Logged in successfully. Token saved to ' + tokenFilePath);
+                }
+            });
+        } else {
+            console.error('Invalid format. Please choose json or csv.');
+        }
+    } catch (error) {
+        console.error('Login failed:', error);
+    }
+}
 
 // 2 -- logout
+program
+    .command('logout')
+    .description('Log out of the ntuaflix API')
+    .option('--format <format>', 'Format of the token file to delete (json or csv)', 'json')
+    .action(logout);
+
+function logout(options) {
+    // Path for the token file based on the specified format
+    const tokenFilePath = path.join('./cli_responses', `token.${options.format}`);
+
+    if (fs.existsSync(tokenFilePath)) {
+        fs.unlinkSync(tokenFilePath);
+        console.log(`Logged out successfully. Token file in ${options.format} format deleted.`);
+    } else {
+        console.log(`No token file found in ${options.format} format.`);
+    }
+}
 
 // 3 -- adduser
+program
+    .command('adduser')
+    .description('Add a new user or update the password of an existing user')
+    .requiredOption('--username <username>', 'Username for the user')
+    .requiredOption('--password <password>', 'Password for the user')
+    .option('--format <format>', 'Format of the output (json or csv)', 'json')
+    .action(addUser);
+
+
+    async function addUser(options) {
+        try {
+            // Create form data
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', '1');
+    
+            // POST request with form data
+            const response = await axios.post(`http://localhost:7117/admin/usermod/${options.username}/${options.password}`, formData, {
+                headers: formData.getHeaders(),
+            });
+    
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+    
+            const filePath = path.join(dir, `adduser_${options.username}.${options.format}`);
+    
+            // Save the response data
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`User modification details saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error in adding/updating user:', error);
+        }
+    }
+    
 
 // 4 -- user
+program
+    .command('user')
+    .description('Get details of a specific user')
+    .requiredOption('--username <username>', 'Username of the user to retrieve')
+    .option('--format <format>', 'Format of the output (json or csv)', 'json')
+    .action(getUser);
+
+    async function getUser(options) {
+        
+        try {
+            // Create form data
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', '1');
+    
+            // POST request with form data
+            const response = await axios.post(`http://localhost:7117/admin/users/${options.username}`, formData, {
+                headers: formData.getHeaders(),
+            });
+    
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+    
+            const filePath = path.join(dir, `user_${options.username}.${options.format}`);
+    
+            // Save the response data
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`User modification details saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error in user:', error);
+        }
+    }
 
 // 5 -- healthcheck
 program
     .command('healthcheck')
     .description('Perform a health check of the ntuaflix API')
+    .option('--format <format>', 'Format of the file to save the health check data (json or csv)', 'json')
     .action(healthcheck);
 
-async function healthcheck() {
+async function healthcheck(options) {
     try {
         const response = await axios.get('http://localhost:7117/admin/healthcheck');
         
@@ -37,21 +209,34 @@ async function healthcheck() {
         }
 
         // Path for the new file
-        const filePath = path.join(dir, 'healthcheck.json');
+        const filePath = path.join(dir, `healthcheck.${options.format}`);
 
-        // Save the response data to a JSON file
-        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log('Health check data saved to ' + filePath);
-            }
-        });
+        // Save the response data to a file in the specified format
+        if (options.format === 'json') {
+            fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log('Health check data saved to ' + filePath);
+                }
+            });
+        } else if (options.format === 'csv') {
+            // Convert JSON to CSV (simple implementation, might need adjustment based on actual JSON structure)
+            const csv = jsonToCSV(response.data);
+            fs.writeFile(filePath, csv, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log('Health check data saved to ' + filePath);
+                }
+            });
+        } else {
+            console.error('Invalid format. Please choose json or csv.');
+        }
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
-
 
 // 6 -- resetall
 
@@ -483,8 +668,3 @@ async function searchname(options) {
 }
 
 program.parse(process.argv);
-
-
-
-
-
