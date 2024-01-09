@@ -21,7 +21,9 @@ router.post('/upload/titleprincipals', upload.fields([{ name: 'file', maxCount: 
 router.post('/upload/titleratings', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.uploadTitleRatings);
 
 //9
-router.post('/resetall', adminController.resetAllData);
+router.post('/resetall', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.resetAllData);
+router.post('/backup', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.bringGivenData);
+router.post('/moredata', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.bringMoreData);
 
 //router.post('/upload/', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.upload);
 

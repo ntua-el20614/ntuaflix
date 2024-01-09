@@ -460,3 +460,73 @@ exports.resetAllData = async (req, res, next) => {
 };
 
 
+exports.bringGivenData = async (req, res, next) => {
+    let connection;
+    try {
+        const sqlFilePath = "../sql/update.sql";
+        const sqlContent = await fs.readFile(sqlFilePath, 'utf-8');
+        const sqlStatements = sqlContent.split(';');
+
+        connection = await pool.getConnection();
+        await connection.beginTransaction();
+
+        for (const statement of sqlStatements) {
+            const trimmedStatement = statement.trim();
+            if (trimmedStatement) {
+                try {
+
+                    await connection.query(trimmedStatement);
+                } catch (stmtError) {
+                    console.error('Error executing statement:', trimmedStatement); // Log the problematic statement
+                    console.error(stmtError); // Log detailed error
+                    throw stmtError; // Re-throw to handle in the outer catch block
+                }
+            }
+        }
+
+        await connection.commit();
+        res.json({ status: "OK" });
+    } catch (error) {
+        console.error("Error in bringAllData:", error);
+        if (connection) await connection.rollback();
+        res.status(500).json({ status: "failed", reason: error.message });
+    } finally {
+        if (connection) await connection.release();
+    }
+};
+
+
+exports.bringMoreData = async (req, res, next) => {
+    let connection;
+    try {
+        const sqlFilePath = "../sql/update_corrected.sql";
+        const sqlContent = await fs.readFile(sqlFilePath, 'utf-8');
+        const sqlStatements = sqlContent.split(';');
+
+        connection = await pool.getConnection();
+        await connection.beginTransaction();
+
+        for (const statement of sqlStatements) {
+            const trimmedStatement = statement.trim();
+            if (trimmedStatement) {
+                try {
+
+                    await connection.query(trimmedStatement);
+                } catch (stmtError) {
+                    console.error('Error executing statement:', trimmedStatement); // Log the problematic statement
+                    console.error(stmtError); // Log detailed error
+                    throw stmtError; // Re-throw to handle in the outer catch block
+                }
+            }
+        }
+
+        await connection.commit();
+        res.json({ status: "OK" });
+    } catch (error) {
+        console.error("Error in bringAllData:", error);
+        if (connection) await connection.rollback();
+        res.status(500).json({ status: "failed", reason: error.message });
+    } finally {
+        if (connection) await connection.release();
+    }
+};
