@@ -188,12 +188,11 @@ exports.getEpisodes = async (req, res, next) => {
     const titleID = req.params.titleID;
 
     const query = `
-    SELECT tconst,seasonN,episodeN
-    FROM Episodes
-    WHERE parentTconst = '${titleID}'
-    ORDER BY seasonN DESC, episodeN ASC; 
+    SELECT tconst, seasonN, episodeN
+FROM Episodes
+WHERE parentTconst = '${titleID}'
+ORDER BY CAST(seasonN AS UNSIGNED) ASC, CAST(episodeN AS UNSIGNED) ASC;
 
-    ;
     `;
 
     try {

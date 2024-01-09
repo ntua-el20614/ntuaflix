@@ -473,7 +473,7 @@ program
 
 async function getTitleById(options) {
     try {
-        const response = await axios.get('http://localhost:7117/title/:titleID', {titleID});
+        const response = await axios.get(`http://localhost:7117/ntuaflix_api/title/:titleID${options.titleID}`);
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -503,13 +503,13 @@ async function getTitleById(options) {
 program
     .command('searchtitle')
     .description('Search for titles in the ntuaflix database by a part of the title')
-    .requiredOption('--titlepart <titlePart>', 'The part of the title to search for')
+    .requiredOption('--titlePart <titlePart>', 'The part of the title to search for')
     .action(searchtitle);
 
 async function searchtitle(options) {
     try {
-        // Make the GET request to the search endpoint
-        const response = await axios.get('http://localhost:7117/searchtitle', {titlePart});
+        // Make the POST request to the searchtitle endpoint with the title part in the body
+        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchtitle', { titlePart: options.titlepart });
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -520,14 +520,14 @@ async function searchtitle(options) {
         }
 
         // Path for the new file
-        const filePath = path.join(dir, `title_${options.titlePart}.json`);
+        const filePath = path.join(dir, `searchtitle_${options.titlePart}.json`);
 
         // Save the response data to a JSON file
         fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
             if (err) {
                 console.error('Error writing file:', err);
             } else {
-                console.log(`Search results saved to ${filePath}`);
+                console.log(`Title search results saved to ${filePath}`);
             }
         });
     } catch (error) {
@@ -535,73 +535,18 @@ async function searchtitle(options) {
     }
 }
 
-// 16 -- bygenre
-program
-    .command('bygenre')
-    .description('Search for titles in the ntuaflix database by genre')
-    .requiredOption('--genre <qgenre>', 'The full name of the genre to search for')
-    .requiredOption('--min <minrating>', 'The minimum rating of the titles')
-    .option('--from <yrFrom>', 'The start year of the titles')
-    .option('--to <yrTo>', 'The end year of the titles')
-    .action(bygenre);
-
-async function bygenre(options) {
-    try {
-        // Construct the query parameters
-        const params = new URLSearchParams({
-            qgenre: options.genre,
-            minrating: options.minrating
-        });
-
-        // Add optional year range to the query parameters if provided
-        if (options.from) {
-            params.append('yrFrom', options.from);
-        }
-        if (options.to) {
-            params.append('yrTo', options.to);
-        }
-
-        // Make the GET request to the bygenre endpoint
-        const response = await axios.get(`http://localhost:7117/bygenre?${params}`);
-
-        // Directory where the file will be saved
-        const dir = './cli_responses';
-
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-
-        // Filename based on the genre query, sanitized to remove special characters
-        const filename = `bygenre_${options.genre.replace(/[^a-z0-9]/gi, '_')}.json`;
-
-        // Path for the new file
-        const filePath = path.join(dir, filename);
-
-        // Save the response data to a JSON file
-        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log(`Genre search results saved to ${filePath}`);
-            }
-        });
-    } catch (error) {
-        console.error('Error performing genre search:', error);
-    }
-}
     
 // 17 -- nameID
 program
-    .command('nameid')
-    .description('Fetch details of a person by their nameID from the ntuaflix database')
-    .requiredOption('--nameid <nameID>', 'The nameID (nconst) of the person to fetch details for')
+    .command('name')
+    .description('Fetch details of a person by their name fidrom the ntuaflix database')
+    .requiredOption('--nameid <nameid>', 'The nameid (nconst) of the person to fetch details for')
     .action(getNameById);
 
 async function getNameById(options) {
     try {
         // Make the GET request to the name endpoint
-        const response = await axios.get(`http://localhost:7117/name/:nameID${options.nameid}`);
+        const response = await axios.get(`http://localhost:7117/ntuaflix_api/name/:nameid${options.nameid}`);
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -627,18 +572,17 @@ async function getNameById(options) {
     }
 }
 
-//18 --name
 // 18 -- searchname
 program
     .command('searchname')
     .description('Search for people in the ntuaflix database by a part of the name')
-    .requiredOption('--namepart <namePart>', 'The part of the name to search for')
+    .requiredOption('--namePart <namePart>', 'The part of the name to search for')
     .action(searchname);
 
 async function searchname(options) {
     try {
-        // Make the GET request to the searchname endpoint with the name part
-        const response = await axios.get(`http://localhost:7117/searchname?namePart=${encodeURIComponent(options.namePart)}`);
+        // Make the POST request to the searchname endpoint with the name part in the body
+        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.namepart });
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -648,22 +592,19 @@ async function searchname(options) {
             fs.mkdirSync(dir);
         }
 
-        // Sanitize the name part to create a valid filename
-        const sanitizedQuery = options.namePart.replace(/[^a-z0-9]/gi, '_');
-
         // Path for the new file
-        const filePath = path.join(dir, `searchname_${sanitizedQuery}.json`);
+        const filePath = path.join(dir, `searchname_${options.namePart}.json`);
 
         // Save the response data to a JSON file
         fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
             if (err) {
                 console.error('Error writing file:', err);
             } else {
-                console.log(`Search by name results saved to ${filePath}`);
+                console.log(`Name search results saved to ${filePath}`);
             }
         });
     } catch (error) {
-        console.error('Error performing search by name:', error);
+        console.error('Error performing name search:', error);
     }
 }
 
