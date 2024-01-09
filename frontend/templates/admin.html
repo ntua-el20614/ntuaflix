@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NTUAFlix Admin</title>
+  <title>NtuaFlix Admin</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="../static/logo.png">
@@ -168,6 +168,16 @@
         class="upload-button">Upload
         Title Ratings</button>
     </div>
+    <hr>
+    <div class="button-container" style="text-align: center; margin-top: 20px;">
+      <!-- Reset All Data Button -->
+      <button onclick="resetAllData()" class="upload-button">Reset All Data</button>
+    
+      <!-- Backup Data Button -->
+      <button onclick="backupData()" class="upload-button">Backup Data</button>
+      <button onclick="moreData()" class="upload-button">More Backup Data</button>
+    </div>
+
   </div>
 
 
@@ -260,6 +270,83 @@
         alert('Please select a file to upload.');
       }
     }
+
+
+    
+  function resetAllData() {
+    const formData = new FormData();
+    formData.append('secretKey', '3141592653589793236264');
+    formData.append('is_user_admin', 'true');
+
+    fetch('http://localhost:7117/admin/resetall', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert("Database reset successfully");
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Reset failed');
+    });
+  }
+
+  function backupData() {
+    const formData = new FormData();
+    formData.append('secretKey', '3141592653589793236264');
+    formData.append('is_user_admin', 'true');
+
+    
+    fetch('http://localhost:7117/admin/backup', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert("Database info added successfully");
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Backup failed');
+    });
+  }
+
+  
+  function moreData() {
+    const formData = new FormData();
+    formData.append('secretKey', '3141592653589793236264');
+    formData.append('is_user_admin', 'true');
+
+    
+    fetch('http://localhost:7117/admin/moredata', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert("Database info added successfully");
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Backup failed');
+    });
+  }
 
   </script>
 
