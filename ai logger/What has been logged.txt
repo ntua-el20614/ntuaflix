@@ -21,6 +21,9 @@ coding 20
 coding 21
 coding 22
 coding 23
+coding 24
+coding 25
+coding 26
 component 1
 deployment 1
 deployment 2
@@ -33,6 +36,7 @@ deployment 8
 deployment 9
 deployment 10
 design 1
+design 2
 requirements gathering 1
 requirements gathering 2
 testing 1
