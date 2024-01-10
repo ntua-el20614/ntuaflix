@@ -9,21 +9,6 @@
     <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 <style>
-    .cast-list {
-        border: 1px solid #ccc;
-        display: flex;
-        overflow-x: auto;
-        margin: 20px;
-        /* Remove this as it's overridden by display: flex */
-
-        /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
-        -ms-overflow-style: none; 
-        scrollbar-width: none; 
-        &::-webkit-scrollbar {
-            display: none;
-        }
-        */
-    }
 
     /* Style for the expand button */
     .expand-button {
@@ -40,10 +25,11 @@
     }
 
     .episodes-list {
-        border: 1px solid #ccc;
+        border: 1px solid #272c51;
         display: flex;
         overflow-x: auto;
         margin: 20px;
+        background-color: #0084b028;
         /* Hide initially */
 
         /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
@@ -55,24 +41,6 @@
     */
     }
 
-
-
-    .cast-item {
-        margin-right: 10px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 25px;
-
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-right: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        min-width: 250px;
-        max-width: 250px;
-        background-color: #717171;
-        transition: transform 0.3s ease;
-    }
 
     .episode-item {
         margin-right: 10px;
@@ -87,7 +55,7 @@
         text-align: center;
         min-width: 250px;
         max-width: 250px;
-        background-color: #717171;
+        background-color: #8a8a8a;
         transition: transform 0.3s ease;
     }
 
@@ -96,22 +64,18 @@
         /* Hide when this class is applied */
     }
 
-    .cast-item:hover {
-        transform: scale(1.05);
-        cursor: pointer;
-    }
-
     .episode-item:hover {
         transform: scale(1.05);
         cursor: pointer;
     }
 
     .movieInfo {
-        margin-left: 20px; 
+        margin-left: 20px;
     }
+
     .movieInfoPeople {
-        margin-left: 20px; 
-        margin-bottom: 750px;
+        margin-left: 20px;
+        margin-bottom: 600px;
     }
 
     .movie-details-flex-container {
@@ -149,13 +113,58 @@
         }
     }
 
-    .cast-item img {
-        margin-top: 20px;
-    }
-
     .episode-item img {
         margin-top: 20px;
     }
+
+    .seasons-container {
+        display: flex;
+        justify-content: start;
+        margin-bottom: 20px;
+    }
+
+    .season-number {
+        display: inline-block;
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        /* Center text vertically */
+        text-align: center;
+        border-radius: 50%;
+        /* Makes the div circular */
+        background-color: #008CBA;
+        color: white;
+        cursor: pointer;
+    }
+
+    .season-number:hover {
+        background-color: #005F7F;
+    }
+
+    .season-number.active {
+        background-color: #005F7F;
+        /* Active color */
+        color: white;
+    }
+
+
+    .SeasonTitle {
+        margin: 10px;
+        font-size: 24px;
+        /* Larger size similar to h2 */
+        font-weight: bold;
+        /* Make text bold */
+        color: #005F7F;
+        /* Change the color to something distinct */
+        text-shadow: 1px 1px 2px #000000;
+        /* Add a subtle shadow for depth */
+        letter-spacing: 0.5px;
+        /* Slightly space out the letters */
+        text-transform: uppercase;
+        /* Optional: Transform text to uppercase for emphasis */
+    }
+
 </style>
 
 <body>
@@ -166,8 +175,14 @@
     <div id="movieDetailsContainer" class="movieInfo">
         <!-- Movie details will be displayed here -->
     </div>
+
     <div id="tvshowepisodes" class="movieInfoPeople">
+        <div id="seasonNumbers" class="seasons-container">
+            <!-- Season numbers will be generated and displayed here -->
+        </div>
+        <!-- Season episodes will be displayed below -->
     </div>
+
 
     </div>
 
@@ -504,7 +519,7 @@
 
                                 const castContainer = document.createElement('div');
                                 castContainer.classList.add('cast-container');
-                                castContainer.innerHTML = '<h1>Cast:</h1><div class="cast-list"></div>';
+                                castContainer.innerHTML = '<h1 class="CrewTitle">Cast:</h1><div class="cast-list"></div>';
                                 container.appendChild(castContainer);
 
                                 castListDiv = castContainer.querySelector('.cast-list');
@@ -554,7 +569,7 @@
 
                     const crewContainer = document.createElement('div');
                     crewContainer.classList.add('cast-container');
-                    crewContainer.innerHTML = '<h1>Crew:</h1><div class="cast-list"></div>';
+                    crewContainer.innerHTML = '<h1 class="CrewTitle">Crew:</h1><div class="cast-list"></div>';
                     container.appendChild(crewContainer);
 
                     const crewListDiv = crewContainer.querySelector('.cast-list');
@@ -570,56 +585,74 @@
                 let episodeData = await fetchEpisodeDetails(movieData.titleID);
                 const episodesBySeason = groupEpisodesBySeason(episodeData);
 
-                const seasonsContainer = document.getElementById('tvshowepisodes');
-                let epflag = true;
-                for (const [season, episodes] of Object.entries(episodesBySeason)) {
-                    let episodesListDiv
-                    let seasonContainer
-                    //if (season === '\\N' || episodes === '\\N'){
-                    seasonContainer = document.createElement('div');
-                    seasonContainer.classList.add('cast-container');
-                    if (season === "\\N") {
-                        seasonContainer.innerHTML = `<h1>Special Episodes:</h1><div class="episodes-list hidden"></div>`;
 
-                    } else {
-                        seasonContainer.innerHTML = `<h1>Season ${season}:</h1><div class="episodes-list hidden"></div>`;
+                // Flag to check if there are any seasons with episodes
+                let seasonsAvailable = false;
+
+                for (const season in episodesBySeason) {
+                    if (episodesBySeason[season].length > 0) {
+                        seasonsAvailable = true;
+                        break;
                     }
-                    seasonsContainer.appendChild(seasonContainer);
-                    episodesListDiv = seasonContainer.querySelector('.episodes-list');
-                    episodesListDiv.classList.add('hidden'); // Start with episodes hidden
+                }
 
-                    //}
-                    try {
-                        for (const episode of episodes) {
+                if (seasonsAvailable) {
+                    // Container for the seasons label and circles
+                    const seasonNumbersDiv = document.createElement('div');
+                    seasonNumbersDiv.classList.add('seasons-container');
+                    document.getElementById('tvshowepisodes').appendChild(seasonNumbersDiv);
+
+                    // Adding the "Seasons:" label
+                    const seasonsLabel = document.createElement('span');
+                    seasonsLabel.textContent = 'Seasons: ';
+                    seasonsLabel.classList.add("SeasonTitle");
+                    seasonNumbersDiv.appendChild(seasonsLabel);
+
+                    for (const season in episodesBySeason) {
+                        // Create and append season circles
+                        const seasonNumberDiv = document.createElement('div');
+                        seasonNumberDiv.classList.add('season-number');
+                        seasonNumberDiv.textContent = season;
+                        seasonNumbersDiv.appendChild(seasonNumberDiv);
+
+                        // Create container for episodes of this season
+                        const seasonEpisodesDiv = document.createElement('div');
+                        seasonEpisodesDiv.id = `season-${season}-episodes`;
+                        seasonEpisodesDiv.classList.add('episodes-list', 'hidden');
+                        document.getElementById('tvshowepisodes').appendChild(seasonEpisodesDiv);
+
+                        // Populate seasonEpisodesDiv with episodes
+                        for (const episode of episodesBySeason[season]) {
                             const episodeDetails = await fetchEpisodesDetails(episode.tconst);
-
-
                             if (episodeDetails && episodeDetails.length > 0) {
                                 const episodeDiv = createEpisodeDiv(episode, episodeDetails[0]);
-                                episodesListDiv.appendChild(episodeDiv);
+                                seasonEpisodesDiv.appendChild(episodeDiv);
                             } else {
                                 console.error('Episode details not found for:', episode.tconst);
                             }
                         }
-                    } catch (error) {
-                        console.error('Error fetching episode details:', error);
+
+
+                        seasonNumberDiv.addEventListener('click', function () {
+                            // Remove active class from all season numbers
+                            document.querySelectorAll('.season-number').forEach(div => {
+                                div.classList.remove('active');
+                            });
+
+                            // Add active class to the clicked season number
+                            seasonNumberDiv.classList.add('active');
+
+                            // Hide all other season episodes
+                            document.querySelectorAll('.episodes-list').forEach(div => {
+                                div.classList.add('hidden');
+                            });
+
+                            // Show the clicked season's episodes
+                            document.getElementById(`season-${season}-episodes`).classList.remove('hidden');
+                        });
                     }
-
-
-
-                    // Add expand/collapse functionality to the season container
-
-                    const expandBtn = document.createElement('button');
-                    expandBtn.textContent = 'Expand';
-                    expandBtn.classList.add("expand-button")
-                    expandBtn.addEventListener('click', function () {
-                        const isHidden = episodesListDiv.classList.toggle('hidden');
-                        expandBtn.textContent = isHidden ? 'Expand' : 'Contract';
-                    });
-
-
-                    seasonContainer.insertBefore(expandBtn, episodesListDiv);
                 }
+
             }
 
             // Fetch and display the details for the provided movie ID

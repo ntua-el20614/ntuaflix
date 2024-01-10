@@ -274,3 +274,71 @@ form:valid a {
   display: block;
 }
 
+
+
+
+    
+.CrewTitle {
+    margin: 10px;
+    font-size: 24px;
+    /* Larger size similar to h2 */
+    font-weight: bold;
+    /* Make text bold */
+    color: #007f46;
+    /* Change the color to something distinct */
+    text-shadow: 1px 1px 2px #000000;
+    /* Add a subtle shadow for depth */
+    letter-spacing: 0.5px;
+    /* Slightly space out the letters */
+    text-transform: uppercase;
+    /* Optional: Transform text to uppercase for emphasis */
+}
+
+
+.cast-list {
+    border: 1px solid #ccc;
+    display: flex;
+    overflow-x: auto;
+    margin: 20px;
+    background-color: #235b5338;
+    /* Remove this as it's overridden by display: flex */
+
+    /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    */
+}
+
+
+
+.cast-item {
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-right: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #717171;
+    transition: transform 0.3s ease;
+}
+
+
+.cast-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+.cast-item img {
+    margin-top: 20px;
+}
+
