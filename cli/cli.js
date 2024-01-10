@@ -240,6 +240,48 @@ async function healthcheck(options) {
 
 // 6 -- resetall
 
+program
+    .command('resetall')
+    .description('Reset all data in the ntuaflix API')
+    .option('--format <format>', 'Format of the response output (json or csv)', 'json')
+    .action(resetall);
+
+// Implementation of the resetall action function
+async function resetall(options) {
+    try {
+        // Assuming authorization is needed
+        const formData = new FormData();
+        formData.append('secretKey', '3141592653589793236264'); // Adjust secretKey as needed
+        formData.append('is_user_admin', 'true'); // Adjust is_user_admin as needed
+
+        const response = await axios.post('http://localhost:7117/admin/resetall', formData, {
+            headers: formData.getHeaders(),
+        });
+
+        // Directory where the file will be saved
+        const dir = './cli_responses';
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+
+        // Path for the new file
+        const filePath = path.join(dir, `resetall_response.${options.format}`);
+
+        // Save the response data to a file in the specified format
+        const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+        fs.writeFile(filePath, fileData, (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log(`Reset response saved to ${filePath}`);
+            }
+        });
+
+    } catch (error) {
+        console.error('Error resetting data:', error);
+    }
+}
+
 // 7 -- newtitles
 
 program
