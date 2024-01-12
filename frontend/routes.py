@@ -29,3 +29,13 @@ def person():
 def admin():
     return render_template("admin.html", pageTitle="Person Page")
 
+
+@app.route("/login")
+def login():
+    return render_template("login/login.html", pageTitle="Person Page")
+
+
+@app.route("/signup")
+def signup():
+    return render_template("login/signup.html", pageTitle="Person Page")
+

@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 <style>
+  
+
+
   .img {
     margin-top: 20px;
   }
@@ -25,8 +28,16 @@
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="loading-logo">
   </div>
   <header class="site-header">
-    <img src="../static/logo.png" alt="NTUAFlix Logo">
+    
+    
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo">
+    
+    
+    <button id="loginButton" class="login-btn">🔒</button>
   </header>
+  
+  
+  
   <div class="container">
     <!-- Inside the Movies Section -->
     <div class="movies-section">
@@ -250,6 +261,9 @@
     });
   }
 
+  document.getElementById('loginButton').addEventListener('click', function() {
+    window.location.href = 'http://127.0.0.1:8228/login';
+  });
   function redirectToMoviePage(movieId) {
     window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
   }

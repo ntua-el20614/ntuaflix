@@ -6,11 +6,44 @@ body, html {
     background-color: #878787;
 }
 
+
+
 .site-header {
     text-align: center;
     padding: 10px 0;
     background-color: #010A08;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Position relative for absolute positioning inside */
+    padding: 10px;
+  }
+  
+  .logo {
+  align-self: center;
+  }
+  
+  .login-btn {
+    position: absolute;
+    right: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 2px 2px;
+    background-color: #010A08; /* Example: a shade of green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px; /* Adjusted for emoji */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center; /* Ensure the emoji is centered */
+  }
+  
+  .login-btn:hover {
+    background-color: #dedede; /* Darker shade for hover effect */
+  }
+
+ 
 
 .site-header img {
     max-height: 100px;
