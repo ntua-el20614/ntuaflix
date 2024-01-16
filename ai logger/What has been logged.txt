@@ -38,6 +38,7 @@ deployment 9
 deployment 10
 design 1
 design 2
+design 3
 requirements gathering 1
 requirements gathering 2
 testing 1
