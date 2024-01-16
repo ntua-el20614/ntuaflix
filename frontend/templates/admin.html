@@ -75,16 +75,22 @@
     .drop-zone.dragover {
       border-color: #000;
     }
+
+    
   </style>
 </head>
 
 <body>
   <header class="site-header">
-    <img src="../static/logo.png" alt="NTUAFlix Logo">
-    <h1>Admin Dashboard</h1>
-  </header>
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
 
+    
+    <button id="loginButton" class="login-btn">🔒</button>
+
+  </header>
+<h1>Admin Dashboard</h1>
   <div class="admin-container">
+    
     <!-- Upload Title Basics -->
     <div class="upload-section">
       <h2>Upload Title Basics</h2>
@@ -183,6 +189,16 @@
 
 
   <script>
+
+    
+  document.getElementById('logoImage').addEventListener('click', function() {
+    window.location.href = 'http://localhost:8228/';
+  });
+  
+  document.getElementById('loginButton').addEventListener('click', function() {
+    window.location.href = 'http://localhost:8228/login';
+  });
+  
     // Setup for each drop zone
     document.querySelectorAll('.drop-zone').forEach(dropZone => {
       dropZone.addEventListener('click', () => {

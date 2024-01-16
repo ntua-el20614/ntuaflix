@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 <style>
-    
     .AllInfoForPerson {
         margin-left: 20px;
     }
@@ -52,7 +51,11 @@
 <body>
 
     <header class="site-header">
-        <img src="../static/logo.png" alt="NTUAFlix Logo">
+
+        <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+
+
+        <button id="loginButton" class="login-btn">🔒</button>
     </header>
     <div class="AllInfoForPerson">
         <div id="personInfo"></div>
@@ -60,6 +63,13 @@
     </div>
     <script>
 
+        document.getElementById('logoImage').addEventListener('click', function () {
+            window.location.href = 'http://localhost:8228/';
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function () {
+            window.location.href = 'http://localhost:8228/login';
+        });
         document.addEventListener('DOMContentLoaded', function () {
             const personId = new URLSearchParams(window.location.search).get('personId');
             fetchPersonData(personId);

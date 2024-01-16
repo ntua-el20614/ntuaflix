@@ -375,3 +375,8 @@ form:valid a {
     margin-top: 20px;
 }
 
+
+
+.logo:hover{
+    cursor: pointer;
+}

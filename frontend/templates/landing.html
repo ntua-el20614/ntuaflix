@@ -28,10 +28,9 @@
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="loading-logo">
   </div>
   <header class="site-header">
-    
-    
-    <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo">
-    
+
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+
     
     <button id="loginButton" class="login-btn">🔒</button>
   </header>
@@ -72,6 +71,15 @@
 
 </body>
 <script>
+
+  document.getElementById('logoImage').addEventListener('click', function() {
+    window.location.href = 'http://localhost:8228/';
+  });
+  
+  document.getElementById('loginButton').addEventListener('click', function() {
+    window.location.href = 'http://localhost:8228/login';
+  });
+
 
   const clearBtns = document.querySelectorAll(".clear-btn"); // Modified to select all clear buttons
 
@@ -261,9 +269,6 @@
     });
   }
 
-  document.getElementById('loginButton').addEventListener('click', function() {
-    window.location.href = 'http://localhost:8228/login';
-  });
   function redirectToMoviePage(movieId) {
     window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
   }
