@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 <style>
-
     /* Style for the expand button */
     .expand-button {
         background-color: #008CBA;
@@ -164,13 +163,17 @@
         text-transform: uppercase;
         /* Optional: Transform text to uppercase for emphasis */
     }
-
 </style>
 
 <body>
 
     <header class="site-header">
-        <img src="../static/logo.png" alt="NTUAFlix Logo">
+
+
+        <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+
+
+        <button id="loginButton" class="login-btn">🔒</button>
     </header>
     <div id="movieDetailsContainer" class="movieInfo">
         <!-- Movie details will be displayed here -->
@@ -187,6 +190,14 @@
     </div>
 
     <script>
+
+        document.getElementById('logoImage').addEventListener('click', function () {
+            window.location.href = 'http://localhost:8228/';
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function () {
+            window.location.href = 'http://localhost:8228/login';
+        });
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const serieId = urlParams.get('seriesId');
