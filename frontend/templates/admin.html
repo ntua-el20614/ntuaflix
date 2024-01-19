@@ -98,7 +98,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
+        onclick="uploadSingleFile('title-basics-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titlebasics')"
         class="upload-button">Upload
         Title Basics</button>
     </div>
@@ -110,7 +110,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
+        onclick="uploadSingleFile('name-basics-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/namebasics')"
         class="upload-button">Upload Name
         Basics</button>
     </div>
@@ -122,7 +122,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
+        onclick="uploadSingleFile('title-akas-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleakas')"
         class="upload-button">Upload
         Title Akas</button>
     </div>
@@ -134,7 +134,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
+        onclick="uploadSingleFile('title-crew-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titlecrew')"
         class="upload-button">Upload
         Title Crew</button>
     </div>
@@ -146,7 +146,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
+        onclick="uploadSingleFile('title-episode-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleepisode')"
         class="upload-button">Upload
         Title Episode</button>
     </div>
@@ -158,7 +158,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('title-principals-drop-zone', 'http://localhost:7117/admin/upload/titleprincipals')"
+        onclick="uploadSingleFile('title-principals-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleprincipals')"
         class="upload-button">Upload
         Title Principals</button>
     </div>
@@ -170,7 +170,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
+        onclick="uploadSingleFile('title-ratings-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleratings')"
         class="upload-button">Upload
         Title Ratings</button>
     </div>
@@ -192,11 +192,11 @@
 
     
   document.getElementById('logoImage').addEventListener('click', function() {
-    window.location.href = 'http://localhost:8228/';
+    window.location.href = 'http://uniportal.sytes.net:8228/';
   });
   
   document.getElementById('loginButton').addEventListener('click', function() {
-    window.location.href = 'http://localhost:8228/login';
+    window.location.href = 'http://uniportal.sytes.net:8228/login';
   });
   
     // Setup for each drop zone
@@ -294,7 +294,7 @@
     formData.append('secretKey', '3141592653589793236264');
     formData.append('is_user_admin', 'true');
 
-    fetch('http://localhost:7117/admin/resetall', {
+    fetch('http://uniportal.sytes.net:7117/admin/resetall', {
       method: 'POST',
       body: formData
     })
@@ -319,7 +319,7 @@
     formData.append('is_user_admin', 'true');
 
     
-    fetch('http://localhost:7117/admin/backup', {
+    fetch('http://uniportal.sytes.net:7117/admin/backup', {
       method: 'POST',
       body: formData
     })
@@ -345,7 +345,7 @@
     formData.append('is_user_admin', 'true');
 
     
-    fetch('http://localhost:7117/admin/moredata', {
+    fetch('http://uniportal.sytes.net:7117/admin/moredata', {
       method: 'POST',
       body: formData
     })

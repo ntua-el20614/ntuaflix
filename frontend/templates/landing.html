@@ -73,11 +73,11 @@
 <script>
 
   document.getElementById('logoImage').addEventListener('click', function() {
-    window.location.href = 'http://localhost:8228/';
+    window.location.href = 'http://uniportal.sytes.net:8228/';
   });
   
   document.getElementById('loginButton').addEventListener('click', function() {
-    window.location.href = 'http://localhost:8228/login';
+    window.location.href = 'http://uniportal.sytes.net:8228/login';
   });
 
 
@@ -92,8 +92,8 @@
 
 
   document.addEventListener('DOMContentLoaded', function () {
-    fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
-    fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
+    fetchData('http://uniportal.sytes.net:7117/ntuaflix_api/topmovies', 'movies-container');
+    fetchData('http://uniportal.sytes.net:7117/ntuaflix_api/toptenpeople', 'people-container');
 
     setTimeout(() => {
       const loadingScreen = document.getElementById('loadingScreen');
@@ -126,9 +126,9 @@
     const titlePart = document.getElementById('movie-search-input').value;
 
     if (titlePart.trim() === '') {
-      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+      fetchData('http://uniportal.sytes.net:7117/ntuaflix_api/topmovies', 'movies-container');
     } else {
-      const url = 'http://localhost:7117/ntuaflix_api/searchtitle';
+      const url = 'http://uniportal.sytes.net:7117/ntuaflix_api/searchtitle';
       searchMovieData(url, titlePart);
     }
   }
@@ -138,9 +138,9 @@
     const namePart = document.getElementById('people-search-input').value;
 
     if (namePart.trim() === '' || namePart === null) {
-      fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
+      fetchData('http://uniportal.sytes.net:7117/ntuaflix_api/toptenpeople', 'people-container');
     } else {
-      const url = 'http://localhost:7117/ntuaflix_api/searchname';
+      const url = 'http://uniportal.sytes.net:7117/ntuaflix_api/searchname';
       searchPeopleData(url, namePart);
     }
   }
@@ -270,14 +270,14 @@
   }
 
   function redirectToMoviePage(movieId) {
-    window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+    window.location.href = `http://uniportal.sytes.net:8228/moviepage?movieId=${movieId}`;
   }
   function redirectToSeriesPage(seriesId) {
-    window.location.href = `http://localhost:8228/seriespage?seriesId=${seriesId}`;
+    window.location.href = `http://uniportal.sytes.net:8228/seriespage?seriesId=${seriesId}`;
   }
 
   function redirectToPersonPage(personId) {
-    window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
+    window.location.href = `http://uniportal.sytes.net:8228/personpage?personId=${personId}`;
   }
   function searchMovieData(url, titlePart) {
     fetch(url, {
