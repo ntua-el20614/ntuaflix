@@ -32,7 +32,7 @@ def admin():
 
 @app.route("/login")
 def login():
-    return render_template("login/login.html", pageTitle="Person Page")
+    return render_template("login.html", pageTitle="Person Page")
 
 
 @app.route("/signup")
