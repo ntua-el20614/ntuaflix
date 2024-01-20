@@ -134,15 +134,16 @@
 
 
             function calculateAge(birthYear, deathYear) {
+                if (birthYear === '\\N') return '';
                 const currentYear = new Date().getFullYear();
                 let age;
 
                 if (deathYear && deathYear !== '\\N') {
                     age = deathYear - birthYear;
-                    return `Died at age ${age}`;
+                    return `(Died at age ${age})`;
                 } else {
                     age = currentYear - birthYear;
-                    return `Age: ${age}`;
+                    return `(Age: ${age}`;
                 }
             }
 
@@ -232,14 +233,14 @@
                     if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
                         let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
                         div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
-                        if (ageString[0] === 'A') {
-                            div.innerHTML += `(${ageString})`;
+                        if (ageString[1] === 'A') {
+                            div.innerHTML += `${ageString})`;
                         }
                         div.innerHTML += `</p>`;
                     }
                     if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
                         let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
-                        div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> (${ageString})</p>`;
+                        div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> ${ageString}</p>`;
                     }
 
                     // Attach event listener
@@ -268,13 +269,13 @@
                     if (crewMember.birthYear && crewMember.birthYear !== '\\N') {
                         let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
                         div.innerHTML += `<p>Birth Year: ${crewMember.birthYear}</p>`;
-                        div.innerHTML += ageString[0] === 'A' ? `(${ageString})` : '';
+                        div.innerHTML += ageString[0] === 'A' ? `${ageString}` : '';
                     }
 
                     // Add death year, if available
                     if (crewMember.deathYear && crewMember.deathYear !== '\\N') {
                         let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
-                        div.innerHTML += `<p>Death Year: ${crewMember.deathYear} (${ageString})</p>`;
+                        div.innerHTML += `<p>Death Year: ${crewMember.deathYear} ${ageString}</p>`;
                     }
 
                     // Attach event listener
