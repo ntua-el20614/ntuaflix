@@ -21,6 +21,14 @@
     font-size: large;
     margin: 20px;
   }
+
+  .no-data-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: larger;
+  color: #666;
+}
+
 </style>
 
 <body>
@@ -197,7 +205,8 @@
       list_to_exclude.push("tvMiniSeries")
     }
     list_to_exclude.push("tvEpisode")}
-
+    let flag_movies=true;
+    let flag_people=true; 
     data.forEach(item => {
       
       
@@ -209,12 +218,14 @@
       div.innerHTML = '';
 
       if (containerId === 'movies-container' ) {
+        flag_movies=false;
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
           div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
         }
 
       }
       if (  containerId === 'people-container' ) {
+        flag_people=false;  
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
           div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
         }
@@ -248,13 +259,13 @@
         }
       } else if (containerId === 'people-container') {
 
-        console.log(item)
+
         div.innerHTML += `
                 <h3>${item.primaryName}</h3>
-                <p>${item.primaryProfession.replace(/,/g, ', ')}</p>
-            `;
+                <p>${item.primaryProfession.replace(/,/g, ', ').replace("_"," ")}</p>
+            `; 
 
-        div.setAttribute('data-id', item.nconst); // Assuming 'nconst' is the person ID
+        div.setAttribute('data-id', item.nconst); 
 
 
         div.addEventListener('click', () => {
@@ -267,7 +278,18 @@
 
 
     });
+    if (flag_movies && containerId === 'movies-container') { 
+    const noDataDiv = document.createElement('div');
+    noDataDiv.classList.add('no-data-message');
+    noDataDiv.textContent =  'No movies or TV shows available.';
+    container.appendChild(noDataDiv);
   }
+    if (flag_people && containerId === 'people-container') { 
+    const noDataDiv = document.createElement('div');
+    noDataDiv.classList.add('no-data-message');
+    noDataDiv.textContent =  'No people available.';
+    container.appendChild(noDataDiv);
+  }}
 
   function redirectToMoviePage(movieId) {
     window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
