@@ -12,14 +12,14 @@
   <style>
     .upload-section {
       width: 175px;
-      
+
       display: inline-block;
       /* Set to inline-block for side-by-side layout */
       margin: 20px;
     }
 
     .upload-button {
-      
+
       align-self: center;
       margin: 5px;
       width: 175px;
@@ -76,7 +76,40 @@
       border-color: #000;
     }
 
+    .progress-bar {
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      margin: 10px 0;
+      border: 2px solid black;
+      /* Added black border */
+      position: relative;
+      /* To position the text inside the bar */
+    }
+
+    .progress-bar-fill {
+      height: 20px;
+      background-color: green;
+      /* Changed to green */
+      width: 0%;
+      border-radius: 5px;
+      transition: width 0.4s ease-in-out;
+      display: flex;
+      /* To align the text inside */
+      align-items: center;
+      /* Align text vertically */
+      justify-content: center;
+      /* Align text horizontally */
+      color: white;
+      /* Text color */
+      font-weight: bold;
+      /* Make text bold */
+    }
     
+    .center
+    {
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -84,21 +117,20 @@
   <header class="site-header">
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
 
-    
-    <button id="loginButton" class="login-btn">🔒</button>
 
-  </header>
-<h1>Admin Dashboard</h1>
-  <div class="admin-container">
+
     
+  </header>
+  <h1 class="center">Admin Dashboard</h1>
+  <div class="admin-container">
+
     <!-- Upload Title Basics -->
     <div class="upload-section">
       <h2>Upload Title Basics</h2>
       <div id="title-basics-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button
-        onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
+      <button onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
         class="upload-button">Upload
         Title Basics</button>
     </div>
@@ -109,8 +141,7 @@
       <div id="name-basics-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button
-        onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
+      <button onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
         class="upload-button">Upload Name
         Basics</button>
     </div>
@@ -121,8 +152,7 @@
       <div id="title-akas-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button
-        onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
+      <button onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
         class="upload-button">Upload
         Title Akas</button>
     </div>
@@ -133,8 +163,7 @@
       <div id="title-crew-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button
-        onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
+      <button onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
         class="upload-button">Upload
         Title Crew</button>
     </div>
@@ -145,8 +174,7 @@
       <div id="title-episode-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button
-        onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
+      <button onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
         class="upload-button">Upload
         Title Episode</button>
     </div>
@@ -169,36 +197,33 @@
       <div id="title-ratings-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button
-        onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
+      <button onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
         class="upload-button">Upload
         Title Ratings</button>
-    </div>
-    <hr>
-    <div class="button-container" style="text-align: center; margin-top: 20px;">
-      <!-- Reset All Data Button -->
+    </div> 
+
+
+  <!-- Buttons for Reset and Backup -->
+  <div class="button-container" style="text-align: center; margin-top: 20px;">
+    <div class="progress-bar" id="resetProgressBar">
+      <div class="progress-bar-fill" id="resetProgressBarFill"></div>
       <button onclick="resetAllData()" class="upload-button">Reset All Data</button>
-    
-      <!-- Backup Data Button -->
-      <button onclick="backupData()" class="upload-button">Backup Data</button>
-      <button onclick="moreData()" class="upload-button">More Backup Data</button>
     </div>
 
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-bar-fill" id="progressBarFill"></div>
+      <button onclick="backupData()" class="upload-button">Backup Data</button>
+    </div>
   </div>
-
 
 
   <script>
 
-    
-  document.getElementById('logoImage').addEventListener('click', function() {
-    window.location.href = 'http://localhost:8228/';
-  });
-  
-  document.getElementById('loginButton').addEventListener('click', function() {
-    window.location.href = 'http://localhost:8228/login';
-  });
-  
+
+    document.getElementById('logoImage').addEventListener('click', function () {
+      window.location.href = 'http://localhost:8228/';
+    });
+ 
     // Setup for each drop zone
     document.querySelectorAll('.drop-zone').forEach(dropZone => {
       dropZone.addEventListener('click', () => {
@@ -287,82 +312,97 @@
       }
     }
 
+    function resetAllData() {
+      const xhr = new XMLHttpRequest();
+      const formData = new FormData();
+      formData.append('secretKey', '3141592653589793236264');
+      formData.append('is_user_admin', 'true');
 
-    
-  function resetAllData() {
-    const formData = new FormData();
-    formData.append('secretKey', '3141592653589793236264');
-    formData.append('is_user_admin', 'true');
+      xhr.open('POST', 'http://localhost:7117/admin/resetall', true);
 
-    fetch('http://localhost:7117/admin/resetall', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      alert("Database reset successfully");
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Reset failed');
-    });
-  }
+      // Start progress bar
+      let progress = 0;
+      const resetProgressBarFill = document.getElementById('resetProgressBarFill');
+      const interval = setInterval(() => {
+        progress += 14; // Increment to complete in 1 second
+        if (progress > 100) {
+          progress = 100; // Cap progress at 100%
+          clearInterval(interval);
+        }
+        resetProgressBarFill.style.width = progress + '%';
+        resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+      }, 1); // Update every 10 milliseconds to complete in 1 second
 
-  function backupData() {
-    const formData = new FormData();
-    formData.append('secretKey', '3141592653589793236264');
-    formData.append('is_user_admin', 'true');
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          clearInterval(interval);
+          resetProgressBarFill.style.width = '100%';
+          resetProgressBarFill.textContent = '100%'; // Set text to 100%
+          alert("Database reset successfully");
+          setTimeout(() => {
+            resetProgressBarFill.style.width = '0%';
+            resetProgressBarFill.textContent = ''; // Clear text
+          }, 1000);
+        } else {
+          alert('Reset failed');
+        }
+      };
 
-    
-    fetch('http://localhost:7117/admin/backup', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      alert("Database info added successfully");
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Backup failed');
-    });
-  }
+      xhr.onerror = function () {
+        clearInterval(interval);
+        console.error('Error:', xhr.statusText);
+        alert('Reset failed');
+      };
 
-  
-  function moreData() {
-    const formData = new FormData();
-    formData.append('secretKey', '3141592653589793236264');
-    formData.append('is_user_admin', 'true');
+      xhr.send(formData);
+    }
 
-    
-    fetch('http://localhost:7117/admin/moredata', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      alert("Database info added successfully");
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Backup failed');
-    });
-  }
+
+
+    function backupData() {
+      const xhr = new XMLHttpRequest();
+      const formData = new FormData();
+      formData.append('secretKey', '3141592653589793236264');
+      formData.append('is_user_admin', 'true');
+
+      xhr.open('POST', 'http://localhost:7117/admin/backup', true);
+
+      // Start manual interval for progress bar
+      let progress = 0;
+      const progressBarFill = document.getElementById('progressBarFill');
+      const interval = setInterval(() => {
+        progress += 0.425; // Increment progress
+        if (progress > 95) {
+          progress = 95; // Cap progress
+          clearInterval(interval);
+        }
+        progressBarFill.style.width = progress + '%';
+        progressBarFill.textContent = Math.round(progress) + '%'; // Update text
+      }, 250);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          clearInterval(interval);
+          progressBarFill.style.width = '100%';
+          progressBarFill.textContent = '100%'; // Set text to 100%
+          alert("Database info added successfully");
+          setTimeout(() => {
+            progressBarFill.style.width = '0%';
+            progressBarFill.textContent = ''; // Clear text
+          }, 1000);
+        } else {
+          alert('Backup failed');
+        }
+      };
+
+      xhr.onerror = function () {
+        clearInterval(interval);
+        console.error('Error:', xhr.statusText);
+        alert('Backup failed');
+      };
+
+      xhr.send(formData);
+    }
 
   </script>
 
