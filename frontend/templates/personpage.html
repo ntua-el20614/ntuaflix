@@ -46,6 +46,11 @@
             /* Adjust to stack the sections vertically */
         }
     }
+
+    .poster:hover {
+        cursor: pointer;
+
+    }
 </style>
 
 <body>
@@ -108,6 +113,8 @@
         }
 
         function calculateAge(birthYear, deathYear) {
+            if (birthYear && birthYear === '\\N') return '';
+
             const currentYear = new Date().getFullYear();
             let age;
 
@@ -146,7 +153,6 @@
 
             // Attach event listener
             div.addEventListener('click', (event) => {
-                //console.log(event.currentTarget.getAttribute('id'));
                 redirectToMoviePage(event.currentTarget.getAttribute('id'));
             });
 
@@ -162,7 +168,8 @@
 
 
             const container = document.getElementById('personInfo');
-            container.innerHTML = ''; // Clear existing content
+
+            container.innerHTML = ''; // This line adds the new content to the DOM
 
             // Start building HTML content with the basic movie details
             let htmlContent = `
@@ -189,12 +196,25 @@
 
             // Add the movie poster if available
             if (personInfo.img_url_asset && personInfo.img_url_asset !== '\\N' && personInfo.img_url_asset !== '') {
+                const imdbLink = `https://www.imdb.com/name/${personInfo.nconst}`; // Correct IMDb link
                 htmlContent += `<div class="movie-poster-section">
-            ${personInfo.img_url_asset ? `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w400')}">` : ''}
-                </div>`;
+        <img src="${personInfo.img_url_asset.replace('{width_variable}', 'w400')}" class="poster" id="personPoster" alt="Image of ${personInfo.primaryName}">
+    </div>`;
+                // Store the IMDb link in a global variable or in the image element for later use
+                window.currentPersonImdbLink = imdbLink;
             }
             htmlContent += `</div>`;
 
+            container.innerHTML = htmlContent; // This line adds the new content to the DOM
+            htmlContent='';
+            // Add click event listener to the image
+            const personPoster = document.getElementById('personPoster');
+
+            if (personPoster) {
+                personPoster.addEventListener('click', function () {
+                    window.open(window.currentPersonImdbLink, '_blank');
+                });
+            }
 
             // Add known titles if available
             let flag = true;
