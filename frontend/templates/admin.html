@@ -371,14 +371,14 @@
       let progress = 0;
       const progressBarFill = document.getElementById('progressBarFill');
       const interval = setInterval(() => {
-        progress += 0.425; // Increment progress
-        if (progress > 95) {
-          progress = 95; // Cap progress
+        progress += 0.5; // Increment progress
+        if (progress > 99) {
+          progress = 99; // Cap progress
           clearInterval(interval);
         }
         progressBarFill.style.width = progress + '%';
         progressBarFill.textContent = Math.round(progress) + '%'; // Update text
-      }, 250);
+      }, 125);
 
       xhr.onload = function () {
         if (xhr.status === 200) {
