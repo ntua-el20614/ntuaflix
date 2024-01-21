@@ -77,35 +77,29 @@
     }
 
     .progress-bar {
-      width: 100%;
-      background-color: #e0e0e0;
-      border-radius: 5px;
-      margin: 10px 0;
-      border: 2px solid black;
-      /* Added black border */
-      position: relative;
-      /* To position the text inside the bar */
-    }
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 8px; /* Adjusted for the padding */
+  margin: 10px 0;
+  border: 2px solid black;
+  position: relative;
+  padding: 3px; /* Added padding */
+}
 
-    .progress-bar-fill {
-      height: 20px;
-      background-color: green;
-      /* Changed to green */
-      width: 0%;
-      border-radius: 5px;
-      transition: width 0.4s ease-in-out;
-      display: flex;
-      /* To align the text inside */
-      align-items: center;
-      /* Align text vertically */
-      justify-content: center;
-      /* Align text horizontally */
-      color: white;
-      /* Text color */
-      font-weight: bold;
-      /* Make text bold */
-    }
-    
+.progress-bar-fill {
+  height: 20px;
+  background-color: green;
+  width: 0%;
+  border-radius: 5px; /* Adjust to fit inside the padded container */
+  transition: width 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+
     .center
     {
       text-align: center;
@@ -311,98 +305,114 @@
         alert('Please select a file to upload.');
       }
     }
-
+ 
     function resetAllData() {
-      const xhr = new XMLHttpRequest();
-      const formData = new FormData();
-      formData.append('secretKey', '3141592653589793236264');
-      formData.append('is_user_admin', 'true');
+  const xhr = new XMLHttpRequest();
+  const formData = new FormData();
+  formData.append('secretKey', '3141592653589793236264');
+  formData.append('is_user_admin', 'true');
 
-      xhr.open('POST', 'http://localhost:7117/admin/resetall', true);
+  xhr.open('POST', 'http://localhost:7117/admin/resetall', true);
 
-      // Start progress bar
-      let progress = 0;
-      const resetProgressBarFill = document.getElementById('resetProgressBarFill');
-      const interval = setInterval(() => {
-        progress += 14; // Increment to complete in 1 second
-        if (progress > 100) {
-          progress = 100; // Cap progress at 100%
-          clearInterval(interval);
-        }
-        resetProgressBarFill.style.width = progress + '%';
-        resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
-      }, 1); // Update every 10 milliseconds to complete in 1 second
+  // Start progress bar
+  let progress = 0;
+  const resetProgressBarFill = document.getElementById('resetProgressBarFill');
+  const interval = setInterval(() => {
+    progress += 5; // Increment to complete in 1 second
+    if (progress > 100) {
+      progress = 100; // Cap progress at 100%
+      clearInterval(interval);
+      resetProgressBarFill.style.width = '100%';
+      resetProgressBarFill.textContent = '100%'; // Set text to 100%
+      
+      alert("Database reset successfully"); // Show alert when progress reaches 100%
 
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          clearInterval(interval);
-          resetProgressBarFill.style.width = '100%';
-          resetProgressBarFill.textContent = '100%'; // Set text to 100%
-          alert("Database reset successfully");
-          setTimeout(() => {
-            resetProgressBarFill.style.width = '0%';
-            resetProgressBarFill.textContent = ''; // Clear text
-          }, 1000);
+      // Start a new interval to reduce progress bar back to 0%
+      const decreaseInterval = setInterval(() => {
+        progress -= 10; // Decrement progress
+        if (progress <= 0) {
+          clearInterval(decreaseInterval);
+          resetProgressBarFill.style.width = '0%';
+          resetProgressBarFill.textContent = ''; // Clear text
         } else {
-          alert('Reset failed');
+          resetProgressBarFill.style.width = progress + '%';
+          resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
         }
-      };
-
-      xhr.onerror = function () {
-        clearInterval(interval);
-        console.error('Error:', xhr.statusText);
-        alert('Reset failed');
-      };
-
-      xhr.send(formData);
+      }, 50);
     }
+    resetProgressBarFill.style.width = progress + '%';
+    resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+  }, 300); // Update every 10 milliseconds to complete in 1 second
+
+  xhr.onload = function () {
+    if (xhr.status !== 200) {
+      alert('Reset failed');
+    }
+  };
+
+  xhr.onerror = function () {
+    clearInterval(interval);
+    console.error('Error:', xhr.statusText);
+    alert('Reset failed');
+  };
+
+  xhr.send(formData);
+}
 
 
 
-    function backupData() {
-      const xhr = new XMLHttpRequest();
-      const formData = new FormData();
-      formData.append('secretKey', '3141592653589793236264');
-      formData.append('is_user_admin', 'true');
+function backupData() {
+  const xhr = new XMLHttpRequest();
+  const formData = new FormData();
+  formData.append('secretKey', '3141592653589793236264');
+  formData.append('is_user_admin', 'true');
 
-      xhr.open('POST', 'http://localhost:7117/admin/backup', true);
+  xhr.open('POST', 'http://localhost:7117/admin/backup', true);
 
-      // Start manual interval for progress bar
-      let progress = 0;
-      const progressBarFill = document.getElementById('progressBarFill');
-      const interval = setInterval(() => {
-        progress += 0.5; // Increment progress
-        if (progress > 99) {
-          progress = 99; // Cap progress
-          clearInterval(interval);
-        }
-        progressBarFill.style.width = progress + '%';
-        progressBarFill.textContent = Math.round(progress) + '%'; // Update text
-      }, 125);
+  // Start manual interval for progress bar
+  let progress = 0;
+  const progressBarFill = document.getElementById('progressBarFill');
+  const interval = setInterval(() => {
+    progress += 0.35; // Increment progress
+    if (progress > 100) {
+      progress = 100; // Cap progress
+      clearInterval(interval);
+      progressBarFill.style.width = '100%';
+      progressBarFill.textContent = '100%'; // Set text to 100%
+      
+      alert("Database backup completed successfully"); // Show alert when progress reaches 100%
 
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          clearInterval(interval);
-          progressBarFill.style.width = '100%';
-          progressBarFill.textContent = '100%'; // Set text to 100%
-          alert("Database info added successfully");
-          setTimeout(() => {
-            progressBarFill.style.width = '0%';
-            progressBarFill.textContent = ''; // Clear text
-          }, 1000);
+      // Start a new interval to reduce progress bar back to 0%
+      const decreaseInterval = setInterval(() => {
+        progress -= 5; // Decrement progress
+        if (progress <= 0) {
+          clearInterval(decreaseInterval);
+          progressBarFill.style.width = '0%';
+          progressBarFill.textContent = ''; // Clear text
         } else {
-          alert('Backup failed');
+          progressBarFill.style.width = progress + '%';
+          progressBarFill.textContent = Math.round(progress) + '%'; // Update text
         }
-      };
-
-      xhr.onerror = function () {
-        clearInterval(interval);
-        console.error('Error:', xhr.statusText);
-        alert('Backup failed');
-      };
-
-      xhr.send(formData);
+      }, 30);
     }
+    progressBarFill.style.width = progress + '%';
+    progressBarFill.textContent = Math.round(progress) + '%'; // Update text
+  }, 125);
+
+  xhr.onload = function () {
+    if (xhr.status !== 200) {
+      alert('Backup failed');
+    }
+  };
+
+  xhr.onerror = function () {
+    clearInterval(interval);
+    console.error('Error:', xhr.statusText);
+    alert('Backup failed');
+  };
+
+  xhr.send(formData);
+}
 
   </script>
 
