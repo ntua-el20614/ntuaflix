@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,24 +12,36 @@
   <link rel="stylesheet" href="/static/css/landing.css">
 </head>
 <style>
-  
-
-
   .img {
     margin-top: 20px;
   }
+
   .choices {
     font-size: large;
     margin: 20px;
   }
 
-  .no-data-message {
-  text-align: center;
-  margin-top: 20px;
-  font-size: larger;
-  color: #666;
-}
+  .genre-button-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
+  .genre-button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .genre-button:hover {
+    background-color: #e0e0e0;
+  }
 </style>
 
 <body>
@@ -39,12 +52,12 @@
 
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
 
-    
+
     <button id="loginButton" class="login-btn">🔒</button>
   </header>
-  
-  
-  
+
+
+
   <div class="container">
     <!-- Inside the Movies Section -->
     <div class="movies-section">
@@ -58,6 +71,9 @@
         <input type="search" required id="movie-search-input">
         <i class="fa fa-search"></i>
       </form>
+      <button id="genreFilterButton" class="genre-filter-btn">Filter by Genre</button>
+      <div id="genreButtonContainer" class="genre-button-container" style="display: none;"></div>
+
 
       <div id="movies-container"></div>
     </div>
@@ -80,11 +96,11 @@
 </body>
 <script>
 
-  document.getElementById('logoImage').addEventListener('click', function() {
+  document.getElementById('logoImage').addEventListener('click', function () {
     window.location.href = 'http://localhost:8228/';
   });
-  
-  document.getElementById('loginButton').addEventListener('click', function() {
+
+  document.getElementById('loginButton').addEventListener('click', function () {
     window.location.href = 'http://localhost:8228/login';
   });
 
@@ -120,6 +136,46 @@
   });
 
   var currentCategory = 'all'; // Default value
+  document.getElementById('genreFilterButton').addEventListener('click', function () {
+    const container = document.getElementById('genreButtonContainer');
+    if (container.style.display === 'block') {
+      container.style.display = 'none';
+    } else {
+      fetchGenres();
+    }
+  });
+
+  function fetchGenres() {
+    fetch('http://localhost:7117/ntuaflix_api/genres')
+      .then(response => response.json())
+      .then(genres => {
+        displayGenreButtons(genres);
+      })
+      .catch(error => console.error('Error fetching genres:', error));
+  }
+
+  function displayGenreButtons(genres) {
+    const container = document.getElementById('genreButtonContainer');
+
+    // Check if the buttons are already created to avoid duplicates
+    if (container.hasChildNodes()) {
+      container.style.display = 'block';
+      return;
+    }
+
+    // Create buttons for each genre
+    genres.forEach(genre => {
+      const button = document.createElement('button');
+      button.classList.add('genre-button');
+      button.textContent = genre;
+      // Add event listener to each button here if needed
+      container.appendChild(button);
+    });
+
+    container.style.display = 'block';
+  }
+
+
 
   function updateCategory() {
     var selectedCategory = document.getElementById('category-select').value;
@@ -194,22 +250,23 @@
     tvMiniSeries
     */
     let list_to_exclude = []
-    if (containerId === 'movies-container'){
-    if (currentCategory == "tvshows") {
-      list_to_exclude.push("movie")
-      list_to_exclude.push("short")
+    if (containerId === 'movies-container') {
+      if (currentCategory == "tvshows") {
+        list_to_exclude.push("movie")
+        list_to_exclude.push("short")
 
-    } else if (currentCategory == "movies") {
+      } else if (currentCategory == "movies") {
 
-      list_to_exclude.push("tvSeries")
-      list_to_exclude.push("tvMiniSeries")
+        list_to_exclude.push("tvSeries")
+        list_to_exclude.push("tvMiniSeries")
+      }
+      list_to_exclude.push("tvEpisode")
     }
-    list_to_exclude.push("tvEpisode")}
-    let flag_movies=true;
-    let flag_people=true; 
+    let flag_movies = true;
+    let flag_people = true;
     data.forEach(item => {
-      
-      
+
+
 
       if (list_to_exclude.includes(item.titletype)) return; // Skip types in list_to_exclude
       const div = document.createElement('div');
@@ -217,22 +274,22 @@
       div.classList.add('item');
       div.innerHTML = '';
 
-      if (containerId === 'movies-container' ) {
-        flag_movies=false;
+      if (containerId === 'movies-container') {
+        flag_movies = false;
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
           div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
         }
 
       }
-      if (  containerId === 'people-container' ) {
-        flag_people=false;  
+      if (containerId === 'people-container') {
+        flag_people = false;
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
           div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
         }
 
       }
 
-    
+
 
       if (containerId === 'movies-container') {
         div.setAttribute('data-id', item.tconst); //  Add a data attribute to each item
@@ -247,25 +304,25 @@
         if (item.genres != null && item.genres !== '\\N') {
           div.innerHTML += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
         }
-        if(item.titletype == "movie" || item.titletype == "short"){
+        if (item.titletype == "movie" || item.titletype == "short") {
 
-        div.addEventListener('click', () => {
-          redirectToMoviePage(event.currentTarget.getAttribute('data-id'));
-        });
-        }else if(item.titletype == "tvSeries" || item.titletype == "tvMiniSeries"){
+          div.addEventListener('click', () => {
+            redirectToMoviePage(event.currentTarget.getAttribute('data-id'));
+          });
+        } else if (item.titletype == "tvSeries" || item.titletype == "tvMiniSeries") {
           div.addEventListener('click', () => {
             redirectToSeriesPage(event.currentTarget.getAttribute('data-id'));
-          }); 
+          });
         }
       } else if (containerId === 'people-container') {
 
 
         div.innerHTML += `
                 <h3>${item.primaryName}</h3>
-                <p>${item.primaryProfession.replace(/,/g, ', ').replace("_"," ")}</p>
-            `; 
+                <p>${item.primaryProfession.replace(/,/g, ', ').replace("_", " ")}</p>
+            `;
 
-        div.setAttribute('data-id', item.nconst); 
+        div.setAttribute('data-id', item.nconst);
 
 
         div.addEventListener('click', () => {
@@ -278,18 +335,19 @@
 
 
     });
-    if (flag_movies && containerId === 'movies-container') { 
-    const noDataDiv = document.createElement('div');
-    noDataDiv.classList.add('no-data-message');
-    noDataDiv.textContent =  'No movies or TV shows available.';
-    container.appendChild(noDataDiv);
+    if (flag_movies && containerId === 'movies-container') {
+      const noDataDiv = document.createElement('div');
+      noDataDiv.classList.add('no-data-message');
+      noDataDiv.textContent = 'No movies or TV shows available.';
+      container.appendChild(noDataDiv);
+    }
+    if (flag_people && containerId === 'people-container') {
+      const noDataDiv = document.createElement('div');
+      noDataDiv.classList.add('no-data-message');
+      noDataDiv.textContent = 'No people available.';
+      container.appendChild(noDataDiv);
+    }
   }
-    if (flag_people && containerId === 'people-container') { 
-    const noDataDiv = document.createElement('div');
-    noDataDiv.classList.add('no-data-message');
-    noDataDiv.textContent =  'No people available.';
-    container.appendChild(noDataDiv);
-  }}
 
   function redirectToMoviePage(movieId) {
     window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
