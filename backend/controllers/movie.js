@@ -28,6 +28,29 @@ exports.getMovieById = async (req, res, next) => {
     }
 };
 
+exports.getGenres = async (req, res, next) => {
+    const query = `
+        SELECT DISTINCT 
+            TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(Titles.genres, ',', numbers.n), ',', -1)) AS single_genre
+        FROM Titles
+        JOIN (
+            SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+            -- Extend this series as needed
+        ) AS numbers
+        ON CHAR_LENGTH(Titles.genres) - CHAR_LENGTH(REPLACE(Titles.genres, ',', '')) >= numbers.n - 1
+        WHERE TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(Titles.genres, ',', numbers.n), ',', -1)) <> '\\\\N';
+    `;
+
+    try {
+        const [rows] = await pool.query(query);
+        const genres = rows.map(row => row.single_genre).filter((value, index, self) => self.indexOf(value) === index);
+        res.status(200).json(genres);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
+};
+
 
 exports.getAllInfoForMovieById = async (req, res, next) => {
     const titleID = req.params.titleID;

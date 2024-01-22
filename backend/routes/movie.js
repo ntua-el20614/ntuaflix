@@ -7,6 +7,7 @@ const router = express.Router();
 router.get('/', movieController.getSample);
 router.get('/movies', movieController.getMovies);
 router.get('/movie/:id', movieController.getMovieById);
+router.get('/genres', movieController.getGenres);
 
 //a.
 router.get('/title/:titleID', movieController.getAllInfoForMovieById);
