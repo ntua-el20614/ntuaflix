@@ -40,11 +40,15 @@ deployment 7
 deployment 8
 deployment 9
 deployment 10
+deployment 11
 design 1
 design 2
 design 3
 design 4
+design 5
 requirements gathering 1
 requirements gathering 2
 testing 1
 testing 2
+testing 3
+testing 4
