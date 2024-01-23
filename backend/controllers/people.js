@@ -195,14 +195,58 @@ exports.getSearchName = async (req, res, next) => {
 exports.getTopTenPeople = async (req,res,next)=>{
 
     const query = `
-    SELECT p.nconst, p.img_url_asset , p.primaryName, p.primaryProfession, AVG(tr.averageRate) AS avgRating
-    FROM people p
-    JOIN title_principals tp ON p.nconst = tp.nconst
-    JOIN title_ratings tr ON tp.tconst = tr.titleid
-    where p.img_url_asset is not null and p.img_url_asset != '\\\\N' and p.img_url_asset != ''
-    GROUP BY p.nconst, p.primaryName
-    ORDER BY avgRating DESC
-    LIMIT 55;
+    
+    SELECT p.nconst, p.img_url_asset, p.primaryName, p.primaryProfession, AVG(tr.averageRate) AS avgRating
+FROM people p
+JOIN title_principals tp ON p.nconst = tp.nconst
+JOIN title_ratings tr ON tp.tconst = tr.titleid
+WHERE p.primaryName IN (
+    'Steven Spielberg', 'Meryl Streep', 'Leonardo DiCaprio', 'Oprah Winfrey', 'Tom Hanks', 
+    'Angelina Jolie', 'Brad Pitt', 'Quentin Tarantino', 'George Clooney', 'Scarlett Johansson', 
+    'Morgan Freeman', 'Cate Blanchett', 'Johnny Depp', 'Denzel Washington', 'Nicole Kidman', 
+    'Robert De Niro', 'Kate Winslet', 'Christopher Nolan', 'Hugh Jackman', 'Natalie Portman', 
+    'Daniel Day-Lewis', 'Matt Damon', 'Julia Roberts', 'Jennifer Lawrence', 'Clint Eastwood', 
+    'Bradley Cooper', 'Anne Hathaway', 'Ryan Gosling', 'Margot Robbie', 'Al Pacino', 
+    'Sandra Bullock', 'Tom Cruise', 'Emma Stone', 'Charlize Theron', 'Will Smith', 
+    'Amy Adams', 'Dwayne Johnson', 'James Cameron', 'Gal Gadot', 'Joaquin Phoenix', 
+    'Samuel L. Jackson', 'Jake Gyllenhaal', 'Ryan Reynolds', 'Christian Bale', 'Rachel McAdams', 
+    'Chris Hemsworth', 'Michael Fassbender', 'Emma Watson', 'Ben Affleck', 'Mark Ruffalo', 
+    'Robert Downey Jr.', 'Sofia Vergara', 'Chris Pratt', 'Benedict Cumberbatch', 'Emily Blunt', 
+    'Tom Hiddleston', 'Keira Knightley', 'Chadwick Boseman', 'Brie Larson', 'Jason Momoa', 
+    'Henry Cavill', 'Zoe Saldana', 'Chris Evans', 'Daniel Craig', 'Idris Elba', 
+    'Jennifer Aniston', 'Adam Sandler', 'Scarlett Johansson', 'Halle Berry', 'Sean Connery', 
+    'Bruce Willis', 'Arnold Schwarzenegger', 'Sylvester Stallone', 'Keanu Reeves', 'Jack Nicholson', 
+    'Robin Williams', 'Jim Carrey', 'Eddie Murphy', 'Tommy Lee Jones', 'Cameron Diaz', 
+    'Harrison Ford', 'Mel Gibson', 'Sigourney Weaver', 'Bill Murray', 'John Travolta', 
+    'Liam Neeson', 'Jean-Claude Van Damme', 'Kurt Russell', 'Wesley Snipes', 'Nicolas Cage', 
+    'John Goodman', 'Jeff Bridges', 'Kevin Costner', 'Danny DeVito', 'Dustin Hoffman', 
+    'Michael Keaton', 'Steve Martin', 'Tim Robbins', 'Billy Crystal', 'Woody Harrelson', 
+    'Matthew McConaughey', 'Viggo Mortensen', 'Javier Bardem', 'Jeff Goldblum', 'Edward Norton', 
+    'Philip Seymour Hoffman', 'Willem Dafoe', 'Ben Kingsley', 'Ian McKellen', 'Patrick Stewart', 
+    'Gary Oldman', 'Ralph Fiennes', 'Anthony Hopkins', 'Jeremy Irons', 'Michael Caine', 
+    'Maggie Smith', 'Helen Mirren', 'Judi Dench', 'Julie Andrews', 'Glenn Close', 
+    'Susan Sarandon', 'Jessica Lange', 'Sally Field', 'Diane Keaton', 'Jane Fonda', 
+    'Kathy Bates', 'Annette Bening', 'Michelle Pfeiffer', 'Sigourney Weaver', 'Julianne Moore', 
+    'Frances McDormand', 'Tilda Swinton', 'Marion Cotillard', 'Penélope Cruz', 'Kate Winslet', 
+    'Charlize Theron', 'Naomi Watts', 'Natalie Portman', 'Jennifer Lawrence', 'Emma Stone', 
+    'Lupita Nyong\’o', 'Alicia Vikander', 'Reese Witherspoon', 'Saoirse Ronan', 'Julia Louis-Dreyfus', 
+    'Viola Davis', 'Gwyneth Paltrow', 'Drew Barrymore', 'Mila Kunis', 'Kristen Stewart', 
+    'Zoe Kravitz', 'Elisabeth Moss', 'Rachel Weisz', 'Dakota Johnson', 'Salma Hayek', 
+    'Daisy Ridley', 'Rosamund Pike', 'Felicity Jones', 'Olivia Colman', 'Gemma Arterton', 
+    'Carey Mulligan', 'Emily Ratajkowski', 'Rooney Mara', 'Evangeline Lilly', 'Bryce Dallas Howard', 
+    'Hayley Atwell', 'Jessica Chastain', 'Michelle Rodriguez', 'Elizabeth Olsen', 'Priyanka Chopra', 
+    'Emilia Clarke', 'Shailene Woodley', 'Kate Beckinsale', 'Lily James', 'Mindy Kaling', 
+    'Zendaya', 'Bella Thorne', 'Anna Kendrick', 'Aubrey Plaza', 'Ellen Page', 
+    'Vanessa Hudgens', 'Melissa McCarthy', 'Kristen Wiig', 'Maya Rudolph', 'Tina Fey', 
+    'Amy Poehler', 'Leslie Mann', 'Catherine Zeta-Jones', 'Jodie Foster', 'Sharon Stone'
+)
+
+AND p.img_url_asset IS NOT NULL 
+AND p.img_url_asset != '\\\\N' 
+AND p.img_url_asset != ''
+GROUP BY p.nconst, p.primaryName
+ORDER BY avgRating DESC;
+
     `;
     
     try {
