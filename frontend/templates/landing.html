@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +9,11 @@
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="../static/logo.png">
   <link rel="stylesheet" href="/static/css/landing.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
+<script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+<!-- wNumb JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/wnumb/wNumb.js"></script>
+
 </head>
 <style>
   .img {
@@ -74,6 +78,15 @@
       <button id="genreFilterButton" class="genre-filter-btn">Filter by Genre</button>
       <div id="genreButtonContainer" class="genre-button-container" style="display: none;"></div>
 
+      <button id="ratingFilterButton" class="rating-filter-btn">Filter by Rating</button>
+      <div id="ratingButtonContainer" class="rating-button-container" style="display: none;"></div>
+
+      <button id="yearRangeFilterButton" class="year-range-filter-btn">Filter by Year Range</button>
+      <div id="yearRangeButtonContainer" class="year-range-button-container" style="display: none;">
+        <div id="year-range-slider"></div>
+        <p id="year-range-text"></p>
+        </div>
+
 
       <div id="movies-container"></div>
     </div>
@@ -136,13 +149,14 @@
   });
 
   var currentCategory = 'all'; // Default value
+
+
+
   document.getElementById('genreFilterButton').addEventListener('click', function () {
     const container = document.getElementById('genreButtonContainer');
-    if (container.style.display === 'block') {
-      container.style.display = 'none';
-    } else {
+    if (container.style.display != 'block') {
       fetchGenres();
-    }
+    }  
   });
 
   function fetchGenres() {
@@ -154,27 +168,184 @@
       .catch(error => console.error('Error fetching genres:', error));
   }
 
-  function displayGenreButtons(genres) {
-    const container = document.getElementById('genreButtonContainer');
+  let selectedGenres = [];
 
-    // Check if the buttons are already created to avoid duplicates
-    if (container.hasChildNodes()) {
-      container.style.display = 'block';
-      return;
+function displayGenreButtons(genres) {
+    const container = document.getElementById('genreButtonContainer');
+    container.innerHTML = ''; // Clear existing content
+
+    genres.forEach(genre => {
+        const button = document.createElement('button');
+        button.classList.add('genre-button');
+        button.textContent = genre;
+        button.addEventListener('click', () => handleGenreButtonClick(genre, button));
+        container.appendChild(button);
+    });
+}
+
+function handleGenreButtonClick(genre, button) {
+    const index = selectedGenres.indexOf(genre);
+    if (index > -1) {
+        selectedGenres.splice(index, 1);
+        button.style.backgroundColor = ''; // Remove highlight
+    } else {
+        selectedGenres.push(genre);
+        button.style.backgroundColor = 'green'; // Highlight selected
+    }
+    console.log('Selected genres:', selectedGenres);
+}
+
+  // Event Listener for Rating Filter Button
+  document.getElementById('ratingFilterButton').addEventListener('click', function () {
+    toggleFilterContainer('ratingButtonContainer');
+    // You might want to fetch and display ratings here if not already done
+  });
+
+  // Event Listener for Year Range Filter Button
+  document.getElementById('yearRangeFilterButton').addEventListener('click', function () {
+    toggleFilterContainer('yearRangeButtonContainer');
+    // You might want to fetch and display year ranges here if not already done
+  });
+
+  function toggleFilterContainer(containerId) {
+    const container = document.getElementById(containerId);
+    const computedStyle = window.getComputedStyle(container);
+
+    if (computedStyle.display === 'block') {
+        container.style.display = 'none';
+        if (containerId === 'genreButtonContainer') {
+            selectedGenres = []; // Reset genre selection
+            // Reset button highlights
+            const buttons = container.getElementsByClassName('genre-button');
+            for (let button of buttons) {
+                button.style.backgroundColor = '';
+            }
+        }
+        if (containerId === 'yearRangeButtonContainer') {
+            yearRangeSlider.noUiSlider.set([1950, 2024]); // Reset year range slider
+            yearRangeText.innerHTML = '';
+
+        }
+
+        if(containerId === 'ratingButtonContainer'){
+          resetRatingSelection();
+        }
+    } else {
+      if(containerId='yearRangeButtonContainer'){
+        yearRangeText.innerHTML = `Selected range: 1950 - 2024`;
+
+      }
+        container.style.display = 'block'; 
     }
 
-    // Create buttons for each genre
-    genres.forEach(genre => {
-      const button = document.createElement('button');
-      button.classList.add('genre-button');
-      button.textContent = genre;
-      // Add event listener to each button here if needed
-      container.appendChild(button);
-    });
+    
+}
 
-    container.style.display = 'block';
+
+
+document.getElementById('genreFilterButton').addEventListener('click', function () {
+    toggleFilterContainer('genreButtonContainer');
+});
+
+
+  // Function to display rating buttons
+  function displayRatingButtons() {
+  const container = document.getElementById('ratingButtonContainer');
+  container.innerHTML = ''; // Clear existing content
+
+  // Create rating buttons
+  for (let i = 1; i < 10; i++) {
+    const button = document.createElement('button');
+    button.classList.add('rating-button');
+    button.textContent = i;
+    button.onclick = () => handleRatingButtonClick(i);
+    container.appendChild(button);
   }
 
+  // Create and append the reset button
+  const resetButton = document.createElement('button');
+  resetButton.textContent = 'Reset';
+  resetButton.onclick = resetRatingSelection;
+  container.appendChild(resetButton);
+}
+
+
+// Reset the rating selection and clear highlights
+function resetRatingSelection() {
+  const buttons = document.querySelectorAll('.rating-button');
+  buttons.forEach(button => {
+    button.style.backgroundColor = ''; // Clear highlight
+  });
+  ratingSelection = { first: null, second: null };
+}
+
+
+  // Global variable to track the first and second button clicks
+  let ratingSelection = { first: null, second: null };
+
+
+// Function to handle button click
+function handleRatingButtonClick(rating) {
+  const buttons = document.querySelectorAll('.rating-button');
+
+  if (ratingSelection.first === null && ratingSelection.second === null) {
+    // First button click
+    ratingSelection.first = rating;
+    ratingSelection.second = rating;
+    console.log(`Selected rating range: ${rating}.0 - ${rating}.9`);
+  } else if (ratingSelection.second === rating) {
+    // Reset if the same button is clicked again
+    resetRatingSelection();
+    return;
+  } else if (ratingSelection.first !== null && ratingSelection.second !== null) {
+    // Extend the range for subsequent clicks
+    let newStart = Math.min(ratingSelection.first, rating);
+    let newEnd = Math.max(ratingSelection.second, rating);
+    ratingSelection.first = newStart;
+    ratingSelection.second = newEnd;
+    console.log(`Extended rating range: ${newStart}.0 - ${newEnd}.9`);
+  }
+
+  // Update button highlights
+  updateButtonHighlights(buttons);
+}
+
+// Function to update button highlights
+function updateButtonHighlights(buttons) {
+  buttons.forEach((button, index) => {
+    if (index + 1 >= ratingSelection.first && index + 1 <= ratingSelection.second) {
+      button.style.backgroundColor = 'yellow';
+    } else {
+      button.style.backgroundColor = '';
+    }
+  });
+}
+
+// Existing functions (displayRatingButtons and resetRatingSelection) remain the same
+
+  displayRatingButtons();
+
+  var yearRangeSlider = document.getElementById('year-range-slider');
+var yearRangeText = document.getElementById('year-range-text');
+
+noUiSlider.create(yearRangeSlider, {
+    start: [1950, 2024], // Start range
+    connect: true,        // Display a colored bar between the handles
+    range: {
+        'min': 1950,
+        'max': 2024
+    },
+    format: wNumb({
+        decimals: 0
+    })
+});
+yearRangeSlider.noUiSlider.on('update', function (values, handle) {
+    if (values[0] !== null && values[1] !== null) {
+        yearRangeText.innerHTML = `Selected range: ${values[0]} - ${values[1]}`;
+    } else {
+        yearRangeText.innerHTML = '';
+    }
+});
 
 
   function updateCategory() {
