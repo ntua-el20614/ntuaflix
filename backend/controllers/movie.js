@@ -133,27 +133,41 @@ GROUP BY T.tconst;
 }
 
 exports.searchTitles = async (req, res, next) => {
+
     const titlePart = req.body.titlePart || '';
     const qgenre = req.body.qgenre || '';
     const minrating = req.body.minrating || '0';
-    const yrFrom = req.body.yrFrom || '';
-    const yrTo = req.body.yrTo || '';
+    const maxrating = req.body.maxrating || '10';
+    const yrFrom = req.body.yrFrom || '0000';
+    const yrTo = req.body.yrTo || '9999';
 
     const query = `
-        SELECT Titles.tconst, Titles.primarytitle, Titles.startYear, Titles.genres, Title_ratings.averageRate
-        FROM Titles
-        INNER JOIN Title_ratings ON Titles.tconst = Title_ratings.titleid
-        WHERE (Titles.primarytitle LIKE CONCAT('%', ?, '%') OR ? = '')
-        AND (Titles.genres LIKE CONCAT('%', ?, '%') OR ? = '')
-        AND (CAST(Title_ratings.averageRate AS DECIMAL(3, 2)) >= CAST(? AS DECIMAL(3, 2)))
-        AND ((? = '' OR CAST(Titles.startYear AS UNSIGNED) >= CAST(? AS UNSIGNED))
-        AND (? = '' OR CAST(Titles.startYear AS UNSIGNED) <= CAST(? AS UNSIGNED)));
+    SELECT 
+    *
+FROM 
+    Titles
+INNER JOIN 
+    Title_ratings 
+ON 
+    Titles.tconst = Title_ratings.titleid
+WHERE 
+    ('${titlePart}' = '' OR Titles.primarytitle LIKE CONCAT('%', '${titlePart}', '%'))
+AND 
+    ('${qgenre}' = '' OR Titles.genres LIKE CONCAT('%', '${qgenre}', '%'))
+AND 
+    CAST(Title_ratings.averageRate AS DECIMAL(3, 2)) >= IF('${minrating}' = '', 1, CAST('${minrating}' AS DECIMAL(3, 2)))
+AND 
+    CAST(Title_ratings.averageRate AS DECIMAL(3, 2)) <= IF('${maxrating}' = '', 10, CAST('${maxrating}' AS DECIMAL(3, 2)))
+AND 
+    ( '${yrFrom}' = '' OR CAST(Titles.startYear AS UNSIGNED) >= CAST(IF('${yrFrom}' = '', '0000', '${yrFrom}') AS UNSIGNED) )
+AND 
+    ( '${yrTo}' = '' OR CAST(Titles.startYear AS UNSIGNED) <= CAST(IF('${yrTo}' = '', '9999', '${yrTo}') AS UNSIGNED) );
+
     `;
 
-    const values = [titlePart, titlePart, qgenre, qgenre, minrating, yrFrom, yrFrom, yrTo, yrTo];
-
+    
     try {
-        const [rows] = await pool.query(query, values);
+        const [rows] = await pool.query(query);
         res.status(200).json(rows);
     } catch (err) {
         res.status(500).json({ message: 'Internal server error' });
