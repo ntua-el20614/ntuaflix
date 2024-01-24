@@ -129,7 +129,6 @@
 
 
   document.addEventListener('DOMContentLoaded', function () {
-    fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
     fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
 
     setTimeout(() => {
@@ -143,8 +142,13 @@
         const mainContent = document.querySelector('.container');
         mainContent.style.animationPlayState = 'running';
       });
+
     }, 3000);
 
+    setTimeout(() => {
+      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+
+    }, 500);
 
   });
 
@@ -232,6 +236,7 @@
 
   }
   updatedefault();  // na fainontai oi tainies me to topmovies an den exw active filters
+  
   function toggleFilterContainer(containerId) {
     const container = document.getElementById(containerId);
     const computedStyle = window.getComputedStyle(container);
@@ -393,7 +398,7 @@
 
 
   document.querySelector('.search-form').addEventListener('submit', function (event) {
-    event.preventDefault();s
+    event.preventDefault();
     fetchAndDisplayMovies();
   });
 
@@ -454,6 +459,8 @@
 
 
   function searchPeople(event) {
+    event.preventDefault();
+
 
     const namePart = document.getElementById('people-search-input').value;
 
