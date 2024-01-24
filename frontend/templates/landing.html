@@ -9,10 +9,10 @@
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="icon" type="image/png" href="../static/logo.png">
   <link rel="stylesheet" href="/static/css/landing.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
-<script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
-<!-- wNumb JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/wnumb/wNumb.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+  <!-- wNumb JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/wnumb/wNumb.js"></script>
 
 </head>
 <style>
@@ -71,7 +71,7 @@
         <option value="movies" id="option-movies">Movies</option>
         <option value="tvshows" id="option-tvshows">TV Shows</option>
       </select>
-      <form action="" class="search-form" onsubmit="searchMovies(event)">
+      <form action="" class="search-form" onsubmit="fetchAndDisplayMovies();">
         <input type="search" required id="movie-search-input">
         <i class="fa fa-search"></i>
       </form>
@@ -85,7 +85,7 @@
       <div id="yearRangeButtonContainer" class="year-range-button-container" style="display: none;">
         <div id="year-range-slider"></div>
         <p id="year-range-text"></p>
-        </div>
+      </div>
 
 
       <div id="movies-container"></div>
@@ -156,7 +156,7 @@
     const container = document.getElementById('genreButtonContainer');
     if (container.style.display != 'block') {
       fetchGenres();
-    }  
+    }
   });
 
   function fetchGenres() {
@@ -170,30 +170,30 @@
 
   let selectedGenres = [];
 
-function displayGenreButtons(genres) {
+  function displayGenreButtons(genres) {
     const container = document.getElementById('genreButtonContainer');
     container.innerHTML = ''; // Clear existing content
 
     genres.forEach(genre => {
-        const button = document.createElement('button');
-        button.classList.add('genre-button');
-        button.textContent = genre;
-        button.addEventListener('click', () => handleGenreButtonClick(genre, button));
-        container.appendChild(button);
+      const button = document.createElement('button');
+      button.classList.add('genre-button');
+      button.textContent = genre;
+      button.addEventListener('click', () => handleGenreButtonClick(genre, button));
+      container.appendChild(button);
     });
-}
+  }
 
-function handleGenreButtonClick(genre, button) {
+  function handleGenreButtonClick(genre, button) {
     const index = selectedGenres.indexOf(genre);
     if (index > -1) {
-        selectedGenres.splice(index, 1);
-        button.style.backgroundColor = ''; // Remove highlight
+      selectedGenres.splice(index, 1);
+      button.style.backgroundColor = ''; // Remove highlight
     } else {
-        selectedGenres.push(genre);
-        button.style.backgroundColor = 'green'; // Highlight selected
+      selectedGenres.push(genre);
+      button.style.backgroundColor = 'green'; // Highlight selected
     }
-    console.log('Selected genres:', selectedGenres);
-}
+    fetchAndDisplayMovies();
+  }
 
   // Event Listener for Rating Filter Button
   document.getElementById('ratingFilterButton').addEventListener('click', function () {
@@ -206,170 +206,255 @@ function handleGenreButtonClick(genre, button) {
     toggleFilterContainer('yearRangeButtonContainer');
     // You might want to fetch and display year ranges here if not already done
   });
+  function updatedefault() {
+    const container1 = document.getElementById('genreButtonContainer');
+    const container2 = document.getElementById('yearRangeButtonContainer');
+    const container3 = document.getElementById('ratingButtonContainer');
+    let flag1 = false, flag2 = false, flag3 = false;
+    if (container1.style.display === 'block') {
+      flag1 = true;
+    }
+    if (container2.style.display === 'block') {
+      flag2 = true;
+    }
+    if (container3.style.display === 'block') {
+      flag3 = true;
+    }
 
+    if (flag1 || flag2 || flag3) {
+      fetchAndDisplayMovies();
+    } else {
+      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+
+    }
+
+
+
+  }
+  updatedefault();  // na fainontai oi tainies me to topmovies an den exw active filters
   function toggleFilterContainer(containerId) {
     const container = document.getElementById(containerId);
     const computedStyle = window.getComputedStyle(container);
 
     if (computedStyle.display === 'block') {
-        container.style.display = 'none';
-        if (containerId === 'genreButtonContainer') {
-            selectedGenres = []; // Reset genre selection
-            // Reset button highlights
-            const buttons = container.getElementsByClassName('genre-button');
-            for (let button of buttons) {
-                button.style.backgroundColor = '';
-            }
-        }
-        if (containerId === 'yearRangeButtonContainer') {
-            yearRangeSlider.noUiSlider.set([1950, 2024]); // Reset year range slider
-            yearRangeText.innerHTML = '';
-
+      container.style.display = 'none';
+      if (containerId === 'genreButtonContainer') {
+        selectedGenres = []; // Reset genre selection
+        // Reset button highlights
+        const buttons = container.getElementsByClassName('genre-button');
+        for (let button of buttons) {
+          button.style.backgroundColor = '';
         }
 
-        if(containerId === 'ratingButtonContainer'){
-          resetRatingSelection();
-        }
-    } else {
-      if(containerId='yearRangeButtonContainer'){
-        yearRangeText.innerHTML = `Selected range: 1950 - 2024`;
+        updatedefault();
+      }
+      if (containerId === 'yearRangeButtonContainer') {
+        yearRangeSlider.noUiSlider.set([1950, 2024]); // Reset year range slider
+        yearRangeText.innerHTML = '';
+        updatedefault();
 
       }
-        container.style.display = 'block'; 
+
+      if (containerId === 'ratingButtonContainer') {
+        resetRatingSelection();
+        updatedefault();
+
+      }
+    } else {
+      if (containerId = 'yearRangeButtonContainer') {
+        yearRangeText.innerHTML = `Selected range: 1950 - 2024`;
+        updatedefault();
+
+      }
+      container.style.display = 'block';
     }
 
-    
-}
+
+  }
 
 
 
-document.getElementById('genreFilterButton').addEventListener('click', function () {
+  document.getElementById('genreFilterButton').addEventListener('click', function () {
     toggleFilterContainer('genreButtonContainer');
-});
+  });
 
 
   // Function to display rating buttons
   function displayRatingButtons() {
-  const container = document.getElementById('ratingButtonContainer');
-  container.innerHTML = ''; // Clear existing content
+    const container = document.getElementById('ratingButtonContainer');
+    container.innerHTML = ''; // Clear existing content
 
-  // Create rating buttons
-  for (let i = 1; i < 10; i++) {
-    const button = document.createElement('button');
-    button.classList.add('rating-button');
-    button.textContent = i;
-    button.onclick = () => handleRatingButtonClick(i);
-    container.appendChild(button);
+    // Create rating buttons
+    for (let i = 1; i <= 10; i++) {
+      const button = document.createElement('button');
+      button.classList.add('rating-button');
+      button.textContent = i;
+      button.onclick = () => handleRatingButtonClick(i);
+      container.appendChild(button);
+    }
+
+    // Create and append the reset button
+    const resetButton = document.createElement('button');
+    resetButton.textContent = 'Reset';
+    resetButton.onclick = resetRatingSelection;
+    container.appendChild(resetButton);
   }
 
-  // Create and append the reset button
-  const resetButton = document.createElement('button');
-  resetButton.textContent = 'Reset';
-  resetButton.onclick = resetRatingSelection;
-  container.appendChild(resetButton);
-}
 
-
-// Reset the rating selection and clear highlights
-function resetRatingSelection() {
-  const buttons = document.querySelectorAll('.rating-button');
-  buttons.forEach(button => {
-    button.style.backgroundColor = ''; // Clear highlight
-  });
-  ratingSelection = { first: null, second: null };
-}
+  // Reset the rating selection and clear highlights
+  function resetRatingSelection() {
+    const buttons = document.querySelectorAll('.rating-button');
+    buttons.forEach(button => {
+      button.style.backgroundColor = ''; // Clear highlight
+    });
+    ratingSelection = { first: null, second: null };
+    updatedefault();
+  }
 
 
   // Global variable to track the first and second button clicks
   let ratingSelection = { first: null, second: null };
 
 
-// Function to handle button click
-function handleRatingButtonClick(rating) {
-  const buttons = document.querySelectorAll('.rating-button');
+  // Function to handle button click
+  function handleRatingButtonClick(rating) {
+    const buttons = document.querySelectorAll('.rating-button');
 
-  if (ratingSelection.first === null && ratingSelection.second === null) {
-    // First button click
-    ratingSelection.first = rating;
-    ratingSelection.second = rating;
-    console.log(`Selected rating range: ${rating}.0 - ${rating}.9`);
-  } else if (ratingSelection.second === rating) {
-    // Reset if the same button is clicked again
-    resetRatingSelection();
-    return;
-  } else if (ratingSelection.first !== null && ratingSelection.second !== null) {
-    // Extend the range for subsequent clicks
-    let newStart = Math.min(ratingSelection.first, rating);
-    let newEnd = Math.max(ratingSelection.second, rating);
-    ratingSelection.first = newStart;
-    ratingSelection.second = newEnd;
-    console.log(`Extended rating range: ${newStart}.0 - ${newEnd}.9`);
+    if (ratingSelection.first === null && ratingSelection.second === null) {
+      // First button click
+      ratingSelection.first = rating;
+      ratingSelection.second = rating;
+
+    } else if (ratingSelection.second === rating) {
+      // Reset if the same button is clicked again
+      resetRatingSelection();
+      return;
+    } else if (ratingSelection.first !== null && ratingSelection.second !== null) {
+      // Extend the range for subsequent clicks
+      let newStart = Math.min(ratingSelection.first, rating);
+      let newEnd = Math.max(ratingSelection.second, rating);
+      ratingSelection.first = newStart;
+      ratingSelection.second = newEnd;
+
+    }
+
+    // Update button highlights
+    updateButtonHighlights(buttons);
+    fetchAndDisplayMovies();
+
   }
 
-  // Update button highlights
-  updateButtonHighlights(buttons);
-}
+  // Function to update button highlights
+  function updateButtonHighlights(buttons) {
+    buttons.forEach((button, index) => {
+      if (index + 1 >= ratingSelection.first && index + 1 <= ratingSelection.second) {
+        button.style.backgroundColor = 'yellow';
+      } else {
+        button.style.backgroundColor = '';
+      }
+    });
+  }
 
-// Function to update button highlights
-function updateButtonHighlights(buttons) {
-  buttons.forEach((button, index) => {
-    if (index + 1 >= ratingSelection.first && index + 1 <= ratingSelection.second) {
-      button.style.backgroundColor = 'yellow';
-    } else {
-      button.style.backgroundColor = '';
-    }
-  });
-}
-
-// Existing functions (displayRatingButtons and resetRatingSelection) remain the same
+  // Existing functions (displayRatingButtons and resetRatingSelection) remain the same
 
   displayRatingButtons();
 
   var yearRangeSlider = document.getElementById('year-range-slider');
-var yearRangeText = document.getElementById('year-range-text');
+  var yearRangeText = document.getElementById('year-range-text');
 
-noUiSlider.create(yearRangeSlider, {
+  noUiSlider.create(yearRangeSlider, {
     start: [1950, 2024], // Start range
     connect: true,        // Display a colored bar between the handles
     range: {
-        'min': 1950,
-        'max': 2024
+      'min': 1950,
+      'max': 2024
     },
     format: wNumb({
-        decimals: 0
+      decimals: 0
     })
-});
-yearRangeSlider.noUiSlider.on('update', function (values, handle) {
+  });
+  yearRangeSlider.noUiSlider.on('update', function (values, handle) {
     if (values[0] !== null && values[1] !== null) {
-        yearRangeText.innerHTML = `Selected range: ${values[0]} - ${values[1]}`;
+      yearRangeText.innerHTML = `Selected range: ${values[0]} - ${values[1]}`;
     } else {
-        yearRangeText.innerHTML = '';
+      yearRangeText.innerHTML = '';
     }
-});
+    fetchAndDisplayMovies();
+
+  });
 
 
   function updateCategory() {
     var selectedCategory = document.getElementById('category-select').value;
 
     currentCategory = selectedCategory;
-    searchMovies(event);
+    fetchAndDisplayMovies();
   }
 
 
-  function searchMovies(event) {
-    event.preventDefault(); // Prevents the form from submitting traditionally
-    const titlePart = document.getElementById('movie-search-input').value;
+  document.querySelector('.search-form').addEventListener('submit', function (event) {
+    event.preventDefault();s
+    fetchAndDisplayMovies();
+  });
 
-    if (titlePart.trim() === '') {
-      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
-    } else {
-      const url = 'http://localhost:7117/ntuaflix_api/searchtitle';
-      searchMovieData(url, titlePart);
-    }
+  function fetchAndDisplayMovies() {
+    const titlePart = document.getElementById('movie-search-input').value || '';
+    const genre = selectedGenres.join(',');
+    let [minrating, maxrating] = getRatingRange();
+    const [yrFrom, yrTo] = getYearRange();
+
+    minrating = minrating || '0';
+    maxrating = maxrating || '10';
+
+    const filterData = {
+      titlePart: titlePart,
+      qgenre: genre,
+      minrating: minrating.toString(),
+      maxrating: maxrating.toString(),
+      yrFrom: yrFrom,
+      yrTo: yrTo
+    };
+    console.log(filterData);
+    fetchFilteredData('http://localhost:7117/ntuaflix_api/filter', filterData);
   }
+
+
+  // Function to get the rating range
+  function getRatingRange() {
+    return [ratingSelection.first, ratingSelection.second];
+  }
+
+  // Function to get the year range
+  function getYearRange() {
+    return yearRangeSlider.noUiSlider.get();
+  }
+
+  function fetchFilteredData(url, filterData) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(filterData)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) {
+          throw new Error('Expected data to be an array');
+        }
+        displayData(data, 'movies-container');
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
 
   function searchPeople(event) {
-    event.preventDefault(); // Prevents the form from submitting traditionally
+
     const namePart = document.getElementById('people-search-input').value;
 
     if (namePart.trim() === '' || namePart === null) {
@@ -408,6 +493,7 @@ yearRangeSlider.noUiSlider.on('update', function (values, handle) {
   }
 
   function displayData(data, containerId) {
+
     const container = document.getElementById(containerId);
     container.innerHTML = ''; // Clear existing content
 
