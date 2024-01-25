@@ -25,26 +25,77 @@
     margin: 20px;
   }
 
-  .genre-button-container {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
+
+  /* Filter Buttons Basic Styling */
+  #genreFilterButton,
+  #ratingFilterButton,
+  #yearRangeFilterButton {
+    background-color: #004fa3;
+    /* Blue */
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
     border-radius: 5px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .genre-button {
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
   }
 
-  .genre-button:hover {
-    background-color: #e0e0e0;
+  #genreFilterButton:hover,
+  #ratingFilterButton:hover,
+  #yearRangeFilterButton:hover {
+    background-color: #003c7d;
+    /* Darker Blue */
+    transform: translateY(-2px);
+    /* Slight lift */
+  }
+
+  /* Filter Containers Basic Styling */
+  .genre-button-container,
+  .rating-button-container,
+  .year-range-button-container {
+    background-color: #f8f9fa;
+    /* Light background */
+    border: 1px solid black;
+    /* Border color */
+    border-radius: 5px;
+    padding: 15px;
+    display: none;
+    /* Hidden by default */
+  }
+
+  /* Individual Buttons inside Filter Containers */
+  .genre-button,
+  .rating-button {
+    background-color: #6c757d;
+    /* Grey */
+    color: white;
+    border: black 1px solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .genre-button:hover,
+  .rating-button:hover {
+    background-color: #5a6268;
+    /* Darker Grey */
+  }
+
+  /* Year Range Slider Specific Styling (if applicable) */
+  #year-range-slider {
+    margin-top: 10px;
+  }
+
+  /* Year Range Text Styling */
+  #year-range-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
   }
 </style>
 
@@ -108,6 +159,14 @@
 
 </body>
 <script>
+  function toggleFilterContainer(containerId) {
+    const container = document.getElementById(containerId);
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+    } else {
+      container.style.display = 'none';
+    }
+  }
 
   document.getElementById('logoImage').addEventListener('click', function () {
     window.location.href = 'http://localhost:8228/';
@@ -236,7 +295,7 @@
 
   }
   updatedefault();  // na fainontai oi tainies me to topmovies an den exw active filters
-  
+
   function toggleFilterContainer(containerId) {
     const container = document.getElementById(containerId);
     const computedStyle = window.getComputedStyle(container);

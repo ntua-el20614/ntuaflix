@@ -165,7 +165,11 @@ body, html {
 }
 
 
+.container {
+    grid-template-columns: 2fr 1fr;
+}
 /* Media Queries */
+
 @media (min-width: 768px) {
     .container {
         grid-template-columns: 2fr 1fr;
