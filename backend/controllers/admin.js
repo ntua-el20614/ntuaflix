@@ -301,8 +301,12 @@ exports.uploadTitlePrincipals = async (req, res, next) => {
                         characters = VALUES(characters),
                         img_url_asset = VALUES(img_url_asset);
                     `;
+                    if(img_url_asset != undefined){
                         await pool.query(query, [tconst, ordering, nconst, category, job, characters, img_url_asset]);
+
                     }
+
+                }
                     res.status(200).json({ message: 'File processed successfully' });
                 } catch (err) {
                     res.status(500).json({ error: err.message });
