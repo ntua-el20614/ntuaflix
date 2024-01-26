@@ -124,7 +124,7 @@
       <div id="title-basics-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
+      <button onclick="uploadSingleFile('title-basics-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titlebasics')"
         class="upload-button">Upload
         Title Basics</button>
     </div>
@@ -135,7 +135,7 @@
       <div id="name-basics-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
+      <button onclick="uploadSingleFile('name-basics-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/namebasics')"
         class="upload-button">Upload Name
         Basics</button>
     </div>
@@ -146,7 +146,7 @@
       <div id="title-akas-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
+      <button onclick="uploadSingleFile('title-akas-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleakas')"
         class="upload-button">Upload
         Title Akas</button>
     </div>
@@ -157,7 +157,7 @@
       <div id="title-crew-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
+      <button onclick="uploadSingleFile('title-crew-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titlecrew')"
         class="upload-button">Upload
         Title Crew</button>
     </div>
@@ -168,7 +168,7 @@
       <div id="title-episode-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
+      <button onclick="uploadSingleFile('title-episode-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleepisode')"
         class="upload-button">Upload
         Title Episode</button>
     </div>
@@ -180,7 +180,7 @@
         Drag and drop a file here or click to select a file
       </div>
       <button
-        onclick="uploadSingleFile('title-principals-drop-zone', 'http://localhost:7117/admin/upload/titleprincipals')"
+        onclick="uploadSingleFile('title-principals-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleprincipals')"
         class="upload-button">Upload
         Title Principals</button>
     </div>
@@ -191,7 +191,7 @@
       <div id="title-ratings-drop-zone" class="drop-zone">
         Drag and drop a file here or click to select a file
       </div>
-      <button onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
+      <button onclick="uploadSingleFile('title-ratings-drop-zone', 'http://uniportal.sytes.net:7117/admin/upload/titleratings')"
         class="upload-button">Upload
         Title Ratings</button>
     </div> 
@@ -215,7 +215,7 @@
 
 
     document.getElementById('logoImage').addEventListener('click', function () {
-      window.location.href = 'http://localhost:8228/';
+      window.location.href = 'http://uniportal.sytes.net:8228/';
     });
  
     // Setup for each drop zone
@@ -312,7 +312,7 @@
   formData.append('secretKey', '3141592653589793236264');
   formData.append('is_user_admin', 'true');
 
-  xhr.open('POST', 'http://localhost:7117/admin/resetall', true);
+  xhr.open('POST', 'http://uniportal.sytes.net:7117/admin/resetall', true);
 
   // Start progress bar
   let progress = 0;
@@ -367,7 +367,7 @@ function backupData() {
   formData.append('secretKey', '3141592653589793236264');
   formData.append('is_user_admin', 'true');
 
-  xhr.open('POST', 'http://localhost:7117/admin/backup', true);
+  xhr.open('POST', 'http://uniportal.sytes.net:7117/admin/backup', true);
 
   // Start manual interval for progress bar
   let progress = 0;

@@ -41,7 +41,7 @@ program
 
 async function login(options) {
     try {
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/login', {
+        const response = await axios.post('http://uniportal.sytes.net:7117/ntuaflix_api/login', {
             username: options.username,
             password: options.password
         });
@@ -119,7 +119,7 @@ program
             formData.append('is_user_admin', '1');
     
             // POST request with form data
-            const response = await axios.post(`http://localhost:7117/admin/usermod/${options.username}/${options.password}`, formData, {
+            const response = await axios.post(`http://uniportal.sytes.net:7117/admin/usermod/${options.username}/${options.password}`, formData, {
                 headers: formData.getHeaders(),
             });
     
@@ -163,7 +163,7 @@ program
             formData.append('is_user_admin', '1');
     
             // POST request with form data
-            const response = await axios.post(`http://localhost:7117/admin/users/${options.username}`, formData, {
+            const response = await axios.post(`http://uniportal.sytes.net:7117/admin/users/${options.username}`, formData, {
                 headers: formData.getHeaders(),
             });
     
@@ -198,7 +198,7 @@ program
 
 async function healthcheck(options) {
     try {
-        const response = await axios.get('http://localhost:7117/admin/healthcheck');
+        const response = await axios.get('http://uniportal.sytes.net:7117/admin/healthcheck');
         
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -254,7 +254,7 @@ async function resetall(options) {
         formData.append('secretKey', '3141592653589793236264'); // Adjust secretKey as needed
         formData.append('is_user_admin', 'true'); // Adjust is_user_admin as needed
 
-        const response = await axios.post('http://localhost:7117/admin/resetall', formData, {
+        const response = await axios.post('http://uniportal.sytes.net:7117/admin/resetall', formData, {
             headers: formData.getHeaders(),
         });
 
@@ -304,7 +304,7 @@ program
             formData.append('is_user_admin', 'true'); // or whatever value is appropriate
             // Additional fields like secretKey or is_user_admin should be appended here if required
     
-            const response = await axios.post('http://localhost:7117/admin/upload/titlebasics', formData, {
+            const response = await axios.post('http://uniportal.sytes.net:7117/admin/upload/titlebasics', formData, {
                 headers: formData.getHeaders(),
             });
     
@@ -336,7 +336,7 @@ async function newakas(options) {
         formData.append('secretKey', '3141592653589793236264');
         formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleakas', formData, {
+        const response = await axios.post('http://uniportal.sytes.net:7117/admin/upload/titleakas', formData, {
             headers: formData.getHeaders(),
         });
 
@@ -369,7 +369,7 @@ async function newnames(options) {
         formData.append('secretKey', '3141592653589793236264');
         formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/namebasics', formData, {
+        const response = await axios.post('http://uniportal.sytes.net:7117/admin/upload/namebasics', formData, {
             headers: formData.getHeaders(),
         });
 
@@ -401,7 +401,7 @@ async function newcrew(options) {
         formData.append('secretKey', '3141592653589793236264');
         formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titlecrew', formData, {
+        const response = await axios.post('http://uniportal.sytes.net:7117/admin/upload/titlecrew', formData, {
             headers: formData.getHeaders(),
         });
 
@@ -433,7 +433,7 @@ async function newepisode(options) {
         formData.append('secretKey', '3141592653589793236264');
         formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleepisode', formData, {
+        const response = await axios.post('http://uniportal.sytes.net:7117/admin/upload/titleepisode', formData, {
             headers: formData.getHeaders(),
         });
 
@@ -465,7 +465,7 @@ async function newprincipals(options) {
         formData.append('secretKey', '3141592653589793236264');
         formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleprincipals', formData, {
+        const response = await axios.post('http://uniportal.sytes.net:7117/admin/upload/titleprincipals', formData, {
             headers: formData.getHeaders(),
         });
 
@@ -496,7 +496,7 @@ async function newratings(options) {
         formData.append('is_user_admin', 'true'); // or whatever value is appropriate
         // Additional fields like secretKey or is_user_admin should be appended here if required
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleratings', formData, {
+        const response = await axios.post('http://uniportal.sytes.net:7117/admin/upload/titleratings', formData, {
             headers: formData.getHeaders(),
         });
 
@@ -515,7 +515,7 @@ program
 
 async function getTitleById(options) {
     try {
-        const response = await axios.get(`http://localhost:7117/ntuaflix_api/title/:titleID${options.titleID}`);
+        const response = await axios.get(`http://uniportal.sytes.net:7117/ntuaflix_api/title/:titleID${options.titleID}`);
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -551,7 +551,7 @@ program
 async function searchtitle(options) {
     try {
         // Make the POST request to the searchtitle endpoint with the title part in the body
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchtitle', { titlePart: options.titlepart });
+        const response = await axios.post('http://uniportal.sytes.net:7117/ntuaflix_api/searchtitle', { titlePart: options.titlepart });
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -588,7 +588,7 @@ program
 async function getNameById(options) {
     try {
         // Make the GET request to the name endpoint
-        const response = await axios.get(`http://localhost:7117/ntuaflix_api/name/:nameid${options.nameid}`);
+        const response = await axios.get(`http://uniportal.sytes.net:7117/ntuaflix_api/name/:nameid${options.nameid}`);
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -624,7 +624,7 @@ program
 async function searchname(options) {
     try {
         // Make the POST request to the searchname endpoint with the name part in the body
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.namepart });
+        const response = await axios.post('http://uniportal.sytes.net:7117/ntuaflix_api/searchname', { namePart: options.namepart });
 
         // Directory where the file will be saved
         const dir = './cli_responses';
