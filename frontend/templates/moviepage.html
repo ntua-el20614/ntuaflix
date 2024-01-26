@@ -65,11 +65,11 @@
 
 
         document.getElementById('logoImage').addEventListener('click', function () {
-            window.location.href = 'http://uniportal.sytes.net:8228/';
+            window.location.href = 'http://localhost:8228/';
         });
 
         document.getElementById('loginButton').addEventListener('click', function () {
-            window.location.href = 'http://uniportal.sytes.net:8228/login';
+            window.location.href = 'http://localhost:8228/login';
         });
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -79,7 +79,7 @@
             // Function to fetch movie details
             function fetchMovieDetails(id) {
                 // Replace with the actual API endpoint or data fetching logic
-                fetch(`http://uniportal.sytes.net:7117/ntuaflix_api/title/${id}`)
+                fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
                     .then(response => response.json())
                     .then(data => displayMovieDetails(data[0]))
                     .catch(error => console.error('Error fetching movie details:', error));
@@ -87,7 +87,7 @@
 
             function fetchPersonDetails(id) {
 
-                return fetch(`http://uniportal.sytes.net:7117/ntuaflix_api/person/${id}`)
+                return fetch(`http://localhost:7117/ntuaflix_api/person/${id}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
@@ -103,7 +103,7 @@
                     });
             }
             function fetchCharacterDetails(nameID, titleID) {
-                return fetch(`http://uniportal.sytes.net:7117/ntuaflix_api/character/${nameID}/${titleID}`)
+                return fetch(`http://localhost:7117/ntuaflix_api/character/${nameID}/${titleID}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
@@ -118,7 +118,7 @@
             }
 
             function fetchCrewDetails(titleID) {
-                return fetch(`http://uniportal.sytes.net:7117/ntuaflix_api/crew/${titleID}`)
+                return fetch(`http://localhost:7117/ntuaflix_api/crew/${titleID}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
@@ -149,7 +149,7 @@
 
 
             function redirectToPersonPage(personId) {
-                window.location.href = `http://uniportal.sytes.net:8228/personpage?personId=${personId}`;
+                window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
             }
 
             async function displayMovieDetails(movieData) {

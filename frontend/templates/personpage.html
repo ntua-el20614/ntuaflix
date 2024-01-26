@@ -69,11 +69,11 @@
     <script>
 
         document.getElementById('logoImage').addEventListener('click', function () {
-            window.location.href = 'http://uniportal.sytes.net:8228/';
+            window.location.href = 'http://localhost:8228/';
         });
 
         document.getElementById('loginButton').addEventListener('click', function () {
-            window.location.href = 'http://uniportal.sytes.net:8228/login';
+            window.location.href = 'http://localhost:8228/login';
         });
         document.addEventListener('DOMContentLoaded', function () {
             const personId = new URLSearchParams(window.location.search).get('personId');
@@ -86,7 +86,7 @@
 
         function fetchMovieDetails(id) {
 
-            return fetch(`http://uniportal.sytes.net:7117/ntuaflix_api/title/${id}`)
+            return fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -104,7 +104,7 @@
 
 
         function fetchPersonData(personId) {
-            fetch(`http://uniportal.sytes.net:7117/ntuaflix_api/person/${personId}`)
+            fetch(`http://localhost:7117/ntuaflix_api/person/${personId}`)
                 .then(response => response.json())
                 .then(data => {
                     displayPersonInfo(data[0]);
@@ -161,7 +161,7 @@
 
 
         function redirectToMoviePage(movieId) {
-            window.location.href = `http://uniportal.sytes.net:8228/moviepage?movieId=${movieId}`;
+            window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
         }
         async function displayPersonInfo(personInfo) {
 
