@@ -82,7 +82,6 @@ def main():
     if backdrop_url:
         process_imdb_files(tconst, imdb_files_directory, backdrop_url, output_directory)
 
-    print(f"Processed IMDb files for episode with tconst {tconst}")
 
 if __name__ == "__main__":
     main()

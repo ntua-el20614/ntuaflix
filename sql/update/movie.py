@@ -35,11 +35,8 @@ def search_in_imdb_files_with_photo(tconst, imdb_files_directory, backdrop_url, 
             output_file_name = file.split('.')[0]+"."+file.split('.')[1] + '_add.tsv'
             output_file_path = os.path.join(output_directory, output_file_name)
             with open(input_file_path, 'r', encoding='utf-8') as infile, open(output_file_path, 'w', encoding='utf-8') as outfile:
-                headers = infile.readline()
-                
-                if file == "title.basics.tsv":
-                    headers = headers.strip() + '\timg_url_asset\n'  # Append img_url_asset to the header of title.basics.tsv
-                outfile.write(headers) # Write the header line to the output file
+                headers = infile.readline()  # Read the header line
+                outfile.write(headers)  # Write the header line to the output file
                 flag = True
                 for line in infile:
                     columns = line.split('\t')
@@ -95,7 +92,7 @@ def search_nconsts_and_get_photos_updated(name_basics_file_path, nconsts_list, a
     line_count = 0  # Debugging: Count the number of lines processed
 
     with open(name_basics_file_path, 'r', encoding='utf-8') as infile, open(output_file_path, 'w', encoding='utf-8') as outfile:
-        headers = infile.readline().strip() + '\timg_url_asset\n'  # Append img_url_asset to the header of name.basics.tsv
+        headers = infile.readline()
         print(headers)
         outfile.write(headers)
         
@@ -115,7 +112,7 @@ def search_nconsts_and_get_photos_updated(name_basics_file_path, nconsts_list, a
  
 # Sample usage
 tmdb_api_key = "548e9052202183ea3888718b1e4dc4cc"  # Replace with your TMDB API key
-imdb_files_directory = ".\\all imdb"  # Local directory path
+imdb_files_directory = "C:\\Users\\Chris\\Desktop\\all imdb"  # Local directory path
 
 
 

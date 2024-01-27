@@ -58,7 +58,10 @@ def get_episodes_list(parent_tconst, imdb_files_directory):
     return episodes
 
 def process_tv_series_episodes(episodes, output_directory,tvseries_const):
+    i=0
     for episode_tconst in episodes:
+        print("%d)"%i,end="")
+        i+=1
         subprocess.run(["python3", "episodes_alot.py", episode_tconst, f"{tvseries_const}"])
 
 def main():
