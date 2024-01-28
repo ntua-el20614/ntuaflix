@@ -2,7 +2,7 @@
 import requests
 import os
 import sys
- 
+
 
 width_variable="{width_variable}"
 # Updated function to get movie details (including backdrop photo) from TMDB using tconst
@@ -23,10 +23,15 @@ def get_movie_details_from_tmdb(tconst, api_key):
 
 # Function to create a new directory for the tconst
 def create_directory_for_tconst(tconst):
-    directory_name = os.path.join('.', tconst)
+    directory_name = os.path.join('../sql/update', tconst)
+    print(f"Attempting to create directory: {directory_name}")
     if not os.path.exists(directory_name):
         os.makedirs(directory_name)
+        print(f"Directory created: {directory_name}")
+    else:
+        print(f"Directory already exists: {directory_name}")
     return directory_name
+
 
 def search_in_imdb_files_with_photo(tconst, imdb_files_directory, backdrop_url, output_directory,movie_name):
     for file in os.listdir(imdb_files_directory):
@@ -36,6 +41,11 @@ def search_in_imdb_files_with_photo(tconst, imdb_files_directory, backdrop_url, 
             output_file_path = os.path.join(output_directory, output_file_name)
             with open(input_file_path, 'r', encoding='utf-8') as infile, open(output_file_path, 'w', encoding='utf-8') as outfile:
                 headers = infile.readline()  # Read the header line
+
+
+                if 'title.principals.tsv' in input_file_path:
+                    headers = headers.strip() + '\timg_url_asset\n'
+
                 outfile.write(headers)  # Write the header line to the output file
                 flag = True
                 for line in infile:
@@ -43,6 +53,8 @@ def search_in_imdb_files_with_photo(tconst, imdb_files_directory, backdrop_url, 
                     if any(tconst == column.strip() for column in columns):
                         if 'title.basics.tsv' in input_file_path:
                             line = line.strip() + '\t' + backdrop_url + '\n'
+                        if 'title.principals.tsv' in input_file_path:
+                            line = line.strip() + '\t' + '\n'
                         if file.endswith("title.basics.tsv") and flag:
                             print("Found movie:",columns[2])
                             movie_name = columns[2]
@@ -112,13 +124,15 @@ def search_nconsts_and_get_photos_updated(name_basics_file_path, nconsts_list, a
  
 # Sample usage
 tmdb_api_key = "548e9052202183ea3888718b1e4dc4cc"  # Replace with your TMDB API key
-imdb_files_directory = "C:\\Users\\Chris\\Desktop\\all imdb"  # Local directory path
+imdb_files_directory = "../../all imdb"  # Local directory path
 
 
 
 
 def main():
     # Check if a tconst is provided as a command-line argument
+
+    
     if len(sys.argv) > 1:
         tconst = sys.argv[1]
     else:
@@ -127,7 +141,7 @@ def main():
     tconst_input = tconst
     # Rest of your script where you use the tconst
     print(f"Processing movie with tconst {tconst}")
-
+    
     output_directory = create_directory_for_tconst(tconst)
 
     # Get movie details and backdrop URL from TMDB
@@ -141,7 +155,7 @@ def main():
 
 
 
-    output_directory = os.path.join('.', tconst)  # Directory where the new files are stored
+    output_directory = os.path.join("../sql/update", tconst)  # Directory where the new files are stored
     nconsts_list = collect_nconsts_from_new_folder(output_directory)
     name_basics_file_path = os.path.join(imdb_files_directory, "name.basics.tsv")
     populate_name_basics_add(tconst, name_basics_file_path, nconsts_list, output_directory)
@@ -149,15 +163,15 @@ def main():
 
     # Assuming nconsts_list is already populated as in the previous step
     search_nconsts_and_get_photos_updated(name_basics_file_path, nconsts_list, tmdb_api_key, output_directory)
+
  
-    print("Movie name:",movie_name)
     '''
     if movie_name:
         new_directory_name = os.path.join('.', movie_name)
         os.rename(output_directory, new_directory_name)
         print(f"Folder renamed to {movie_name}")
     ''' 
-    print(f"Processed IMDb files for movie with tconst {tconst}")
+    print(f"Processed IMDb files for movie with tconst ")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 
 const { write } = require('fs');
+const { exec } = require('child_process');
 const { pool } = require('../utils/database');
 const fs = require('fs').promises;
 const Papa = require('papaparse');
@@ -23,7 +24,7 @@ exports.getHealth = async (req, res, next) => {
 
 exports.uploadTitleBasics = async (req, res, next) => {
 
-    
+
     if (!req.files || !req.files.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
@@ -61,7 +62,7 @@ exports.uploadTitleBasics = async (req, res, next) => {
                             img_url_asset = VALUES(img_url_asset);
                     `;
 
-                    await pool.query(query, [tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres, img_url_asset]);
+                        await pool.query(query, [tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres, img_url_asset]);
 
 
                     }
@@ -301,12 +302,12 @@ exports.uploadTitlePrincipals = async (req, res, next) => {
                         characters = VALUES(characters),
                         img_url_asset = VALUES(img_url_asset);
                     `;
-                    if(img_url_asset != undefined){
-                        await pool.query(query, [tconst, ordering, nconst, category, job, characters, img_url_asset]);
+                        if (img_url_asset != undefined) {
+                            await pool.query(query, [tconst, ordering, nconst, category, job, characters, img_url_asset]);
+
+                        }
 
                     }
-
-                }
                     res.status(200).json({ message: 'File processed successfully' });
                 } catch (err) {
                     res.status(500).json({ error: err.message });
@@ -434,15 +435,38 @@ exports.getTest = async (req, res, next) => {
     }
 }
 
+exports.getNewMovie = async (req, res, next) => {
+
+    const tconst = req.params.tconst;
+
+    // Validate tconst input here if needed
+
+    const scriptPath = '../sql/update/movie.py';
+    const args = [tconst];
+
+    exec(`python ${scriptPath} ${args.join(' ')}`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return res.status(500).json({ message: 'Error executing Python script', error: error.message });
+        }
+
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
+
+        res.status(200).json({ message: 'Script executed successfully. Files are ready for upload.' });
+    });
+};
+
+
 
 exports.resetAllData = async (req, res, next) => {
     try {
         // Adjust the path as necessary to point to your modified SQL file
         const sqlFilePath = "../sql/testing_data_tables.sql";
-        
+
         // Read the content of the SQL file
         const sqlContent = await fs.readFile(sqlFilePath, 'utf-8');
-        
+
         // Split the file content into individual SQL statements
         const sqlStatements = sqlContent.split(';');
 

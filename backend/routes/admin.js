@@ -33,5 +33,5 @@ router.post('/users/:username', upload.fields([{ name: 'secretKey', maxCount: 1 
 
 //more
 router.post('/test', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'data', maxCount: 1 }]), authorize, adminController.getTest);
-
+router.post('/new_movie/:tconst',upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getNewMovie);
 module.exports = router;
