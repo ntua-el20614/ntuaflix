@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `ntuaflix` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `ntuaflix`;
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: ntuaflix
+-- Host: localhost    Database: ntuaflix
 -- ------------------------------------------------------
--- Server version	8.0.33
+-- Server version	8.0.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -230,9 +230,9 @@ CREATE TABLE `users` (
   `userID` int NOT NULL AUTO_INCREMENT,
   `is_admin` tinyint(1) DEFAULT '0',
   `username` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
   `password_hashed` varchar(255) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
+  `approved` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -291,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-28 13:28:35
+-- Dump completed on 2024-01-31 19:04:30
