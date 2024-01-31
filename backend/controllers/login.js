@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
 
     try {
         // Query database for user
-        const query = 'SELECT userID, username, password_hashed FROM users WHERE username = ?';
+        const query = 'SELECT userID, username, password_hashed, approved FROM users WHERE username = ?';
         const [users] = await pool.query(query, [username]);
 
         // Check if user exists
@@ -25,11 +25,14 @@ exports.login = async (req, res) => {
         if (!passwordIsValid) {
             return res.status(401).json({ message: 'Authentication failed' });
         }
+        if(user.approved == 0){
+            return res.status(401).json({ message: 'User not approved' });
+        }
 
         // Create JWT token
         const token = jwt.sign(
             { userId: user.userID, username: user.username },
-            process.env.JWT_SECRET, // Use environment variable or replace with your actual key
+            process.env.JWT_SECRET || "1234", // Use environment variable or replace with your actual key
             { expiresIn: '1h' }
         );
 
@@ -38,5 +41,23 @@ exports.login = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Something went wrong with the server.' });
+    }
+};
+
+
+exports.signup = async (req, res) => {
+    // Extract username and password from request body
+    const { username, password } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt); 
+
+    // Query database for user
+    const query = `INSERT INTO users (username, password_hashed, approved) 
+    VALUES (?, ?, ?)`;
+    try {
+        const [results] = await pool.query(query, [username, hashedPassword, 1]);
+        res.status(200).json({ message: 'Operation successful', data: results });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error', error: err.message });
     }
 };
