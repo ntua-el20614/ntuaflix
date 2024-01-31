@@ -30,16 +30,18 @@ exports.getMovieById = async (req, res, next) => {
 
 exports.getGenres = async (req, res, next) => {
     const query = `
-        SELECT DISTINCT 
-            TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(Titles.genres, ',', numbers.n), ',', -1)) AS single_genre
-        FROM Titles
-        JOIN (
-            SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
-            -- Extend this series as needed
-        ) AS numbers
-        ON CHAR_LENGTH(Titles.genres) - CHAR_LENGTH(REPLACE(Titles.genres, ',', '')) >= numbers.n - 1
-        WHERE TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(Titles.genres, ',', numbers.n), ',', -1)) <> '\\\\N';
-    `;
+    SELECT DISTINCT 
+    TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(Titles.genres, ',', numbers.n), ',', -1)) AS single_genre
+FROM Titles
+JOIN (
+    SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+    -- Extend this series as needed
+) AS numbers
+ON CHAR_LENGTH(Titles.genres) - CHAR_LENGTH(REPLACE(Titles.genres, ',', '')) >= numbers.n - 1
+WHERE TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(Titles.genres, ',', numbers.n), ',', -1)) <> '\\\\N'
+ORDER BY single_genre;
+
+        `;
 
     try {
         const [rows] = await pool.query(query);
@@ -165,7 +167,7 @@ AND
 
     `;
 
-    
+
     try {
         const [rows] = await pool.query(query);
         res.status(200).json(rows);
