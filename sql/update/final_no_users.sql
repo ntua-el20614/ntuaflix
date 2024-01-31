@@ -231,7 +231,6 @@ CREATE TABLE `users` (
   `is_admin` tinyint(1) DEFAULT '0',
   `username` varchar(255) DEFAULT NULL,
   `password_hashed` varchar(255) DEFAULT NULL,
-  `token` varchar(255) DEFAULT NULL,
   `approved` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username` (`username`)
@@ -291,4 +290,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-31 19:04:30
+-- Dump completed on 2024-01-31 20:01:27
