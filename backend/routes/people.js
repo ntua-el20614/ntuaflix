@@ -13,6 +13,10 @@ router.get('/crew/:titleID',peopleController.getCrew);
 //d
 router.get('/name/:nameID', peopleController.getAllInfoForAPerson)
 
+//mistiko
+router.get('/other_movies/:nconst', peopleController.getActorTitlesRolesAndCharacters);
+
+
 //e.
 router.post('/searchname', peopleController.getSearchName)
 

@@ -192,6 +192,67 @@ exports.getSearchName = async (req, res, next) => {
     }
 }
 
+exports.getActorTitlesRolesAndCharacters = async (req, res, next) => {
+    const nconst = req.params.nconst;
+
+    const query = `
+    SELECT 
+    JSON_ARRAYAGG(
+        JSON_OBJECT(
+            'movieID', IF(ep.tconst IS NULL, tp.tconst, ep.parentTconst),
+            'roles', combined_roles
+        )
+    ) AS result
+FROM 
+    title_principals AS tp
+LEFT JOIN 
+    Episodes AS ep ON tp.tconst = ep.tconst
+LEFT JOIN 
+    (
+        SELECT 
+            tconst, 
+            nconst,
+            GROUP_CONCAT(DISTINCT role_or_character SEPARATOR ',') AS combined_roles
+        FROM (
+            SELECT 
+                tconst,
+                nconst,
+                CASE 
+                    WHEN category IN ('actor', 'actress') THEN REPLACE(REPLACE(characters, '[', ''), ']', '')
+                    ELSE category 
+                END as role_or_character
+            FROM 
+                title_principals
+        ) as roles_and_characters
+        GROUP BY 
+            tconst, nconst  -- Group by both tconst and nconst
+    ) AS sub_tp ON tp.tconst = sub_tp.tconst AND tp.nconst = sub_tp.nconst  -- Match both tconst and nconst
+JOIN 
+    people AS p ON tp.nconst = p.nconst
+WHERE 
+    tp.nconst = ? 
+    AND FIND_IN_SET(tp.tconst, p.knownForTitles) = 0
+GROUP BY 
+    IF(ep.tconst IS NULL, tp.tconst, ep.parentTconst);
+
+
+
+
+
+
+    `;
+
+    try {
+        const [rows] = await pool.query(query, [nconst]);
+        res.status(200).json(rows[0].result || []);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
+};
+
+
+
 exports.getTopTenPeople = async (req,res,next)=>{
 
     const query = `
