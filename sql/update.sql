@@ -1,15 +1,15 @@
 DROP DATABASE IF EXISTS ntuaflix;
 
 CREATE DATABASE ntuaflix;
+
 USE ntuaflix;
 
 CREATE TABLE users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
     is_admin BOOLEAN DEFAULT FALSE,
     username VARCHAR(255) UNIQUE,
-    email VARCHAR(255),
-    password_hashed VARCHAR(255),
-    token VARCHAR(255)
+    approved BOOLEAN,
+    password_hashed VARCHAR(255)
 );
 
 CREATE TABLE people (
@@ -92,6 +92,7 @@ CREATE TABLE watchlist (
     FOREIGN KEY (userID) REFERENCES users(userID),
     FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
+
 
 
 INSERT INTO people (nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles, img_url_asset) VALUES ('nm0000019', 'Federico Fellini', '1920', '1993', 'writer,director,actor', 'tt0071129,tt0047528,tt0050783,tt0056801', 'https://image.tmdb.org/t/p/{width_variable}/jH2VnHAuI0UbTWsnrjMPro0fC9j.jpg');
