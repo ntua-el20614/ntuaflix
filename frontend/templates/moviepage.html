@@ -68,9 +68,51 @@
             window.location.href = 'http://localhost:8228/';
         });
 
-        document.getElementById('loginButton').addEventListener('click', function () {
-            window.location.href = 'http://localhost:8228/login';
-        });
+        let token = localStorage.getItem('token');
+
+
+        if (token) {
+            // User is logged in
+            console.log('User is logged in');
+            loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+                console.log('Logging out...');
+
+                fetch('http://localhost:7117/ntuaflix_api/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Logout failed with status: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message === "Logout successful") {
+                            localStorage.removeItem('token');
+                            location.reload();
+                        } else {
+                            alert(data.message || 'Logout failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred during logout');
+                    });
+            });
+
+        } else {
+            console.log('User is not logged in');
+            loginButton.textContent = '🔒'; // Replace with the closed lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+                window.location.href = 'http://localhost:8228/login';
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
@@ -153,7 +195,7 @@
             }
 
             async function displayMovieDetails(movieData) {
-                console.log(movieData)
+
                 const container = document.getElementById('movieDetailsContainer');
                 container.innerHTML = ''; // Clear existing content
 

@@ -97,6 +97,27 @@
     font-size: 14px;
     color: #333;
   }
+
+
+
+  .login-btn::after {
+    content: getTooltipText();
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Show the tooltip on hover */
+  .login-btn:hover::after {
+    display: block;
+  }
 </style>
 
 <body>
@@ -106,6 +127,7 @@
   <header class="site-header">
 
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+
 
 
     <button id="loginButton" class="login-btn">🔒</button>
@@ -159,6 +181,12 @@
 
 </body>
 <script>
+
+
+  // Check if token exists in localStorage
+  const token = localStorage.getItem('token');
+
+
   function toggleFilterContainer(containerId) {
     const container = document.getElementById(containerId);
     if (container.style.display === 'none') {
@@ -172,11 +200,52 @@
     window.location.href = 'http://localhost:8228/';
   });
 
-  document.getElementById('loginButton').addEventListener('click', function () {
-    window.location.href = 'http://localhost:8228/login';
-  });
+  
+  if (token) {
+    // User is logged in
+    console.log('User is logged in');
+    loginButton.textContent = '🔓'; // Replace with the open lock emoji
+    
+    document.getElementById('loginButton').addEventListener('click', function () {
+    console.log('Logging out...');
+
+    fetch('http://localhost:7117/ntuaflix_api/logout', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+        },
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Logout failed with status: ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.message === "Logout successful") {
+            localStorage.removeItem('token');
+            location.reload();
+        } else {
+            alert(data.message || 'Logout failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during logout');
+    });
+});
+
+  } else {
+    console.log('User is not logged in');
+    loginButton.textContent = '🔒'; // Replace with the closed lock emoji
+
+    document.getElementById('loginButton').addEventListener('click', function () {
+      window.location.href = 'http://localhost:8228/login';
+    });
+  }
 
 
+ 
   const clearBtns = document.querySelectorAll(".clear-btn"); // Modified to select all clear buttons
 
   clearBtns.forEach(btn => {
@@ -189,8 +258,8 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
-
-    setTimeout(() => {
+    let shouldi = localStorage.getItem('loadingScreenShown');
+     setTimeout(() => {
       const loadingScreen = document.getElementById('loadingScreen');
       loadingScreen.style.animationPlayState = 'running';
 
@@ -203,7 +272,14 @@
       });
 
     }, 3000);
-
+    if (shouldi == null) {
+      localStorage.setItem('loadingScreenShown', 'true');
+    } else {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.style.display = 'none';
+      const mainContent = document.querySelector('.container');
+      mainContent.style.animationPlayState = 'running';
+    }
     setTimeout(() => {
       fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
 
@@ -478,7 +554,7 @@
       yrFrom: yrFrom,
       yrTo: yrTo
     };
-    console.log(filterData);
+
     fetchFilteredData('http://localhost:7117/ntuaflix_api/filter', filterData);
   }
 
