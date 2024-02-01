@@ -129,7 +129,7 @@
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
 
 
-
+    <button id="adminButton" class="admin-btn">🏠</button>
     <button id="loginButton" class="login-btn">🔒</button>
   </header>
 
@@ -180,6 +180,7 @@
   </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 <script>
 
 
@@ -200,40 +201,63 @@
     window.location.href = 'http://localhost:8228/';
   });
 
-  
+
+  try {
+
+    var decoded = jwt_decode(token);
+    console.log(decoded);
+
+    let home_admin_button = document.getElementById('adminButton')
+
+    if (decoded.is_admin == 1) {
+      home_admin_button.style.display = 'block';
+
+      home_admin_button.addEventListener('click', function () {
+        window.location.href = 'http://localhost:8228/adminpage';
+      });
+
+    }
+
+  } catch (error) {
+    console.log("Token verification failed:", error);
+  }
   if (token) {
     // User is logged in
     console.log('User is logged in');
-    loginButton.textContent = '🔓'; // Replace with the open lock emoji
-    
-    document.getElementById('loginButton').addEventListener('click', function () {
-    console.log('Logging out...');
 
-    fetch('http://localhost:7117/ntuaflix_api/logout', {
+
+
+
+    loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+    document.getElementById('loginButton').addEventListener('click', function () {
+      console.log('Logging out...');
+
+      fetch('http://localhost:7117/ntuaflix_api/logout', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+          'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
         },
-    })
-    .then(response => {
-        if (!response.ok) {
+      })
+        .then(response => {
+          if (!response.ok) {
             throw new Error('Logout failed with status: ' + response.status);
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.message === "Logout successful") {
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.message === "Logout successful") {
             localStorage.removeItem('token');
             location.reload();
-        } else {
+          } else {
             alert(data.message || 'Logout failed');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred during logout');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred during logout');
+        });
     });
-});
 
   } else {
     console.log('User is not logged in');
@@ -245,7 +269,7 @@
   }
 
 
- 
+
   const clearBtns = document.querySelectorAll(".clear-btn"); // Modified to select all clear buttons
 
   clearBtns.forEach(btn => {
@@ -259,7 +283,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
     let shouldi = localStorage.getItem('loadingScreenShown');
-     setTimeout(() => {
+    setTimeout(() => {
       const loadingScreen = document.getElementById('loadingScreen');
       loadingScreen.style.animationPlayState = 'running';
 

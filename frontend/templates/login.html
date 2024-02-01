@@ -326,31 +326,40 @@
         // Handle sign-up form submission
         document.getElementById('signupForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevents the default form submission
+
+            // Extract the password and confirmation password from the form data
             const formData = new FormData(this);
-            fetch('http://localhost:7117/ntuaflix_api/signup', {
-                method: 'POST',
-                body: new URLSearchParams(formData),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-            })
-                .then(response => response.json())
-                .then(data => {
+            const password = formData.get('password');
+            const passwordConfirm = formData.get('passwordConfirm');
 
-                    if (data.token) {
-                        localStorage.setItem('token', data.token);
-                        //console.log(data.token)
-                        window.location.href = 'http://localhost:8228';
-                    } else {
-                        alert(data.message || 'Login failed');
-                    }
+            // Check if the passwords match
+            if (password === passwordConfirm) {
+                // If passwords match, proceed with the form submission
+                fetch('http://localhost:7117/ntuaflix_api/signup', {
+                    method: 'POST',
+                    body: new URLSearchParams(formData),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred');
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.token) {
+                            localStorage.setItem('token', data.token);
+                            window.location.href = 'http://localhost:8228';
+                        } else {
+                            alert(data.message || 'Signup failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred during signup');
+                    });
+            } else {
+                // If passwords do not match, alert the user
+                alert('Passwords do not match. Please try again.');
+            }
         });
-
 
     </script>
 
