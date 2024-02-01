@@ -94,3 +94,6 @@ CREATE TABLE watchlist (
 
 
 
+
+
+INSERT INTO users (is_admin, username, approved, password_hashed) VALUES ('1','chris','1' ,'$2a$10$I9S7q0kgwDed6r8vhi.X4eWFjQYwLkEvnHcHmyNHL.7WlXVoHBGWy');

@@ -291,3 +291,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-01-31 20:01:27
+INSERT INTO users (is_admin, username, approved, password_hashed) VALUES ('1','chris','1' ,'$2a$10$I9S7q0kgwDed6r8vhi.X4eWFjQYwLkEvnHcHmyNHL.7WlXVoHBGWy');
