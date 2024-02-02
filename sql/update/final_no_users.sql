@@ -220,6 +220,33 @@ INSERT INTO `titles` VALUES ('tt0000929','short','Klebolin klebt alles','Kleboli
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user_rate`
+--
+
+DROP TABLE IF EXISTS `user_rate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_rate` (
+  `userID` int NOT NULL,
+  `tconst` varchar(255) NOT NULL,
+  `rating` int DEFAULT NULL,
+  PRIMARY KEY (`userID`,`tconst`),
+  KEY `tconst` (`tconst`),
+  CONSTRAINT `user_rate_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
+  CONSTRAINT `user_rate_ibfk_2` FOREIGN KEY (`tconst`) REFERENCES `titles` (`tconst`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_rate`
+--
+
+LOCK TABLES `user_rate` WRITE;
+/*!40000 ALTER TABLE `user_rate` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_rate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -234,7 +261,7 @@ CREATE TABLE `users` (
   `approved` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`userID`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,34 +270,8 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,1,'chris','$2a$10$I9S7q0kgwDed6r8vhi.X4eWFjQYwLkEvnHcHmyNHL.7WlXVoHBGWy',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `watchlist`
---
-
-DROP TABLE IF EXISTS `watchlist`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `watchlist` (
-  `userID` int NOT NULL,
-  `tconst` varchar(255) NOT NULL,
-  `watched` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`userID`,`tconst`),
-  KEY `tconst` (`tconst`),
-  CONSTRAINT `watchlist_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`),
-  CONSTRAINT `watchlist_ibfk_2` FOREIGN KEY (`tconst`) REFERENCES `titles` (`tconst`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `watchlist`
---
-
-LOCK TABLES `watchlist` WRITE;
-/*!40000 ALTER TABLE `watchlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `watchlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -290,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-31 20:01:27
+-- Dump completed on 2024-02-02  2:04:50

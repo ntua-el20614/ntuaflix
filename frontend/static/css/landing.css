@@ -33,13 +33,35 @@ body, html {
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 20px; /* Adjusted for emoji */
+    font-size: 30px; /* Adjusted for emoji */
     cursor: pointer;
     transition: background-color 0.3s;
     text-align: center; /* Ensure the emoji is centered */
   }
   
   .login-btn:hover {
+    background-color: #dedede; /* Darker shade for hover effect */
+  }
+
+  .admin-btn {
+    position: absolute;
+    right: 85px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 2px 2px;
+    background-color: #010A08; /* Example: a shade of green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 30px; /* Adjusted for emoji */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center; 
+    display: none;
+
+}
+  
+  .admin-btn:hover {
     background-color: #dedede; /* Darker shade for hover effect */
   }
 

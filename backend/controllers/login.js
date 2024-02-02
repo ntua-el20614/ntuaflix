@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
 
     try {
         // Query database for user
-        const query = 'SELECT userID, username, password_hashed, approved FROM users WHERE username = ?';
+        const query = 'SELECT * FROM users WHERE username = ?';
         const [users] = await pool.query(query, [username]);
 
         // Check if user exists
@@ -31,9 +31,9 @@ exports.login = async (req, res) => {
 
         // Create JWT token
         const token = jwt.sign(
-            { userId: user.userID, username: user.username },
+            { userId: user.userID, username: user.username, is_admin: user.is_admin },
             process.env.JWT_SECRET || "1234", // Use environment variable or replace with your actual key
-            { expiresIn: '1h' }
+            { expiresIn: '5h' }
         );
 
         // Send token in response (no longer storing the token in the database)

@@ -6,6 +6,7 @@ const multer = require('multer');
 const movieRoutes = require('./routes/movie');
 const peopleRoutes = require('./routes/people');
 const adminRoutes = require('./routes/admin');
+const userRoutes = require('./routes/user');
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/admin',adminRoutes);
 app.use('/ntuaflix_api', movieRoutes);
 app.use('/ntuaflix_api', peopleRoutes);
+app.use('/ntuaflix_api', userRoutes);
 app.use('/ntuaflix_api', loginRoutes); 
 app.use('/ntuaflix_api', logoutRoutes);
 

@@ -172,7 +172,7 @@
 
         <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
 
-
+        <button id="adminButton" class="admin-btn">🏠</button>
         <button id="loginButton" class="login-btn">🔒</button>
     </header>
     <div id="movieDetailsContainer" class="movieInfo">
@@ -188,6 +188,7 @@
 
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 
     <script>
 
@@ -197,6 +198,25 @@
 
         let token = localStorage.getItem('token');
 
+        try {
+
+            var decoded = jwt_decode(token);
+            console.log(decoded);
+
+            let home_admin_button = document.getElementById('adminButton')
+
+            if (decoded.is_admin == 1) {
+                home_admin_button.style.display = 'block';
+
+                home_admin_button.addEventListener('click', function () {
+                    window.location.href = 'http://localhost:8228/adminpage';
+                });
+
+            }
+
+        } catch (error) {
+            console.log("Token verification failed:", error);
+        }
         if (token) {
             // User is logged in
             console.log('User is logged in');
