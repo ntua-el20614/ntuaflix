@@ -33,7 +33,7 @@ exports.login = async (req, res) => {
         const token = jwt.sign(
             { userId: user.userID, username: user.username, is_admin: user.is_admin },
             process.env.JWT_SECRET || "1234", // Use environment variable or replace with your actual key
-            { expiresIn: '30m' }
+            { expiresIn: '5h' }
         );
 
         // Send token in response (no longer storing the token in the database)
