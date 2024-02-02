@@ -46,6 +46,17 @@
             /* Full width for smaller screens */
         }
     }
+
+    .star {
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .star:hover,
+    .star:hover~.star {
+        color: yellow;
+        /* Color change on hover */
+    }
 </style>
 
 <body>
@@ -73,23 +84,23 @@
 
         try {
 
-var decoded = jwt_decode(token);
-console.log(decoded);
+            var decoded = jwt_decode(token);
+            console.log(decoded);
 
-let home_admin_button = document.getElementById('adminButton')
+            let home_admin_button = document.getElementById('adminButton')
 
-if (decoded.is_admin == 1) {
-  home_admin_button.style.display = 'block';
+            if (decoded.is_admin == 1) {
+                home_admin_button.style.display = 'block';
 
-  home_admin_button.addEventListener('click', function () {
-    window.location.href = 'http://localhost:8228/adminpage';
-  });
+                home_admin_button.addEventListener('click', function () {
+                    window.location.href = 'http://localhost:8228/adminpage';
+                });
 
-}
+            }
 
-} catch (error) {
-console.log("Token verification failed:", error);
-}
+        } catch (error) {
+            console.log("Token verification failed:", error);
+        }
 
         if (token) {
             // User is logged in
@@ -225,16 +236,27 @@ console.log("Token verification failed:", error);
                         <div class="movie-info-section">
                         <h1>${movieData.originalTitle}</h1>
                         <p>Year: ${movieData.startYear}</p>`
-                if (movieData.rating && movieData.rating.avRating != null && movieData.rating.avRating !== "\\N") {
-                    htmlContent += `<p>Rating: ${movieData.rating.avRating} (${movieData.rating.nVotes})</p>`;
 
-                }
 
                 // Add genres if available
                 if (movieData.genres && movieData.genres[0].genreTitle !== "\\N") {
                     htmlContent += `<p>Genres: ${movieData.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
                 }
 
+                // Add rating if available
+                if (movieData.rating && movieData.rating.avRating != null && movieData.rating.avRating !== "\\N") {
+                    htmlContent += `<p id="ratingDisplay">Rating: ${movieData.rating.avRating} (${movieData.rating.nVotes})</p>`;
+
+
+                    if (token) {
+                        // Add rating stars
+                        htmlContent += `<div class="rating-container">Rate this movie: `;
+                        for (let i = 1; i <= 10; i++) {
+                            htmlContent += `<span class="star" data-rating="${i}">&#9734;</span>`; // Unicode star outline
+                        }
+                        htmlContent += `</div>`;
+                    }
+                }
 
 
 
@@ -369,8 +391,113 @@ console.log("Token verification failed:", error);
                     return Object.values(combinedCrew);
                 }
 
+                if (token) {
+                    document.querySelectorAll('.star').forEach(star => {
+                        star.addEventListener('click', function () {
+                            const rating = this.getAttribute('data-rating');
+                            console.log(`Rating: ${rating} stars`);
+                            submitUserRating(decoded.userId, movieData.titleID, rating);//TO DO
+                            fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+
+                        });
+
+                        star.addEventListener('mouseover', function () {
+                            const rating = this.getAttribute('data-rating');
+                            highlightStars(rating);
+                        });
+                    });
 
 
+                    function updateStars(rating) {
+                        document.querySelectorAll('.star').forEach((star, index) => {
+                            if (index < rating) {
+                                star.innerHTML = '&#9733;'; // Filled star
+                                star.style.color = 'yellow'; // Fill color
+                            } else {
+                                star.innerHTML = '&#9734;'; // Empty star
+                                star.style.color = 'black'; // Default color
+                            }
+                        });
+                    }
+
+                    function highlightStars(rating) {
+                        document.querySelectorAll('.star').forEach((star, index) => {
+                            if (index < rating) {
+                                star.style.color = 'yellow';
+                            } else {
+                                star.style.color = 'black';
+                            }
+                        });
+                    }
+
+                    // Reset stars to default color when not hovering
+                    document.querySelector('.rating-container').addEventListener('mouseleave', function () {
+
+                        fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+                    });
+
+
+                }
+                async function fetchAndDisplayUserRating(userid, tconst) {
+                    try {
+                        // Replace `userid` and `tconst` in the URL with actual values
+                        const response = await fetch(`http://localhost:7117/ntuaflix_api/check_rating/${userid}/${tconst}`);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        const ratings = await response.json();
+
+                        if (ratings[0] != null) {
+                            const userRating = ratings[0].rating;
+                            console.log(`Existing rating: ${userRating}`);
+                            updateStars(userRating);
+                        }
+                    } catch (error) {
+                        console.error('Error fetching existing rating:', error);
+                    }
+                }
+
+                function submitUserRating(userId, titleId, newRating) {
+
+                    const isExistingRating = false;//TO DO
+                    const previousRating = false;//TO DO
+
+                    fetch(`http://localhost:7117/ntuaflix_api/update_rating/${userId}/${titleId}/${newRating}`, {
+                        method: 'POST', // Assuming GET is correct based on the URL pattern, change if it's actually POST or another method
+                        headers: {
+                            'Content-Type': 'application/json',
+
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message === "Rating updated successfully") {
+                                console.log(data.message);
+                                // Recalculate and update the displayed average rating and vote count
+                                let currentAverage = parseFloat(movieData.rating.avRating);
+                                let currentVotes = parseInt(movieData.rating.nVotes);
+                                let updatedAverage;
+                                if (isExistingRating) {
+                                    // Adjust the average to account for the updated rating
+                                    updatedAverage = ((currentAverage * currentVotes) - previousRating + newRating) / currentVotes;
+                                } else {
+                                    // Adjust the average to account for the new rating
+                                    updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes + 1);
+                                    currentVotes++; // Increase the vote count by 1 for a new rating
+                                }
+                            }
+                            document.querySelector("#ratingDisplay").textContent = `Rating: ${updatedAverage.toFixed(1)} (${currentVotes})`;
+                            fetchAndDisplayUserRating(userId, titleId); // Optionally refresh stars
+
+                        })
+                        .catch(error => {
+                            console.error('Error updating rating:', error);
+                        });
+                }
+
+                if (token) {
+                    fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+                }
                 // Add cast if available
                 let flag = true;
                 if (movieData.principals && movieData.principals.length > 0) {
