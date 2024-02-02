@@ -83,17 +83,14 @@ CREATE TABLE title_akas (
     FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
 
-CREATE TABLE watchlist (
+CREATE TABLE user_rate (
     userID INT,
     tconst VARCHAR(255),
-    watched BOOLEAN,
+    rating INT,
     PRIMARY KEY (userID, tconst),
     FOREIGN KEY (userID) REFERENCES users(userID),
     FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
-
-
-
 
 
 INSERT INTO users (is_admin, username, approved, password_hashed) VALUES ('1','chris','1' ,'$2a$10$I9S7q0kgwDed6r8vhi.X4eWFjQYwLkEvnHcHmyNHL.7WlXVoHBGWy');

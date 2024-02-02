@@ -84,15 +84,17 @@ CREATE TABLE title_akas (
     FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
 
-CREATE TABLE watchlist (
+CREATE TABLE user_rate (
     userID INT,
     tconst VARCHAR(255),
-    watched BOOLEAN,
+    rating INT,
     PRIMARY KEY (userID, tconst),
     FOREIGN KEY (userID) REFERENCES users(userID),
     FOREIGN KEY (tconst) REFERENCES Titles(tconst)
 );
 
+
+INSERT INTO users (is_admin, username, approved, password_hashed) VALUES ('1','chris','1' ,'$2a$10$I9S7q0kgwDed6r8vhi.X4eWFjQYwLkEvnHcHmyNHL.7WlXVoHBGWy');
 
 
 INSERT INTO people (nconst, primaryName, birthYear, deathYear, primaryProfession, knownForTitles, img_url_asset) VALUES ('nm0000019', 'Federico Fellini', '1920', '1993', 'writer,director,actor', 'tt0071129,tt0047528,tt0050783,tt0056801', 'https://image.tmdb.org/t/p/{width_variable}/jH2VnHAuI0UbTWsnrjMPro0fC9j.jpg');
