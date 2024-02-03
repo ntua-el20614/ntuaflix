@@ -66,13 +66,13 @@ exports.update_rating = async (req, res, next) => {
 
                 newAverage = (((averageRate * numVotes) - existingRating[0].rating + rating) / numVotes);
                 newNumVotes = numVotes; // Keep numVotes unchanged
-                newAverage = parseFloat(newAverage.toFixed(2));
+                newAverage = parseFloat(newAverage.toFixed(1));
 
             } else {
                 // This is a new rating, increment numVotes
                 newNumVotes = numVotes + 1;
                 newAverage = ((averageRate * numVotes) + rating) / newNumVotes;
-                newAverage = parseFloat(newAverage.toFixed(2));
+                newAverage = parseFloat(newAverage.toFixed(1));
 
 
             }
