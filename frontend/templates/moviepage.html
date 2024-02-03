@@ -432,11 +432,14 @@
                     }
 
                     // Reset stars to default color when not hovering
+                    try{
                     document.querySelector('.rating-container').addEventListener('mouseleave', function () {
 
                         fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
                     });
-
+                }catch(error){
+                    console.log(error)
+                }
 
                 }
                 async function fetchAndDisplayUserRating(userid, tconst) {
@@ -560,8 +563,7 @@
                             castListDiv.appendChild(personDiv);
                         }
                     }
-                }
-
+                } 
                 // Add crew if available
                 let crewData = await fetchCrewDetails(movieData.titleID);
                 crewData = crewData[0].result;
