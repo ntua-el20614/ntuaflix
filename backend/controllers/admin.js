@@ -435,6 +435,48 @@ exports.getTest = async (req, res, next) => {
     }
 }
 
+
+exports.getUsers = async (req, res, next) => {
+
+    const query = `SELECT * FROM users;`;
+
+    try {
+        const [results] = await pool.query(query);
+        res.status(200).json(results);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
+}
+
+exports.approveUser = async (req, res, next) => {
+    const userid = req.params.userID;
+    const query = `UPDATE users SET approved = '1' WHERE userID = '${userid}';`;
+
+    try {
+        const [results] = await pool.query(query);
+        res.status(200).json(results);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
+}
+
+exports.deleteUser = async (req, res, next) => {
+    const userid = req.params.userID;
+
+    try {
+        // Execute the first delete operation
+        await pool.query('DELETE FROM user_rate WHERE userID = ?', [userid]);
+
+        // Execute the second delete operation
+        const [results] = await pool.query('DELETE FROM users WHERE userID = ?', [userid]);
+
+        res.status(200).json(results);
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
+};
+
 exports.getNewMovie = async (req, res, next) => {
 
     const tconst = req.params.tconst;

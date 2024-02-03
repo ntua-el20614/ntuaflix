@@ -25,7 +25,6 @@ router.post('/resetall', upload.fields([{ name: 'secretKey', maxCount: 1 }, { na
 router.post('/backup', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.bringGivenData);
 router.post('/moredata', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.bringMoreData);
 
-//router.post('/upload/', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.upload);
 
 //10-11
 router.post('/usermod/:username/:password', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.chUser);
@@ -33,5 +32,11 @@ router.post('/users/:username', upload.fields([{ name: 'secretKey', maxCount: 1 
 
 //more
 router.post('/test', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'data', maxCount: 1 }]), authorize, adminController.getTest);
-router.post('/new_movie/:tconst',upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getNewMovie);
+router.post('/all_users', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getUsers)
+router.post('/approve/:userID', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.approveUser)
+router.post('/delete/:userID', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.deleteUser)
+
+
+
+router.post('/new_movie/:tconst', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getNewMovie);
 module.exports = router;

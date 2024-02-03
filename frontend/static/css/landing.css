@@ -359,6 +359,7 @@ form:valid a {
     display: flex;
     overflow-x: auto;
     margin: 20px;
+    margin-bottom: 75px;
     background-color: #235b5338;
     /* Remove this as it's overridden by display: flex */
 
