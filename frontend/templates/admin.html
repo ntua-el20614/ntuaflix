@@ -77,31 +77,33 @@
     }
 
     .progress-bar {
-  width: 100%;
-  background-color: #e0e0e0;
-  border-radius: 8px; /* Adjusted for the padding */
-  margin: 10px 0;
-  border: 2px solid black;
-  position: relative;
-  padding: 3px; /* Added padding */
-}
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 8px;
+      /* Adjusted for the padding */
+      margin: 10px 0;
+      border: 2px solid black;
+      position: relative;
+      padding: 3px;
+      /* Added padding */
+    }
 
-.progress-bar-fill {
-  height: 20px;
-  background-color: green;
-  width: 0%;
-  border-radius: 5px; /* Adjust to fit inside the padded container */
-  transition: width 0.4s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-}
+    .progress-bar-fill {
+      height: 20px;
+      background-color: green;
+      width: 0%;
+      border-radius: 5px;
+      /* Adjust to fit inside the padded container */
+      transition: width 0.4s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
 
 
-    .center
-    {
+    .center {
       text-align: center;
     }
   </style>
@@ -114,354 +116,362 @@
 
 
 
-    
+
   </header>
   <h1 class="center">Admin Home</h1>
   <h2 class="center">Adding Movies/TvSeries with files</h1>
 
-  <div class="admin-container">
+    <div class="admin-container">
 
-    <!-- Upload Title Basics -->
-    <div class="upload-section">
-      <h2>Upload Title Basics</h2>
-      <div id="title-basics-drop-zone" class="drop-zone">
-        Drag and drop a file here or click to select a file
+      <!-- Upload Title Basics -->
+      <div class="upload-section">
+        <h2>Upload Title Basics</h2>
+        <div id="title-basics-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
+          class="upload-button">Upload
+          Title Basics</button>
       </div>
-      <button onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
-        class="upload-button">Upload
-        Title Basics</button>
-    </div>
 
-    <!-- Upload Name Basics -->
-    <div class="upload-section">
-      <h2>Upload Name Basics</h2>
-      <div id="name-basics-drop-zone" class="drop-zone">
-        Drag and drop a file here or click to select a file
+      <!-- Upload Name Basics -->
+      <div class="upload-section">
+        <h2>Upload Name Basics</h2>
+        <div id="name-basics-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
+          class="upload-button">Upload Name
+          Basics</button>
       </div>
-      <button onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
-        class="upload-button">Upload Name
-        Basics</button>
-    </div>
 
-    <!-- Upload Title Akas -->
-    <div class="upload-section">
-      <h2>Upload Title Akas</h2>
-      <div id="title-akas-drop-zone" class="drop-zone">
-        Drag and drop a file here or click to select a file
+      <!-- Upload Title Akas -->
+      <div class="upload-section">
+        <h2>Upload Title Akas</h2>
+        <div id="title-akas-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
+          class="upload-button">Upload
+          Title Akas</button>
       </div>
-      <button onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
-        class="upload-button">Upload
-        Title Akas</button>
-    </div>
 
-    <!-- Upload Title Crew -->
-    <div class="upload-section">
-      <h2>Upload Title Crew</h2>
-      <div id="title-crew-drop-zone" class="drop-zone">
-        Drag and drop a file here or click to select a file
+      <!-- Upload Title Crew -->
+      <div class="upload-section">
+        <h2>Upload Title Crew</h2>
+        <div id="title-crew-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
+          class="upload-button">Upload
+          Title Crew</button>
       </div>
-      <button onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
-        class="upload-button">Upload
-        Title Crew</button>
-    </div>
 
-    <!-- Upload Title Episode -->
-    <div class="upload-section">
-      <h2>Upload Title Episode</h2>
-      <div id="title-episode-drop-zone" class="drop-zone">
-        Drag and drop a file here or click to select a file
+      <!-- Upload Title Episode -->
+      <div class="upload-section">
+        <h2>Upload Title Episode</h2>
+        <div id="title-episode-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
+          class="upload-button">Upload
+          Title Episode</button>
       </div>
-      <button onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
-        class="upload-button">Upload
-        Title Episode</button>
-    </div>
 
-    <!-- Upload Title Principals -->
-    <div class="upload-section">
-      <h2>Upload Title Principals</h2>
-      <div id="title-principals-drop-zone" class="drop-zone">
-        Drag and drop a file here or click to select a file
+      <!-- Upload Title Principals -->
+      <div class="upload-section">
+        <h2>Upload Title Principals</h2>
+        <div id="title-principals-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('title-principals-drop-zone', 'http://localhost:7117/admin/upload/titleprincipals')"
+          class="upload-button">Upload
+          Title Principals</button>
       </div>
-      <button
-        onclick="uploadSingleFile('title-principals-drop-zone', 'http://localhost:7117/admin/upload/titleprincipals')"
-        class="upload-button">Upload
-        Title Principals</button>
-    </div>
 
-    <!-- Upload Title Ratings -->
-    <div class="upload-section">
-      <h2>Upload Title Ratings</h2>
-      <div id="title-ratings-drop-zone" class="drop-zone">
-        Drag and drop a file here or click to select a file
+      <!-- Upload Title Ratings -->
+      <div class="upload-section">
+        <h2>Upload Title Ratings</h2>
+        <div id="title-ratings-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
+          class="upload-button">Upload
+          Title Ratings</button>
       </div>
-      <button onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
-        class="upload-button">Upload
-        Title Ratings</button>
-    </div> 
 
-  </div>
-
-  <h2 class="center">
-    Data Managment
-  </h2>
-  <!-- Buttons for Reset and Backup -->
-  <div class="button-container" style="text-align: center; width: 300px; margin-top: 20px;">
-    <div class="progress-bar" id="resetProgressBar">
-      <div class="progress-bar-fill" id="resetProgressBarFill"></div>
-      <button onclick="resetAllData()" class="upload-button">Reset All Data</button>
     </div>
 
-    <div class="progress-bar" id="progressBar">
-      <div class="progress-bar-fill" id="progressBarFill"></div>
-      <button onclick="backupData()" class="upload-button">Backup Data</button>
+    <h2 class="center">
+      Data Managment
+    </h2>
+    <!-- Buttons for Reset and Backup -->
+    <div class="button-container" style="text-align: center; width: 300px; margin-top: 20px;">
+      <div class="progress-bar" id="resetProgressBar">
+        <div class="progress-bar-fill" id="resetProgressBarFill"></div>
+        <button onclick="resetAllData()" class="upload-button">Reset All Data</button>
+      </div>
+
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+        <button onclick="backupData()" class="upload-button">Backup Data</button>
+      </div>
     </div>
-  </div>
 
 
-  <script>
+    <script>
 
 
-    document.getElementById('logoImage').addEventListener('click', function () {
-      window.location.href = 'http://localhost:8228/';
-    });
- 
-    // Setup for each drop zone
-    document.querySelectorAll('.drop-zone').forEach(dropZone => {
-      dropZone.addEventListener('click', () => {
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = '.tsv';
-        fileInput.onchange = () => {
-          dropZone.file = fileInput.files[0];
-          dropZone.textContent = fileInput.files[0].name;
-        };
-        fileInput.click();
+      document.getElementById('logoImage').addEventListener('click', function () {
+        window.location.href = 'http://localhost:8228/';
       });
 
-      dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('dragover');
+      // Setup for each drop zone
+      document.querySelectorAll('.drop-zone').forEach(dropZone => {
+        dropZone.addEventListener('click', () => {
+          const fileInput = document.createElement('input');
+          fileInput.type = 'file';
+          fileInput.accept = '.tsv';
+          fileInput.onchange = () => {
+            dropZone.file = fileInput.files[0];
+            dropZone.textContent = fileInput.files[0].name;
+          };
+          fileInput.click();
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+          dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('dragover');
+          dropZone.file = e.dataTransfer.files[0];
+          dropZone.textContent = e.dataTransfer.files[0].name;
+        });
       });
 
-      dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('dragover');
-      });
+      function uploadFile(file, endpoint) {
+        return new Promise((resolve, reject) => {
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('secretKey', '3141592653589793236264');
+          formData.append('is_user_admin', 'true');
 
-      dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-        dropZone.file = e.dataTransfer.files[0];
-        dropZone.textContent = e.dataTransfer.files[0].name;
-      });
-    });
-
-    function uploadFile(file, endpoint) {
-      return new Promise((resolve, reject) => {
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
-
-        fetch(endpoint, {
-          method: 'POST',
-          body: formData
-        })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then(data => {
-            resolve(data.message);
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
-    }
-
-
-    function uploadSingleFile(dropZoneId, endpoint) {
-      const dropZone = document.getElementById(dropZoneId);
-      if (dropZone && dropZone.file) {
-        const file = dropZone.file;
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
-
-        fetch(endpoint, {
-          method: 'POST',
-          body: formData
-        })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then(data => {
-            alert(data.message);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Upload failed');
-          });
-      } else {
-        alert('Please select a file to upload.');
-      }
-    }
- 
-    function resetAllData() {
-  const xhr = new XMLHttpRequest();
-  const formData = new FormData();
-  formData.append('secretKey', '3141592653589793236264');
-  formData.append('is_user_admin', 'true');
-
-  xhr.open('POST', 'http://localhost:7117/admin/resetall', true);
-
-  // Start progress bar
-  let progress = 0;
-  const resetProgressBarFill = document.getElementById('resetProgressBarFill');
-  const interval = setInterval(() => {
-    progress += 5; // Increment to complete in 1 second
-    if (progress > 100) {
-      progress = 100; // Cap progress at 100%
-      clearInterval(interval);
-      resetProgressBarFill.style.width = '100%';
-      resetProgressBarFill.textContent = '100%'; // Set text to 100%
-      
-      alert("Database reset successfully"); // Show alert when progress reaches 100%
-
-      // Start a new interval to reduce progress bar back to 0%
-      const decreaseInterval = setInterval(() => {
-        progress -= 10; // Decrement progress
-        if (progress <= 0) {
-          clearInterval(decreaseInterval);
-          resetProgressBarFill.style.width = '0%';
-          resetProgressBarFill.textContent = ''; // Clear text
-        } else {
-          resetProgressBarFill.style.width = progress + '%';
-          resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
-        }
-      }, 50);
-    }
-    resetProgressBarFill.style.width = progress + '%';
-    resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
-  }, 300); // Update every 10 milliseconds to complete in 1 second
-
-  xhr.onload = function () {
-    if (xhr.status !== 200) {
-      alert('Reset failed');
-    }
-  };
-
-  xhr.onerror = function () {
-    clearInterval(interval);
-    console.error('Error:', xhr.statusText);
-    alert('Reset failed');
-  };
-
-  xhr.send(formData);
-}
-
-
-let token = localStorage.getItem('token');
-
-
-if (token) {
-    // User is logged in
-    console.log('User is logged in');
-    loginButton.textContent = '🔓'; // Replace with the open lock emoji
-
-    document.getElementById('loginButton').addEventListener('click', function () {
-        console.log('Logging out...');
-
-        fetch('http://localhost:7117/ntuaflix_api/logout', {
+          fetch(endpoint, {
             method: 'POST',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
-            },
-        })
+            body: formData
+          })
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Logout failed with status: ' + response.status);
-                }
-                return response.json();
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
             })
             .then(data => {
-                if (data.message === "Logout successful") {
-                    localStorage.removeItem('token');
-                    location.reload();
-                } else {
-                    alert(data.message || 'Logout failed');
-                }
+              resolve(data.message);
             })
             .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred during logout');
+              reject(error);
             });
-    });
+        });
+      }
 
-} else { 
-         window.location.href = 'http://localhost:8228/login';
- }
 
-function backupData() {
-  const xhr = new XMLHttpRequest();
-  const formData = new FormData();
-  formData.append('secretKey', '3141592653589793236264');
-  formData.append('is_user_admin', 'true');
+      function uploadSingleFile(dropZoneId, endpoint) {
+        const dropZone = document.getElementById(dropZoneId);
+        if (dropZone && dropZone.file) {
+          const file = dropZone.file;
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('secretKey', '3141592653589793236264');
+          formData.append('is_user_admin', 'true');
 
-  xhr.open('POST', 'http://localhost:7117/admin/backup', true);
-
-  // Start manual interval for progress bar
-  let progress = 0;
-  const progressBarFill = document.getElementById('progressBarFill');
-  const interval = setInterval(() => {
-    progress += 0.35; // Increment progress
-    if (progress > 100) {
-      progress = 100; // Cap progress
-      clearInterval(interval);
-      progressBarFill.style.width = '100%';
-      progressBarFill.textContent = '100%'; // Set text to 100%
-      
-      alert("Database backup completed successfully"); // Show alert when progress reaches 100%
-
-      // Start a new interval to reduce progress bar back to 0%
-      const decreaseInterval = setInterval(() => {
-        progress -= 5; // Decrement progress
-        if (progress <= 0) {
-          clearInterval(decreaseInterval);
-          progressBarFill.style.width = '0%';
-          progressBarFill.textContent = ''; // Clear text
+          fetch(endpoint, {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              alert(data.message);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Upload failed');
+            });
         } else {
+          alert('Please select a file to upload.');
+        }
+      }
+
+      function resetAllData() {
+        const xhr = new XMLHttpRequest();
+        const formData = new FormData();
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+
+        xhr.open('POST', 'http://localhost:7117/admin/resetall', true);
+
+        // Start progress bar
+        let progress = 0;
+        const resetProgressBarFill = document.getElementById('resetProgressBarFill');
+        const interval = setInterval(() => {
+          progress += 5; // Increment to complete in 1 second
+          if (progress > 100) {
+            progress = 100; // Cap progress at 100%
+            clearInterval(interval);
+            resetProgressBarFill.style.width = '100%';
+            resetProgressBarFill.textContent = '100%'; // Set text to 100%
+
+            alert("Database reset successfully"); // Show alert when progress reaches 100%
+
+            // Start a new interval to reduce progress bar back to 0%
+            const decreaseInterval = setInterval(() => {
+              progress -= 10; // Decrement progress
+              if (progress <= 0) {
+                clearInterval(decreaseInterval);
+                resetProgressBarFill.style.width = '0%';
+                resetProgressBarFill.textContent = ''; // Clear text
+              } else {
+                resetProgressBarFill.style.width = progress + '%';
+                resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+              }
+            }, 50);
+          }
+          resetProgressBarFill.style.width = progress + '%';
+          resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+        }, 300); // Update every 10 milliseconds to complete in 1 second
+
+        xhr.onload = function () {
+          if (xhr.status !== 200) {
+            alert('Reset failed');
+          }
+        };
+
+        xhr.onerror = function () {
+          clearInterval(interval);
+          console.error('Error:', xhr.statusText);
+          alert('Reset failed');
+        };
+
+        xhr.send(formData);
+      }
+
+
+      let token = localStorage.getItem('token');
+
+
+      if (token) {
+        // User is logged in
+        console.log('User is logged in');
+        loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+        document.getElementById('loginButton').addEventListener('click', function () {
+          console.log('Logging out...');
+
+          fetch('http://localhost:7117/ntuaflix_api/logout', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+            },
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Logout failed with status: ' + response.status);
+              }
+              return response.json();
+            })
+            .then(data => {
+              if (data.message === "Logout successful") {
+                localStorage.removeItem('token');
+                location.reload();
+              } else {
+                alert(data.message || 'Logout failed');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+
+              localStorage.removeItem('token');
+              window.location.href = 'http://localhost:8228/login';
+            });
+        });
+
+      } else {
+        window.location.href = 'http://localhost:8228/login';
+      }
+
+      function backupData() {
+        const xhr = new XMLHttpRequest();
+        const formData = new FormData();
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+
+        xhr.open('POST', 'http://localhost:7117/admin/backup', true);
+
+        // Start manual interval for progress bar
+        let progress = 0;
+        const progressBarFill = document.getElementById('progressBarFill');
+        const interval = setInterval(() => {
+          progress += 0.35; // Increment progress
+          if (progress > 100) {
+            progress = 100; // Cap progress
+            clearInterval(interval);
+            progressBarFill.style.width = '100%';
+            progressBarFill.textContent = '100%'; // Set text to 100%
+
+            alert("Database backup completed successfully"); // Show alert when progress reaches 100%
+
+            // Start a new interval to reduce progress bar back to 0%
+            const decreaseInterval = setInterval(() => {
+              progress -= 5; // Decrement progress
+              if (progress <= 0) {
+                clearInterval(decreaseInterval);
+                progressBarFill.style.width = '0%';
+                progressBarFill.textContent = ''; // Clear text
+              } else {
+                progressBarFill.style.width = progress + '%';
+                progressBarFill.textContent = Math.round(progress) + '%'; // Update text
+              }
+            }, 30);
+          }
           progressBarFill.style.width = progress + '%';
           progressBarFill.textContent = Math.round(progress) + '%'; // Update text
-        }
-      }, 30);
-    }
-    progressBarFill.style.width = progress + '%';
-    progressBarFill.textContent = Math.round(progress) + '%'; // Update text
-  }, 125);
+        }, 125);
 
-  xhr.onload = function () {
-    if (xhr.status !== 200) {
-      alert('Backup failed');
-    }
-  };
+        xhr.onload = function () {
+          if (xhr.status !== 200) {
+            alert('Backup failed');
+          }
+        };
 
-  xhr.onerror = function () {
-    clearInterval(interval);
-    console.error('Error:', xhr.statusText);
-    alert('Backup failed');
-  };
+        xhr.onerror = function () {
+          clearInterval(interval);
+          console.error('Error:', xhr.statusText);
+          alert('Backup failed');
+        };
 
-  xhr.send(formData);
-}
+        xhr.send(formData);
+      }
 
-  </script>
+    </script>
 
 </body>
 

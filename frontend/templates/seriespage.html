@@ -247,7 +247,8 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        alert('An error occurred during logout');
+
+                        localStorage.removeItem('token')
                     });
             });
 

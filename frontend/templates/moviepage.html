@@ -132,7 +132,8 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        alert('An error occurred during logout');
+
+                        localStorage.removeItem('token')
                     });
             });
 
@@ -460,7 +461,7 @@
                 }
                 let isExistingRating = false;   // Default value
                 let previousRating = 0; // Default value
-                let updatedAverage=null;
+                let updatedAverage = null;
 
                 function submitUserRating(userId, titleId, newRating) {
 
@@ -482,22 +483,22 @@
                                 let currentAverage = parseFloat(updatedAverage || movieData.rating.avRating);
                                 let currentVotes = parseInt(movieData.rating.nVotes);
                                 newRating = parseInt(newRating, 10);
-                                console.log(currentAverage*currentVotes," here")
+                                console.log(currentAverage * currentVotes, " here")
                                 if (isExistingRating) {
 
                                     // Adjust the average to account for the updated rating
                                     updatedAverage = ((currentAverage * currentVotes) - previousRating + newRating) / currentVotes;
                                     console.log(currentAverage * currentVotes, previousRating, newRating, currentVotes)
                                 } else {
-                                    console.log(currentAverage*currentVotes," here2")
+                                    console.log(currentAverage * currentVotes, " here2")
 
                                     // Adjust the average to account for the new rating
-                                    updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes+1);
+                                    updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes + 1);
                                     currentVotes++; // Increase the vote count by 1 for a new rating
 
                                     console.log(currentAverage * currentVotes, newRating, currentVotes)
                                 }
-                                
+
                                 document.querySelector("#ratingDisplay").textContent = `Rating: ${updatedAverage.toFixed(1)} (${currentVotes})`;
                             }
                             fetchAndDisplayUserRating(userId, titleId); // Optionally refresh stars
