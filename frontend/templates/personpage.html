@@ -98,12 +98,12 @@
 
         if (token) {
             // User is logged in
-            console.log('User is logged in');
+
             loginButton.textContent = '🔓'; // Replace with the open lock emoji
 
             document.getElementById('loginButton').addEventListener('click', function () {
-                console.log('Logging out...');
 
+                
                 fetch('http://localhost:7117/ntuaflix_api/logout', {
                     method: 'POST',
                     headers: {
@@ -132,7 +132,7 @@
             });
 
         } else {
-            console.log('User is not logged in');
+
             loginButton.textContent = '🔒'; // Replace with the closed lock emoji
 
             document.getElementById('loginButton').addEventListener('click', function () {
@@ -168,7 +168,23 @@
                 });
         }
 
+        function fetchMoreMoviesDetails(nconst) {
 
+            return fetch(`http://localhost:7117/ntuaflix_api/other_movies/${nconst}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    return data;
+                })
+                .catch(error => {
+                    console.error('Error fetching movie details:', error);
+                    throw error;
+                });
+        }
         function fetchPersonData(personId) {
             fetch(`http://localhost:7117/ntuaflix_api/person/${personId}`)
                 .then(response => response.json())
@@ -193,12 +209,15 @@
             }
         }
 
-        function createPersonDiv(personInfo) {
+        function createPersonDiv(personInfo,flag) {
             const div = document.createElement('div');
             div.classList.add('cast-item');
+            if(flag=="T"){
+                div.style.backgroundColor = "#8C8967";
+            }
             if (personInfo === undefined) return div;
             div.setAttribute('id', personInfo.titleID);
-
+            div.setAttribute('type',personInfo.primaryName)
             // Check if image URL is available and not null
             if (personInfo.titlePoster && personInfo.titlePoster !== '\\N' && personInfo.titlePoster !== "") {
                 div.innerHTML += `<img src="${personInfo.titlePoster.replace('{width_variable}', 'w200')}" alt="${personInfo.originalTitle}">`;
@@ -219,7 +238,12 @@
 
             // Attach event listener
             div.addEventListener('click', (event) => {
+                if(event.currentTarget.getAttribute('type')=="movie" || event.currentTarget.getAttribute('type')=="short"){
                 redirectToMoviePage(event.currentTarget.getAttribute('id'));
+                }else{
+                    redirectToSeriesPage(event.currentTarget.getAttribute('id'));
+                }
+            
             });
 
             return div;
@@ -229,6 +253,10 @@
         function redirectToMoviePage(movieId) {
             window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
         }
+
+function redirectToSeriesPage(movieId) {
+    window.location.href = `http://localhost:8228/seriespage?seriesId=${movieId}`;
+}
         async function displayPersonInfo(personInfo) {
 
 
@@ -286,19 +314,32 @@
             let flag = true;
             let castContainer = undefined;
             let castListDiv;
-            if (personInfo.knownForTitles && personInfo.knownForTitles.length > 0) {
-                const titles = personInfo.knownForTitles.split(',');
+            const more_movies_details = await fetchMoreMoviesDetails(personInfo.nconst);
+            let more_movies = [];
+            for (const movie of more_movies_details) {
+                more_movies.push(movie.movieID)
+            }
 
+            if ((personInfo.knownForTitles && personInfo.knownForTitles.length > 0) || more_movies.length() > 0) {
+                let titles = personInfo.knownForTitles.split(',');
+                for (let i in [0,1,2,3]) {titles[i]=titles[i]+"T"}
+ 
+                for (const movie of more_movies) {
+                    if (!titles.includes(movie + "T")) 
+                    titles.push(movie+"F")}
                 // Loop through each title and fetch details
-                for (const title of titles) {
+                for (let title of titles) {
                     try {
+                        let flag_for_star = title.substr(title.length-1,title.length)
+                        title=title.substr(0,title.length-1)
+
                         const movieInfo = await fetchMovieDetails(title); // Await the async call
-                        const personDiv = createPersonDiv(movieInfo); // Use the resolved movieInfo
+                        const personDiv = createPersonDiv(movieInfo,flag_for_star); // Use the resolved movieInfo
                         if (personDiv.innerHTML !== "") {
                             if (flag) {
                                 castContainer = document.createElement('div');
                                 castContainer.classList.add('cast-container');
-                                castContainer.innerHTML = '<h3>Known For Titles:</h3><div class="cast-list"></div>';
+                                castContainer.innerHTML = '<h3 class="CrewTitle">Known For Titles:</h3><div class="cast-list"></div>';
 
                                 castListDiv = castContainer.querySelector('.cast-list');
                                 flag = false;
