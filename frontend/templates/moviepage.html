@@ -448,6 +448,8 @@
                         const ratings = await response.json();
 
                         if (ratings[0] != null) {
+                            isExistingRating = true;
+                            previousRating = ratings[0].rating;
                             const userRating = ratings[0].rating;
                             console.log(`Existing rating: ${userRating}`);
                             updateStars(userRating);
@@ -456,11 +458,14 @@
                         console.error('Error fetching existing rating:', error);
                     }
                 }
+                let isExistingRating = false;   // Default value
+                let previousRating = 0; // Default value
+                let updatedAverage=null;
 
                 function submitUserRating(userId, titleId, newRating) {
 
-                    const isExistingRating = false;//TO DO
-                    const previousRating = false;//TO DO
+                    //isExistingRating = true;//TO DO
+                    //previousRating = false;//TO DO
 
                     fetch(`http://localhost:7117/ntuaflix_api/update_rating/${userId}/${titleId}/${newRating}`, {
                         method: 'POST', // Assuming GET is correct based on the URL pattern, change if it's actually POST or another method
@@ -472,21 +477,29 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.message === "Rating updated successfully") {
-                                console.log(data.message);
+                                //console.log(data.message);
                                 // Recalculate and update the displayed average rating and vote count
-                                let currentAverage = parseFloat(movieData.rating.avRating);
+                                let currentAverage = parseFloat(updatedAverage || movieData.rating.avRating);
                                 let currentVotes = parseInt(movieData.rating.nVotes);
-                                let updatedAverage;
+                                newRating = parseInt(newRating, 10);
+                                console.log(currentAverage*currentVotes," here")
                                 if (isExistingRating) {
+
                                     // Adjust the average to account for the updated rating
                                     updatedAverage = ((currentAverage * currentVotes) - previousRating + newRating) / currentVotes;
+                                    console.log(currentAverage * currentVotes, previousRating, newRating, currentVotes)
                                 } else {
+                                    console.log(currentAverage*currentVotes," here2")
+
                                     // Adjust the average to account for the new rating
-                                    updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes + 1);
+                                    updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes+1);
                                     currentVotes++; // Increase the vote count by 1 for a new rating
+
+                                    console.log(currentAverage * currentVotes, newRating, currentVotes)
                                 }
+                                
+                                document.querySelector("#ratingDisplay").textContent = `Rating: ${updatedAverage.toFixed(1)} (${currentVotes})`;
                             }
-                            document.querySelector("#ratingDisplay").textContent = `Rating: ${updatedAverage.toFixed(1)} (${currentVotes})`;
                             fetchAndDisplayUserRating(userId, titleId); // Optionally refresh stars
 
                         })
