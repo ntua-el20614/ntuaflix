@@ -104,12 +104,12 @@
 
         if (token) {
             // User is logged in
-            console.log('User is logged in');
+
             loginButton.textContent = '🔓'; // Replace with the open lock emoji
 
             document.getElementById('loginButton').addEventListener('click', function () {
-                console.log('Logging out...');
 
+                
                 fetch('http://localhost:7117/ntuaflix_api/logout', {
                     method: 'POST',
                     headers: {
@@ -138,7 +138,7 @@
             });
 
         } else {
-            console.log('User is not logged in');
+
             loginButton.textContent = '🔒'; // Replace with the closed lock emoji
 
             document.getElementById('loginButton').addEventListener('click', function () {
@@ -330,7 +330,7 @@
 
                     // Attach event listener
                     div.addEventListener('click', (event) => {
-                        //console.log(event.currentTarget.getAttribute('id'));
+
                         redirectToPersonPage(event.currentTarget.getAttribute('id'));
                     });
 
@@ -365,7 +365,7 @@
 
                     // Attach event listener
                     div.addEventListener('click', (event) => {
-                        //console.log(event.currentTarget.getAttribute('id'));
+
                         redirectToPersonPage(event.currentTarget.getAttribute('id'));
                     });
 
@@ -396,7 +396,7 @@
                     document.querySelectorAll('.star').forEach(star => {
                         star.addEventListener('click', function () {
                             const rating = this.getAttribute('data-rating');
-                            console.log(`Rating: ${rating} stars`);
+
                             submitUserRating(decoded.userId, movieData.titleID, rating);//TO DO
                             fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
 
@@ -438,7 +438,7 @@
                         fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
                     });
                 }catch(error){
-                    console.log(error)
+
                 }
 
                 }
@@ -455,7 +455,7 @@
                             isExistingRating = true;
                             previousRating = ratings[0].rating;
                             const userRating = ratings[0].rating;
-                            console.log(`Existing rating: ${userRating}`);
+
                             updateStars(userRating);
                         }
                     } catch (error) {
@@ -481,25 +481,26 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.message === "Rating updated successfully") {
-                                //console.log(data.message);
+
                                 // Recalculate and update the displayed average rating and vote count
                                 let currentAverage = parseFloat(updatedAverage || movieData.rating.avRating);
                                 let currentVotes = parseInt(movieData.rating.nVotes);
                                 newRating = parseInt(newRating, 10);
-                                console.log(currentAverage * currentVotes, " here")
+
+
                                 if (isExistingRating) {
 
                                     // Adjust the average to account for the updated rating
                                     updatedAverage = ((currentAverage * currentVotes) - previousRating + newRating) / currentVotes;
-                                    console.log(currentAverage * currentVotes, previousRating, newRating, currentVotes)
-                                } else {
-                                    console.log(currentAverage * currentVotes, " here2")
 
+                                } else {
+
+                                    
                                     // Adjust the average to account for the new rating
                                     updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes + 1);
                                     currentVotes++; // Increase the vote count by 1 for a new rating
 
-                                    console.log(currentAverage * currentVotes, newRating, currentVotes)
+
                                 }
 
                                 document.querySelector("#ratingDisplay").textContent = `Rating: ${updatedAverage.toFixed(1)} (${currentVotes})`;
@@ -559,7 +560,7 @@
                             const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
                             if (characterInfo[0].category === 'writer' || characterInfo[0].category === 'director') continue;//tha tous valume sto crew
                             const personDiv = createPersonDiv(personInfo, principal, characterInfo);
-                            //console.log(personDiv);
+
                             castListDiv.appendChild(personDiv);
                         }
                     }
