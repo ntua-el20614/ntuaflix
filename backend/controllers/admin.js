@@ -389,28 +389,59 @@ exports.uploadTitleRatings = async (req, res, next) => {
     }
 }*/
 
-exports.chUser = async (req, res, next) => {
+exports.addUser = async (req, res, next) => {
     const username = req.params.username;
     const plainTextPassword = req.params.password; // This should be the plaintext password
-
+    let is_admin = req.params.admin;
+    if (is_admin==="false"){
+        is_admin='0'
+    }
+    else{
+        is_admin='1'
+    }
     // Generate a salt and hash the password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(plainTextPassword, salt);
 
     const query = `
-        INSERT INTO ntuaflix.users (username, password_hashed, approved)
-        VALUES (?, ?, ?)
-        ON DUPLICATE KEY UPDATE password_hashed = VALUES(password_hashed);
+        INSERT INTO ntuaflix.users (username, password_hashed, approved, is_admin)
+        VALUES (?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE 
+        password_hashed = VALUES(password_hashed),
+        is_admin = VALUES(is_admin);
     `;
 
+    
     try {
-        const [results] = await pool.query(query, [username, hashedPassword, 1]);
+        const [results] = await pool.query(query, [username, hashedPassword, 1, is_admin]);
         res.status(200).json({ message: 'Operation successful', data: results });
     } catch (err) {
         res.status(500).json({ message: 'Internal server error', error: err.message });
     }
 };
 
+
+
+exports.chUser = async (req, res, next) => {
+
+    again
+
+    const username = req.params.username;
+    const password = req.params.password; // Ensure this is hashed if needed
+
+    const query = `
+        INSERT INTO ntuaflix.users (username, password_hashed)
+        VALUES (?, ?) AS new_values
+        ON DUPLICATE KEY UPDATE password_hashed = new_values.password_hashed;
+         `;
+    try {
+        const [results] = await pool.query(query, [username, password]);
+        res.status(200).json({ message: 'Operation successful', new_password: `${password}`, data: results });
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error', error: err.message });
+    }
+
+}
 
 
 exports.getUser = async (req, res, next) => {

@@ -35,6 +35,7 @@ router.post('/test', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 
 router.post('/all_users', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.getUsers)
 router.post('/approve/:userID', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.approveUser)
 router.post('/delete/:userID', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.deleteUser)
+router.post('/add_user/:username/:password/:admin', upload.fields([{ name: 'secretKey', maxCount: 1 }, { name: 'is_user_admin', maxCount: 1 }]), authorize, adminController.addUser);
 
 
 
