@@ -217,7 +217,7 @@
             }
             if (personInfo === undefined) return div;
             div.setAttribute('id', personInfo.titleID);
-            div.setAttribute('type',personInfo.primaryName)
+            div.setAttribute('type',personInfo.type)
             // Check if image URL is available and not null
             if (personInfo.titlePoster && personInfo.titlePoster !== '\\N' && personInfo.titlePoster !== "") {
                 div.innerHTML += `<img src="${personInfo.titlePoster.replace('{width_variable}', 'w200')}" alt="${personInfo.originalTitle}">`;
@@ -238,6 +238,7 @@
 
             // Attach event listener
             div.addEventListener('click', (event) => {
+                alert(event.currentTarget.getAttribute('type'))
                 if(event.currentTarget.getAttribute('type')=="movie" || event.currentTarget.getAttribute('type')=="short"){
                 redirectToMoviePage(event.currentTarget.getAttribute('id'));
                 }else{
