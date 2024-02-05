@@ -8,7 +8,7 @@ width_variable="{width_variable}"
 # Updated function to get movie details (including backdrop photo) from TMDB using tconst
 def get_movie_details_from_tmdb(tconst, api_key):
     tmdb_search_url = f"https://api.themoviedb.org/3/find/{tconst}?api_key={api_key}&external_source=imdb_id"
-    #print(tmdb_search_url)
+
     response = requests.get(tmdb_search_url)
     if response.status_code == 200:
         data = response.json()
@@ -17,6 +17,7 @@ def get_movie_details_from_tmdb(tconst, api_key):
             backdrop_path = movie_details.get('poster_path')
             if backdrop_path:
                 backdrop_url = f"https://image.tmdb.org/t/p/{width_variable}{backdrop_path}"
+
                 return movie_details, backdrop_url
     return None, None
 
@@ -44,6 +45,8 @@ def search_in_imdb_files_with_photo(tconst, imdb_files_directory, backdrop_url, 
 
 
                 if 'title.principals.tsv' in input_file_path:
+                    headers = headers.strip() + '\timg_url_asset\n'
+                if 'title.basics.tsv' in input_file_path:
                     headers = headers.strip() + '\timg_url_asset\n'
 
                 outfile.write(headers)  # Write the header line to the output file
@@ -104,8 +107,11 @@ def search_nconsts_and_get_photos_updated(name_basics_file_path, nconsts_list, a
     line_count = 0  # Debugging: Count the number of lines processed
 
     with open(name_basics_file_path, 'r', encoding='utf-8') as infile, open(output_file_path, 'w', encoding='utf-8') as outfile:
-        headers = infile.readline()
 
+        headers = infile.readline().strip()  # Remove any trailing newline characters
+
+        # Add 'img_url_asset' as a new column to the headers, ensuring separation by tabs
+        headers = headers + '\timg_url_asset\n'
         outfile.write(headers)
         
         for line in infile:
