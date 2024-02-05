@@ -233,11 +233,11 @@
         }
         if (token) {
             // User is logged in
-            console.log('User is logged in');
+
             loginButton.textContent = '🔓'; // Replace with the open lock emoji
 
             document.getElementById('loginButton').addEventListener('click', function () {
-                console.log('Logging out...');
+
 
                 fetch('http://localhost:7117/ntuaflix_api/logout', {
                     method: 'POST',
@@ -267,7 +267,7 @@
             });
 
         } else {
-            console.log('User is not logged in');
+
             loginButton.textContent = '🔒'; // Replace with the closed lock emoji
 
             document.getElementById('loginButton').addEventListener('click', function () {
@@ -284,7 +284,7 @@
 
             // Function to fetch movie details
             function fetchMovieDetails(id) {
-                // Replace with the actual API endpoint or data fetching logic
+
                 fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
                     .then(response => response.json())
                     .then(data => displayMovieDetails(data[0]))
@@ -443,7 +443,7 @@
                 window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
             }
             async function displayMovieDetails(movieData) {
-
+                console.log(movieData)
                 const container = document.getElementById('movieDetailsContainer');
                 container.innerHTML = ''; // Clear existing content
 
