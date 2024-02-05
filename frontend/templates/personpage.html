@@ -238,7 +238,7 @@
 
             // Attach event listener
             div.addEventListener('click', (event) => {
-                alert(event.currentTarget.getAttribute('type'))
+
                 if(event.currentTarget.getAttribute('type')=="movie" || event.currentTarget.getAttribute('type')=="short"){
                 redirectToMoviePage(event.currentTarget.getAttribute('id'));
                 }else{
