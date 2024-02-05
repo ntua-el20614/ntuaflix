@@ -10,9 +10,9 @@ def upload_file(endpoint_url, file_path, secret_key, is_user_admin):
         data = {'secretKey': secret_key, 'is_user_admin': is_user_admin}
         response = requests.post(endpoint_url, files=files, data=data)
         if response.status_code == 200:
-            print(f"Successfully uploaded {file_path} to {endpoint_url}")
+            print("",end="")
         else:
-            print(f"Failed to upload {file_path}. Status code: {response.status_code}, Response: {response.text}")
+            print("",end="")
 
 def main(folder_path, secret_key, is_user_admin):
     # Map of file names to their corresponding upload endpoint URLs
@@ -31,17 +31,18 @@ def main(folder_path, secret_key, is_user_admin):
         if os.path.exists(file_path):
             upload_file(endpoint_url, file_path, secret_key, is_user_admin)
         else:
-            print(f"File not found: {file_path}")
+            print("",end="")
 
     try:
         shutil.rmtree(f"../sql/update/{folder_path}")
-        print(f"Successfully deleted the folder: {folder_path}")
+
     except Exception as e:
-        print(f"Error deleting the folder: {folder_path}. Exception: {str(e)}")
+        print("",end="")
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python upload_files.py <folder_path>")
+
         sys.exit(1)
 
     folder_path = sys.argv[1]

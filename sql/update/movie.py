@@ -24,12 +24,12 @@ def get_movie_details_from_tmdb(tconst, api_key):
 # Function to create a new directory for the tconst
 def create_directory_for_tconst(tconst):
     directory_name = os.path.join('../sql/update', tconst)
-    print(f"Attempting to create directory: {directory_name}")
+
     if not os.path.exists(directory_name):
         os.makedirs(directory_name)
-        print(f"Directory created: {directory_name}")
+
     else:
-        print(f"Directory already exists: {directory_name}")
+        print("",end="")
     return directory_name
 
 
@@ -56,7 +56,7 @@ def search_in_imdb_files_with_photo(tconst, imdb_files_directory, backdrop_url, 
                         if 'title.principals.tsv' in input_file_path:
                             line = line.strip() + '\t' + '\n'
                         if file.endswith("title.basics.tsv") and flag:
-                            print("Found movie:",columns[2])
+
                             movie_name = columns[2]
                             flag = False
                         outfile.write(line)
@@ -105,7 +105,7 @@ def search_nconsts_and_get_photos_updated(name_basics_file_path, nconsts_list, a
 
     with open(name_basics_file_path, 'r', encoding='utf-8') as infile, open(output_file_path, 'w', encoding='utf-8') as outfile:
         headers = infile.readline()
-        print(headers)
+
         outfile.write(headers)
         
         for line in infile:
@@ -140,7 +140,7 @@ def main():
         tconst = input("Enter the tconst: ")
     tconst_input = tconst
     # Rest of your script where you use the tconst
-    print(f"Processing movie with tconst {tconst}")
+
     
     output_directory = create_directory_for_tconst(tconst)
 
@@ -159,7 +159,7 @@ def main():
     nconsts_list = collect_nconsts_from_new_folder(output_directory)
     name_basics_file_path = os.path.join(imdb_files_directory, "name.basics.tsv")
     populate_name_basics_add(tconst, name_basics_file_path, nconsts_list, output_directory)
-    print("Collected nconsts:", len(nconsts_list))
+
 
     # Assuming nconsts_list is already populated as in the previous step
     search_nconsts_and_get_photos_updated(name_basics_file_path, nconsts_list, tmdb_api_key, output_directory)
@@ -171,7 +171,7 @@ def main():
         os.rename(output_directory, new_directory_name)
         print(f"Folder renamed to {movie_name}")
     ''' 
-    print(f"Processed IMDb files for movie with tconst ")
+
 
 
 if __name__ == "__main__":

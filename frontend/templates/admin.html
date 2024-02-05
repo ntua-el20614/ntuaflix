@@ -213,8 +213,7 @@
         <div id="title-basics-drop-zone" class="drop-zone">
           Drag and drop a file here or click to select a file
         </div>
-        <button
-          onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
+        <button onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
           class="upload-button">Upload
           Title Basics</button>
       </div>
@@ -225,8 +224,7 @@
         <div id="name-basics-drop-zone" class="drop-zone">
           Drag and drop a file here or click to select a file
         </div>
-        <button
-          onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
+        <button onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
           class="upload-button">Upload Name
           Basics</button>
       </div>
@@ -237,8 +235,7 @@
         <div id="title-akas-drop-zone" class="drop-zone">
           Drag and drop a file here or click to select a file
         </div>
-        <button
-          onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
+        <button onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
           class="upload-button">Upload
           Title Akas</button>
       </div>
@@ -249,8 +246,7 @@
         <div id="title-crew-drop-zone" class="drop-zone">
           Drag and drop a file here or click to select a file
         </div>
-        <button
-          onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
+        <button onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
           class="upload-button">Upload
           Title Crew</button>
       </div>
@@ -261,8 +257,7 @@
         <div id="title-episode-drop-zone" class="drop-zone">
           Drag and drop a file here or click to select a file
         </div>
-        <button
-          onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
+        <button onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
           class="upload-button">Upload
           Title Episode</button>
       </div>
@@ -285,8 +280,7 @@
         <div id="title-ratings-drop-zone" class="drop-zone">
           Drag and drop a file here or click to select a file
         </div>
-        <button
-          onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
+        <button onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
           class="upload-button">Upload
           Title Ratings</button>
       </div>
@@ -307,10 +301,26 @@
         </div>
       </div>
 
-      <div class="button-container" style="text-align: center; width: 300px; margin-top: 20px; display: inline-block;">
+      <div class="button-container"
+        style="text-align: center; width: 300px; margin-top: 20px; display: inline-block; margin-right: 50px;">
+
         <div class="progress-bar" id="progressBar">
           <div class="progress-bar-fill" id="progressBarFill"></div>
           <button onclick="backupData()" class="upload-button">Backup Data</button>
+        </div>
+      </div>
+
+      <div class="button-container"
+        style="text-align: center; width: 300px; margin-top: 20px; display: inline-block; margin-right: 50px;">
+        <div class="progress-bar" id="uploadNewMovie">
+          <div class="progress-bar-fill" id="uploadNewMovieFill"></div>
+
+          <input type="text" id="movieIdentifier" placeholder="Enter movie ID"
+            style="margin-top: 20px; width: 80%; padding: 10px;" />
+          <!-- Confirmation button -->
+          <button onclick="uploadMovie()" style="margin-top: 10px; padding: 10px 20px; cursor: pointer;">Upload
+            Movie</button>
+
         </div>
       </div>
 
@@ -828,6 +838,69 @@
           };
 
           xhr.send(formData);
+        }
+      }
+
+
+      function uploadMovie() {
+
+        var movieId = document.getElementById('movieIdentifier').value;
+        if (movieId) {
+          const isConfirmed = confirm('Are you sure you want to add this movie?');
+        if (isConfirmed) {
+          const xhr = new XMLHttpRequest();
+          const formData = new FormData();
+          formData.append('secretKey', '3141592653589793236264');
+          formData.append('is_user_admin', 'true');
+
+          xhr.open('POST', `http://localhost:7117/admin/new_movie/${movieId}`, true);
+
+          // Start progress bar
+          let progress = 0;
+          const resetProgressBarFill = document.getElementById('uploadNewMovieFill');
+          const interval = setInterval(() => {
+            progress += 0.235; // Increment to complete in 1 second
+            if (progress > 100) {
+              progress = 100; // Cap progress at 100%
+              clearInterval(interval);
+              resetProgressBarFill.style.width = '100%';
+              resetProgressBarFill.textContent = '100%'; // Set text to 100%
+
+              alert("Added movie successfully"); // Show alert when progress reaches 100%
+
+              // Start a new interval to reduce progress bar back to 0%
+              const decreaseInterval = setInterval(() => {
+                progress -= 10; // Decrement progress
+                if (progress <= 0) {
+                  clearInterval(decreaseInterval);
+                  resetProgressBarFill.style.width = '0%';
+                  resetProgressBarFill.textContent = ''; // Clear text
+                } else {
+                  resetProgressBarFill.style.width = progress + '%';
+                  resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+                }
+              }, 50);
+            }
+            resetProgressBarFill.style.width = progress + '%';
+            resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+          }, 600); // Update every 10 milliseconds to complete in 1 second
+
+          xhr.onload = function () {
+            if (xhr.status !== 200) {
+              alert('Adding movie failed');
+            }
+          };
+
+          xhr.onerror = function () {
+            clearInterval(interval);
+            console.error('Error:', xhr.statusText);
+            alert('Adding movie failed');
+          };
+
+          xhr.send(formData);
+        }
+        } else {
+          alert("Please enter a movie ID.");
         }
       }
     </script>
