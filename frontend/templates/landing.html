@@ -11,18 +11,17 @@
   <link rel="stylesheet" href="/static/css/landing.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
   <script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
-  <!-- wNumb JavaScript -->
+
   <script src="https://cdn.jsdelivr.net/npm/wnumb/wNumb.js"></script>
 
 </head>
 <style>
-
-  
-input{
+  input {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;;
+    width: 100%;
+    ;
     height: 42.5px;
     line-height: 30px;
     outline: 0;
@@ -31,7 +30,8 @@ input{
     font-size: 1em;
     border-radius: 20px;
     padding: 0 20px;
-}
+  }
+
   .img {
     margin-top: 20px;
   }
@@ -134,15 +134,96 @@ input{
   .login-btn:hover::after {
     display: block;
   }
+
+
+
+  /*fav-studio-section*/
+  .fav-studio-section {
+    margin: 20px auto 20px auto;
+  }
+
+  .fav-studio-section h3 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .fav-studio-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .fav-studio-box {
+    flex-basis: 25%;
+  }
+
+  .fav-studio-img {
+    width: 100%;
+    height: 150px;
+    margin-top: 30px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.5s;
+    border: 5px solid #4d5279;
+    background-color: #353a5e;
+  }
+
+  .pixar {
+    background-image: url(../static/media/pixar_brand.png);
+  }
+
+  .pixar:hover {
+    background-image: url(../static/media/pixar_brand.png), url(../static/media/pixar.gif);
+    transform: scale(1.05);
+    border: 5px solid var(--white);
+  }
+
+  .marvel {
+    background-image: url(../static/media/marvel_brand.png);
+  }
+
+  .marvel:hover {
+    background-image: url(../static/media/marvel_brand.png), url(../static/media/marvel.gif);
+    transform: scale(1.05);
+    border: 5px solid var(--white);
+  }
+
+  .disney {
+    background-image: url(../static/media/disney_brand.png);
+  }
+
+  .disney:hover {
+    background-image: url(../static/media/disney_brand.png), url(../static/media/disney.gif);
+    transform: scale(1.05);
+    border: 5px solid var(--white);
+  }
+
+  .category-btn.active {
+    color: #004fa3;
+    /* Example active color, adjust as needed */
+  }
+
+  .category-img {
+    border-radius: 25px;
+    margin: 10px;
+    width: 100px;
+    cursor: pointer;
+
+  }
 </style>
 
 <body>
   <div id="loadingScreen" class="loading-screen">
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="loading-logo">
   </div>
-  <header class="site-header">
+  <header class="landing-site-header">
 
-    <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="landing-logo" id="logoImage">
+
+    <img id="moviesButton" src="../static/movies.jpg" class="category-img" alt="Movies">
+    <img id="seriesButton" src="../static/series.jpg" class="category-img" alt="Series">
 
 
     <button id="adminButton" class="admin-btn">🏠</button>
@@ -151,16 +232,55 @@ input{
 
 
 
+
+
+  <section class="fav-studio-section">
+
+    <div class="fav-studio-container">
+      <div class="fav-studio-box">
+        <div class="fav-studio-img pixar">
+          <audio id="pixar" preload="auto">
+            <source src="../static/media/PIXAR opening theme.mp3">
+          </audio>
+        </div>
+
+      </div>
+      <div class="fav-studio-box">
+        <div class="fav-studio-img marvel">
+          <audio id="marvel" preload="auto">
+            <source src="../static/media/Marvel Opening Theme.mp3">
+          </audio>
+          <img class="brand-logo" href="">
+          <img class="brand-gif" href="">
+        </div>
+
+      </div>
+      <div class="fav-studio-box">
+        <div class=" disney fav-studio-img">
+          <audio id="disneyIntro" preload="auto">
+            <source src="../static/media/Disney Intro.mp3">
+          </audio>
+          <img class="brand-logo" href="">
+          <img class="brand-gif" href="">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <div class="container">
     <!-- Inside the Movies Section -->
     <div class="movies-section">
-
+      <!--
       <select id="category-select" onchange="updateCategory()" class="choices">
         <option value="all" id="option-all">All</option>
         <option value="movies" id="option-movies">Movies</option>
         <option value="tvshows" id="option-tvshows">TV Shows</option>
       </select>
-      <form action="" class="search-form" onsubmit="fetchAndDisplayMovies();">
+    -->
+      <form action="" class="search-form" onsubmit="fetchAndDisplayMovies();"
+        style="margin-top: 25px; margin-bottom: 25px;">
         <input type="search" required id="movie-search-input">
         <i class="fa fa-search"></i>
       </form>
@@ -197,7 +317,72 @@ input{
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
+
+  $(document).ready(function () {
+    // Select page elements
+    var pixarIntro = $("#pixar")[0];
+    var marvelIntro = $("#marvel")[0];
+    var disneyIntro = $("#disneyIntro")[0];
+
+    // Initially, audio playback is not allowed
+    var audioPlaybackAllowed = false;
+
+    // Function to unlock audio playback
+    function unlockAudioPlayback() {
+      if (!audioPlaybackAllowed) {
+        // Try playing and immediately pausing each audio to unlock them
+        [pixarIntro, marvelIntro, disneyIntro].forEach(audio => {
+          audio.play().then(() => audio.pause()).catch(error => console.error("Error unlocking audio:", error));
+        });
+
+        audioPlaybackAllowed = true;
+
+        // Clean up: Remove event listeners to prevent re-execution
+        ['click', 'touchstart', 'keydown'].forEach(event => {
+          document.removeEventListener(event, unlockAudioPlayback);
+        });
+
+
+      }
+    }
+
+
+    // Add event listeners for the first user interaction
+    document.addEventListener('click', unlockAudioPlayback, { once: false });
+    document.addEventListener('touchstart', unlockAudioPlayback, { once: false });
+    document.addEventListener('keydown', unlockAudioPlayback, { once: false });
+
+    // Play audio on hover if audio playback is allowed
+    function setupHoverEffects() {
+      $(".pixar").mouseenter(function () {
+
+        pixarIntro.volume = 1; // Sets volume to maximum
+
+        if (audioPlaybackAllowed) pixarIntro.play();
+      }).mouseout(function () {
+        pixarIntro.pause();
+      });
+
+      $(".marvel").mouseenter(function () {
+
+        if (audioPlaybackAllowed) marvelIntro.play();
+      }).mouseout(function () {
+        marvelIntro.pause();
+      });
+
+      $(".disney").mouseenter(function () {
+
+        if (audioPlaybackAllowed) disneyIntro.play();
+      }).mouseout(function () {
+        disneyIntro.pause();
+      });
+    }
+
+    setupHoverEffects();
+  });
 
 
   // Check if token exists in localStorage
@@ -239,7 +424,7 @@ input{
   }
   if (token) {
     // User is logged in
-    console.log('User is logged in');
+
 
 
 
@@ -247,7 +432,7 @@ input{
     loginButton.textContent = '🔓'; // Replace with the open lock emoji
 
     document.getElementById('loginButton').addEventListener('click', function () {
-      console.log('Logging out...');
+
 
       fetch('http://localhost:7117/ntuaflix_api/logout', {
         method: 'POST',
@@ -277,7 +462,7 @@ input{
     });
 
   } else {
-    console.log('User is not logged in');
+
     loginButton.textContent = '🔒'; // Replace with the closed lock emoji
 
     document.getElementById('loginButton').addEventListener('click', function () {
@@ -328,7 +513,6 @@ input{
 
   });
 
-  var currentCategory = 'all'; // Default value
 
 
 
@@ -564,13 +748,49 @@ input{
 
   });
 
+  let currentCategory = 'all'; // Default to 'all'
+
+
+  function toggleImageState(category) {
+    // Toggle the active state based on the category
+    if (category === 'movies') {
+      isMoviesActive = !isMoviesActive; // Toggle the state
+      document.getElementById('moviesButton').src = isMoviesActive ? '../static/movies_active.jpg' : '../static/movies.jpg';
+    } else if (category === 'series') {
+      isSeriesActive = !isSeriesActive; // Toggle the state
+      document.getElementById('seriesButton').src = isSeriesActive ? '../static/series_active.jpg' : '../static/series.jpg';
+    }
+
+    // Determine the current category based on active states
+    updateCategory();
+  }
+
+
+
+  let isMoviesActive = false;
+  let isSeriesActive = false;
 
   function updateCategory() {
-    var selectedCategory = document.getElementById('category-select').value;
+    if (isMoviesActive && isSeriesActive) {
+      currentCategory = 'all';
+    } else if (isMoviesActive) {
+      currentCategory = 'movies';
+    } else if (isSeriesActive) {
+      currentCategory = 'tvshows';
+    } else {
+      currentCategory = 'all'; // Neither is active
+    }
 
-    currentCategory = selectedCategory;
-    fetchAndDisplayMovies();
+
+    fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+
   }
+
+  document.getElementById('moviesButton').addEventListener('click', () => toggleImageState('movies'));
+  document.getElementById('seriesButton').addEventListener('click', () => toggleImageState('series'));
+
+  // Initialize to show all content
+  updateCategory(); // To ensure correct content is displayed on page load
 
 
   document.querySelector('.search-form').addEventListener('submit', function (event) {
@@ -580,7 +800,8 @@ input{
 
   function fetchAndDisplayMovies() {
     const titlePart = document.getElementById('movie-search-input').value || '';
-    const genre = selectedGenres.join(',');
+    const sorted_genres = selectedGenres.sort();
+    const genre = sorted_genres.join(',');
     let [minrating, maxrating] = getRatingRange();
     const [yrFrom, yrTo] = getYearRange();
 
