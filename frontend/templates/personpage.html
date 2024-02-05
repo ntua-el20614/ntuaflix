@@ -293,7 +293,7 @@ function redirectToSeriesPage(movieId) {
             if (personInfo.img_url_asset && personInfo.img_url_asset !== '\\N' && personInfo.img_url_asset !== '') {
                 const imdbLink = `https://www.imdb.com/name/${personInfo.nconst}`; // Correct IMDb link
                 htmlContent += `<div class="movie-poster-section">
-        <img src="${personInfo.img_url_asset.replace('{width_variable}', 'w400')}" class="poster" id="personPoster" alt="Image of ${personInfo.primaryName}">
+        <img src="${personInfo.img_url_asset.replace('{width_variable}', 'w400')}" class="poster" id="personPoster" alt="Image of ${personInfo.primaryName}" style="border-radius: 30px;">
     </div>`;
                 // Store the IMDb link in a global variable or in the image element for later use
                 window.currentPersonImdbLink = imdbLink;
