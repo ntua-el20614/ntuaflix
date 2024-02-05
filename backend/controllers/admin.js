@@ -508,25 +508,38 @@ exports.deleteUser = async (req, res, next) => {
     }
 };
 
+
+
 exports.getNewMovie = async (req, res, next) => {
-
     const tconst = req.params.tconst;
-
     // Validate tconst input here if needed
 
     const scriptPath = '../sql/update/movie.py';
+    const uploadScriptPath = '../sql/update/upload_files.py'; // Path to the new upload script
     const args = [tconst];
 
+    // Executing movie.py
     exec(`python ${scriptPath} ${args.join(' ')}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
-            return res.status(500).json({ message: 'Error executing Python script', error: error.message });
+            return res.status(500).json({ message: 'Error executing Python script for movie processing', error: error.message });
         }
 
-        console.log(`stdout: ${stdout}`);
-        console.error(`stderr: ${stderr}`);
+        console.log(`stdout from movie processing: ${stdout}`);
+        console.error(`stderr from movie processing: ${stderr}`);
 
-        res.status(200).json({ message: 'Script executed successfully. Files are ready for upload.' });
+        // Once movie.py is successfully executed, proceed to upload files
+        exec(`python ${uploadScriptPath} ${args.join(' ')}`, (uploadError, uploadStdout, uploadStderr) => {
+            if (uploadError) {
+                console.error(`exec error: ${uploadError}`);
+                return res.status(500).json({ message: 'Error executing Python script for file upload', error: uploadError.message });
+            }
+
+            console.log(`stdout from file upload: ${uploadStdout}`);
+            console.error(`stderr from file upload: ${uploadStderr}`);
+
+            res.status(200).json({ message: 'Script executed successfully. Files are uploaded.' });
+        });
     });
 };
 
