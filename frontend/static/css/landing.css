@@ -25,7 +25,7 @@ html {
     padding: 10px 0;
     background-color: #010A08;
     display: flex;
-    
+
     align-items: center;
     position: relative;
     padding: 10px;
@@ -38,7 +38,7 @@ html {
 }
 
 
-.landing-logo { 
+.landing-logo {
     width: 250px;
     left: 150px;
 }
@@ -50,21 +50,21 @@ html {
     transform: translateY(-50%);
     padding: 2px 2px;
     background-color: #010A08;
-    /* Example: a shade of green */
+
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 30px;
-    /* Adjusted for emoji */
+
     cursor: pointer;
     transition: background-color 0.3s;
     text-align: center;
-    /* Ensure the emoji is centered */
+
 }
 
 .login-btn:hover {
     background-color: #dedede;
-    /* Darker shade for hover effect */
+
 }
 
 .admin-btn {
@@ -73,13 +73,13 @@ html {
     top: 50%;
     transform: translateY(-50%);
     padding: 2px 2px;
+
     background-color: #010A08;
-    /* Example: a shade of green */
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 30px;
-    /* Adjusted for emoji */
+
     cursor: pointer;
     transition: background-color 0.3s;
     text-align: center;
@@ -89,7 +89,7 @@ html {
 
 .admin-btn:hover {
     background-color: #dedede;
-    /* Darker shade for hover effect */
+
 }
 
 
@@ -116,17 +116,21 @@ html {
 
 
 .item {
+    border-radius: 25px;
+
     background-color: #717171;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
-    flex-basis: calc(25% - 20px);
+    flex-basis: calc(25% - 40px);
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
 }
 
 .item img {
+    border-radius: 25px;
+
     width: calc(100% - 20px);
     height: auto;
     margin-top: 10px;
@@ -232,7 +236,7 @@ html {
 .search-bar input:focus+.fa+a,
 .search-bar input:not(:placeholder-shown)+.fa+a {
     display: block;
-    /* Show the clear button when input is focused or not empty */
+
 }
 
 
@@ -240,7 +244,7 @@ html {
     grid-template-columns: 2fr 1fr;
 }
 
-/* Media Queries */
+
 
 @media (min-width: 768px) {
     .container {
@@ -394,17 +398,11 @@ form:valid a {
 .CrewTitle {
     margin: 10px;
     font-size: 24px;
-    /* Larger size similar to h2 */
     font-weight: bold;
-    /* Make text bold */
-    color: #007f46;
-    /* Change the color to something distinct */
+    color: #00c9c9;
     text-shadow: 1px 1px 2px #000000;
-    /* Add a subtle shadow for depth */
     letter-spacing: 0.5px;
-    /* Slightly space out the letters */
     text-transform: uppercase;
-    /* Optional: Transform text to uppercase for emphasis */
 }
 
 
@@ -415,15 +413,7 @@ form:valid a {
     margin: 20px;
     margin-bottom: 75px;
     background-color: #235b5338;
-    /* Remove this as it's overridden by display: flex */
-
-    /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    */
+    
 }
 
 
@@ -433,6 +423,8 @@ form:valid a {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 25px;
+
+    border-radius: 30px;
 
     border: 1px solid #ccc;
     padding: 10px;
@@ -454,6 +446,8 @@ form:valid a {
 
 .cast-item img {
     margin-top: 20px;
+    border-radius: 20px;
+
 }
 
 

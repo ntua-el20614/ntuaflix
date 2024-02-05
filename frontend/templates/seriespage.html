@@ -46,6 +46,7 @@
         margin-top: 20px;
         margin-bottom: 20px;
         margin-left: 25px;
+        border-radius: 30px;
 
         border: 1px solid #ccc;
         padding: 10px;
@@ -113,6 +114,7 @@
     }
 
     .episode-item img {
+        border-radius: 20px;
         margin-top: 20px;
     }
 
@@ -500,7 +502,7 @@
                 // Add the movie poster if available
                 if (movieData.titlePoster) {
                     htmlContent += `<div class="movie-poster-section">
-            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">` : ''}
+            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}" style="border-radius: 30px;">` : ''}
                 </div>`;
                 }
                 htmlContent += `</div>`;

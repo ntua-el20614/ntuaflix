@@ -33,6 +33,7 @@
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    
 
 
     @media (max-width: 768px) {
@@ -69,7 +70,7 @@
         <button id="loginButton" class="login-btn">🔒</button>
     </header>
     <div id="movieDetailsContainer" class="movieInfo">
-        <!-- Movie details will be displayed here -->
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 
@@ -235,7 +236,7 @@
                 let htmlContent = `
                         <div class="movie-details-flex-container">
                         <div class="movie-info-section">
-                        <h1>${movieData.originalTitle}</h1>
+                        <h1 style="font-weight: bold;">${movieData.originalTitle}</h1>
                         <p>Year: ${movieData.startYear}</p>`
 
 
@@ -283,7 +284,7 @@
                 // Add the movie poster if available
                 if (movieData.titlePoster && movieData.titlePoster !== '\\N') {
                     htmlContent += `<div class="movie-poster-section">
-            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}">` : ''}
+            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}"  style="border-radius: 30px;">` : ''}
                 </div>`;
                 }
                 htmlContent += `</div>`;
