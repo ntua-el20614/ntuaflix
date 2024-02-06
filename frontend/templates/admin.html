@@ -315,7 +315,7 @@
         <div class="progress-bar" id="uploadNewMovie">
           <div class="progress-bar-fill" id="uploadNewMovieFill"></div>
 
-          <input type="text" id="movieIdentifier" placeholder="Enter movie ID"
+          <input type="text" id="movieIdentifier" placeholder="Enter movie tconst"
             style="margin-top: 20px; width: 80%; padding: 10px;" />
           <!-- Confirmation button -->
           <button onclick="uploadMovie()" style="margin-top: 10px; padding: 10px 20px; cursor: pointer;">Upload
@@ -845,7 +845,7 @@
       function uploadMovie() {
 
         var movieId = document.getElementById('movieIdentifier').value;
-        if (movieId) {
+        if (movieId && movieId.includes("tt") && movieId.length >= 8){
           const isConfirmed = confirm('Are you sure you want to add this movie?');
         if (isConfirmed) {
           const xhr = new XMLHttpRequest();
@@ -859,7 +859,7 @@
           let progress = 0;
           const resetProgressBarFill = document.getElementById('uploadNewMovieFill');
           const interval = setInterval(() => {
-            progress += 0.235; // Increment to complete in 1 second
+            progress += 0.23; // Increment to complete in 1 second
             if (progress > 100) {
               progress = 100; // Cap progress at 100%
               clearInterval(interval);
@@ -900,7 +900,7 @@
           xhr.send(formData);
         }
         } else {
-          alert("Please enter a movie ID.");
+          alert("Please enter a correct movie tconst.");
         }
       }
     </script>
