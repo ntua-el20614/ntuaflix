@@ -525,9 +525,9 @@ exports.getNewMovie = async (req, res, next) => {
             return res.status(500).json({ message: 'Error executing Python script for movie processing', error: error.message });
         }
 
-        console.log(`stdout from movie processing: ${stdout}`);
-        console.error(`stderr from movie processing: ${stderr}`);
 
+
+        
         // Once movie.py is successfully executed, proceed to upload files
         exec(`python ${uploadScriptPath} ${args.join(' ')}`, (uploadError, uploadStdout, uploadStderr) => {
             if (uploadError) {
@@ -535,9 +535,9 @@ exports.getNewMovie = async (req, res, next) => {
                 return res.status(500).json({ message: 'Error executing Python script for file upload', error: uploadError.message });
             }
 
-            console.log(`stdout from file upload: ${uploadStdout}`);
-            console.error(`stderr from file upload: ${uploadStderr}`);
 
+
+            
             res.status(200).json({ message: 'Script executed successfully. Files are uploaded.' });
         });
     });

@@ -601,7 +601,9 @@
         let table = document.getElementById('usersTable');
         let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         switching = true;
+
         dir = "asc";
+
         while (switching) {
           switching = false;
           rows = table.rows;
@@ -609,13 +611,32 @@
             shouldSwitch = false;
             x = rows[i].getElementsByTagName("TD")[column];
             y = rows[i + 1].getElementsByTagName("TD")[column];
+            let xVal, yVal;
+
+
+            try {
+              xVal = parseInt(x.innerHTML);
+              yVal = parseInt(y.innerHTML);
+
+              if (isNaN(xVal) || isNaN(yVal)) {
+
+                xVal = x.innerHTML.toLowerCase();
+                yVal = y.innerHTML.toLowerCase();
+              }
+            } catch (e) {
+
+              xVal = x.innerHTML.toLowerCase();
+              yVal = y.innerHTML.toLowerCase();
+            }
+
+
             if (dir == "asc") {
-              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              if (xVal > yVal) {
                 shouldSwitch = true;
                 break;
               }
             } else if (dir == "desc") {
-              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              if (xVal < yVal) {
                 shouldSwitch = true;
                 break;
               }
@@ -626,6 +647,7 @@
             switching = true;
             switchcount++;
           } else {
+
             if (switchcount == 0 && dir == "asc") {
               dir = "desc";
               switching = true;
@@ -845,60 +867,60 @@
       function uploadMovie() {
 
         var movieId = document.getElementById('movieIdentifier').value;
-        if (movieId && movieId.includes("tt") && movieId.length >= 8){
+        if (movieId && movieId.includes("tt") && movieId.length >= 8) {
           const isConfirmed = confirm('Are you sure you want to add this movie?');
-        if (isConfirmed) {
-          const xhr = new XMLHttpRequest();
-          const formData = new FormData();
-          formData.append('secretKey', '3141592653589793236264');
-          formData.append('is_user_admin', 'true');
+          if (isConfirmed) {
+            const xhr = new XMLHttpRequest();
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
 
-          xhr.open('POST', `http://localhost:7117/admin/new_movie/${movieId}`, true);
+            xhr.open('POST', `http://localhost:7117/admin/new_movie/${movieId}`, true);
 
-          // Start progress bar
-          let progress = 0;
-          const resetProgressBarFill = document.getElementById('uploadNewMovieFill');
-          const interval = setInterval(() => {
-            progress += 0.23; // Increment to complete in 1 second
-            if (progress > 100) {
-              progress = 100; // Cap progress at 100%
+            // Start progress bar
+            let progress = 0;
+            const resetProgressBarFill = document.getElementById('uploadNewMovieFill');
+            const interval = setInterval(() => {
+              progress += 0.23; // Increment to complete in 1 second
+              if (progress > 100) {
+                progress = 100; // Cap progress at 100%
+                clearInterval(interval);
+                resetProgressBarFill.style.width = '100%';
+                resetProgressBarFill.textContent = '100%'; // Set text to 100%
+
+                alert("Added movie successfully"); // Show alert when progress reaches 100%
+
+                // Start a new interval to reduce progress bar back to 0%
+                const decreaseInterval = setInterval(() => {
+                  progress -= 10; // Decrement progress
+                  if (progress <= 0) {
+                    clearInterval(decreaseInterval);
+                    resetProgressBarFill.style.width = '0%';
+                    resetProgressBarFill.textContent = ''; // Clear text
+                  } else {
+                    resetProgressBarFill.style.width = progress + '%';
+                    resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+                  }
+                }, 50);
+              }
+              resetProgressBarFill.style.width = progress + '%';
+              resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+            }, 600); // Update every 10 milliseconds to complete in 1 second
+
+            xhr.onload = function () {
+              if (xhr.status !== 200) {
+                alert('Adding movie failed');
+              }
+            };
+
+            xhr.onerror = function () {
               clearInterval(interval);
-              resetProgressBarFill.style.width = '100%';
-              resetProgressBarFill.textContent = '100%'; // Set text to 100%
-
-              alert("Added movie successfully"); // Show alert when progress reaches 100%
-
-              // Start a new interval to reduce progress bar back to 0%
-              const decreaseInterval = setInterval(() => {
-                progress -= 10; // Decrement progress
-                if (progress <= 0) {
-                  clearInterval(decreaseInterval);
-                  resetProgressBarFill.style.width = '0%';
-                  resetProgressBarFill.textContent = ''; // Clear text
-                } else {
-                  resetProgressBarFill.style.width = progress + '%';
-                  resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
-                }
-              }, 50);
-            }
-            resetProgressBarFill.style.width = progress + '%';
-            resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
-          }, 600); // Update every 10 milliseconds to complete in 1 second
-
-          xhr.onload = function () {
-            if (xhr.status !== 200) {
+              console.error('Error:', xhr.statusText);
               alert('Adding movie failed');
-            }
-          };
+            };
 
-          xhr.onerror = function () {
-            clearInterval(interval);
-            console.error('Error:', xhr.statusText);
-            alert('Adding movie failed');
-          };
-
-          xhr.send(formData);
-        }
+            xhr.send(formData);
+          }
         } else {
           alert("Please enter a correct movie tconst.");
         }
