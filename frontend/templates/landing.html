@@ -21,7 +21,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    ;
     height: 42.5px;
     line-height: 30px;
     outline: 0;
@@ -50,11 +49,12 @@
     /* Blue */
     color: white;
     padding: 10px 15px;
-    margin: 10px 0;
+    margin: 15px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    width: 30%;
     transition: background-color 0.3s, transform 0.2s;
   }
 
@@ -158,7 +158,7 @@
 
   .fav-studio-img {
     width: 100%;
-    height: 150px;
+    height: 200px;
     margin-top: 30px;
     background-position: center;
     background-size: cover;
@@ -175,7 +175,7 @@
   }
 
   .pixar:hover {
-    background-image: url(../static/media/pixar_brand.png), url(../static/media/pixar.gif);
+    background-image: url(../static/media/pixar.gif);
     transform: scale(1.05);
     border: 5px solid var(--white);
   }
@@ -201,7 +201,7 @@
   }
 
   .category-btn.active {
-    color: #004fa3; 
+    color: #004fa3;
   }
 
   .category-img {
@@ -211,11 +211,11 @@
     cursor: pointer;
 
   }
+
   .category-img:hover {
     transform: scale(1.25);
     transition: 2s;
   }
-
 </style>
 
 <body>
@@ -276,6 +276,10 @@
   <div class="container">
     <!-- Inside the Movies Section -->
     <div class="movies-section">
+
+      <h1 class="CrewTitle" style="display:flex; justify-content: center; color: #353a5e; margin-bottom: 20px;">
+        Movies & TV Shows
+        </h1>
       <form action="" class="search-form" onsubmit="fetchAndDisplayMovies();"
         style="margin-top: 25px; margin-bottom: 25px;">
         <input type="search" required id="movie-search-input">
@@ -299,7 +303,8 @@
 
     <!-- Inside the People Section -->
     <div class="people-section">
-      <h1 class="CrewTitle" style="align-self: center; align-items: center; align-content: center; color: #353a5e;">People</h1>
+      <h1 class="CrewTitle" style="display:flex; justify-content: center; color: #353a5e; margin-bottom: 20px;">People
+      </h1>
       <form action="" class="search-form" onsubmit="searchPeople(event)">
         <input type="search" required id="people-search-input">
         <i class="fa fa-search"></i>

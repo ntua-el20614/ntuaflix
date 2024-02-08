@@ -33,10 +33,10 @@
         padding-top: 20px;
         padding-bottom: 20px;
     }
-    
 
 
-    @media (max-width: 768px) {
+
+    @media (max-width: 600px) {
         .movie-details-flex-container {
             flex-direction: column;
         }
@@ -69,8 +69,9 @@
         <button id="adminButton" class="admin-btn">🏠</button>
         <button id="loginButton" class="login-btn">🔒</button>
     </header>
-    <div id="movieDetailsContainer" class="movieInfo">
-
+    <div class="movieInfo">
+        <div id="movieDetailsContainer">
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 
@@ -110,7 +111,7 @@
 
             document.getElementById('loginButton').addEventListener('click', function () {
 
-                
+
                 fetch('http://localhost:7117/ntuaflix_api/logout', {
                     method: 'POST',
                     headers: {
@@ -237,6 +238,7 @@
                         <div class="movie-details-flex-container">
                         <div class="movie-info-section">
                         <h1 style="font-weight: bold;">${movieData.originalTitle}</h1>
+
                         <p>Year: ${movieData.startYear}</p>`
 
 
@@ -433,14 +435,14 @@
                     }
 
                     // Reset stars to default color when not hovering
-                    try{
-                    document.querySelector('.rating-container').addEventListener('mouseleave', function () {
+                    try {
+                        document.querySelector('.rating-container').addEventListener('mouseleave', function () {
 
-                        fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
-                    });
-                }catch(error){
+                            fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+                        });
+                    } catch (error) {
 
-                }
+                    }
 
                 }
                 async function fetchAndDisplayUserRating(userid, tconst) {
@@ -496,7 +498,7 @@
 
                                 } else {
 
-                                    
+
                                     // Adjust the average to account for the new rating
                                     updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes + 1);
                                     currentVotes++; // Increase the vote count by 1 for a new rating
@@ -565,7 +567,7 @@
                             castListDiv.appendChild(personDiv);
                         }
                     }
-                } 
+                }
                 // Add crew if available
                 let crewData = await fetchCrewDetails(movieData.titleID);
                 crewData = crewData[0].result;

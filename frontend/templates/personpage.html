@@ -103,7 +103,7 @@
 
             document.getElementById('loginButton').addEventListener('click', function () {
 
-                
+
                 fetch('http://localhost:7117/ntuaflix_api/logout', {
                     method: 'POST',
                     headers: {
@@ -209,15 +209,15 @@
             }
         }
 
-        function createPersonDiv(personInfo,flag) {
+        function createPersonDiv(personInfo, flag) {
             const div = document.createElement('div');
             div.classList.add('cast-item');
-            if(flag=="T"){
+            if (flag == "T") {
                 div.style.backgroundColor = "#8C8967";
             }
             if (personInfo === undefined) return div;
             div.setAttribute('id', personInfo.titleID);
-            div.setAttribute('type',personInfo.type)
+            div.setAttribute('type', personInfo.type)
             // Check if image URL is available and not null
             if (personInfo.titlePoster && personInfo.titlePoster !== '\\N' && personInfo.titlePoster !== "") {
                 div.innerHTML += `<img src="${personInfo.titlePoster.replace('{width_variable}', 'w200')}" alt="${personInfo.originalTitle}">`;
@@ -239,12 +239,12 @@
             // Attach event listener
             div.addEventListener('click', (event) => {
 
-                if(event.currentTarget.getAttribute('type')=="movie" || event.currentTarget.getAttribute('type')=="short"){
-                redirectToMoviePage(event.currentTarget.getAttribute('id'));
-                }else{
+                if (event.currentTarget.getAttribute('type') == "movie" || event.currentTarget.getAttribute('type') == "short") {
+                    redirectToMoviePage(event.currentTarget.getAttribute('id'));
+                } else {
                     redirectToSeriesPage(event.currentTarget.getAttribute('id'));
                 }
-            
+
             });
 
             return div;
@@ -255,9 +255,9 @@
             window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
         }
 
-function redirectToSeriesPage(movieId) {
-    window.location.href = `http://localhost:8228/seriespage?seriesId=${movieId}`;
-}
+        function redirectToSeriesPage(movieId) {
+            window.location.href = `http://localhost:8228/seriespage?seriesId=${movieId}`;
+        }
         async function displayPersonInfo(personInfo) {
 
 
@@ -272,11 +272,14 @@ function redirectToSeriesPage(movieId) {
                         <div class="movie-info-section">
                         <h1>${personInfo.primaryName}</h1>`
 
-            if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) htmlContent += `<p>Alive: ${personInfo.birthYear} `
-            if (personInfo.deathYear !== '\\N' && personInfo.deathYear !== null) htmlContent += `- ${personInfo.deathYear}`
-            const age = calculateAge(personInfo.birthYear, personInfo.deathYear)
-            if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) htmlContent += `</p><p>${age} </p>`
-
+            if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) {
+                htmlContent += `<p>Alive: ${personInfo.birthYear} `
+                if (personInfo.deathYear !== '\\N' && personInfo.deathYear !== null) htmlContent += `- ${personInfo.deathYear}`
+                const age = calculateAge(personInfo.birthYear, personInfo.deathYear)
+                if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) htmlContent += `</p><p>${age} </p>`
+            } else {
+                if (personInfo.deathYear !== '\\N' && personInfo.deathYear !== null) htmlContent += `<p>Died: ${personInfo.deathYear}</p>`
+            }
 
             // Add professions if available
             if (personInfo.primaryProfession && personInfo.primaryProfession.length > 0) {
@@ -323,19 +326,20 @@ function redirectToSeriesPage(movieId) {
 
             if ((personInfo.knownForTitles && personInfo.knownForTitles.length > 0) || more_movies.length() > 0) {
                 let titles = personInfo.knownForTitles.split(',');
-                for (let i in [0,1,2,3]) {titles[i]=titles[i]+"T"}
- 
+                for (let i in [0, 1, 2, 3]) { titles[i] = titles[i] + "T" }
+
                 for (const movie of more_movies) {
-                    if (!titles.includes(movie + "T")) 
-                    titles.push(movie+"F")}
+                    if (!titles.includes(movie + "T"))
+                        titles.push(movie + "F")
+                }
                 // Loop through each title and fetch details
                 for (let title of titles) {
                     try {
-                        let flag_for_star = title.substr(title.length-1,title.length)
-                        title=title.substr(0,title.length-1)
+                        let flag_for_star = title.substr(title.length - 1, title.length)
+                        title = title.substr(0, title.length - 1)
 
                         const movieInfo = await fetchMovieDetails(title); // Await the async call
-                        const personDiv = createPersonDiv(movieInfo,flag_for_star); // Use the resolved movieInfo
+                        const personDiv = createPersonDiv(movieInfo, flag_for_star); // Use the resolved movieInfo
                         if (personDiv.innerHTML !== "") {
                             if (flag) {
                                 castContainer = document.createElement('div');
