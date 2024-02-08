@@ -163,7 +163,8 @@ AND
 AND 
     ( '${yrFrom}' = '' OR CAST(Titles.startYear AS UNSIGNED) >= CAST(IF('${yrFrom}' = '', '0000', '${yrFrom}') AS UNSIGNED) )
 AND 
-    ( '${yrTo}' = '' OR CAST(Titles.startYear AS UNSIGNED) <= CAST(IF('${yrTo}' = '', '9999', '${yrTo}') AS UNSIGNED) );
+    ( '${yrTo}' = '' OR CAST(Titles.startYear AS UNSIGNED) <= CAST(IF('${yrTo}' = '', '9999', '${yrTo}') AS UNSIGNED) )
+ORDER BY title_ratings.averageRate DESC, Titles.startYear DESC;
 
     `;
 
