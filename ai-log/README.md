@@ -15,7 +15,7 @@
 
 
 
-# Software Engineering A.I. logger
+# How to run A.I. logger
 
 ## Introduction
 The script facilitates data collection, processing, and archiving related to various phases of software development and tool usage.
