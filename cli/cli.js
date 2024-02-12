@@ -623,25 +623,26 @@ program
     .command('title')
     .description('Fetch a title by its ID from the ntuaflix API')
     .requiredOption('--titleID <titleID>', 'The titleID of the movie or series to fetch')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
     .action(getTitleById);
 
 async function getTitleById(options) {
+    if(isAdmin()) {
     try {
-        const response = await axios.get(`http://localhost:7117/ntuaflix_api/title/:titleID${options.titleID}`);
+        const response = await axios.get(`http://localhost:7117/ntuaflix_api/title/${options.titleID}`);
 
-        // Directory where the file will be saved
-        const dir = './cli_responses';
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
 
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
+            // Path for the new file
+            const filePath = path.join(dir, `title_${options.titleID}.${options.format}`);
 
-        // Path for the new file
-        const filePath = path.join(dir, `title_${options.titleID}.json`);
-
-        // Save the response data to a JSON file
-        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            // Save the response data to a file in the specified format
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
             if (err) {
                 console.error('Error writing file:', err);
             } else {
@@ -652,32 +653,37 @@ async function getTitleById(options) {
         console.error('Error fetching title by ID:', error);
     }
 }
+else {
+    console.log("Anauthorized.");
+}
+}
 
 // 15 -- searchtitle
 program
     .command('searchtitle')
     .description('Search for titles in the ntuaflix database by a part of the title')
-    .requiredOption('--titlePart <titlePart>', 'The part of the title to search for')
+    .requiredOption('--titlepart <titlePart>', 'The part of the title to search for')
+    .option('--format <format>', 'Format of the file (json or csv)', 'json')
     .action(searchtitle);
 
 async function searchtitle(options) {
+    if(isAdmin()) {
     try {
         // Make the POST request to the searchtitle endpoint with the title part in the body
         const response = await axios.post('http://localhost:7117/ntuaflix_api/searchtitle', { titlePart: options.titlepart });
 
-        // Directory where the file will be saved
-        const dir = './cli_responses';
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
 
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
+            // Path for the new file
+            const filePath = path.join(dir, `searchtitle_${options.titlepart}.${options.format}`);
 
-        // Path for the new file
-        const filePath = path.join(dir, `searchtitle_${options.titlePart}.json`);
-
-        // Save the response data to a JSON file
-        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            // Save the response data to a file in the specified format
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
             if (err) {
                 console.error('Error writing file:', err);
             } else {
@@ -688,6 +694,10 @@ async function searchtitle(options) {
         console.error('Error performing title search:', error);
     }
 }
+else {
+    console.log("Anauthorized.");
+}
+}
 
 
 // 17 -- nameID
@@ -695,26 +705,27 @@ program
     .command('name')
     .description('Fetch details of a person by their name fidrom the ntuaflix database')
     .requiredOption('--nameid <nameid>', 'The nameid (nconst) of the person to fetch details for')
+    .option('--format <format>', 'Format of the response output (json or csv)', 'json')
     .action(getNameById);
 
 async function getNameById(options) {
+    if(isAdmin()) {
     try {
         // Make the GET request to the name endpoint
         const response = await axios.get(`http://localhost:7117/ntuaflix_api/name/${options.nameid}`);
 
-        // Directory where the file will be saved
-        const dir = './cli_responses';
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
 
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
+            // Path for the new file
+            const filePath = path.join(dir, `name_${options.nameid}.${options.format}`);
 
-        // Path for the new file
-        const filePath = path.join(dir, `name_${options.nameid}.json`);
-
-        // Save the response data to a JSON file
-        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+            // Save the response data to a file in the specified format
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
             if (err) {
                 console.error('Error writing file:', err);
             } else {
@@ -725,32 +736,37 @@ async function getNameById(options) {
         console.error('Error fetching person details:', error);
     }
 }
+else {
+    console.log("Anauthorized.");
+}
+}
 
 // 18 -- searchname
 program
     .command('searchname')
     .description('Search for people in the ntuaflix database by a part of the name')
-    .requiredOption('--namePart <namePart>', 'The part of the name to search for')
+    .requiredOption('--name <namePart>', 'The part of the name to search for')
+    .option('--format <format>', 'Format of the response output (json or csv)', 'json')
     .action(searchname);
 
 async function searchname(options) {
+    if(isAdmin()) {
     try {
         // Make the POST request to the searchname endpoint with the name part in the body
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.namePart });
+        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.name });
 
         // Directory where the file will be saved
         const dir = './cli_responses';
-
-        // Create the directory if it doesn't exist
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
 
         // Path for the new file
-        const filePath = path.join(dir, `searchname_${options.namePart}.json`);
+        const filePath = path.join(dir, `searchname_${options.namePart}.${options.format}`);
 
-        // Save the response data to a JSON file
-        fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+        // Save the response data in the specified format
+        const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+        fs.writeFile(filePath, fileData, (err) => {
             if (err) {
                 console.error('Error writing file:', err);
             } else {
@@ -760,6 +776,10 @@ async function searchname(options) {
     } catch (error) {
         console.error('Error performing name search:', error);
     }
+}
+else {
+    console.log("Anauthorized.");
+}
 }
 
 program.parse(process.argv);
