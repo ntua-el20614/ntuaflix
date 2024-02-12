@@ -8,6 +8,7 @@ const FormData = require('form-data');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const jwt = require('jsonwebtoken');
+const { command } = require('yargs');
 
 program.version('1.0.0');
 
@@ -81,50 +82,55 @@ program
     .command('login')
     .description('Log in to the ntuaflix API')
     .requiredOption('--username <username>', 'Your username')
-    .requiredOption('--password <password>', 'Your password')
+    .requiredOption('--passw <password>', 'Your password')
     .option('--format <format>', 'Format of the file to save the token (json or csv)', 'json')
     .action(login);
 
 async function login(options) {
-    try {
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/login', {
-            username: options.username,
-            password: options.password
-        });
-
-        // Directory where the token will be saved
-        const dir = './cli_responses';
-
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-
-        // Path for the token file
-        const tokenFilePath = path.join(dir, `token.${options.format}`);
-
-        // Save the token to a file in the specified format
-        if (options.format === 'json') {
-            fs.writeFile(tokenFilePath, JSON.stringify({ token: response.data.token }, null, 2), (err) => {
-                if (err) {
-                    console.error('Error saving token:', err);
-                } else {
-                    console.log('Logged in successfully. Token saved to ' + tokenFilePath);
-                }
+    if (isAdmin()) {
+        console.log("Already logged in.");
+    }
+    else {
+        try {
+            const response = await axios.post('http://localhost:7117/ntuaflix_api/login', {
+                username: options.username,
+                password: options.passw
             });
-        } else if (options.format === 'csv') {
-            fs.writeFile(tokenFilePath, `token\n${response.data.token}`, (err) => {
-                if (err) {
-                    console.error('Error saving token:', err);
-                } else {
-                    console.log('Logged in successfully. Token saved to ' + tokenFilePath);
-                }
-            });
-        } else {
-            console.error('Invalid format. Please choose json or csv.');
+
+            // Directory where the token will be saved
+            const dir = './cli_responses';
+
+            // Create the directory if it doesn't exist
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+
+            // Path for the token file
+            const tokenFilePath = path.join(dir, `token.${options.format}`);
+
+            // Save the token to a file in the specified format
+            if (options.format === 'json') {
+                fs.writeFile(tokenFilePath, JSON.stringify({ token: response.data.token }, null, 2), (err) => {
+                    if (err) {
+                        console.error('Error saving token:', err);
+                    } else {
+                        console.log('Logged in successfully. Token saved to ' + tokenFilePath);
+                    }
+                });
+            } else if (options.format === 'csv') {
+                fs.writeFile(tokenFilePath, `token\n${response.data.token}`, (err) => {
+                    if (err) {
+                        console.error('Error saving token:', err);
+                    } else {
+                        console.log('Logged in successfully. Token saved to ' + tokenFilePath);
+                    }
+                });
+            } else {
+                console.error('Invalid format. Please choose json or csv.');
+            }
+        } catch (error) {
+            console.error('Login failed');
         }
-    } catch (error) {
-        console.error('Login failed');
     }
 }
 
@@ -136,14 +142,19 @@ program
     .action(logout);
 
 function logout(options) {
-    // Path for the token file based on the specified format
-    const tokenFilePath = path.join('./cli_responses', `token.${options.format}`);
+    if (isAdmin()) {
+        // Path for the token file based on the specified format
+        const tokenFilePath = path.join('./cli_responses', `token.${options.format}`);
 
-    if (fs.existsSync(tokenFilePath)) {
-        fs.unlinkSync(tokenFilePath);
-        console.log(`Logged out successfully. Token file in ${options.format} format deleted.`);
-    } else {
-        console.log(`No token file found in ${options.format} format.`);
+        if (fs.existsSync(tokenFilePath)) {
+            fs.unlinkSync(tokenFilePath);
+            console.log(`Logged out successfully.`);
+        } else {
+            console.log(`No token file found in ${options.format} format.`);
+        }
+    }
+    else {
+        console.log("You are not logged in.");
     }
 }
 
@@ -152,7 +163,7 @@ program
     .command('adduser')
     .description('Add a new user or update the password of an existing user')
     .requiredOption('--username <username>', 'Username for the user')
-    .requiredOption('--password <password>', 'Password for the user')
+    .requiredOption('--passw <password>', 'Password for the user')
     .option('--format <format>', 'Format of the output (json or csv)', 'json')
     .action(addUser);
 
@@ -166,7 +177,7 @@ async function addUser(options) {
             formData.append('is_user_admin', '1');
 
             // POST request with form data
-            const response = await axios.post(`http://localhost:7117/admin/usermod/${options.username}/${options.password}`, formData, {
+            const response = await axios.post(`http://localhost:7117/admin/usermod/${options.username}/${options.passw}`, formData, {
                 headers: formData.getHeaders(),
             });
 
@@ -191,6 +202,9 @@ async function addUser(options) {
             console.error('Error in adding/updating user:', error);
         }
     }
+    else {
+        console.log("Anauthorized");
+    }
 }
 
 
@@ -203,37 +217,42 @@ program
     .action(getUser);
 
 async function getUser(options) {
+    if (isAdmin()) {
 
-    try {
-        // Create form data
-        const formData = new FormData();
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', '1');
+        try {
+            // Create form data
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', '1');
 
-        // POST request with form data
-        const response = await axios.post(`http://localhost:7117/admin/users/${options.username}`, formData, {
-            headers: formData.getHeaders(),
-        });
+            // POST request with form data
+            const response = await axios.post(`http://localhost:7117/admin/users/${options.username}`, formData, {
+                headers: formData.getHeaders(),
+            });
 
-        // Directory where the file will be saved
-        const dir = './cli_responses';
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-
-        const filePath = path.join(dir, `user_${options.username}.${options.format}`);
-
-        // Save the response data
-        const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
-        fs.writeFile(filePath, fileData, (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log(`User modification details saved to ${filePath}`);
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
             }
-        });
-    } catch (error) {
-        console.error('Error in user:', error);
+
+            const filePath = path.join(dir, `user_${options.username}.${options.format}`);
+
+            // Save the response data
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`User details saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error in user:', error);
+        }
+    }
+    else {
+        console.log("Anouthorized");
     }
 }
 
@@ -245,44 +264,49 @@ program
     .action(healthcheck);
 
 async function healthcheck(options) {
-    try {
-        const response = await axios.get('http://localhost:7117/admin/healthcheck');
+    if (isAdmin()) {
+        try {
+            const response = await axios.get('http://localhost:7117/admin/healthcheck');
 
-        // Directory where the file will be saved
-        const dir = './cli_responses';
+            // Directory where the file will be saved
+            const dir = './cli_responses';
 
-        // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
+            // Create the directory if it doesn't exist
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+
+            // Path for the new file
+            const filePath = path.join(dir, `healthcheck.${options.format}`);
+
+            // Save the response data to a file in the specified format
+            if (options.format === 'json') {
+                fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
+                    if (err) {
+                        console.error('Error writing file:', err);
+                    } else {
+                        console.log('Health check data saved to ' + filePath);
+                    }
+                });
+            } else if (options.format === 'csv') {
+                // Convert JSON to CSV (simple implementation, might need adjustment based on actual JSON structure)
+                const csv = jsonToCSV(response.data);
+                fs.writeFile(filePath, csv, (err) => {
+                    if (err) {
+                        console.error('Error writing file:', err);
+                    } else {
+                        console.log('Health check data saved to ' + filePath);
+                    }
+                });
+            } else {
+                console.error('Invalid format. Please choose json or csv.');
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-
-        // Path for the new file
-        const filePath = path.join(dir, `healthcheck.${options.format}`);
-
-        // Save the response data to a file in the specified format
-        if (options.format === 'json') {
-            fs.writeFile(filePath, JSON.stringify(response.data, null, 2), (err) => {
-                if (err) {
-                    console.error('Error writing file:', err);
-                } else {
-                    console.log('Health check data saved to ' + filePath);
-                }
-            });
-        } else if (options.format === 'csv') {
-            // Convert JSON to CSV (simple implementation, might need adjustment based on actual JSON structure)
-            const csv = jsonToCSV(response.data);
-            fs.writeFile(filePath, csv, (err) => {
-                if (err) {
-                    console.error('Error writing file:', err);
-                } else {
-                    console.log('Health check data saved to ' + filePath);
-                }
-            });
-        } else {
-            console.error('Invalid format. Please choose json or csv.');
-        }
-    } catch (error) {
-        console.error('Error fetching data:', error);
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
@@ -296,37 +320,42 @@ program
 
 // Implementation of the resetall action function
 async function resetall(options) {
-    try {
-        // Assuming authorization is needed
-        const formData = new FormData();
-        formData.append('secretKey', '3141592653589793236264'); // Adjust secretKey as needed
-        formData.append('is_user_admin', 'true'); // Adjust is_user_admin as needed
+    if (isAdmin()) {
+        try {
+            // Assuming authorization is needed
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264'); // Adjust secretKey as needed
+            formData.append('is_user_admin', 'true'); // Adjust is_user_admin as needed
 
-        const response = await axios.post('http://localhost:7117/admin/resetall', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/resetall', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        // Directory where the file will be saved
-        const dir = './cli_responses';
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-
-        // Path for the new file
-        const filePath = path.join(dir, `resetall_response.${options.format}`);
-
-        // Save the response data to a file in the specified format
-        const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
-        fs.writeFile(filePath, fileData, (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log(`Reset response saved to ${filePath}`);
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
             }
-        });
 
-    } catch (error) {
-        console.error('Error resetting data:', error);
+            // Path for the new file
+            const filePath = path.join(dir, `resetall_response.${options.format}`);
+
+            // Save the response data to a file in the specified format
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`Reset response saved to ${filePath}`);
+                }
+            });
+
+        } catch (error) {
+            console.error('Error resetting data:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
@@ -340,25 +369,30 @@ program
     .action(newtitles);
 
 async function newtitles(options) {
-    try {
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
+    if (isAdmin()) {
+        try {
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
 
 
-        // Append the secretKey and is_user_admin fields
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true'); // or whatever value is appropriate
-        // Additional fields like secretKey or is_user_admin should be appended here if required
+            // Append the secretKey and is_user_admin fields
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true'); // or whatever value is appropriate
+            // Additional fields like secretKey or is_user_admin should be appended here if required
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titlebasics', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/upload/titlebasics', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error uploading title basics:', error);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading title basics:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
@@ -374,23 +408,28 @@ program
     .action(newakas);
 
 async function newakas(options) {
-    try {
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
+    if (isAdmin()) {
+        try {
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
 
-        // Include the secretKey and is_user_admin if needed for authorization
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
+            // Include the secretKey and is_user_admin if needed for authorization
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleakas', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/upload/titleakas', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error uploading title akas:', error);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading title akas:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
@@ -406,24 +445,29 @@ program
 
 // Implementation of the newnames action function
 async function newnames(options) {
-    try {
-        // Assuming 'cli_posts' is in the same directory as your CLI script
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
+    if (isAdmin()) {
+        try {
+            // Assuming 'cli_posts' is in the same directory as your CLI script
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
 
-        // Include secretKey and is_user_admin if needed for authorization
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
+            // Include secretKey and is_user_admin if needed for authorization
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/namebasics', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/upload/namebasics', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error uploading name basics:', error);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading name basics:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.")
     }
 }
 
@@ -438,24 +482,29 @@ program
 
 // Implementation of the newcrew action function
 async function newcrew(options) {
-    try {
-        // Assuming 'cli_posts' is in the same directory as your CLI script
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
+    if (isAdmin()) {
+        try {
+            // Assuming 'cli_posts' is in the same directory as your CLI script
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
 
-        // Include secretKey and is_user_admin if needed for authorization
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
+            // Include secretKey and is_user_admin if needed for authorization
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titlecrew', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/upload/titlecrew', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error uploading title crew:', error);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading title crew:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
@@ -470,24 +519,29 @@ program
 
 // Implementation of the newepisode action function
 async function newepisode(options) {
-    try {
-        // Assuming 'cli_posts' is in the same directory as your CLI script
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
+    if (isAdmin()) {
+        try {
+            // Assuming 'cli_posts' is in the same directory as your CLI script
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
 
-        // Include secretKey and is_user_admin if needed for authorization
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
+            // Include secretKey and is_user_admin if needed for authorization
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleepisode', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/upload/titleepisode', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error uploading title episode:', error);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading title episode:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
@@ -502,24 +556,29 @@ program
 
 // Implementation of the newprincipals action function
 async function newprincipals(options) {
-    try {
-        // Assuming 'cli_posts' is in the same directory as your CLI script
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
+    if (isAdmin()) {
+        try {
+            // Assuming 'cli_posts' is in the same directory as your CLI script
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
 
-        // Include secretKey and is_user_admin if needed for authorization
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true');
+            // Include secretKey and is_user_admin if needed for authorization
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleprincipals', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/upload/titleprincipals', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error uploading title principals:', error);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading title principals:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
@@ -532,25 +591,30 @@ program
     .action(newratings);
 
 async function newratings(options) {
-    try {
-        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(filePath));
-        formData.append('format', options.format);
+    if (isAdmin()) {
+        try {
+            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const formData = new FormData();
+            formData.append('file', fs.createReadStream(filePath));
+            formData.append('format', options.format);
 
 
-        // Append the secretKey and is_user_admin fields
-        formData.append('secretKey', '3141592653589793236264');
-        formData.append('is_user_admin', 'true'); // or whatever value is appropriate
-        // Additional fields like secretKey or is_user_admin should be appended here if required
+            // Append the secretKey and is_user_admin fields
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true'); // or whatever value is appropriate
+            // Additional fields like secretKey or is_user_admin should be appended here if required
 
-        const response = await axios.post('http://localhost:7117/admin/upload/titleratings', formData, {
-            headers: formData.getHeaders(),
-        });
+            const response = await axios.post('http://localhost:7117/admin/upload/titleratings', formData, {
+                headers: formData.getHeaders(),
+            });
 
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error uploading title basics:', error);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error uploading title basics:', error);
+        }
+    }
+    else {
+        console.log("Anauthorized.");
     }
 }
 
