@@ -7,8 +7,54 @@ const path = require('path');
 const FormData = require('form-data');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
+const jwt = require('jsonwebtoken');
 
 program.version('1.0.0');
+
+// Function to check if a user is admin
+function isAdmin() {
+    let tokenFilePath = path.join('./cli_responses', 'token.json');
+    let isAdminFlag = false;
+
+    if (fs.existsSync(tokenFilePath)) {
+        // Process JSON file
+        const tokenfile = fs.readFileSync(tokenFilePath, 'utf8');
+        try {
+            const jsonData = JSON.parse(tokenfile);
+            const token = jsonData.token;
+            const decoded = jwt.decode(token);
+            isAdminFlag = decoded && decoded.is_admin == "1";
+            console.log(isAdminFlag);
+        } catch (error) {
+            console.error("Error processing JSON token file:", error);
+        }
+    } else {
+        // Fallback to CSV file
+        tokenFilePath = path.join('./cli_responses', 'token.csv');
+        if (fs.existsSync(tokenFilePath)) {
+            const tokenfile = fs.readFileSync(tokenFilePath, 'utf8');
+            try {
+                // Example CSV parsing logic (assuming a very simple format)
+                const lines = tokenfile.split('\n');
+                let token = '';
+                for (const line of lines) {
+                    if (!line.startsWith('token')) {
+                        token += line;
+                        //console.log(token);
+                        break;
+                    }
+                }
+                if (token) {
+                    const decoded = jwt.decode(token);
+                    isAdminFlag = decoded && decoded.is_admin == "1";
+                }
+            } catch (error) {
+                console.error("Error processing CSV token file:", error);
+            }
+        }
+    }
+    return isAdminFlag;
+}
 
 // Helper function to convert JSON to CSV
 function jsonToCSV(json) {
@@ -78,7 +124,7 @@ async function login(options) {
             console.error('Invalid format. Please choose json or csv.');
         }
     } catch (error) {
-        console.error('Login failed:', error);
+        console.error('Login failed');
     }
 }
 
@@ -111,26 +157,27 @@ program
     .action(addUser);
 
 
-    async function addUser(options) {
+async function addUser(options) {
+    if (isAdmin()) {
         try {
             // Create form data
             const formData = new FormData();
             formData.append('secretKey', '3141592653589793236264');
             formData.append('is_user_admin', '1');
-    
+
             // POST request with form data
             const response = await axios.post(`http://localhost:7117/admin/usermod/${options.username}/${options.password}`, formData, {
                 headers: formData.getHeaders(),
             });
-    
+
             // Directory where the file will be saved
             const dir = './cli_responses';
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir);
             }
-    
+
             const filePath = path.join(dir, `adduser_${options.username}.${options.format}`);
-    
+
             // Save the response data
             const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
             fs.writeFile(filePath, fileData, (err) => {
@@ -144,7 +191,8 @@ program
             console.error('Error in adding/updating user:', error);
         }
     }
-    
+}
+
 
 // 4 -- user
 program
@@ -154,40 +202,40 @@ program
     .option('--format <format>', 'Format of the output (json or csv)', 'json')
     .action(getUser);
 
-    async function getUser(options) {
-        
-        try {
-            // Create form data
-            const formData = new FormData();
-            formData.append('secretKey', '3141592653589793236264');
-            formData.append('is_user_admin', '1');
-    
-            // POST request with form data
-            const response = await axios.post(`http://localhost:7117/admin/users/${options.username}`, formData, {
-                headers: formData.getHeaders(),
-            });
-    
-            // Directory where the file will be saved
-            const dir = './cli_responses';
-            if (!fs.existsSync(dir)) {
-                fs.mkdirSync(dir);
-            }
-    
-            const filePath = path.join(dir, `user_${options.username}.${options.format}`);
-    
-            // Save the response data
-            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
-            fs.writeFile(filePath, fileData, (err) => {
-                if (err) {
-                    console.error('Error writing file:', err);
-                } else {
-                    console.log(`User modification details saved to ${filePath}`);
-                }
-            });
-        } catch (error) {
-            console.error('Error in user:', error);
+async function getUser(options) {
+
+    try {
+        // Create form data
+        const formData = new FormData();
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', '1');
+
+        // POST request with form data
+        const response = await axios.post(`http://localhost:7117/admin/users/${options.username}`, formData, {
+            headers: formData.getHeaders(),
+        });
+
+        // Directory where the file will be saved
+        const dir = './cli_responses';
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
         }
+
+        const filePath = path.join(dir, `user_${options.username}.${options.format}`);
+
+        // Save the response data
+        const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+        fs.writeFile(filePath, fileData, (err) => {
+            if (err) {
+                console.error('Error writing file:', err);
+            } else {
+                console.log(`User modification details saved to ${filePath}`);
+            }
+        });
+    } catch (error) {
+        console.error('Error in user:', error);
     }
+}
 
 // 5 -- healthcheck
 program
@@ -199,12 +247,12 @@ program
 async function healthcheck(options) {
     try {
         const response = await axios.get('http://localhost:7117/admin/healthcheck');
-        
+
         // Directory where the file will be saved
         const dir = './cli_responses';
 
         // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)){
+        if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
 
@@ -291,29 +339,29 @@ program
     .option('--format <format>', 'Format of the file (json or csv)', 'json')
     .action(newtitles);
 
-    async function newtitles(options) {
-        try {
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
-    
+async function newtitles(options) {
+    try {
+        const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const formData = new FormData();
+        formData.append('file', fs.createReadStream(filePath));
+        formData.append('format', options.format);
 
-            // Append the secretKey and is_user_admin fields
-            formData.append('secretKey', '3141592653589793236264');
-            formData.append('is_user_admin', 'true'); // or whatever value is appropriate
-            // Additional fields like secretKey or is_user_admin should be appended here if required
-    
-            const response = await axios.post('http://localhost:7117/admin/upload/titlebasics', formData, {
-                headers: formData.getHeaders(),
-            });
-    
-            console.log(response.data);
-        } catch (error) {
-            console.error('Error uploading title basics:', error);
-        }
+
+        // Append the secretKey and is_user_admin fields
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true'); // or whatever value is appropriate
+        // Additional fields like secretKey or is_user_admin should be appended here if required
+
+        const response = await axios.post('http://localhost:7117/admin/upload/titlebasics', formData, {
+            headers: formData.getHeaders(),
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error uploading title basics:', error);
     }
-    
+}
+
 
 
 // 8 -- newakas
@@ -521,7 +569,7 @@ async function getTitleById(options) {
         const dir = './cli_responses';
 
         // Create the directory if it doesn't exist
-        if (!fs.existsSync(dir)){
+        if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
 
@@ -577,7 +625,7 @@ async function searchtitle(options) {
     }
 }
 
-    
+
 // 17 -- nameID
 program
     .command('name')
