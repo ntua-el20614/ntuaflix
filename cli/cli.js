@@ -627,9 +627,9 @@ program
     .action(getTitleById);
 
 async function getTitleById(options) {
-    if(isAdmin()) {
-    try {
-        const response = await axios.get(`http://localhost:7117/ntuaflix_api/title/${options.titleID}`);
+    if (isAdmin()) {
+        try {
+            const response = await axios.get(`http://localhost:7117/ntuaflix_api/title/${options.titleID}`);
 
             // Directory where the file will be saved
             const dir = './cli_responses';
@@ -643,19 +643,19 @@ async function getTitleById(options) {
             // Save the response data to a file in the specified format
             const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
             fs.writeFile(filePath, fileData, (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log(`Title data saved to ${filePath}`);
-            }
-        });
-    } catch (error) {
-        console.error('Error fetching title by ID:', error);
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`Title data saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching title by ID:', error);
+        }
     }
-}
-else {
-    console.log("Anauthorized.");
-}
+    else {
+        console.log("Anauthorized.");
+    }
 }
 
 // 15 -- searchtitle
@@ -667,10 +667,10 @@ program
     .action(searchtitle);
 
 async function searchtitle(options) {
-    if(isAdmin()) {
-    try {
-        // Make the POST request to the searchtitle endpoint with the title part in the body
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchtitle', { titlePart: options.titlepart });
+    if (isAdmin()) {
+        try {
+            // Make the POST request to the searchtitle endpoint with the title part in the body
+            const response = await axios.post('http://localhost:7117/ntuaflix_api/searchtitle', { titlePart: options.titlepart });
 
             // Directory where the file will be saved
             const dir = './cli_responses';
@@ -684,19 +684,19 @@ async function searchtitle(options) {
             // Save the response data to a file in the specified format
             const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
             fs.writeFile(filePath, fileData, (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log(`Title search results saved to ${filePath}`);
-            }
-        });
-    } catch (error) {
-        console.error('Error performing title search:', error);
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`Title search results saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error performing title search:', error);
+        }
     }
-}
-else {
-    console.log("Anauthorized.");
-}
+    else {
+        console.log("Anauthorized.");
+    }
 }
 
 
@@ -709,10 +709,10 @@ program
     .action(getNameById);
 
 async function getNameById(options) {
-    if(isAdmin()) {
-    try {
-        // Make the GET request to the name endpoint
-        const response = await axios.get(`http://localhost:7117/ntuaflix_api/name/${options.nameid}`);
+    if (isAdmin()) {
+        try {
+            // Make the GET request to the name endpoint
+            const response = await axios.get(`http://localhost:7117/ntuaflix_api/name/${options.nameid}`);
 
             // Directory where the file will be saved
             const dir = './cli_responses';
@@ -726,19 +726,19 @@ async function getNameById(options) {
             // Save the response data to a file in the specified format
             const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
             fs.writeFile(filePath, fileData, (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log(`Person details saved to ${filePath}`);
-            }
-        });
-    } catch (error) {
-        console.error('Error fetching person details:', error);
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`Person details saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error fetching person details:', error);
+        }
     }
-}
-else {
-    console.log("Anauthorized.");
-}
+    else {
+        console.log("Anauthorized.");
+    }
 }
 
 // 18 -- searchname
@@ -750,36 +750,36 @@ program
     .action(searchname);
 
 async function searchname(options) {
-    if(isAdmin()) {
-    try {
-        // Make the POST request to the searchname endpoint with the name part in the body
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.name });
+    if (isAdmin()) {
+        try {
+            // Make the POST request to the searchname endpoint with the name part in the body
+            const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.name });
 
-        // Directory where the file will be saved
-        const dir = './cli_responses';
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-
-        // Path for the new file
-        const filePath = path.join(dir, `searchname_${options.namePart}.${options.format}`);
-
-        // Save the response data in the specified format
-        const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
-        fs.writeFile(filePath, fileData, (err) => {
-            if (err) {
-                console.error('Error writing file:', err);
-            } else {
-                console.log(`Name search results saved to ${filePath}`);
+            // Directory where the file will be saved
+            const dir = './cli_responses';
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
             }
-        });
-    } catch (error) {
-        console.error('Error performing name search:', error);
+
+            // Path for the new file
+            const filePath = path.join(dir, `searchname_${options.namePart}.${options.format}`);
+
+            // Save the response data in the specified format
+            const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+            fs.writeFile(filePath, fileData, (err) => {
+                if (err) {
+                    console.error('Error writing file:', err);
+                } else {
+                    console.log(`Name search results saved to ${filePath}`);
+                }
+            });
+        } catch (error) {
+            console.error('Error performing name search:', error);
+        }
     }
-}
-else {
-    console.log("Anauthorized.");
-}
+    else {
+        console.log("Anauthorized.");
+    }
 }
 
 program.parse(process.argv);
