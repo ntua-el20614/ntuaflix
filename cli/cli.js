@@ -588,7 +588,7 @@ program
 async function getNameById(options) {
     try {
         // Make the GET request to the name endpoint
-        const response = await axios.get(`http://localhost:7117/ntuaflix_api/name/:nameid${options.nameid}`);
+        const response = await axios.get(`http://localhost:7117/ntuaflix_api/name/${options.nameid}`);
 
         // Directory where the file will be saved
         const dir = './cli_responses';
@@ -624,7 +624,7 @@ program
 async function searchname(options) {
     try {
         // Make the POST request to the searchname endpoint with the name part in the body
-        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.namepart });
+        const response = await axios.post('http://localhost:7117/ntuaflix_api/searchname', { namePart: options.namePart });
 
         // Directory where the file will be saved
         const dir = './cli_responses';
