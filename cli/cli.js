@@ -24,7 +24,7 @@ function isAdmin() {
             const token = jsonData.token;
             const decoded = jwt.decode(token);
             isAdminFlag = decoded && decoded.is_admin == "1";
-            console.log(isAdminFlag);
+            //console.log(isAdminFlag);
         } catch (error) {
             console.error("Error processing JSON token file:", error);
         }
