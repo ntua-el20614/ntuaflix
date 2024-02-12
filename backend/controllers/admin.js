@@ -424,8 +424,6 @@ exports.addUser = async (req, res, next) => {
 
 exports.chUser = async (req, res, next) => {
 
-    again
-
     const username = req.params.username;
     const password = req.params.password; // Ensure this is hashed if needed
 
