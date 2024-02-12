@@ -699,6 +699,54 @@ async function searchtitle(options) {
     }
 }
 
+// 16 -- bygenre
+program
+    .command('bygenre')
+    .description('Fetch movies from the ntuaflix database')
+    .requiredOption('--genre <qgenre>', 'The full name of the genre')
+    .requiredOption('--min <minrating>', 'The minimum rating')
+    .requiredOption('--from <yrFrom>', 'Year "From" ')
+    .requiredOption('--to <yrTo>', 'Year "To" ')
+    .option('--format <format>', 'Format of the response output (json or csv)', 'json')
+    .action(getMovieByGenre);
+
+    async function getMovieByGenre(options) {
+        if (isAdmin()) {
+            try {
+    
+                const response = await axios.post(`http://localhost:7117/ntuaflix_api/bygenre`,{
+                    "secretKey": "3141592653589793236264",
+                    "is_user_admin": 1,
+                    "qgenre": options.genre,
+                    "minrating": options.min,
+                    "yrFrom": options.from,
+                    "yrTo": options.to
+                });
+                //console.log(response);
+    
+                const dir = './cli_responses';
+                if (!fs.existsSync(dir)) {
+                    fs.mkdirSync(dir);
+                }
+    
+                const filePath = path.join(dir, `movies_${options.genre}_${options.min}.${options.format}`);
+                const fileData = options.format === 'json' ? JSON.stringify(response.data, null, 2) : jsonToCSV(response.data);
+    
+                fs.writeFile(filePath, fileData, (err) => {
+                    if (err) {
+                        console.error('Error writing file:', err);
+                    } else {
+                        console.log(`Movies saved to ${filePath}`);
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching movies: ', error);
+            }
+        } else {
+            console.log("Unauthorized.");
+        }
+    }
+
 
 // 17 -- nameID
 program
