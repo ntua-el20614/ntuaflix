@@ -9,6 +9,8 @@ const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const jwt = require('jsonwebtoken');
 const { command } = require('yargs');
+const csvtojson = require('csvtojson');
+const { Parser } = require('json2csv');
 
 program.version('1.0.0');
 
@@ -55,6 +57,22 @@ function isAdmin() {
         }
     }
     return isAdminFlag;
+}
+
+async function convertToTsvString(filePath) {
+    const ext = path.extname(filePath).toLowerCase();
+    let data = [];
+    if (ext === '.csv') {
+        data = await csvtojson().fromFile(filePath);
+    } else if (ext === '.json') {
+        data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    } else {
+        throw new Error('Unsupported file format');
+    }
+
+    const parser = new Parser({ delimiter: '\t', eol: '\n' });
+    const tsv = parser.parse(data);
+    return tsv;
 }
 
 // Helper function to convert JSON to CSV
@@ -372,9 +390,10 @@ async function newtitles(options) {
     if (isAdmin()) {
         try {
             const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const tsvContent = await convertToTsvString(filePath);
             const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
+            formData.append('file', Buffer.from(tsvContent), { filename: 'upload.tsv', contentType: 'text/tab-separated-values' });
+            formData.append('format', 'tsv');
 
 
             // Append the secretKey and is_user_admin fields
