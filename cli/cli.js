@@ -12,6 +12,7 @@ const { command } = require('yargs');
 const csvtojson = require('csvtojson');
 const { Parser } = require('json2csv');
 
+
 program.version('1.0.0');
 
 // Function to check if a user is admin
@@ -59,21 +60,32 @@ function isAdmin() {
     return isAdminFlag;
 }
 
-async function convertToTsvString(filePath) {
-    const ext = path.extname(filePath).toLowerCase();
+async function convertFileToTsvAndSave(inputFilePath) {
+    const ext = path.extname(inputFilePath).toLowerCase();
     let data = [];
-    if (ext === '.csv') {
-        data = await csvtojson().fromFile(filePath);
-    } else if (ext === '.json') {
-        data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    } else {
-        throw new Error('Unsupported file format');
-    }
+    const baseName = path.basename(inputFilePath, ext);
+    const outputFilePath = path.join(process.cwd(), 'cli_posts', `${baseName}.tsv`);
 
-    const parser = new Parser({ delimiter: '\t', eol: '\n' });
-    const tsv = parser.parse(data);
-    return tsv;
+    try {
+        if (ext === '.csv') {
+            data = await csvtojson().fromFile(inputFilePath);
+        } else if (ext === '.json') {
+            data = JSON.parse(fs.readFileSync(inputFilePath, 'utf8'));
+        } else {
+            throw new Error('Unsupported file format');
+        }
+
+        const parser = new Parser({ delimiter: '\t', eol: '\n' });
+        const tsvContent = parser.parse(data);
+        fs.writeFileSync(outputFilePath, tsvContent, 'utf8');
+        console.log(`TSV file saved to ${outputFilePath}`);
+        return outputFilePath; // Return the path to the saved TSV file
+    } catch (error) {
+        console.error("Error converting and saving the file:", error);
+        return null;
+    }
 }
+
 
 // Helper function to convert JSON to CSV
 function jsonToCSV(json) {
@@ -389,10 +401,13 @@ program
 async function newtitles(options) {
     if (isAdmin()) {
         try {
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const tsvContent = await convertToTsvString(filePath);
+            const inputFilePath = path.join(process.cwd(), 'cli_posts', options.filename);
+        const tsvFilePath = await convertFileToTsvAndSave(inputFilePath);
+        if (!tsvFilePath) {
+            throw new Error('Failed to convert file to TSV.');
+        }
             const formData = new FormData();
-            formData.append('file', Buffer.from(tsvContent), { filename: 'upload.tsv', contentType: 'text/tab-separated-values' });
+            formData.append('file', fs.createReadStream(tsvFilePath));
             formData.append('format', 'tsv');
 
 
@@ -429,11 +444,14 @@ program
 async function newakas(options) {
     if (isAdmin()) {
         try {
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
-
+            const inputFilePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const tsvFilePath = await convertFileToTsvAndSave(inputFilePath);
+            if (!tsvFilePath) {
+                throw new Error('Failed to convert file to TSV.');
+            }
+                const formData = new FormData();
+                formData.append('file', fs.createReadStream(tsvFilePath));
+                formData.append('format', 'tsv');
             // Include the secretKey and is_user_admin if needed for authorization
             formData.append('secretKey', '3141592653589793236264');
             formData.append('is_user_admin', 'true');
@@ -466,11 +484,14 @@ program
 async function newnames(options) {
     if (isAdmin()) {
         try {
-            // Assuming 'cli_posts' is in the same directory as your CLI script
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
+            const inputFilePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const tsvFilePath = await convertFileToTsvAndSave(inputFilePath);
+            if (!tsvFilePath) {
+                throw new Error('Failed to convert file to TSV.');
+            }
+                const formData = new FormData();
+                formData.append('file', fs.createReadStream(tsvFilePath));
+                formData.append('format', 'tsv');
 
             // Include secretKey and is_user_admin if needed for authorization
             formData.append('secretKey', '3141592653589793236264');
@@ -503,11 +524,14 @@ program
 async function newcrew(options) {
     if (isAdmin()) {
         try {
-            // Assuming 'cli_posts' is in the same directory as your CLI script
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
+            const inputFilePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const tsvFilePath = await convertFileToTsvAndSave(inputFilePath);
+            if (!tsvFilePath) {
+                throw new Error('Failed to convert file to TSV.');
+            }
+                const formData = new FormData();
+                formData.append('file', fs.createReadStream(tsvFilePath));
+                formData.append('format', 'tsv');
 
             // Include secretKey and is_user_admin if needed for authorization
             formData.append('secretKey', '3141592653589793236264');
@@ -540,11 +564,14 @@ program
 async function newepisode(options) {
     if (isAdmin()) {
         try {
-            // Assuming 'cli_posts' is in the same directory as your CLI script
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
+            const inputFilePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const tsvFilePath = await convertFileToTsvAndSave(inputFilePath);
+            if (!tsvFilePath) {
+                throw new Error('Failed to convert file to TSV.');
+            }
+                const formData = new FormData();
+                formData.append('file', fs.createReadStream(tsvFilePath));
+                formData.append('format', 'tsv');
 
             // Include secretKey and is_user_admin if needed for authorization
             formData.append('secretKey', '3141592653589793236264');
@@ -577,11 +604,14 @@ program
 async function newprincipals(options) {
     if (isAdmin()) {
         try {
-            // Assuming 'cli_posts' is in the same directory as your CLI script
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
+            const inputFilePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const tsvFilePath = await convertFileToTsvAndSave(inputFilePath);
+            if (!tsvFilePath) {
+                throw new Error('Failed to convert file to TSV.');
+            }
+                const formData = new FormData();
+                formData.append('file', fs.createReadStream(tsvFilePath));
+                formData.append('format', 'tsv');
 
             // Include secretKey and is_user_admin if needed for authorization
             formData.append('secretKey', '3141592653589793236264');
@@ -612,10 +642,14 @@ program
 async function newratings(options) {
     if (isAdmin()) {
         try {
-            const filePath = path.join(process.cwd(), 'cli_posts', options.filename);
-            const formData = new FormData();
-            formData.append('file', fs.createReadStream(filePath));
-            formData.append('format', options.format);
+            const inputFilePath = path.join(process.cwd(), 'cli_posts', options.filename);
+            const tsvFilePath = await convertFileToTsvAndSave(inputFilePath);
+            if (!tsvFilePath) {
+                throw new Error('Failed to convert file to TSV.');
+            }
+                const formData = new FormData();
+                formData.append('file', fs.createReadStream(tsvFilePath));
+                formData.append('format', 'tsv');
 
 
             // Append the secretKey and is_user_admin fields
