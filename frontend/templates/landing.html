@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NtuaFlix</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="../static/logo.png">
+  <link rel="stylesheet" href="/static/css/landing.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/wnumb/wNumb.js"></script>
+
+</head>
+<style>
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+  }
+
+  .img {
+    margin-top: 20px;
+  }
+
+  .choices {
+    font-size: large;
+    margin: 20px;
+  }
+
+
+  /* Filter Buttons Basic Styling */
+  #genreFilterButton,
+  #ratingFilterButton,
+  #yearRangeFilterButton {
+    background-color: #004fa3;
+    /* Blue */
+    color: white;
+    padding: 10px 15px;
+    margin: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 30%;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  #genreFilterButton:hover,
+  #ratingFilterButton:hover,
+  #yearRangeFilterButton:hover {
+    background-color: #003c7d;
+    /* Darker Blue */
+    transform: translateY(-2px);
+    /* Slight lift */
+  }
+
+  /* Filter Containers Basic Styling */
+  .genre-button-container,
+  .rating-button-container,
+  .year-range-button-container {
+    background-color: #f8f9fa;
+    /* Light background */
+    border: 1px solid black;
+    /* Border color */
+    border-radius: 5px;
+    padding: 15px;
+    display: none;
+    /* Hidden by default */
+  }
+
+  /* Individual Buttons inside Filter Containers */
+  .genre-button,
+  .rating-button {
+    background-color: #6c757d;
+    /* Grey */
+    color: white;
+    border: black 1px solid;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .genre-button:hover,
+  .rating-button:hover {
+    background-color: #5a6268;
+    /* Darker Grey */
+  }
+
+  /* Year Range Slider Specific Styling (if applicable) */
+  #year-range-slider {
+    margin-top: 10px;
+  }
+
+  /* Year Range Text Styling */
+  #year-range-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+
+
+
+  .login-btn::after {
+    content: getTooltipText();
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Show the tooltip on hover */
+  .login-btn:hover::after {
+    display: block;
+  }
+
+
+
+  /*fav-studio-section*/
+  .fav-studio-section {
+    margin: 20px auto 20px auto;
+  }
+
+  .fav-studio-section h3 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .fav-studio-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .fav-studio-box {
+    flex-basis: 25%;
+  }
+
+  .fav-studio-img {
+    width: 100%;
+    height: 200px;
+    margin-top: 30px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.5s;
+    border: 5px solid #4d5279;
+    background-color: #353a5e;
+  }
+
+  .pixar {
+    background-image: url(../static/media/pixar_brand.png);
+  }
+
+  .pixar:hover {
+    background-image: url(../static/media/pixar.gif);
+    transform: scale(1.05);
+    border: 5px solid var(--white);
+  }
+
+  .marvel {
+    background-image: url(../static/media/marvel_brand.png);
+  }
+
+  .marvel:hover {
+    background-image: url(../static/media/marvel_brand.png), url(../static/media/marvel.gif);
+    transform: scale(1.05);
+    border: 5px solid var(--white);
+  }
+
+  .disney {
+    background-image: url(../static/media/disney_brand.png);
+  }
+
+  .disney:hover {
+    background-image: url(../static/media/disney_brand.png), url(../static/media/disney.gif);
+    transform: scale(1.05);
+    border: 5px solid var(--white);
+  }
+
+  .category-btn.active {
+    color: #004fa3;
+  }
+
+  .category-img {
+    border-radius: 25px;
+    margin: 10px;
+    width: 100px;
+    cursor: pointer;
+
+  }
+
+  .category-img:hover {
+    transform: scale(1.25);
+    transition: 2s;
+  }
+</style>
+
+<body>
+  <div id="loadingScreen" class="loading-screen">
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="loading-logo">
+  </div>
+  <header class="landing-site-header">
+
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="landing-logo" id="logoImage">
+
+    <img id="moviesButton" src="../static/movies.jpg" class="category-img" alt="Movies">
+    <img id="seriesButton" src="../static/series.jpg" class="category-img" alt="Series">
+
+
+    <button id="adminButton" class="admin-btn">🏠</button>
+    <button id="loginButton" class="login-btn">🔒</button>
+  </header>
+
+
+
+
+
+  <section class="fav-studio-section">
+
+    <div class="fav-studio-container">
+      <div class="fav-studio-box">
+        <div class="fav-studio-img pixar">
+          <audio id="pixar" preload="auto">
+            <source src="../static/media/PIXAR opening theme.mp3">
+          </audio>
+        </div>
+
+      </div>
+      <div class="fav-studio-box">
+        <div class="fav-studio-img marvel">
+          <audio id="marvel" preload="auto">
+            <source src="../static/media/Marvel Opening Theme.mp3">
+          </audio>
+          <img class="brand-logo" href="">
+          <img class="brand-gif" href="">
+        </div>
+
+      </div>
+      <div class="fav-studio-box">
+        <div class=" disney fav-studio-img">
+          <audio id="disneyIntro" preload="auto">
+            <source src="../static/media/Disney Intro.mp3">
+          </audio>
+          <img class="brand-logo" href="">
+          <img class="brand-gif" href="">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container">
+    <!-- Inside the Movies Section -->
+    <div class="movies-section">
+
+      <h1 class="CrewTitle" style="display:flex; justify-content: center; color: #353a5e; margin-bottom: 20px;">
+        Movies & TV Shows
+        </h1>
+      <form action="" class="search-form" onsubmit="fetchAndDisplayMovies();"
+        style="margin-top: 25px; margin-bottom: 25px;">
+        <input type="search" required id="movie-search-input">
+        <i class="fa fa-search"></i>
+      </form>
+      <button id="genreFilterButton" class="genre-filter-btn">Filter by Genre</button>
+      <div id="genreButtonContainer" class="genre-button-container" style="display: none;"></div>
+
+      <button id="ratingFilterButton" class="rating-filter-btn">Filter by Rating</button>
+      <div id="ratingButtonContainer" class="rating-button-container" style="display: none;"></div>
+
+      <button id="yearRangeFilterButton" class="year-range-filter-btn">Filter by Year Range</button>
+      <div id="yearRangeButtonContainer" class="year-range-button-container" style="display: none;">
+        <div id="year-range-slider"></div>
+        <p id="year-range-text"></p>
+      </div>
+
+
+      <div id="movies-container"></div>
+    </div>
+
+    <!-- Inside the People Section -->
+    <div class="people-section">
+      <h1 class="CrewTitle" style="display:flex; justify-content: center; color: #353a5e; margin-bottom: 20px;">People
+      </h1>
+      <form action="" class="search-form" onsubmit="searchPeople(event)">
+        <input type="search" required id="people-search-input">
+        <i class="fa fa-search"></i>
+      </form>
+      <div id="people-container"></div>
+    </div>
+
+    <!-- FontAwesome Link at the top of your <head> section -->
+
+
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+  $(document).ready(function () {
+    // Select page elements
+    var pixarIntro = $("#pixar")[0];
+    var marvelIntro = $("#marvel")[0];
+    var disneyIntro = $("#disneyIntro")[0];
+
+    // Initially, audio playback is not allowed
+    var audioPlaybackAllowed = false;
+
+    // Function to unlock audio playback
+    function unlockAudioPlayback() {
+      if (!audioPlaybackAllowed) {
+        // Try playing and immediately pausing each audio to unlock them
+        [pixarIntro, marvelIntro, disneyIntro].forEach(audio => {
+          audio.play().then(() => audio.pause()).catch(error => console.error("Error unlocking audio:", error));
+        });
+
+        audioPlaybackAllowed = true;
+
+        // Clean up: Remove event listeners to prevent re-execution
+        ['click', 'touchstart', 'keydown'].forEach(event => {
+          document.removeEventListener(event, unlockAudioPlayback);
+        });
+
+
+      }
+    }
+
+
+    // Add event listeners for the first user interaction
+    document.addEventListener('click', unlockAudioPlayback, { once: false });
+    document.addEventListener('touchstart', unlockAudioPlayback, { once: false });
+    document.addEventListener('keydown', unlockAudioPlayback, { once: false });
+
+    // Play audio on hover if audio playback is allowed
+    function setupHoverEffects() {
+      $(".pixar").mouseenter(function () {
+
+        //pixarIntro.volume = 1; // Sets volume to maximum
+
+        if (audioPlaybackAllowed) pixarIntro.play();
+      }).mouseout(function () {
+        pixarIntro.pause();
+      });
+
+      $(".marvel").mouseenter(function () {
+
+        if (audioPlaybackAllowed) marvelIntro.play();
+      }).mouseout(function () {
+        marvelIntro.pause();
+      });
+
+      $(".disney").mouseenter(function () {
+
+        if (audioPlaybackAllowed) disneyIntro.play();
+      }).mouseout(function () {
+        disneyIntro.pause();
+      });
+    }
+
+    setupHoverEffects();
+  });
+
+
+  // Check if token exists in localStorage
+  const token = localStorage.getItem('token');
+
+
+  function toggleFilterContainer(containerId) {
+    const container = document.getElementById(containerId);
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+    } else {
+      container.style.display = 'none';
+    }
+  }
+
+  document.getElementById('logoImage').addEventListener('click', function () {
+    window.location.href = 'http://localhost:8228/';
+  });
+
+
+  try {
+
+    var decoded = jwt_decode(token);
+    console.log(decoded);
+
+    let home_admin_button = document.getElementById('adminButton')
+
+    if (decoded.is_admin == 1) {
+      home_admin_button.style.display = 'block';
+
+      home_admin_button.addEventListener('click', function () {
+        window.location.href = 'http://localhost:8228/adminpage';
+      });
+
+    }
+
+  } catch (error) {
+    console.log("Token verification failed:", error);
+  }
+  if (token) {
+    // User is logged in
+
+
+
+
+
+    loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+    document.getElementById('loginButton').addEventListener('click', function () {
+
+
+      fetch('http://localhost:7117/ntuaflix_api/logout', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+        },
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Logout failed with status: ' + response.status);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.message === "Logout successful") {
+            localStorage.removeItem('token');
+            location.reload();
+          } else {
+            alert(data.message || 'Logout failed');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          localStorage.removeItem('token');
+          location.reload();
+        });
+    });
+
+  } else {
+
+    loginButton.textContent = '🔒'; // Replace with the closed lock emoji
+
+    document.getElementById('loginButton').addEventListener('click', function () {
+      window.location.href = 'http://localhost:8228/login';
+    });
+  }
+
+
+
+  const clearBtns = document.querySelectorAll(".clear-btn"); // Modified to select all clear buttons
+
+  clearBtns.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const input = this.previousElementSibling; // Assuming the input is right before the clear button in each form
+      input.value = "";
+    });
+  });
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
+    let shouldi = localStorage.getItem('loadingScreenShown');
+    setTimeout(() => {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.style.animationPlayState = 'running';
+
+      // After the loading screen fades out, fade in the main content
+      loadingScreen.addEventListener('animationend', () => {
+        loadingScreen.style.display = 'none';
+
+        const mainContent = document.querySelector('.container');
+        mainContent.style.animationPlayState = 'running';
+      });
+
+    }, 3000);
+    if (shouldi == null) {
+      localStorage.setItem('loadingScreenShown', 'true');
+    } else {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.style.display = 'none';
+      const mainContent = document.querySelector('.container');
+      mainContent.style.animationPlayState = 'running';
+    }
+    setTimeout(() => {
+      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+
+    }, 500);
+
+  });
+
+
+
+
+  document.getElementById('genreFilterButton').addEventListener('click', function () {
+    const container = document.getElementById('genreButtonContainer');
+    if (container.style.display != 'block') {
+      fetchGenres();
+    }
+  });
+
+  function fetchGenres() {
+    fetch('http://localhost:7117/ntuaflix_api/genres')
+      .then(response => response.json())
+      .then(genres => {
+        displayGenreButtons(genres);
+      })
+      .catch(error => console.error('Error fetching genres:', error));
+  }
+
+  let selectedGenres = [];
+
+  function displayGenreButtons(genres) {
+    const container = document.getElementById('genreButtonContainer');
+    container.innerHTML = ''; // Clear existing content
+
+    genres.forEach(genre => {
+      const button = document.createElement('button');
+      button.classList.add('genre-button');
+      button.textContent = genre;
+      button.addEventListener('click', () => handleGenreButtonClick(genre, button));
+      container.appendChild(button);
+    });
+  }
+
+  function handleGenreButtonClick(genre, button) {
+    const index = selectedGenres.indexOf(genre);
+    if (index > -1) {
+      selectedGenres.splice(index, 1);
+      button.style.backgroundColor = ''; // Remove highlight
+    } else {
+      selectedGenres.push(genre);
+      button.style.backgroundColor = 'green'; // Highlight selected
+    }
+    fetchAndDisplayMovies();
+  }
+
+  // Event Listener for Rating Filter Button
+  document.getElementById('ratingFilterButton').addEventListener('click', function () {
+    toggleFilterContainer('ratingButtonContainer');
+    // You might want to fetch and display ratings here if not already done
+  });
+
+  // Event Listener for Year Range Filter Button
+  document.getElementById('yearRangeFilterButton').addEventListener('click', function () {
+    toggleFilterContainer('yearRangeButtonContainer');
+    // You might want to fetch and display year ranges here if not already done
+  });
+  function updatedefault() {
+    const container1 = document.getElementById('genreButtonContainer');
+    const container2 = document.getElementById('yearRangeButtonContainer');
+    const container3 = document.getElementById('ratingButtonContainer');
+    let flag1 = false, flag2 = false, flag3 = false;
+    if (container1.style.display === 'block') {
+      flag1 = true;
+    }
+    if (container2.style.display === 'block') {
+      flag2 = true;
+    }
+    if (container3.style.display === 'block') {
+      flag3 = true;
+    }
+
+    if (flag1 || flag2 || flag3) {
+      fetchAndDisplayMovies();
+    } else {
+      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+
+    }
+
+
+
+  }
+  updatedefault();  // na fainontai oi tainies me to topmovies an den exw active filters
+
+  function toggleFilterContainer(containerId) {
+    const container = document.getElementById(containerId);
+    const computedStyle = window.getComputedStyle(container);
+
+    if (computedStyle.display === 'block') {
+      container.style.display = 'none';
+      if (containerId === 'genreButtonContainer') {
+        selectedGenres = []; // Reset genre selection
+        // Reset button highlights
+        const buttons = container.getElementsByClassName('genre-button');
+        for (let button of buttons) {
+          button.style.backgroundColor = '';
+        }
+
+        updatedefault();
+      }
+      if (containerId === 'yearRangeButtonContainer') {
+        yearRangeSlider.noUiSlider.set([1950, 2024]); // Reset year range slider
+        yearRangeText.innerHTML = '';
+        updatedefault();
+
+      }
+
+      if (containerId === 'ratingButtonContainer') {
+        resetRatingSelection();
+        updatedefault();
+
+      }
+    } else {
+      if (containerId = 'yearRangeButtonContainer') {
+        yearRangeText.innerHTML = `Selected range: 1950 - 2024`;
+        updatedefault();
+
+      }
+      container.style.display = 'block';
+    }
+
+
+  }
+
+
+
+  document.getElementById('genreFilterButton').addEventListener('click', function () {
+    toggleFilterContainer('genreButtonContainer');
+  });
+
+
+  // Function to display rating buttons
+  function displayRatingButtons() {
+    const container = document.getElementById('ratingButtonContainer');
+    container.innerHTML = ''; // Clear existing content
+
+    // Create rating buttons
+    for (let i = 1; i <= 10; i++) {
+      const button = document.createElement('button');
+      button.classList.add('rating-button');
+      button.textContent = i;
+      button.onclick = () => handleRatingButtonClick(i);
+      container.appendChild(button);
+    }
+
+    // Create and append the reset button
+    const resetButton = document.createElement('button');
+    resetButton.textContent = 'Reset';
+    resetButton.onclick = resetRatingSelection;
+    container.appendChild(resetButton);
+  }
+
+
+  // Reset the rating selection and clear highlights
+  function resetRatingSelection() {
+    const buttons = document.querySelectorAll('.rating-button');
+    buttons.forEach(button => {
+      button.style.backgroundColor = ''; // Clear highlight
+    });
+    ratingSelection = { first: null, second: null };
+    updatedefault();
+  }
+
+
+  // Global variable to track the first and second button clicks
+  let ratingSelection = { first: null, second: null };
+
+
+  // Function to handle button click
+  function handleRatingButtonClick(rating) {
+    const buttons = document.querySelectorAll('.rating-button');
+
+    if (ratingSelection.first === null && ratingSelection.second === null) {
+      // First button click
+      ratingSelection.first = rating;
+      ratingSelection.second = rating;
+
+    } else if (ratingSelection.second === rating) {
+      // Reset if the same button is clicked again
+      resetRatingSelection();
+      return;
+    } else if (ratingSelection.first !== null && ratingSelection.second !== null) {
+      // Extend the range for subsequent clicks
+      let newStart = Math.min(ratingSelection.first, rating);
+      let newEnd = Math.max(ratingSelection.second, rating);
+      ratingSelection.first = newStart;
+      ratingSelection.second = newEnd;
+
+    }
+
+    // Update button highlights
+    updateButtonHighlights(buttons);
+    fetchAndDisplayMovies();
+
+  }
+
+  // Function to update button highlights
+  function updateButtonHighlights(buttons) {
+    buttons.forEach((button, index) => {
+      if (index + 1 >= ratingSelection.first && index + 1 <= ratingSelection.second) {
+        button.style.backgroundColor = 'yellow';
+      } else {
+        button.style.backgroundColor = '';
+      }
+    });
+  }
+
+  // Existing functions (displayRatingButtons and resetRatingSelection) remain the same
+
+  displayRatingButtons();
+
+  var yearRangeSlider = document.getElementById('year-range-slider');
+  var yearRangeText = document.getElementById('year-range-text');
+
+  noUiSlider.create(yearRangeSlider, {
+    start: [1950, 2024], // Start range
+    connect: true,        // Display a colored bar between the handles
+    range: {
+      'min': 1950,
+      'max': 2024
+    },
+    format: wNumb({
+      decimals: 0
+    })
+  });
+  yearRangeSlider.noUiSlider.on('update', function (values, handle) {
+    if (values[0] !== null && values[1] !== null) {
+      yearRangeText.innerHTML = `Selected range: ${values[0]} - ${values[1]}`;
+    } else {
+      yearRangeText.innerHTML = '';
+    }
+    fetchAndDisplayMovies();
+
+  });
+
+  let currentCategory = 'all'; // Default to 'all'
+
+
+  function toggleImageState(category) {
+    // Toggle the active state based on the category
+    if (category === 'movies') {
+      isMoviesActive = !isMoviesActive; // Toggle the state
+      document.getElementById('moviesButton').src = isMoviesActive ? '../static/movies_active.jpg' : '../static/movies.jpg';
+    } else if (category === 'series') {
+      isSeriesActive = !isSeriesActive; // Toggle the state
+      document.getElementById('seriesButton').src = isSeriesActive ? '../static/series_active.jpg' : '../static/series.jpg';
+    }
+
+    // Determine the current category based on active states
+    updateCategory();
+  }
+
+
+
+  let isMoviesActive = false;
+  let isSeriesActive = false;
+
+  function updateCategory() {
+    if (isMoviesActive && isSeriesActive) {
+      currentCategory = 'all';
+    } else if (isMoviesActive) {
+      currentCategory = 'movies';
+    } else if (isSeriesActive) {
+      currentCategory = 'tvshows';
+    } else {
+      currentCategory = 'all'; // Neither is active
+    }
+
+
+    fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+
+  }
+
+  document.getElementById('moviesButton').addEventListener('click', () => toggleImageState('movies'));
+  document.getElementById('seriesButton').addEventListener('click', () => toggleImageState('series'));
+
+  // Initialize to show all content
+  updateCategory(); // To ensure correct content is displayed on page load
+
+
+  document.querySelector('.search-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fetchAndDisplayMovies();
+  });
+
+  function fetchAndDisplayMovies() {
+    const titlePart = document.getElementById('movie-search-input').value || '';
+    const sorted_genres = selectedGenres.sort();
+    const genre = sorted_genres.join(',');
+    let [minrating, maxrating] = getRatingRange();
+    const [yrFrom, yrTo] = getYearRange();
+
+    minrating = minrating || '0';
+    maxrating = maxrating || '10';
+
+    const filterData = {
+      titlePart: titlePart,
+      qgenre: genre,
+      minrating: minrating.toString(),
+      maxrating: maxrating.toString(),
+      yrFrom: yrFrom,
+      yrTo: yrTo
+    };
+
+    fetchFilteredData('http://localhost:7117/ntuaflix_api/filter', filterData);
+  }
+
+
+  // Function to get the rating range
+  function getRatingRange() {
+    return [ratingSelection.first, ratingSelection.second];
+  }
+
+  // Function to get the year range
+  function getYearRange() {
+    return yearRangeSlider.noUiSlider.get();
+  }
+
+  function fetchFilteredData(url, filterData) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(filterData)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) {
+          throw new Error('Expected data to be an array');
+        }
+        displayData(data, 'movies-container');
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+
+  function searchPeople(event) {
+    event.preventDefault();
+
+
+    const namePart = document.getElementById('people-search-input').value;
+
+    if (namePart.trim() === '' || namePart === null) {
+      fetchData('http://localhost:7117/ntuaflix_api/toptenpeople', 'people-container');
+    } else {
+      const url = 'http://localhost:7117/ntuaflix_api/searchname';
+      searchPeopleData(url, namePart);
+    }
+  }
+
+
+  function filterData(containerId, query) {
+    const container = document.getElementById(containerId);
+    const items = container.getElementsByClassName('item');
+
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
+      let title = item.querySelector('h3').textContent.toLowerCase();
+
+      if (title.includes(query.toLowerCase())) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    }
+  }
+
+
+  function fetchData(url, containerId) {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        displayData(data, containerId);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  function displayData(data, containerId) {
+
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // Clear existing content
+
+    //var selectedCategory = document.getElementById('category-select').value;
+
+    /*
+    short
+    movie
+    tvSeries
+    tvEpisode
+    tvMiniSeries
+    */
+    let list_to_exclude = []
+    if (containerId === 'movies-container') {
+      if (currentCategory == "tvshows") {
+        list_to_exclude.push("movie")
+        list_to_exclude.push("short")
+
+      } else if (currentCategory == "movies") {
+
+        list_to_exclude.push("tvSeries")
+        list_to_exclude.push("tvMiniSeries")
+      }
+      list_to_exclude.push("tvEpisode")
+    }
+    let flag_movies = true;
+    let flag_people = true;
+    data.forEach(item => {
+
+
+
+      if (list_to_exclude.includes(item.titletype)) return; // Skip types in list_to_exclude
+      const div = document.createElement('div');
+
+      div.classList.add('item');
+      div.innerHTML = '';
+
+      if (containerId === 'movies-container') {
+        flag_movies = false;
+        if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
+          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
+        }
+
+      }
+      if (containerId === 'people-container') {
+        flag_people = false;
+        if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
+          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
+        }
+
+      }
+
+
+
+      if (containerId === 'movies-container') {
+        div.setAttribute('data-id', item.tconst); //  Add a data attribute to each item
+
+
+        div.innerHTML += `
+                <h3>${item.primarytitle}</h3>`;
+        if (item.averageRate != null) {
+          div.innerHTML += `<p>Rating: ${item.averageRate}</p>`;
+        }
+        `<p>Year: ${item.startYear}</p>`;
+        if (item.genres != null && item.genres !== '\\N') {
+          div.innerHTML += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
+        }
+        if (item.titletype == "movie" || item.titletype == "short") {
+
+          div.addEventListener('click', () => {
+            redirectToMoviePage(event.currentTarget.getAttribute('data-id'));
+          });
+        } else if (item.titletype == "tvSeries" || item.titletype == "tvMiniSeries") {
+          div.addEventListener('click', () => {
+            redirectToSeriesPage(event.currentTarget.getAttribute('data-id'));
+          });
+        }
+      } else if (containerId === 'people-container') {
+
+
+        div.innerHTML += `
+                <h3>${item.primaryName}</h3>
+                <p>${item.primaryProfession.replace(/,/g, ', ').replace("_", " ")}</p>
+            `;
+
+        div.setAttribute('data-id', item.nconst);
+
+
+        div.addEventListener('click', () => {
+          redirectToPersonPage(div.getAttribute('data-id'));
+        });
+      }
+
+      container.appendChild(div);
+      setTimeout(() => div.classList.add('item-loaded'), 100);
+
+
+    });
+    if (flag_movies && containerId === 'movies-container') {
+      const noDataDiv = document.createElement('div');
+      noDataDiv.classList.add('no-data-message');
+      noDataDiv.textContent = 'No movies or TV shows available.';
+      container.appendChild(noDataDiv);
+    }
+    if (flag_people && containerId === 'people-container') {
+      const noDataDiv = document.createElement('div');
+      noDataDiv.classList.add('no-data-message');
+      noDataDiv.textContent = 'No people available.';
+      container.appendChild(noDataDiv);
+    }
+  }
+
+  function redirectToMoviePage(movieId) {
+    window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+  }
+  function redirectToSeriesPage(seriesId) {
+    window.location.href = `http://localhost:8228/seriespage?seriesId=${seriesId}`;
+  }
+
+  function redirectToPersonPage(personId) {
+    window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
+  }
+  function searchMovieData(url, titlePart) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ titlePart: titlePart })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        displayData(data, 'movies-container'); // Reuse the displayData function
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  function searchPeopleData(url, namePart) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ namePart: namePart })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        displayData(data, 'people-container'); // Ensure this function is compatible with people data format
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+
+</script>
+
+</html>

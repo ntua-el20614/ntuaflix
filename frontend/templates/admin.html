@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NtuaFlix Admin</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="../static/logo.png">
+  <link rel="stylesheet" href="/static/css/landing.css">
+  <style>
+    .upload-section {
+      width: 275px;
+      height: 300px;
+      border: solid #000 1px;
+      background-color: #808080;
+
+      border-radius: 15px;
+      border-style: hidden;
+      display: inline-block;
+      /* Set to inline-block for side-by-side layout */
+      margin: 30px;
+    }
+
+    .upload-button {
+
+      align-self: center;
+      margin: 10px;
+      width: 255px;
+      height: 40px;
+      position: relative;
+
+      /* Increased height for better clickability */
+      background-color: #007bff;
+      /* A pleasant blue color */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      /* Smooth transition for color and transformation */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      /* Slight shadow for depth */
+      font-weight: bold;
+    }
+
+    .upload-button:hover,
+    .upload-button:focus {
+      background-color: #0056b3;
+      /* Darker shade on hover */
+      transform: translateY(-2px);
+      /* Slight lift on hover */
+      outline: none;
+      /* Remove focus outline */
+    }
+
+    .upload-button:active {
+      background-color: #004080;
+      /* Even darker on click */
+      transform: translateY(1px);
+      /* Push down on click */
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      /* Adjust shadow on click */
+    }
+
+
+    .admin-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .drop-zone {
+      border: 2px dashed #ccc;
+      height: 115px;
+      padding: 20px;
+      text-align: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .drop-zone.dragover {
+      border-color: #000;
+    }
+
+    .progress-bar {
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 8px;
+      /* Adjusted for the padding */
+      margin: 10px 0;
+      border: 2px solid black;
+      position: relative;
+      padding: 3px;
+      /* Added padding */
+    }
+
+    .progress-bar-fill {
+      height: 20px;
+      background-color: green;
+      width: 0%;
+      border-radius: 5px;
+      /* Adjust to fit inside the padded container */
+      transition: width 0.4s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Optional, if you want vertical centering */
+    }
+
+    table {
+
+      width: 800px;
+      border-collapse: collapse;
+      border: 5px solid black;
+      border-radius: 15px;
+      margin-bottom: 150px;
+      margin-top: 25px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    button {
+      background-color: #4CAF50;
+      /* Green */
+      color: white;
+      padding: 5px 10px;
+      margin: 4px 0;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .delete-button {
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      margin-left: 5px;
+      /* Space between the approve and delete buttons */
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: darkred;
+    }
+
+
+    .admin-input {
+      display: block;
+      width: 70%;
+      align-content: start;
+      padding: 10px;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+    <button id="loginButton" class="login-btn">🔒</button>
+
+
+
+
+  </header>
+  <h1 class="center">Admin Home</h1>
+  <h2 class="center">Adding Movies/TvSeries with files</h1>
+
+    <div class="admin-container">
+
+      <!-- Upload Title Basics -->
+      <div class="upload-section">
+        <h2 style="text-align: center;">Upload Title Basics</h2>
+        <div id="title-basics-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button onclick="uploadSingleFile('title-basics-drop-zone', 'http://localhost:7117/admin/upload/titlebasics')"
+          class="upload-button">Upload
+          Title Basics</button>
+      </div>
+
+      <!-- Upload Name Basics -->
+      <div class="upload-section">
+        <h2 style="text-align: center;">Upload Name Basics</h2>
+        <div id="name-basics-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button onclick="uploadSingleFile('name-basics-drop-zone', 'http://localhost:7117/admin/upload/namebasics')"
+          class="upload-button">Upload Name
+          Basics</button>
+      </div>
+
+      <!-- Upload Title Akas -->
+      <div class="upload-section">
+        <h2 style="text-align: center;">Upload Title Akas</h2>
+        <div id="title-akas-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button onclick="uploadSingleFile('title-akas-drop-zone', 'http://localhost:7117/admin/upload/titleakas')"
+          class="upload-button">Upload
+          Title Akas</button>
+      </div>
+
+      <!-- Upload Title Crew -->
+      <div class="upload-section">
+        <h2 style="text-align: center;">Upload Title Crew</h2>
+        <div id="title-crew-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button onclick="uploadSingleFile('title-crew-drop-zone', 'http://localhost:7117/admin/upload/titlecrew')"
+          class="upload-button">Upload
+          Title Crew</button>
+      </div>
+
+      <!-- Upload Title Episode -->
+      <div class="upload-section">
+        <h2 style="text-align: center;">Upload Title Episode</h2>
+        <div id="title-episode-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button onclick="uploadSingleFile('title-episode-drop-zone', 'http://localhost:7117/admin/upload/titleepisode')"
+          class="upload-button">Upload
+          Title Episode</button>
+      </div>
+
+      <!-- Upload Title Principals -->
+      <div class="upload-section">
+        <h2 style="text-align: center;">Upload Title Principals</h2>
+        <div id="title-principals-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button
+          onclick="uploadSingleFile('title-principals-drop-zone', 'http://localhost:7117/admin/upload/titleprincipals')"
+          class="upload-button">Upload
+          Title Principals</button>
+      </div>
+
+      <!-- Upload Title Ratings -->
+      <div class="upload-section">
+        <h2 style="text-align: center;">Upload Title Ratings</h2>
+        <div id="title-ratings-drop-zone" class="drop-zone">
+          Drag and drop a file here or click to select a file
+        </div>
+        <button onclick="uploadSingleFile('title-ratings-drop-zone', 'http://localhost:7117/admin/upload/titleratings')"
+          class="upload-button">Upload
+          Title Ratings</button>
+      </div>
+
+    </div>
+
+    <h2 class="center">
+      Back-Up Managment
+    </h2>
+    <!-- Buttons for Reset and Backup -->
+    <div style="text-align: center;">
+
+      <div class="button-container"
+        style="text-align: center; width: 300px; margin-top: 20px; display: inline-block; margin-right: 50px;">
+        <div class="progress-bar" id="resetProgressBar">
+          <div class="progress-bar-fill" id="resetProgressBarFill"></div>
+          <button onclick="resetAllData()" class="upload-button">Reset All Data</button>
+        </div>
+      </div>
+
+      <div class="button-container"
+        style="text-align: center; width: 300px; margin-top: 20px; display: inline-block; margin-right: 50px;">
+
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+          <button onclick="backupData()" class="upload-button">Backup Data</button>
+        </div>
+      </div>
+
+      <div class="button-container"
+        style="text-align: center; width: 300px; margin-top: 20px; display: inline-block; margin-right: 50px;">
+        <div class="progress-bar" id="uploadNewMovie">
+          <div class="progress-bar-fill" id="uploadNewMovieFill"></div>
+
+          <input type="text" id="movieIdentifier" placeholder="Enter movie tconst"
+            style="margin-top: 20px; width: 80%; padding: 10px;" />
+          <!-- Confirmation button -->
+          <button onclick="uploadMovie()" style="margin-top: 10px; padding: 10px 20px; cursor: pointer;">Upload
+            Movie</button>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <h2 class="center" style="margin-top: 120px;">
+      Users Managment
+    </h2>
+
+
+    <div id="usersTableContainer" class="center"></div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+    <script>
+
+
+      document.getElementById('logoImage').addEventListener('click', function () {
+        window.location.href = 'http://localhost:8228/';
+      });
+
+      // Setup for each drop zone
+      document.querySelectorAll('.drop-zone').forEach(dropZone => {
+        dropZone.addEventListener('click', () => {
+          const fileInput = document.createElement('input');
+          fileInput.type = 'file';
+          fileInput.accept = '.tsv';
+          fileInput.onchange = () => {
+            dropZone.file = fileInput.files[0];
+            dropZone.textContent = fileInput.files[0].name;
+          };
+          fileInput.click();
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+          dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('dragover');
+          dropZone.file = e.dataTransfer.files[0];
+          dropZone.textContent = e.dataTransfer.files[0].name;
+        });
+      });
+
+
+
+      let token = localStorage.getItem('token');
+
+
+      if (token) {
+        // User is logged in
+        console.log('User is logged in');
+        loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+        document.getElementById('loginButton').addEventListener('click', function () {
+
+
+          fetch('http://localhost:7117/ntuaflix_api/logout', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+            },
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Logout failed with status: ' + response.status);
+              }
+              return response.json();
+            })
+            .then(data => {
+              if (data.message === "Logout successful") {
+                localStorage.removeItem('token');
+                location.reload();
+              } else {
+                alert(data.message || 'Logout failed');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+
+              localStorage.removeItem('token');
+              window.location.href = 'http://localhost:8228/login';
+            });
+        });
+
+      } else {
+        window.location.href = 'http://localhost:8228/login';
+      }
+
+      try {
+
+        var decoded = jwt_decode(token);
+        console.log(decoded);
+
+
+
+      } catch (error) {
+        console.log("Token verification failed:", error);
+      }
+
+
+      async function bring_users() {
+        const formData = new FormData();
+        formData.append('secretKey', '3141592653589793236264');
+        formData.append('is_user_admin', 'true');
+        return fetch(`http://localhost:7117/admin/all_users`, {
+          method: 'POST',
+          body: formData
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            return data;
+          })
+      }
+      async function logUsers() {
+        try {
+          const users = await bring_users();
+          generateTable(users);
+        } catch (error) {
+          console.error('Failed to fetch users:', error);
+        }
+      }
+
+      function generateTable(users) {
+        const tableContainer = document.getElementById('usersTableContainer');
+        let table = document.createElement('table');
+        table.setAttribute('id', 'usersTable');
+        let headerRow = table.insertRow();
+        let headers = ['User ID', 'Username', 'Is Admin', 'Actions'];
+        headers.forEach((headerText, index) => {
+          let header = document.createElement('th');
+          let textNode = document.createTextNode(headerText);
+          header.appendChild(textNode);
+          header.addEventListener('click', () => sortTable(index));
+          headerRow.appendChild(header);
+        });
+
+        users.forEach(user => {
+          if (user.userID != decoded.userId) {
+            let row = table.insertRow();
+            row.insertCell().appendChild(document.createTextNode(user.userID));
+            row.insertCell().appendChild(document.createTextNode(user.username));
+            row.insertCell().appendChild(document.createTextNode(user.is_admin ? 'Yes' : 'No'));
+            let actionCell = row.insertCell();
+            if (!user.approved) {
+              let approveButton = document.createElement('button');
+              approveButton.textContent = 'Approve';
+              approveButton.addEventListener('click', () => approveUser(user.userID, approveButton));
+              actionCell.appendChild(approveButton);
+            }
+
+
+            // Create a delete button
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.className = 'delete-button'; // Add some space between the approve and delete buttons
+            deleteButton.addEventListener('click', () => {
+              const isConfirmed = confirm('Are you sure you want to delete this user?');
+              if (isConfirmed) {
+                deleteUser(user.userID, row);
+              }
+            });
+            actionCell.appendChild(deleteButton);
+
+
+          }
+        });
+
+
+        // New row for adding users
+        let newRow = table.insertRow();
+
+        // Cell for Username Input
+        let usernameCell = newRow.insertCell();
+        let usernameInput = document.createElement('input');
+        usernameInput.type = 'text';
+        usernameInput.placeholder = 'Username';
+        usernameInput.className = "admin-input";
+        usernameCell.appendChild(usernameInput);
+
+        // Cell for Password Input
+        let passwordCell = newRow.insertCell();
+        let passwordInput = document.createElement('input');
+        passwordInput.type = 'password';
+        passwordInput.placeholder = 'Password';
+
+        passwordInput.className = "admin-input";
+        passwordCell.appendChild(passwordInput);
+
+        // Cell for Admin Select Dropdown
+        let adminCell = newRow.insertCell();
+        let isAdminSelect = document.createElement('select');
+        isAdminSelect.className = "admin-input";
+        let optionNo = new Option('No', false);
+        let optionYes = new Option('Yes', true);
+        isAdminSelect.options.add(optionNo, undefined);
+        isAdminSelect.options.add(optionYes, undefined);
+        adminCell.appendChild(isAdminSelect);
+
+        // Cell for the Add User Button
+        let buttonCell = newRow.insertCell();
+        let addUserButton = document.createElement('button');
+        addUserButton.textContent = 'Add User';
+
+
+        addUserButton.onclick = async function () {
+          // Retrieve the input values
+          const username = usernameInput.value;
+          const password = passwordInput.value;
+          const isAdmin = isAdminSelect.value; // Convert to boolean based on select option
+
+          // Check for empty input as basic validation
+          if (!username || !password) {
+            alert("Username and password are required.");
+            return;
+          }
+
+          // Formulate the endpoint URL
+          const endpoint = `http://localhost:7117/admin/add_user/${username}/${password}/${isAdmin}`;
+
+          // Assuming you already have formData for 'secretKey' and 'is_user_admin'
+          const formData = new FormData();
+          formData.append('secretKey', '3141592653589793236264'); // You should securely obtain this key
+          formData.append('is_user_admin', 'true'); // Assuming this script is run by an admin
+
+          try {
+            // Send the POST request
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              body: formData, // Assuming your backend can parse FormData or adjust accordingly
+              // Headers may be needed depending on your backend setup
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Handle success response
+            alert("Operation successful");
+
+            logUsers();
+            // Optionally, refresh the user list or clear the input fields
+            usernameInput.value = '';
+            passwordInput.value = '';
+            isAdminSelect.selectedIndex = 0; // Reset select to default position
+
+            // If you have a function to refresh the user list, call it here
+            // e.g., logUsers();
+          } catch (error) {
+            console.error('Error adding user:', error);
+            alert("Failed to add user.");
+          }
+        };
+
+
+        buttonCell.appendChild(addUserButton);
+
+
+        tableContainer.innerHTML = '';
+        tableContainer.appendChild(table);
+      }
+
+      function sortTable(column) {
+        let table = document.getElementById('usersTable');
+        let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        switching = true;
+
+        dir = "asc";
+
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < (rows.length - 2); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[column];
+            y = rows[i + 1].getElementsByTagName("TD")[column];
+            let xVal, yVal;
+
+
+            try {
+              xVal = parseInt(x.innerHTML);
+              yVal = parseInt(y.innerHTML);
+
+              if (isNaN(xVal) || isNaN(yVal)) {
+
+                xVal = x.innerHTML.toLowerCase();
+                yVal = y.innerHTML.toLowerCase();
+              }
+            } catch (e) {
+
+              xVal = x.innerHTML.toLowerCase();
+              yVal = y.innerHTML.toLowerCase();
+            }
+
+
+            if (dir == "asc") {
+              if (xVal > yVal) {
+                shouldSwitch = true;
+                break;
+              }
+            } else if (dir == "desc") {
+              if (xVal < yVal) {
+                shouldSwitch = true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+          } else {
+
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+
+
+      async function approveUser(userID, buttonElement) {
+        const formData = new FormData();
+        formData.append('secretKey', '3141592653589793236264'); // Example secretKey, replace with actual
+        formData.append('is_user_admin', 'true'); // Assuming the caller is an admin
+
+        try {
+          const response = await fetch(`http://localhost:7117/admin/approve/${userID}`, {
+            method: 'POST',
+            body: formData
+            // Include headers if needed, especially for authorization
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+
+          // If the approval was successful, remove the approve button
+          buttonElement.remove();
+        } catch (error) {
+          console.error('Error approving user:', error);
+          // Optionally, display an error message to the user
+        }
+      }
+
+      async function deleteUser(userID, rowElement) {
+        const formData = new FormData();
+        formData.append('secretKey', '3141592653589793236264'); // Example secretKey, replace with actual
+        formData.append('is_user_admin', 'true'); // Assuming the caller is an admin
+
+        try {
+          const response = await fetch(`http://localhost:7117/admin/delete/${userID}`, {
+            method: 'POST',
+            body: formData
+            // Include headers if needed, especially for authorization
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+
+          // If the deletion was successful, remove the user's row from the table
+          rowElement.remove();
+        } catch (error) {
+          console.error('Error deleting user:', error);
+          // Optionally, display an error message to the user
+        }
+      }
+
+
+      logUsers();
+
+
+      function uploadSingleFile(dropZoneId, endpoint) {
+        const dropZone = document.getElementById(dropZoneId);
+        if (dropZone && dropZone.file) {
+          const file = dropZone.file;
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('secretKey', '3141592653589793236264');
+          formData.append('is_user_admin', 'true');
+
+          fetch(endpoint, {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              alert(data.message);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Upload failed');
+            });
+        } else {
+          alert('Please select a file to upload.');
+        }
+      }
+
+      function resetAllData() {
+        const isConfirmed = confirm('Are you sure you want to reset the entire database?');
+        if (isConfirmed) {
+          const xhr = new XMLHttpRequest();
+          const formData = new FormData();
+          formData.append('secretKey', '3141592653589793236264');
+          formData.append('is_user_admin', 'true');
+
+          xhr.open('POST', 'http://localhost:7117/admin/resetall', true);
+
+          // Start progress bar
+          let progress = 0;
+          const resetProgressBarFill = document.getElementById('resetProgressBarFill');
+          const interval = setInterval(() => {
+            progress += 5; // Increment to complete in 1 second
+            if (progress > 100) {
+              progress = 100; // Cap progress at 100%
+              clearInterval(interval);
+              resetProgressBarFill.style.width = '100%';
+              resetProgressBarFill.textContent = '100%'; // Set text to 100%
+
+              alert("Database reset successfully"); // Show alert when progress reaches 100%
+
+              // Start a new interval to reduce progress bar back to 0%
+              const decreaseInterval = setInterval(() => {
+                progress -= 10; // Decrement progress
+                if (progress <= 0) {
+                  clearInterval(decreaseInterval);
+                  resetProgressBarFill.style.width = '0%';
+                  resetProgressBarFill.textContent = ''; // Clear text
+                } else {
+                  resetProgressBarFill.style.width = progress + '%';
+                  resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+                }
+              }, 50);
+            }
+            resetProgressBarFill.style.width = progress + '%';
+            resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+          }, 300); // Update every 10 milliseconds to complete in 1 second
+
+          xhr.onload = function () {
+            if (xhr.status !== 200) {
+              alert('Reset failed');
+            }
+          };
+
+          xhr.onerror = function () {
+            clearInterval(interval);
+            console.error('Error:', xhr.statusText);
+            alert('Reset failed');
+          };
+
+          xhr.send(formData);
+        }
+      }
+
+
+
+
+
+
+      function backupData() {
+        const isConfirmed = confirm('Are you sure you want to go back to the first set of data?');
+        if (isConfirmed) {
+          const xhr = new XMLHttpRequest();
+          const formData = new FormData();
+          formData.append('secretKey', '3141592653589793236264');
+          formData.append('is_user_admin', 'true');
+
+          xhr.open('POST', 'http://localhost:7117/admin/backup', true);
+
+          // Start manual interval for progress bar
+          let progress = 0;
+          const progressBarFill = document.getElementById('progressBarFill');
+          const interval = setInterval(() => {
+            progress += 0.35; // Increment progress
+            if (progress > 100) {
+              progress = 100; // Cap progress
+              clearInterval(interval);
+              progressBarFill.style.width = '100%';
+              progressBarFill.textContent = '100%'; // Set text to 100%
+
+              alert("Database backup completed successfully"); // Show alert when progress reaches 100%
+
+              // Start a new interval to reduce progress bar back to 0%
+              const decreaseInterval = setInterval(() => {
+                progress -= 5; // Decrement progress
+                if (progress <= 0) {
+                  clearInterval(decreaseInterval);
+                  progressBarFill.style.width = '0%';
+                  progressBarFill.textContent = ''; // Clear text
+                } else {
+                  progressBarFill.style.width = progress + '%';
+                  progressBarFill.textContent = Math.round(progress) + '%'; // Update text
+                }
+              }, 30);
+            }
+            progressBarFill.style.width = progress + '%';
+            progressBarFill.textContent = Math.round(progress) + '%'; // Update text
+          }, 125);
+
+          xhr.onload = function () {
+            if (xhr.status !== 200) {
+              alert('Backup failed');
+            }
+          };
+
+          xhr.onerror = function () {
+            clearInterval(interval);
+            console.error('Error:', xhr.statusText);
+            alert('Backup failed');
+          };
+
+          xhr.send(formData);
+        }
+      }
+
+
+      function uploadMovie() {
+
+        var movieId = document.getElementById('movieIdentifier').value;
+        if (movieId && movieId.includes("tt") && movieId.length >= 8) {
+          const isConfirmed = confirm('Are you sure you want to add this movie?');
+          if (isConfirmed) {
+            const xhr = new XMLHttpRequest();
+            const formData = new FormData();
+            formData.append('secretKey', '3141592653589793236264');
+            formData.append('is_user_admin', 'true');
+
+            xhr.open('POST', `http://localhost:7117/admin/new_movie/${movieId}`, true);
+
+            // Start progress bar
+            let progress = 0;
+            const resetProgressBarFill = document.getElementById('uploadNewMovieFill');
+            const interval = setInterval(() => {
+              progress += 0.23; // Increment to complete in 1 second
+              if (progress > 100) {
+                progress = 100; // Cap progress at 100%
+                clearInterval(interval);
+                resetProgressBarFill.style.width = '100%';
+                resetProgressBarFill.textContent = '100%'; // Set text to 100%
+
+                alert("Added movie successfully"); // Show alert when progress reaches 100%
+
+                // Start a new interval to reduce progress bar back to 0%
+                const decreaseInterval = setInterval(() => {
+                  progress -= 10; // Decrement progress
+                  if (progress <= 0) {
+                    clearInterval(decreaseInterval);
+                    resetProgressBarFill.style.width = '0%';
+                    resetProgressBarFill.textContent = ''; // Clear text
+                  } else {
+                    resetProgressBarFill.style.width = progress + '%';
+                    resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+                  }
+                }, 50);
+              }
+              resetProgressBarFill.style.width = progress + '%';
+              resetProgressBarFill.textContent = Math.round(progress) + '%'; // Update text
+            }, 600); // Update every 10 milliseconds to complete in 1 second
+
+            xhr.onload = function () {
+              if (xhr.status !== 200) {
+                alert('Adding movie failed');
+              }
+            };
+
+            xhr.onerror = function () {
+              clearInterval(interval);
+              console.error('Error:', xhr.statusText);
+              alert('Adding movie failed');
+            };
+
+            xhr.send(formData);
+          }
+        } else {
+          alert("Please enter a correct movie tconst.");
+        }
+      }
+    </script>
+
+</body>
+
+</html>

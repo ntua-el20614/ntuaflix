@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="icon" type="image/png" href="../static/logo.png">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<style>
+    .movieInfo {
+        margin-left: 20px;
+    }
+
+    .movie-details-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .movie-info-section {
+        flex: 3;
+        /* Adjust as needed for the desired width */
+        padding-right: 20px;
+        /* Spacing between the sections */
+    }
+
+    .movie-poster-section {
+        flex: 1;
+        padding-right: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+
+
+    @media (max-width: 600px) {
+        .movie-details-flex-container {
+            flex-direction: column;
+        }
+
+        .movie-info-section,
+        .movie-poster-section {
+            max-width: 100%;
+            /* Full width for smaller screens */
+        }
+    }
+
+    .star {
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .star:hover,
+    .star:hover~.star {
+        color: yellow;
+        /* Color change on hover */
+    }
+</style>
+
+<body>
+
+    <header class="site-header">
+
+        <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+
+        <button id="adminButton" class="admin-btn">🏠</button>
+        <button id="loginButton" class="login-btn">🔒</button>
+    </header>
+    <div class="movieInfo">
+        <div id="movieDetailsContainer">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+    <script>
+
+
+        document.getElementById('logoImage').addEventListener('click', function () {
+            window.location.href = 'http://localhost:8228/';
+        });
+
+        let token = localStorage.getItem('token');
+
+        try {
+
+            var decoded = jwt_decode(token);
+            console.log(decoded);
+
+            let home_admin_button = document.getElementById('adminButton')
+
+            if (decoded.is_admin == 1) {
+                home_admin_button.style.display = 'block';
+
+                home_admin_button.addEventListener('click', function () {
+                    window.location.href = 'http://localhost:8228/adminpage';
+                });
+
+            }
+
+        } catch (error) {
+            console.log("Token verification failed:", error);
+        }
+
+        if (token) {
+            // User is logged in
+
+            loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+
+
+                fetch('http://localhost:7117/ntuaflix_api/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Logout failed with status: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message === "Logout successful") {
+                            localStorage.removeItem('token');
+                            location.reload();
+                        } else {
+                            alert(data.message || 'Logout failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+
+                        localStorage.removeItem('token')
+                    });
+            });
+
+        } else {
+
+            loginButton.textContent = '🔒'; // Replace with the closed lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+                window.location.href = 'http://localhost:8228/login';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('movieId');
+
+            // Function to fetch movie details
+            function fetchMovieDetails(id) {
+                // Replace with the actual API endpoint or data fetching logic
+                fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
+                    .then(response => response.json())
+                    .then(data => displayMovieDetails(data[0]))
+                    .catch(error => console.error('Error fetching movie details:', error));
+            }
+
+            function fetchPersonDetails(id) {
+
+                return fetch(`http://localhost:7117/ntuaflix_api/person/${id}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        return data[0];
+                    })
+                    .catch(error => {
+                        console.error('Error fetching movie details:', error);
+                        throw error;
+                    });
+            }
+            function fetchCharacterDetails(nameID, titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/character/${nameID}/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching character details:', error);
+                        // Return a default object to avoid undefined
+                        return { characters: '' };
+                    });
+            }
+
+            function fetchCrewDetails(titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/crew/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching crew details:', error);
+                        // Return a default object to avoid undefined
+                        return { director: [], writer: [] };
+                    });
+            }
+
+
+            function calculateAge(birthYear, deathYear) {
+                if (birthYear === '\\N') return '';
+                const currentYear = new Date().getFullYear();
+                let age;
+
+                if (deathYear && deathYear !== '\\N') {
+                    age = deathYear - birthYear;
+                    return `(Died at age ${age})`;
+                } else {
+                    age = currentYear - birthYear;
+                    return `(Age: ${age}`;
+                }
+            }
+
+
+            function redirectToPersonPage(personId) {
+                window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
+            }
+
+            async function displayMovieDetails(movieData) {
+
+                const container = document.getElementById('movieDetailsContainer');
+                container.innerHTML = ''; // Clear existing content
+
+                // Start building HTML content with the basic movie details
+                let htmlContent = `
+                        <div class="movie-details-flex-container">
+                        <div class="movie-info-section">
+                        <h1 style="font-weight: bold;">${movieData.originalTitle}</h1>
+
+                        <p>Year: ${movieData.startYear}</p>`
+
+
+                // Add genres if available
+                if (movieData.genres && movieData.genres[0].genreTitle !== "\\N") {
+                    htmlContent += `<p>Genres: ${movieData.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
+                }
+
+                // Add rating if available
+                if (movieData.rating && movieData.rating.avRating != null && movieData.rating.avRating !== "\\N") {
+                    htmlContent += `<p id="ratingDisplay">Rating: ${movieData.rating.avRating} (${movieData.rating.nVotes})</p>`;
+
+
+                    if (token) {
+                        // Add rating stars
+                        htmlContent += `<div class="rating-container">Rate this movie: `;
+                        for (let i = 1; i <= 10; i++) {
+                            htmlContent += `<span class="star" data-rating="${i}">&#9734;</span>`; // Unicode star outline
+                        }
+                        htmlContent += `</div>`;
+                    }
+                }
+
+
+
+
+                // Add titleAkas if available
+                let flag1 = true;
+                if (movieData.titleAkas && movieData.titleAkas.length > 0) {
+                    movieData.titleAkas.slice(0, 20).forEach(aka => {
+                        if (aka.akaTitle === movieData.originalTitle) return; //na min valume ta idia titles.
+                        if (flag1) {
+
+                            htmlContent += '<div><h3>Alternate Titles:</h3><ul>';
+                            flag1 = false;
+                        }
+                        htmlContent += `<li>${aka.akaTitle} (${aka.regionAbbrev !== '\\N' ? aka.regionAbbrev : 'N/A'})</li>`;
+                    });
+                    htmlContent += '</ul></div>';
+                }
+
+                htmlContent += `</div>`;
+
+
+                // Add the movie poster if available
+                if (movieData.titlePoster && movieData.titlePoster !== '\\N') {
+                    htmlContent += `<div class="movie-poster-section">
+            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}"  style="border-radius: 30px;">` : ''}
+                </div>`;
+                }
+                htmlContent += `</div>`;
+                const MovieInfoContainer = document.createElement('div');
+                MovieInfoContainer.innerHTML = htmlContent;
+                container.appendChild(MovieInfoContainer);
+                // Function to create and return a div for a cast or crew member
+                function createPersonDiv(personInfo, principal, characterInfo = null) {
+                    const div = document.createElement('div');
+                    div.classList.add('cast-item');
+                    div.setAttribute('id', principal.nameID);
+
+                    // Check if image URL is available and not null
+                    if (personInfo.img_url_asset && personInfo.img_url_asset !== '\\N') {
+                        div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
+                    }
+
+                    div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
+                    characterInfo = characterInfo[0]
+
+                    if (characterInfo && characterInfo.characters && (characterInfo.category === 'actor' || characterInfo.category === 'actress')) {
+                        const characterName = characterInfo.characters.replace(/[\[\]"]+/g, ''); // Remove brackets and quotes
+                        if (characterName != '\\N')
+                            div.innerHTML += `<p>as ${characterName}</p>`;
+                    }
+
+                    // Add profession, birth year, and death year, if available
+                    if (personInfo.primaryProfession && personInfo.primaryProfession !== '\\N' && ((characterInfo.category !== 'actor' && characterInfo.category !== 'actress'))) {
+
+                        div.innerHTML += `<p>Profession: ${characterInfo.category}</p>`;
+                    }
+                    if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
+                        let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                        div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
+                        if (ageString[1] === 'A') {
+                            div.innerHTML += `${ageString})`;
+                        }
+                        div.innerHTML += `</p>`;
+                    }
+                    if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
+                        let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                        div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> ${ageString}</p>`;
+                    }
+
+                    // Attach event listener
+                    div.addEventListener('click', (event) => {
+
+                        redirectToPersonPage(event.currentTarget.getAttribute('id'));
+                    });
+
+                    return div;
+                }
+
+                function createCrewDiv(crewMember, roles) {
+                    const div = document.createElement('div');
+                    div.classList.add('cast-item');
+                    div.setAttribute('id', crewMember.nconst);
+
+                    // Check if image URL is available and not null
+                    if (crewMember.img_url_asset && crewMember.img_url_asset !== '\\N') {
+                        div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
+                    }
+
+                    div.innerHTML += `<h3>${crewMember.primaryName}</h3>`;
+                    div.innerHTML += `<p>Role: ${roles}</p>`;
+
+                    // Add birth year and age, if available
+                    if (crewMember.birthYear && crewMember.birthYear !== '\\N') {
+                        let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                        div.innerHTML += `<p>Birth Year: ${crewMember.birthYear}</p>`;
+                        div.innerHTML += ageString[0] === 'A' ? `${ageString}` : '';
+                    }
+
+                    // Add death year, if available
+                    if (crewMember.deathYear && crewMember.deathYear !== '\\N') {
+                        let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                        div.innerHTML += `<p>Death Year: ${crewMember.deathYear} ${ageString}</p>`;
+                    }
+
+                    // Attach event listener
+                    div.addEventListener('click', (event) => {
+
+                        redirectToPersonPage(event.currentTarget.getAttribute('id'));
+                    });
+
+                    return div;
+                }
+
+                function combineCrewData(directors, writers) {
+                    let combinedCrew = {};
+
+                    if (!directors) directors = [];
+                    directors.forEach(director => {
+                        combinedCrew[director.nconst] = { ...director, roles: ['Director'] };
+                    });
+
+                    if (!writers) writers = [];
+                    writers.forEach(writer => {
+                        if (combinedCrew[writer.nconst]) {
+                            combinedCrew[writer.nconst].roles.push('Writer');
+                        } else {
+                            combinedCrew[writer.nconst] = { ...writer, roles: ['Writer'] };
+                        }
+                    });
+
+                    return Object.values(combinedCrew);
+                }
+
+                if (token) {
+                    document.querySelectorAll('.star').forEach(star => {
+                        star.addEventListener('click', function () {
+                            const rating = this.getAttribute('data-rating');
+
+                            submitUserRating(decoded.userId, movieData.titleID, rating);//TO DO
+                            fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+
+                        });
+
+                        star.addEventListener('mouseover', function () {
+                            const rating = this.getAttribute('data-rating');
+                            highlightStars(rating);
+                        });
+                    });
+
+
+                    function updateStars(rating) {
+                        document.querySelectorAll('.star').forEach((star, index) => {
+                            if (index < rating) {
+                                star.innerHTML = '&#9733;'; // Filled star
+                                star.style.color = 'yellow'; // Fill color
+                            } else {
+                                star.innerHTML = '&#9734;'; // Empty star
+                                star.style.color = 'black'; // Default color
+                            }
+                        });
+                    }
+
+                    function highlightStars(rating) {
+                        document.querySelectorAll('.star').forEach((star, index) => {
+                            if (index < rating) {
+                                star.style.color = 'yellow';
+                            } else {
+                                star.style.color = 'black';
+                            }
+                        });
+                    }
+
+                    // Reset stars to default color when not hovering
+                    try {
+                        document.querySelector('.rating-container').addEventListener('mouseleave', function () {
+
+                            fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+                        });
+                    } catch (error) {
+
+                    }
+
+                }
+                async function fetchAndDisplayUserRating(userid, tconst) {
+                    try {
+                        // Replace `userid` and `tconst` in the URL with actual values
+                        const response = await fetch(`http://localhost:7117/ntuaflix_api/check_rating/${userid}/${tconst}`);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        const ratings = await response.json();
+
+                        if (ratings[0] != null) {
+                            isExistingRating = true;
+                            previousRating = ratings[0].rating;
+                            const userRating = ratings[0].rating;
+
+                            updateStars(userRating);
+                        }
+                    } catch (error) {
+                        console.error('Error fetching existing rating:', error);
+                    }
+                }
+                let isExistingRating = false;   // Default value
+                let previousRating = 0; // Default value
+                let updatedAverage = null;
+
+                function submitUserRating(userId, titleId, newRating) {
+
+                    //isExistingRating = true;//TO DO
+                    //previousRating = false;//TO DO
+
+                    fetch(`http://localhost:7117/ntuaflix_api/update_rating/${userId}/${titleId}/${newRating}`, {
+                        method: 'POST', // Assuming GET is correct based on the URL pattern, change if it's actually POST or another method
+                        headers: {
+                            'Content-Type': 'application/json',
+
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message === "Rating updated successfully") {
+
+                                // Recalculate and update the displayed average rating and vote count
+                                let currentAverage = parseFloat(updatedAverage || movieData.rating.avRating);
+                                let currentVotes = parseInt(movieData.rating.nVotes);
+                                newRating = parseInt(newRating, 10);
+
+
+                                if (isExistingRating) {
+
+                                    // Adjust the average to account for the updated rating
+                                    updatedAverage = ((currentAverage * currentVotes) - previousRating + newRating) / currentVotes;
+
+                                } else {
+
+
+                                    // Adjust the average to account for the new rating
+                                    updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes + 1);
+                                    currentVotes++; // Increase the vote count by 1 for a new rating
+
+
+                                }
+
+                                document.querySelector("#ratingDisplay").textContent = `Rating: ${updatedAverage.toFixed(1)} (${currentVotes})`;
+                            }
+                            fetchAndDisplayUserRating(userId, titleId); // Optionally refresh stars
+
+                        })
+                        .catch(error => {
+                            console.error('Error updating rating:', error);
+                        });
+                }
+
+                if (token) {
+                    fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+                }
+                // Add cast if available
+                let flag = true;
+                if (movieData.principals && movieData.principals.length > 0) {
+
+                    for (const principal of movieData.principals) {
+                        if (principal.category === 'actor' || principal.category === 'actress') {
+                            if (flag) {
+
+                                const castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h3 class="CrewTitle">Cast:</h3><div class="cast-list"></div>';
+                                container.appendChild(castContainer);
+
+                                castListDiv = castContainer.querySelector('.cast-list');
+                                flag = false;
+                            }
+                            const personInfo = await fetchPersonDetails(principal.nameID);
+                            const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
+                            const personDiv = createPersonDiv(personInfo, principal, characterInfo);
+                            castListDiv.appendChild(personDiv);
+                        }
+                    }
+                }
+
+                // Add principals if available
+                flag = true;
+                if (movieData.principals && movieData.principals.length > 0) {
+
+                    for (const principal of movieData.principals) {
+                        if (principal.category !== 'actor' && principal.category !== 'actress' && principal.category !== 'writer' && principal.category !== 'director') {
+                            if (flag) {
+
+                                const castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h3 class="CrewTitle">Principals:</h3><div class="cast-list"></div>';
+                                container.appendChild(castContainer);
+
+                                castListDiv = castContainer.querySelector('.cast-list');
+                                flag = false;
+                            }
+                            const personInfo = await fetchPersonDetails(principal.nameID);
+                            const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
+                            if (characterInfo[0].category === 'writer' || characterInfo[0].category === 'director') continue;//tha tous valume sto crew
+                            const personDiv = createPersonDiv(personInfo, principal, characterInfo);
+
+                            castListDiv.appendChild(personDiv);
+                        }
+                    }
+                }
+                // Add crew if available
+                let crewData = await fetchCrewDetails(movieData.titleID);
+                crewData = crewData[0].result;
+
+
+                if (crewData) {
+                    const combinedCrew = combineCrewData(crewData.director, crewData.writer);
+
+
+                    const crewContainer = document.createElement('div');
+                    crewContainer.classList.add('cast-container');
+                    crewContainer.innerHTML = '<h3 class="CrewTitle">Crew:</h3><div class="cast-list"></div>';
+                    container.appendChild(crewContainer);
+
+                    const crewListDiv = crewContainer.querySelector('.cast-list');
+
+
+                    for (const crewMember of combinedCrew) {
+                        const crewDiv = createCrewDiv(crewMember, crewMember.roles.join(' & '));
+                        crewListDiv.appendChild(crewDiv);
+                    }
+                }
+
+            }
+
+            // Fetch and display the details for the provided movie ID
+            if (movieId) {
+                fetchMovieDetails(movieId);
+            } else {
+                console.log("No movie ID provided.");
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

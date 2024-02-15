@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Person Page</title>
+    <link rel="icon" type="image/png" href="../static/logo.png">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<style>
+    .AllInfoForPerson {
+        margin-left: 20px;
+    }
+
+    .movie-details-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .movie-info-section {
+        flex: 3;
+        /* Adjust as needed for the desired width */
+        padding-right: 20px;
+        /* Spacing between the sections */
+    }
+
+    .movie-poster-section {
+        flex: 1;
+        padding-right: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+
+    @media (max-width: 600px) {
+        .movie-details-flex-container {
+            flex-direction: column;
+        }
+
+        .movie-info-section,
+        .movie-poster-section {
+            max-width: 100%;
+            /* Full width for smaller screens */
+            /* Adjust to stack the sections vertically */
+        }
+    }
+
+    .poster:hover {
+        cursor: pointer;
+
+    }
+</style>
+
+<body>
+
+    <header class="site-header">
+
+        <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+
+        <button id="adminButton" class="admin-btn">🏠</button>
+        <button id="loginButton" class="login-btn">🔒</button>
+    </header>
+    <div class="AllInfoForPerson">
+        <div id="personInfo"></div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+    <script>
+
+        document.getElementById('logoImage').addEventListener('click', function () {
+            window.location.href = 'http://localhost:8228/';
+        });
+        let token = localStorage.getItem('token');
+
+
+        try {
+
+            var decoded = jwt_decode(token);
+            console.log(decoded);
+
+            let home_admin_button = document.getElementById('adminButton')
+
+            if (decoded.is_admin == 1) {
+                home_admin_button.style.display = 'block';
+
+                home_admin_button.addEventListener('click', function () {
+                    window.location.href = 'http://localhost:8228/adminpage';
+                });
+
+            }
+
+        } catch (error) {
+            console.log("Token verification failed:", error);
+        }
+
+        if (token) {
+            // User is logged in
+
+            loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+
+
+                fetch('http://localhost:7117/ntuaflix_api/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Logout failed with status: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message === "Logout successful") {
+                            localStorage.removeItem('token');
+                            location.reload();
+                        } else {
+                            alert(data.message || 'Logout failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+
+                        localStorage.removeItem('token')
+                    });
+            });
+
+        } else {
+
+            loginButton.textContent = '🔒'; // Replace with the closed lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+                window.location.href = 'http://localhost:8228/login';
+            });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const personId = new URLSearchParams(window.location.search).get('personId');
+            fetchPersonData(personId);
+            //fetchKnownForTitles(personId);
+        });
+
+
+
+
+        function fetchMovieDetails(id) {
+
+            return fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    return data[0];
+                })
+                .catch(error => {
+                    console.error('Error fetching movie details:', error);
+                    throw error;
+                });
+        }
+
+        function fetchMoreMoviesDetails(nconst) {
+
+            return fetch(`http://localhost:7117/ntuaflix_api/other_movies/${nconst}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    return data;
+                })
+                .catch(error => {
+                    console.error('Error fetching movie details:', error);
+                    throw error;
+                });
+        }
+        function fetchPersonData(personId) {
+            fetch(`http://localhost:7117/ntuaflix_api/person/${personId}`)
+                .then(response => response.json())
+                .then(data => {
+                    displayPersonInfo(data[0]);
+                })
+                .catch(error => console.error('Error fetching person data:', error));
+        }
+
+        function calculateAge(birthYear, deathYear) {
+            if (birthYear && birthYear === '\\N') return '';
+
+            const currentYear = new Date().getFullYear();
+            let age;
+
+            if (deathYear && deathYear !== '\\N') {
+                age = deathYear - birthYear;
+                return `Died at age ${age}`;
+            } else {
+                age = currentYear - birthYear;
+                return `Age: ${age}`;
+            }
+        }
+
+        function createPersonDiv(personInfo, flag) {
+            const div = document.createElement('div');
+            div.classList.add('cast-item');
+            if (flag == "T") {
+                div.style.backgroundColor = "#8C8967";
+            }
+            if (personInfo === undefined) return div;
+            div.setAttribute('id', personInfo.titleID);
+            div.setAttribute('type', personInfo.type)
+            // Check if image URL is available and not null
+            if (personInfo.titlePoster && personInfo.titlePoster !== '\\N' && personInfo.titlePoster !== "") {
+                div.innerHTML += `<img src="${personInfo.titlePoster.replace('{width_variable}', 'w200')}" alt="${personInfo.originalTitle}">`;
+            }
+
+            div.innerHTML += `<h3>${personInfo.originalTitle}</h3>`;
+
+            /*
+            if (characterInfo && characterInfo.characters) {
+                const characterName = characterInfo.characters.replace(/[\[\]"]+/g, ''); // Remove brackets and quotes
+                div.innerHTML += `<p>as ${characterName}</p>`;
+            }
+            */// Add character name, in the movie if we have time
+
+            if (personInfo.genres && personInfo.genres.length > 0 && personInfo.genres[0].genreTitle !== '\\N') {
+                div.innerHTML += `<p>Genres: ${personInfo.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
+            }
+
+            // Attach event listener
+            div.addEventListener('click', (event) => {
+
+                if (event.currentTarget.getAttribute('type') == "movie" || event.currentTarget.getAttribute('type') == "short") {
+                    redirectToMoviePage(event.currentTarget.getAttribute('id'));
+                } else {
+                    redirectToSeriesPage(event.currentTarget.getAttribute('id'));
+                }
+
+            });
+
+            return div;
+        }
+
+
+        function redirectToMoviePage(movieId) {
+            window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+        }
+
+        function redirectToSeriesPage(movieId) {
+            window.location.href = `http://localhost:8228/seriespage?seriesId=${movieId}`;
+        }
+        async function displayPersonInfo(personInfo) {
+
+
+
+            const container = document.getElementById('personInfo');
+
+            container.innerHTML = ''; // This line adds the new content to the DOM
+
+            // Start building HTML content with the basic movie details
+            let htmlContent = `
+                        <div class="movie-details-flex-container">
+                        <div class="movie-info-section">
+                        <h1>${personInfo.primaryName}</h1>`
+
+            if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) {
+                htmlContent += `<p>Alive: ${personInfo.birthYear} `
+                if (personInfo.deathYear !== '\\N' && personInfo.deathYear !== null) htmlContent += `- ${personInfo.deathYear}`
+                const age = calculateAge(personInfo.birthYear, personInfo.deathYear)
+                if (personInfo.birthYear !== '\\N' && personInfo.birthYear !== null) htmlContent += `</p><p>${age} </p>`
+            } else {
+                if (personInfo.deathYear !== '\\N' && personInfo.deathYear !== null) htmlContent += `<p>Died: ${personInfo.deathYear}</p>`
+            }
+
+            // Add professions if available
+            if (personInfo.primaryProfession && personInfo.primaryProfession.length > 0) {
+                htmlContent += `<p>Professions: ${personInfo.primaryProfession.replace(/,/g, ', ')}</p>`;
+            }
+
+
+            htmlContent += `</div>`
+
+
+
+
+            // Add the movie poster if available
+            if (personInfo.img_url_asset && personInfo.img_url_asset !== '\\N' && personInfo.img_url_asset !== '') {
+                const imdbLink = `https://www.imdb.com/name/${personInfo.nconst}`; // Correct IMDb link
+                htmlContent += `<div class="movie-poster-section">
+        <img src="${personInfo.img_url_asset.replace('{width_variable}', 'w400')}" class="poster" id="personPoster" alt="Image of ${personInfo.primaryName}" style="border-radius: 30px;">
+    </div>`;
+                // Store the IMDb link in a global variable or in the image element for later use
+                window.currentPersonImdbLink = imdbLink;
+            }
+            htmlContent += `</div>`;
+
+            container.innerHTML = htmlContent; // This line adds the new content to the DOM
+            htmlContent = '';
+            // Add click event listener to the image
+            const personPoster = document.getElementById('personPoster');
+
+            if (personPoster) {
+                personPoster.addEventListener('click', function () {
+                    window.open(window.currentPersonImdbLink, '_blank');
+                });
+            }
+
+            // Add known titles if available
+            let flag = true;
+            let castContainer = undefined;
+            let castListDiv;
+            const more_movies_details = await fetchMoreMoviesDetails(personInfo.nconst);
+            let more_movies = [];
+            for (const movie of more_movies_details) {
+                more_movies.push(movie.movieID)
+            }
+
+            if ((personInfo.knownForTitles && personInfo.knownForTitles.length > 0) || more_movies.length() > 0) {
+                let titles = personInfo.knownForTitles.split(',');
+                for (let i in [0, 1, 2, 3]) { titles[i] = titles[i] + "T" }
+
+                for (const movie of more_movies) {
+                    if (!titles.includes(movie + "T"))
+                        titles.push(movie + "F")
+                }
+                // Loop through each title and fetch details
+                for (let title of titles) {
+                    try {
+                        let flag_for_star = title.substr(title.length - 1, title.length)
+                        title = title.substr(0, title.length - 1)
+
+                        const movieInfo = await fetchMovieDetails(title); // Await the async call
+                        const personDiv = createPersonDiv(movieInfo, flag_for_star); // Use the resolved movieInfo
+                        if (personDiv.innerHTML !== "") {
+                            if (flag) {
+                                castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h3 class="CrewTitle">Known For Titles:</h3><div class="cast-list"></div>';
+
+                                castListDiv = castContainer.querySelector('.cast-list');
+                                flag = false;
+                            }
+
+                            castListDiv.appendChild(personDiv);
+                        }
+                    } catch (error) {
+                        console.error('Error processing title:', title, error);
+                    }
+                }
+            }
+
+            const stuff = document.createElement('div');
+            stuff.innerHTML = htmlContent;
+            container.appendChild(stuff);
+            if (castContainer !== undefined)
+                container.appendChild(castContainer);
+
+        }
+
+    </script>
+</body>
+
+
+</html>

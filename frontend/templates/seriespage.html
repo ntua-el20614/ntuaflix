@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TvSeries Details</title>
+    <link rel="icon" type="image/png" href="../static/logo.png">
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<style>
+    /* Style for the expand button */
+    .expand-button {
+        background-color: #008CBA;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .expand-button:hover {
+        background-color: #005F7F;
+    }
+
+    .episodes-list {
+        border: 1px solid #272c51;
+        display: flex;
+        overflow-x: auto;
+        margin: 20px;
+        background-color: #0084b028;
+        /* Hide initially */
+
+        /* Hide scrollbar for IE, Edge, and Firefox, Chrome, Safari, and Opera
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    */
+    }
+
+
+    .episode-item {
+        margin-right: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 25px;
+        border-radius: 30px;
+
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-right: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        min-width: 250px;
+        max-width: 250px;
+        background-color: #8a8a8a;
+        transition: transform 0.3s ease;
+    }
+
+    .hidden {
+        display: none !important;
+        /* Hide when this class is applied */
+    }
+
+    .episode-item:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    .movieInfo {
+        margin-left: 20px;
+    }
+
+    .movieInfoPeople {
+        margin-left: 20px;
+        margin-bottom: 600px;
+    }
+
+    .movie-details-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .movie-info-section {
+        flex: 3;
+        /* Adjust as needed for the desired width */
+        padding-right: 20px;
+        /* Spacing between the sections */
+    }
+
+    .movie-poster-section {
+        flex: 1;
+        padding-right: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+
+    @media (max-width: 768px) {
+        .movie-details-flex-container {
+            flex-direction: column;
+        }
+
+        .movie-info-section,
+        .movie-poster-section {
+            max-width: 100%;
+            /* Full width for smaller screens */
+            /* Adjust to stack the sections vertically */
+        }
+    }
+
+    .episode-item img {
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+
+    .seasons-container {
+        display: flex;
+        justify-content: start;
+        margin-bottom: 20px;
+    }
+
+    .season-number {
+        display: inline-block;
+        margin: 10px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        /* Center text vertically */
+        text-align: center;
+        border-radius: 50%;
+        /* Makes the div circular */
+        background-color: #008CBA;
+        color: white;
+        cursor: pointer;
+    }
+
+    .season-number:hover {
+        background-color: #005F7F;
+    }
+
+    .season-number.active {
+        background-color: #005F7F;
+        /* Active color */
+        color: white;
+    }
+
+
+    .SeasonTitle {
+        margin: 10px;
+        font-size: 24px;
+        /* Larger size similar to h2 */
+        font-weight: bold;
+        /* Make text bold */
+        color: #005F7F;
+        /* Change the color to something distinct */
+        text-shadow: 1px 1px 2px #000000;
+        /* Add a subtle shadow for depth */
+        letter-spacing: 0.5px;
+        /* Slightly space out the letters */
+        text-transform: uppercase;
+        /* Optional: Transform text to uppercase for emphasis */
+    }
+
+
+    .star {
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .star:hover,
+    .star:hover~.star {
+        color: yellow;
+        /* Color change on hover */
+    }
+</style>
+
+<body>
+
+    <header class="site-header">
+
+
+        <img src="../static/logo.png" alt="NTUAFlix Logo" class="logo" id="logoImage">
+
+        <button id="adminButton" class="admin-btn">🏠</button>
+        <button id="loginButton" class="login-btn">🔒</button>
+    </header>
+    <div id="movieDetailsContainer" class="movieInfo">
+        <!-- Movie details will be displayed here -->
+    </div>
+
+    <div id="tvshowepisodes" class="movieInfoPeople">
+        <div id="seasonNumbers" class="seasons-container">
+            <!-- Season numbers will be generated and displayed here -->
+        </div>
+        <!-- Season episodes will be displayed below -->
+    </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+    <script>
+
+        document.getElementById('logoImage').addEventListener('click', function () {
+            window.location.href = 'http://localhost:8228/';
+        });
+
+        let token = localStorage.getItem('token');
+
+        try {
+
+            var decoded = jwt_decode(token);
+            console.log(decoded);
+
+            let home_admin_button = document.getElementById('adminButton')
+
+            if (decoded.is_admin == 1) {
+                home_admin_button.style.display = 'block';
+
+                home_admin_button.addEventListener('click', function () {
+                    window.location.href = 'http://localhost:8228/adminpage';
+                });
+
+            }
+
+        } catch (error) {
+            console.log("Token verification failed:", error);
+        }
+        if (token) {
+            // User is logged in
+
+            loginButton.textContent = '🔓'; // Replace with the open lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+
+
+                fetch('http://localhost:7117/ntuaflix_api/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token') // Using Bearer scheme
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Logout failed with status: ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.message === "Logout successful") {
+                            localStorage.removeItem('token');
+                            location.reload();
+                        } else {
+                            alert(data.message || 'Logout failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+
+                        localStorage.removeItem('token')
+                    });
+            });
+
+        } else {
+
+            loginButton.textContent = '🔒'; // Replace with the closed lock emoji
+
+            document.getElementById('loginButton').addEventListener('click', function () {
+                window.location.href = 'http://localhost:8228/login';
+            });
+        }
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serieId = urlParams.get('seriesId');
+
+            // Function to fetch movie details
+            function fetchMovieDetails(id) {
+
+                fetch(`http://localhost:7117/ntuaflix_api/title/${id}`)
+                    .then(response => response.json())
+                    .then(data => displayMovieDetails(data[0]))
+                    .catch(error => console.error('Error fetching movie details:', error));
+            }
+
+            function fetchPersonDetails(id) {
+
+                return fetch(`http://localhost:7117/ntuaflix_api/person/${id}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        return data[0];
+                    })
+                    .catch(error => {
+                        console.error('Error fetching movie details:', error);
+                        throw error;
+                    });
+            }
+
+
+
+
+            async function fetchEpisodesDetails(id) {
+                try {
+                    const response = await fetch(`http://localhost:7117/ntuaflix_api/title/${id}`);
+
+                    const episodeData = await response.json();
+
+                    return episodeData;
+                } catch (error) {
+                    console.error('Error fetching student info:', error);
+                    return null;
+                }
+            }
+
+
+            function fetchCharacterDetails(nameID, titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/character/${nameID}/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching character details:', error);
+                        // Return a default object to avoid undefined
+                        return { characters: '' };
+                    });
+            }
+
+            function fetchCrewDetails(titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/crew/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching crew details:', error);
+                        // Return a default object to avoid undefined
+                        return { director: [], writer: [] };
+                    });
+            }
+
+            function fetchEpisodeDetails(titleID) {
+                return fetch(`http://localhost:7117/ntuaflix_api/episodes/${titleID}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching crew details:', error);
+                    });
+            }
+
+            function groupEpisodesBySeason(episodeData) {
+                return episodeData.reduce((acc, episode) => {
+                    (acc[episode.seasonN] = acc[episode.seasonN] || []).push(episode);
+                    return acc;
+                }, {});
+            }
+
+            function createEpisodeDiv(episode, details) {
+
+                const div = document.createElement('div');
+
+                div.setAttribute('id', episode.tconst);
+
+                div.classList.add('episode-item');
+                let episodeContent
+                if (episode.episodeN === "\\N") {
+                    episodeContent = `<h3>${details.originalTitle}</h3>`;
+
+                } else {
+                    episodeContent = `<h2>Episode ${episode.episodeN}: </h2><h3>${details.originalTitle}</h3>`;
+                }
+                // Add the episode poster if available
+                if (details.titlePoster && details.titlePoster !== '\\N') {
+
+
+                    episodeContent += `<img src="${details.titlePoster.replace('{width_variable}', 'w200')}" alt="${details.originalTitle}">`;
+                }
+
+                // Add genres
+                if (details.genres && details.genres.length > 0) {
+                    episodeContent += `<p>Genres: ${details.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
+                }
+
+                // Add rating information
+                if (details.rating && details.rating.avRating !== "\\N") {
+                    episodeContent += `<p>Rating: ${details.rating.avRating} (${details.rating.nVotes} votes)</p>`;
+                }
+
+
+                div.innerHTML = episodeContent;
+
+
+                // Attach event listener
+                div.addEventListener('click', (event) => {
+
+                    redirectToMoviePage(event.currentTarget.getAttribute('id'));
+                });
+
+                return div;
+            }
+
+
+            function calculateAge(birthYear, deathYear) {
+                if (birthYear && birthYear === '\\N') return '';
+                const currentYear = new Date().getFullYear();
+                let age;
+                if (deathYear && deathYear !== '\\N') {
+                    age = deathYear - birthYear;
+                    return `(Died at age ${age})`;
+                } else {
+                    age = currentYear - birthYear;
+                    return `(Age: ${age})`;
+                }
+            }
+
+
+            function redirectToPersonPage(personId) {
+                window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
+            }
+
+            function redirectToMoviePage(movieId) {
+                window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
+            }
+            async function displayMovieDetails(movieData) {
+                console.log(movieData)
+                const container = document.getElementById('movieDetailsContainer');
+                container.innerHTML = ''; // Clear existing content
+
+                // Start building HTML content with the basic movie details
+                let htmlContent = `
+                        <div class="movie-details-flex-container">
+                        <div class="movie-info-section">
+                        <h1>${movieData.originalTitle}</h1>
+                        <p>Year: ${movieData.startYear}</p>`
+
+
+
+                // Add genres if available
+                if (movieData.genres && movieData.genres.length > 0) {
+                    htmlContent += `<p>Genres: ${movieData.genres.map(genre => genre.genreTitle).join(', ')}</p>`;
+                }
+
+
+
+
+                // Add rating if available
+                if (movieData.rating && movieData.rating.avRating != null && movieData.rating.avRating !== "\\N") {
+                    htmlContent += `<p id="ratingDisplay">Rating: ${movieData.rating.avRating} (${movieData.rating.nVotes})</p>`;
+
+
+                    if (token) {
+                        // Add rating stars
+                        htmlContent += `<div class="rating-container">Rate this movie: `;
+                        for (let i = 1; i <= 10; i++) {
+                            htmlContent += `<span class="star" data-rating="${i}">&#9734;</span>`; // Unicode star outline
+                        }
+                        htmlContent += `</div>`;
+                    }
+                }
+
+
+
+                // Add titleAkas if available
+                let flag1 = true;
+                if (movieData.titleAkas && movieData.titleAkas.length > 0) {
+                    movieData.titleAkas.slice(0, 20).forEach(aka => {
+                        if (aka.akaTitle === movieData.originalTitle) return; //na min valume ta idia titles.
+                        if (flag1) {
+
+                            htmlContent += '<div><h3>Alternate Titles:</h3><ul>';
+                            flag1 = false;
+                        }
+                        htmlContent += `<li>${aka.akaTitle} (${aka.regionAbbrev !== '\\N' ? aka.regionAbbrev : 'N/A'})</li>`;
+                    });
+                    htmlContent += '</ul></div>';
+                }
+
+                htmlContent += `</div>`;
+
+
+                // Add the movie poster if available
+                if (movieData.titlePoster) {
+                    htmlContent += `<div class="movie-poster-section">
+            ${movieData.titlePoster ? `<img src="${movieData.titlePoster.replace('{width_variable}', 'w400')}" alt="${movieData.originalTitle}" style="border-radius: 30px;">` : ''}
+                </div>`;
+                }
+                htmlContent += `</div>`;
+                const MovieInfoContainer = document.createElement('div');
+                MovieInfoContainer.innerHTML = htmlContent;
+                container.appendChild(MovieInfoContainer);
+                // Function to create and return a div for a cast or crew member
+                function createPersonDiv(personInfo, principal, characterInfo = null) {
+                    const div = document.createElement('div');
+                    div.classList.add('cast-item');
+                    div.setAttribute('id', principal.nameID);
+
+                    // Check if image URL is available and not null
+                    if (personInfo.img_url_asset && personInfo.img_url_asset !== '\\N') {
+                        div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
+                    }
+
+                    div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
+                    characterInfo = characterInfo[0]
+
+                    if (characterInfo && characterInfo.characters && (characterInfo.category === 'actor' || characterInfo.category === 'actress')) {
+                        const characterName = characterInfo.characters.replace(/[\[\]"]+/g, ''); // Remove brackets and quotes
+                        div.innerHTML += `<p>as ${characterName}</p>`;
+                    }
+
+                    // Add profession, birth year, and death year, if available
+                    if (personInfo.primaryProfession && personInfo.primaryProfession !== '\\N' && ((characterInfo.category !== 'actor' && characterInfo.category !== 'actress'))) {
+
+                        div.innerHTML += `<p>Profession: ${characterInfo.category}</p>`;
+                    }
+                    if (personInfo.birthYear && personInfo.birthYear !== '\\N') {
+                        let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                        div.innerHTML += `<p>Birth Year: ${personInfo.birthYear}</p>`;
+                        if (ageString[1] === 'A') {
+                            div.innerHTML += `${ageString}`;
+                        }
+                        div.innerHTML += `</p>`;
+                    }
+                    if (personInfo.deathYear && personInfo.deathYear !== '\\N') {
+                        let ageString = calculateAge(personInfo.birthYear, personInfo.deathYear);
+                        div.innerHTML += `<p>Death Year: ${personInfo.deathYear}</p> <p> ${ageString}</p>`;
+                    }
+
+                    // Attach event listener
+                    div.addEventListener('click', (event) => {
+
+                        redirectToPersonPage(event.currentTarget.getAttribute('id'));
+                    });
+
+                    return div;
+                }
+
+                if (token) {
+                    document.querySelectorAll('.star').forEach(star => {
+                        star.addEventListener('click', function () {
+                            const rating = this.getAttribute('data-rating');
+
+                            submitUserRating(decoded.userId, movieData.titleID, rating);//TO DO
+                            fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+
+                        });
+
+                        star.addEventListener('mouseover', function () {
+                            const rating = this.getAttribute('data-rating');
+                            highlightStars(rating);
+                        });
+                    });
+
+
+                    function updateStars(rating) {
+                        document.querySelectorAll('.star').forEach((star, index) => {
+                            if (index < rating) {
+                                star.innerHTML = '&#9733;'; // Filled star
+                                star.style.color = 'yellow'; // Fill color
+                            } else {
+                                star.innerHTML = '&#9734;'; // Empty star
+                                star.style.color = 'black'; // Default color
+                            }
+                        });
+                    }
+
+                    function highlightStars(rating) {
+                        document.querySelectorAll('.star').forEach((star, index) => {
+                            if (index < rating) {
+                                star.style.color = 'yellow';
+                            } else {
+                                star.style.color = 'black';
+                            }
+                        });
+                    }
+
+                    // Reset stars to default color when not hovering
+                    try {
+                        document.querySelector('.rating-container').addEventListener('mouseleave', function () {
+
+                            fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+                        });
+                    } catch (error) {
+
+                    }
+
+                }
+                async function fetchAndDisplayUserRating(userid, tconst) {
+                    try {
+                        // Replace `userid` and `tconst` in the URL with actual values
+                        const response = await fetch(`http://localhost:7117/ntuaflix_api/check_rating/${userid}/${tconst}`);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        const ratings = await response.json();
+
+                        if (ratings[0] != null) {
+                            isExistingRating = true;
+                            previousRating = ratings[0].rating;
+                            const userRating = ratings[0].rating;
+
+                            updateStars(userRating);
+                        }
+                    } catch (error) {
+                        console.error('Error fetching existing rating:', error);
+                    }
+                }
+                let isExistingRating = false;   // Default value
+                let previousRating = 0; // Default value
+                let updatedAverage = null;
+
+                function submitUserRating(userId, titleId, newRating) {
+
+                    //isExistingRating = true;//TO DO
+                    //previousRating = false;//TO DO
+
+                    fetch(`http://localhost:7117/ntuaflix_api/update_rating/${userId}/${titleId}/${newRating}`, {
+                        method: 'POST', // Assuming GET is correct based on the URL pattern, change if it's actually POST or another method
+                        headers: {
+                            'Content-Type': 'application/json',
+
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message === "Rating updated successfully") {
+
+                                // Recalculate and update the displayed average rating and vote count
+                                let currentAverage = parseFloat(updatedAverage || movieData.rating.avRating);
+                                let currentVotes = parseInt(movieData.rating.nVotes);
+                                newRating = parseInt(newRating, 10);
+
+
+                                if (isExistingRating) {
+
+                                    // Adjust the average to account for the updated rating
+                                    updatedAverage = ((currentAverage * currentVotes) - previousRating + newRating) / currentVotes;
+
+                                } else {
+
+
+                                    // Adjust the average to account for the new rating
+                                    updatedAverage = ((currentAverage * currentVotes) + newRating) / (currentVotes + 1);
+                                    currentVotes++; // Increase the vote count by 1 for a new rating
+
+
+                                }
+
+                                document.querySelector("#ratingDisplay").textContent = `Rating: ${updatedAverage.toFixed(1)} (${currentVotes})`;
+                            }
+                            fetchAndDisplayUserRating(userId, titleId); // Optionally refresh stars
+
+                        })
+                        .catch(error => {
+                            console.error('Error updating rating:', error);
+                        });
+                }
+
+                if (token) {
+                    fetchAndDisplayUserRating(decoded.userId, movieData.titleID);
+                }
+                function createCrewDiv(crewMember, roles) {
+                    const div = document.createElement('div');
+                    div.classList.add('cast-item');
+                    div.setAttribute('id', crewMember.nconst);
+
+
+                    // Check if image URL is available and not null
+                    if (crewMember.img_url_asset && crewMember.img_url_asset !== '\\N') {
+                        div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
+                    }
+
+                    div.innerHTML += `<h3>${crewMember.primaryName}</h3>`;
+                    div.innerHTML += `<p>Role: ${roles}</p>`;
+
+                    // Add birth year and age, if available
+                    if (crewMember.birthYear && crewMember.birthYear !== '\\N') {
+                        let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                        div.innerHTML += `<p>Birth Year: ${crewMember.birthYear}</p>`;
+                        div.innerHTML += ageString[0] === 'A' ? `${ageString}` : '';
+                    }
+
+                    // Add death year, if available
+                    if (crewMember.deathYear && crewMember.deathYear !== '\\N') {
+                        let ageString = calculateAge(crewMember.birthYear, crewMember.deathYear);
+                        div.innerHTML += `<p>Death Year: ${crewMember.deathYear} ${ageString}</p>`;
+                    }
+
+                    // Attach event listener
+                    div.addEventListener('click', (event) => {
+
+                        redirectToPersonPage(event.currentTarget.getAttribute('id'));
+                    });
+
+                    return div;
+                }
+
+                function combineCrewData(directors, writers) {
+                    let combinedCrew = {};
+
+                    if (!directors) directors = [];
+                    directors.forEach(director => {
+                        combinedCrew[director.nconst] = { ...director, roles: ['Director'] };
+                    });
+
+                    if (!writers) writers = [];
+                    writers.forEach(writer => {
+                        if (combinedCrew[writer.nconst]) {
+                            combinedCrew[writer.nconst].roles.push('Writer');
+                        } else {
+                            combinedCrew[writer.nconst] = { ...writer, roles: ['Writer'] };
+                        }
+                    });
+
+                    return Object.values(combinedCrew);
+                }
+
+
+
+                // Add cast if available
+                let flag = true;
+                if (movieData.principals && movieData.principals.length > 0) {
+
+                    for (const principal of movieData.principals) {
+                        if (principal.category === 'actor' || principal.category === 'actress') {
+                            if (flag) {
+
+                                const castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h1 class="CrewTitle">Cast:</h1><div class="cast-list"></div>';
+                                container.appendChild(castContainer);
+
+                                castListDiv = castContainer.querySelector('.cast-list');
+                                flag = false;
+                            }
+                            const personInfo = await fetchPersonDetails(principal.nameID);
+                            const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
+                            const personDiv = createPersonDiv(personInfo, principal, characterInfo);
+                            castListDiv.appendChild(personDiv);
+                        }
+                    }
+                }
+
+                // Add principals if available
+                flag = true;
+                if (movieData.principals && movieData.principals.length > 0) {
+
+                    for (const principal of movieData.principals) {
+                        if (principal.category !== 'actor' && principal.category !== 'actress' && principal.category !== 'writer' && principal.category !== 'director') {
+                            if (flag) {
+
+                                const castContainer = document.createElement('div');
+                                castContainer.classList.add('cast-container');
+                                castContainer.innerHTML = '<h1 class="CrewTitle">Principals:</h1><div class="cast-list"></div>';
+                                container.appendChild(castContainer);
+
+                                castListDiv = castContainer.querySelector('.cast-list');
+                                flag = false;
+                            }
+                            const personInfo = await fetchPersonDetails(principal.nameID);
+                            const characterInfo = await fetchCharacterDetails(principal.nameID, movieData.titleID);
+                            if (characterInfo[0].category === 'writer' || characterInfo[0].category === 'director') continue;//tha tous valume sto crew
+                            const personDiv = createPersonDiv(personInfo, principal, characterInfo);
+                            castListDiv.appendChild(personDiv);
+                        }
+                    }
+                }
+
+                // Add crew if available
+                let crewData = await fetchCrewDetails(movieData.titleID);
+                crewData = crewData[0].result;
+
+
+                if (crewData && ((crewData.director && crewData.director.length > 0) || (crewData.writer && crewData.writer.length > 0))) {
+                    const combinedCrew = combineCrewData(crewData.director, crewData.writer);
+
+
+                    const crewContainer = document.createElement('div');
+                    crewContainer.classList.add('cast-container');
+                    crewContainer.innerHTML = '<h1 class="CrewTitle">Crew:</h1><div class="cast-list"></div>';
+                    container.appendChild(crewContainer);
+
+                    const crewListDiv = crewContainer.querySelector('.cast-list');
+
+
+                    for (const crewMember of combinedCrew) {
+                        const crewDiv = createCrewDiv(crewMember, crewMember.roles.join(' & '));
+                        crewListDiv.appendChild(crewDiv);
+                    }
+                }
+
+                // Display episodes
+                let episodeData = await fetchEpisodeDetails(movieData.titleID);
+                const episodesBySeason = groupEpisodesBySeason(episodeData);
+
+
+                // Flag to check if there are any seasons with episodes
+                let seasonsAvailable = false;
+
+                for (const season in episodesBySeason) {
+                    if (episodesBySeason[season].length > 0) {
+                        seasonsAvailable = true;
+                        break;
+                    }
+                }
+
+                if (seasonsAvailable) {
+                    // Container for the seasons label and circles
+                    const seasonNumbersDiv = document.createElement('div');
+                    seasonNumbersDiv.classList.add('seasons-container');
+                    document.getElementById('tvshowepisodes').appendChild(seasonNumbersDiv);
+
+                    // Adding the "Seasons:" label
+                    const seasonsLabel = document.createElement('span');
+                    seasonsLabel.textContent = 'Seasons: ';
+                    seasonsLabel.classList.add("SeasonTitle");
+                    seasonNumbersDiv.appendChild(seasonsLabel);
+
+                    for (const season in episodesBySeason) {
+                        // Create and append season circles
+                        const seasonNumberDiv = document.createElement('div');
+                        seasonNumberDiv.classList.add('season-number');
+                        seasonNumberDiv.textContent = season;
+                        seasonNumbersDiv.appendChild(seasonNumberDiv);
+
+                        // Create container for episodes of this season
+                        const seasonEpisodesDiv = document.createElement('div');
+                        seasonEpisodesDiv.id = `season-${season}-episodes`;
+                        seasonEpisodesDiv.classList.add('episodes-list', 'hidden');
+                        document.getElementById('tvshowepisodes').appendChild(seasonEpisodesDiv);
+
+                        // Populate seasonEpisodesDiv with episodes
+                        for (const episode of episodesBySeason[season]) {
+                            const episodeDetails = await fetchEpisodesDetails(episode.tconst);
+                            if (episodeDetails && episodeDetails.length > 0) {
+                                const episodeDiv = createEpisodeDiv(episode, episodeDetails[0]);
+                                seasonEpisodesDiv.appendChild(episodeDiv);
+                            } else {
+                                console.error('Episode details not found for:', episode.tconst);
+                            }
+                        }
+
+
+                        seasonNumberDiv.addEventListener('click', function () {
+                            // Remove active class from all season numbers
+                            document.querySelectorAll('.season-number').forEach(div => {
+                                div.classList.remove('active');
+                            });
+
+                            // Add active class to the clicked season number
+                            seasonNumberDiv.classList.add('active');
+
+                            // Hide all other season episodes
+                            document.querySelectorAll('.episodes-list').forEach(div => {
+                                div.classList.add('hidden');
+                            });
+
+                            // Show the clicked season's episodes
+                            document.getElementById(`season-${season}-episodes`).classList.remove('hidden');
+                        });
+                    }
+                }
+
+            }
+
+            // Fetch and display the details for the provided movie ID
+            if (serieId) {
+                fetchMovieDetails(serieId);
+            } else {
+                console.log("No series ID provided.");
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
