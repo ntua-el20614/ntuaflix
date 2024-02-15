@@ -78,7 +78,6 @@ async function convertFileToTsvAndSave(inputFilePath) {
         const parser = new Parser({ delimiter: '\t', eol: '\n' });
         const tsvContent = parser.parse(data);
         fs.writeFileSync(outputFilePath, tsvContent, 'utf8');
-        console.log(`TSV file saved to ${outputFilePath}`);
         return outputFilePath; // Return the path to the saved TSV file
     } catch (error) {
         console.error("Error converting and saving the file:", error);
