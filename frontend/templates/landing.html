@@ -145,6 +145,7 @@
   .fav-studio-section h3 {
     text-align: center;
     font-size: 2rem;
+    align-self: center;
   }
 
   .fav-studio-container {
@@ -279,6 +280,11 @@
     font-size: 20px;
     /* Example styling */
   }
+
+  
+  .movies-imagem,.people-image{
+    align-self: center;
+  }
 </style>
 
 <body>
@@ -389,65 +395,151 @@
 <script>
 
 
-  //console.log(document.querySelectorAll('.item.item-loaded').length)
-  document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    document.querySelectorAll('.item.item-loaded').forEach(item => {
-      let rotateBackTimeout;
+  function setupRotationAndContentChange() {
+    // Delay added to ensure elements are loaded
+    setTimeout(() => {
+      document.querySelectorAll('.item.item-loaded').forEach(item => {
+        let rotateBackTimeout;
+        item.style.cursor = "pointer";
+        item.addEventListener('mouseenter', () => {
 
-      item.addEventListener('mouseenter', () => {
-        console.log("mouse is here");
-        clearTimeout(rotateBackTimeout);
-        item.style.transform = 'rotateY(180deg)';
+          console.log("mouse is here");
+          clearTimeout(rotateBackTimeout);
+          item.style.transform = 'rotateY(180deg)';
 
-        // Remove existing back-face content if any
-        let backFace = item.querySelector('.back-face');
-        if (!backFace) {
-          backFace = document.createElement('div');
-          backFace.classList.add('back-face');
-          item.appendChild(backFace);
-        }
-        backFace.innerHTML = ''; // Clear previous content
-        console.log(item.getAttribute('data-id'))
-        // Check if the item is a movie or a person and update back-face content accordingly
-        if (item.getAttribute('data-id') === 't') {
-          backFace.innerHTML = createMovieBackFaceContent(item);
-        } else if (item.getAttribute('data-id') === 'n') {
-          backFace.innerHTML = createPersonBackFaceContent(item);
-        }
-        console.log(backFace.innerHTML)
+          let backFace = item.querySelector('.back-face');
+          if (!backFace) {
+            backFace = document.createElement('div');
+            backFace.classList.add('back-face');
+            item.appendChild(backFace);
+          }
+          backFace.innerHTML = ''; // Clear previous content
+          //console.log(item.getAttribute('data-id'));
 
-        backFace.style.display = 'flex'; // Make sure the back face is visible
+          if (item.getAttribute('data-id').startsWith('t')) {
+            backFace = createMovieBackFaceContent(item);
+          } else if (item.getAttribute('data-id').startsWith('n')) {
+            backFace = createPersonBackFaceContent(item);
+          }
+          console.log("kataligoume me:", backFace.innerHTML);
+
+          backFace.style.display = 'flex';
+        });
+
+        item.addEventListener('mouseleave', () => {
+          rotateBackTimeout = setTimeout(() => {
+            console.log("mouse has left");
+            item.style.transform = 'rotateY(0deg)';
+            try{
+            let imgTag = item.querySelector('img'); // Select the <img> tag within the item
+            imgTag.style.display = 'block'; // Hide the image
+            }catch{
+              console.log("no photo")
+            }
+            let pTags = item.querySelectorAll('p'); // Select all <p> tags within the item
+            pTags.forEach(p => {
+              p.style.display = 'none'; // Change display to 'block' or another value as needed
+            });
+
+            let title = item.querySelector('h3')
+            title.style.transform = 'rotateY(0deg)'
+            title.style.fontSize = '20px';
+
+          }, 500); // Delay time in milliseconds
+        });
       });
+    }, 100); // Reduced timeout to ensure it's called after DOM updates
+  }
 
-      item.addEventListener('mouseleave', () => {
-        rotateBackTimeout = setTimeout(() => {
-          console.log("mouse has left");
-          item.style.transform = 'rotateY(0deg)';
-        }, 1000); // Delay time in milliseconds
-      });
-    });
-  }, 1000);
-});
+  document.addEventListener('DOMContentLoaded', setupRotationAndContentChange);
+
 
 
   function createMovieBackFaceContent(item) {
-    // Example: Generate HTML content for the movie's back-face
-    let htmlContent = '<div>';
-    if (item.averageRate != null) {
-      htmlContent += `<p>Rating: ${item.averageRate}</p>`;
+    // Adjust dimensions as needed
+    const originalHeight = item.offsetHeight - 20 + 'px'; // Subtract 20px and add 'px' for CSS value
+    const originalWidth = item.offsetWidth + 'px';
+    console.log(originalHeight, originalWidth);
+
+    // Set the item as a Flex container to center its children
+    item.style.display = 'flex';
+    item.style.flexDirection = 'column'; // Stack children vertically
+    item.style.justifyContent = 'center'; // Center children vertically in the container
+    item.style.alignItems = 'center'; // Center children horizontally in the container
+    item.style.transformStyle = 'preserve-3d'; // Ensure 3D transformations are applied correctly
+
+    // Rotate and center the title
+    let title = item.querySelector('h3');
+    title.style.transform = 'rotateY(180deg)';
+    title.style.alignSelf = 'center'; // Center the title, if needed
+    title.style.fontSize = '2em';
+
+
+    // Show, rotate, and center paragraphs
+    let pTags = item.querySelectorAll('p');
+    pTags.forEach(p => {
+
+      p.style.display = 'block';
+      p.style.transform = 'rotateY(180deg)';
+      p.style.textAlign = 'center'; // Ensure text within <p> is centered
+      p.style.width = '100%'; // Make <p> tags take full width of the container
+      p.style.margin = '10px'; // Remove default margins if necessary for better alignment
+    });
+
+    // Hide the image
+    try{
+    let imgTag = item.querySelector('img');
+    imgTag.style.display = 'none';
     }
-    htmlContent += `<p>Year: ${item.startYear}</p>`;
-    if (item.genres != null && item.genres !== '\\N') {
-      htmlContent += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
+    catch{
+      console.log("no photo")
     }
-    htmlContent += '</div>';
-    return htmlContent;
+    // Reapply original dimensions to the item
+    item.style.height = originalHeight;
+    item.style.width = originalWidth;
+
+    return item;
+
   }
 
   function createPersonBackFaceContent(item) {
-    // Example: Generate HTML content for the person's back-face
-    return `<div><p>${item.primaryProfession.replace(/,/g, ', ').replace("_", " ")}</p></div>`;
+
+
+    const originalHeight = item.offsetHeight - 20 + 'px'; // Subtract 20px and add 'px' for CSS value
+    const originalWidth = item.offsetWidth + 'px';
+    console.log(originalHeight, originalWidth);
+
+
+
+
+
+    // Rotate and center the title
+    let title = item.querySelector('h3');
+    title.style.transform = 'rotateY(180deg)';
+    title.style.alignSelf = 'center'; // Center the title, if needed
+    title.style.fontSize = '2em';
+    title.style.marginTop = '10px';
+
+
+    // Show, rotate, and center paragraphs
+    let p = item.querySelector('p');
+
+
+    p.style.display = 'block';
+    p.style.transform = 'rotateY(180deg)';
+    p.style.textAlign = 'center'; // Ensure text within <p> is centered
+    p.style.width = '100%'; // Make <p> tags take full width of the container
+    p.style.margin = '0'; // Remove default margins if necessary for better alignment
+
+
+
+
+    let imgTag = item.querySelector('img');
+    imgTag.style.display = 'none';
+
+    item.style.height = originalHeight;
+    item.style.width = originalWidth;
+    return item;
   }
 
 
@@ -1083,16 +1175,22 @@
       div.innerHTML = '';
 
       if (containerId === 'movies-container') {
-        flag_movies = false;
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
-          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
-        }
-
+          div.innerHTML += `<img class="movies-image" src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
+          
+        }else{
+          if(flag_movies){
+          console.log("div should be 300px")
+          console.log(div.style.height)
+          div.style.height = '377px'
+          console.log(div.style.height)
+        }}
+        flag_movies = false;
       }
       if (containerId === 'people-container') {
         flag_people = false;
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
-          div.innerHTML += `<img src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
+          div.innerHTML += `<img class="people-image" src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
         }
 
       }
@@ -1103,20 +1201,19 @@
         div.setAttribute('data-id', item.tconst); //  Add a data attribute to each item
 
         div.innerHTML += `
-                <h3  style="color: white; size-font: 25px">${item.primarytitle}</h3>`;
+                <h3  style="color: white; size-font: 25px; align-self: center;">${item.primarytitle}</h3>`;
         /*
 
         show this in rotation of the card
 
 */
-        div_behind = document.createElement('div')
-        div_behind.innerHTML = ""
+
         if (item.averageRate != null) {
-          div_behind.innerHTML += `<p>Rating: ${item.averageRate}</p>`;
+          div.innerHTML += `<p style="display: none; font-size: 1.25em; font-weight: bold;">Rating: ${item.averageRate}</p>`;
         }
-        `<p>Year: ${item.startYear}</p>`;
+        div.innerHTML += `<p style="display: none; font-size: 1.25em; font-weight: bold; margin-top: 10px;">Year: ${item.startYear}</p>`;
         if (item.genres != null && item.genres !== '\\N') {
-          div_behind.innerHTML += `<p>Genre: ${(item.genres).replace(/,/g, ', ')}</p>`;
+          div.innerHTML += `<p style="display: none; font-size: 1.25em; font-weight: bold; margin-top: 10px;">${(item.genres).replace(/,/g, '<br>')}</p>`;
         }
 
 
@@ -1138,12 +1235,8 @@
 
 
         div.innerHTML += `
-                <h3 style="color: white;">${item.primaryName}</h3>`;
-
-
-        div_behind = document.createElement('div')
-        div_behind.innerHTML = `
-        <p>${item.primaryProfession.replace(/,/g, ', ').replace("_", " ")}</p>
+                <h3 style="color: white; align-self: center;">${item.primaryName}</h3>
+        <p style="display: none; font-size: 1.25em; font-weight: bold; margin-top: 10px;">${item.primaryProfession.replace(/,/g, '<br>')}</p>
     `;
         div.setAttribute('data-id', item.nconst);
 
@@ -1154,10 +1247,8 @@
       }
 
       container.appendChild(div);
-      div_behind.style.display = 'none';
 
 
-      container.appendChild(div_behind);
       div.classList.add('item-loaded')
 
 
@@ -1310,6 +1401,8 @@
       displayPage(data, containerId, pageNum, itemsPerPage);
       paginationContainer.innerHTML = ''; // Clear existing buttons
       updateButtons(pageNum); // Update buttons based on new current page
+      setupRotationAndContentChange(); // Call this function to reapply the logic to new items
+
     }
 
     if (pageCount > 0) {
