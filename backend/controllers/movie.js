@@ -142,6 +142,7 @@ exports.searchTitles = async (req, res, next) => {
     const maxrating = req.body.maxrating || '10';
     const yrFrom = req.body.yrFrom || '0000';
     const yrTo = req.body.yrTo || '9999';
+    const type = req.body.type || 'all';
 
     const query = `
     SELECT 
@@ -164,6 +165,15 @@ AND
     ( '${yrFrom}' = '' OR CAST(Titles.startYear AS UNSIGNED) >= CAST(IF('${yrFrom}' = '', '0000', '${yrFrom}') AS UNSIGNED) )
 AND 
     ( '${yrTo}' = '' OR CAST(Titles.startYear AS UNSIGNED) <= CAST(IF('${yrTo}' = '', '9999', '${yrTo}') AS UNSIGNED) )
+AND
+    (
+        '${type}' = 'all' AND Titles.titletype != 'tvEpisode'
+        OR
+        '${type}' = 'movies' AND Titles.titletype NOT IN ('tvEpisode', 'tvSeries', 'tvMiniSeries')
+        OR
+        '${type}' = 'tvshows' AND Titles.titletype NOT IN ('tvEpisode', 'movie', 'short')
+    )
+
 ORDER BY title_ratings.averageRate DESC, Titles.startYear DESC;
 
     `;
@@ -239,7 +249,7 @@ exports.getTopMovies = async (req, res, next) => {
     SELECT t.tconst, t.primarytitle, tr.averageRate, t.genres, t.img_url_asset, t.startYear, t.titletype
     FROM Titles t
         JOIN title_ratings tr ON t.tconst = tr.titleid
-    WHERE t.img_url_asset IS NOT NULL and t.img_url_asset != '\\\\N' and t.img_url_asset != '' and t.titletype != 'tvEpisode'
+    WHERE t.img_url_asset IS NOT NULL and t.img_url_asset != '\\\\N' and t.img_url_asset != '' and t.titletype != 'tvEpisode' and (t.titletype = 'movie' or t.titletype = 'short' or t.titletype = 'tvSeries' or t.titletype = 'tvMiniSeries')
     ORDER BY tr.averageRate DESC, t.startYear DESC 
     LIMIT 100;
     `;

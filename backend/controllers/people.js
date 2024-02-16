@@ -287,7 +287,7 @@ AND p.img_url_asset IS NOT NULL
 AND p.img_url_asset != '\\\\N' 
 AND p.img_url_asset != ''
 GROUP BY p.nconst, p.primaryName
-ORDER BY avgRating DESC;
+ORDER BY p.img_url_asset DESC;
 
     `;
     
