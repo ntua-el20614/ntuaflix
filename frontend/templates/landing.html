@@ -216,6 +216,41 @@
     transform: scale(1.25);
     transition: 2s;
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+  }
+
+  .page-button {
+    background-color: #000000;
+    color: white;
+    padding: 10px 15px;
+    margin: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 30%;
+    height: 30%;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .pagination-ellipsis {
+
+    color: #000000;
+    padding: 15px 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+
+
+
+  }
 </style>
 
 <body>
@@ -279,7 +314,7 @@
 
       <h1 class="CrewTitle" style="display:flex; justify-content: center; color: #353a5e; margin-bottom: 20px;">
         Movies & TV Shows
-        </h1>
+      </h1>
       <form action="" class="search-form" onsubmit="fetchAndDisplayMovies();"
         style="margin-top: 25px; margin-bottom: 25px;">
         <input type="search" required id="movie-search-input">
@@ -297,7 +332,7 @@
         <p id="year-range-text"></p>
       </div>
 
-
+      <div id="movies-pagination" class="pagination"></div>
       <div id="movies-container"></div>
     </div>
 
@@ -309,6 +344,8 @@
         <input type="search" required id="people-search-input">
         <i class="fa fa-search"></i>
       </form>
+
+      <div id="people-pagination" class="pagination"></div>
       <div id="people-container"></div>
     </div>
 
@@ -508,10 +545,8 @@
       const mainContent = document.querySelector('.container');
       mainContent.style.animationPlayState = 'running';
     }
-    setTimeout(() => {
-      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
+    fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
 
-    }, 500);
 
   });
 
@@ -587,17 +622,15 @@
       flag3 = true;
     }
 
-    if (flag1 || flag2 || flag3) {
-      fetchAndDisplayMovies();
-    } else {
-      fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
 
-    }
+
+    fetchAndDisplayMovies();
+
 
 
 
   }
-  updatedefault();  // na fainontai oi tainies me to topmovies an den exw active filters
+
 
   function toggleFilterContainer(containerId) {
     const container = document.getElementById(containerId);
@@ -752,7 +785,6 @@
 
   let currentCategory = 'all'; // Default to 'all'
 
-
   function toggleImageState(category) {
     // Toggle the active state based on the category
     if (category === 'movies') {
@@ -783,8 +815,8 @@
       currentCategory = 'all'; // Neither is active
     }
 
+    return currentCategory;
 
-    fetchData('http://localhost:7117/ntuaflix_api/topmovies', 'movies-container');
 
   }
 
@@ -792,7 +824,7 @@
   document.getElementById('seriesButton').addEventListener('click', () => toggleImageState('series'));
 
   // Initialize to show all content
-  updateCategory(); // To ensure correct content is displayed on page load
+  fetchAndDisplayMovies(); // To ensure correct content is displayed on page load
 
 
   document.querySelector('.search-form').addEventListener('submit', function (event) {
@@ -800,13 +832,28 @@
     fetchAndDisplayMovies();
   });
 
-  function fetchAndDisplayMovies() {
+  async function fetchAndDisplayMovies() {
+    try {
+      buttons_pressed_movies = [1];
+    }
+    catch {
+      //console.log("first time, so no buttons")
+    }
     const titlePart = document.getElementById('movie-search-input').value || '';
     const sorted_genres = selectedGenres.sort();
     const genre = sorted_genres.join(',');
     let [minrating, maxrating] = getRatingRange();
     const [yrFrom, yrTo] = getYearRange();
+    let type
+    try {
+      type = await updateCategory();
+    }
+    catch {
+      console.log("i came through the error")
+      type = 'all';
+    }
 
+    console.log(type)
     minrating = minrating || '0';
     maxrating = maxrating || '10';
 
@@ -816,7 +863,8 @@
       minrating: minrating.toString(),
       maxrating: maxrating.toString(),
       yrFrom: yrFrom,
-      yrTo: yrTo
+      yrTo: yrTo,
+      type: type
     };
 
     fetchFilteredData('http://localhost:7117/ntuaflix_api/filter', filterData);
@@ -851,7 +899,9 @@
         if (!Array.isArray(data)) {
           throw new Error('Expected data to be an array');
         }
-        displayData(data, 'movies-container');
+        //clearItems('movies-container'); // Make sure to clear previous items before displaying new ones
+
+        displayData(data, 'movies-container', false);
       })
       .catch(error => console.error('Error:', error));
   }
@@ -898,11 +948,12 @@
       .catch(error => console.error('Error fetching data:', error));
   }
 
-  function displayData(data, containerId) {
+  function displayData(data, containerId, isPaginated = false) {
 
     const container = document.getElementById(containerId);
-    container.innerHTML = ''; // Clear existing content
-
+    if (!isPaginated) {
+      container.innerHTML = ''; // Clear existing content
+    }
     //var selectedCategory = document.getElementById('category-select').value;
 
     /*
@@ -994,7 +1045,7 @@
       }
 
       container.appendChild(div);
-      setTimeout(() => div.classList.add('item-loaded'), 100);
+      div.classList.add('item-loaded')
 
 
     });
@@ -1003,6 +1054,8 @@
       noDataDiv.classList.add('no-data-message');
       noDataDiv.textContent = 'No movies or TV shows available.';
       container.appendChild(noDataDiv);
+
+      
     }
     if (flag_people && containerId === 'people-container') {
       const noDataDiv = document.createElement('div');
@@ -1010,7 +1063,164 @@
       noDataDiv.textContent = 'No people available.';
       container.appendChild(noDataDiv);
     }
+
+    if (!isPaginated && containerId === 'movies-container') {
+      setupPagination(data, containerId, 9);
+    } else {
+      if (!isPaginated && containerId === 'people-container') {
+        setupPagination(data, containerId, 15);
+      }
+    }
   }
+
+  function clearItems(containerId) {
+
+    const container = document.getElementById(containerId);
+    let items = container.querySelectorAll('.item');
+    items.forEach(item => item.remove());
+  }
+
+  let buttons_pressed_movies = [1];
+  let buttons_pressed_people = [1];
+  function setupPagination(data, containerId, itemsPerPage) {
+    const pageCount = Math.ceil(data.length / itemsPerPage);
+    const paginationContainerId = containerId === 'movies-container' ? 'movies-pagination' : 'people-pagination';
+    const paginationContainer = document.getElementById(paginationContainerId);
+    paginationContainer.innerHTML = ''; // Reset pagination controls
+
+    function updateButtons(currentPage) {
+      const maxPageButtons = 8; // Adjust for <, >, first, and last pages, giving space for dynamic pages
+      let startPage, endPage;
+
+      if (pageCount <= maxPageButtons + 2) {
+        // Display all pages if within total limit, including first and last
+        startPage = 1;
+        endPage = pageCount;
+      } else {
+        // Dynamic range calculation
+        const maxPagesBeforeCurrentPage = Math.floor((maxPageButtons - 1) / 2);
+        const maxPagesAfterCurrentPage = Math.ceil((maxPageButtons - 1) / 2);
+        if (currentPage <= maxPagesBeforeCurrentPage + 1) {
+          startPage = 2; // Start from 2 because 1 is always shown
+          endPage = maxPageButtons + 1;
+        } else if (currentPage + maxPagesAfterCurrentPage >= pageCount) {
+          startPage = pageCount - maxPageButtons;
+          endPage = pageCount - 1; // End one before last because last is always shown
+        } else {
+          startPage = currentPage - maxPagesBeforeCurrentPage;
+          endPage = currentPage + maxPagesAfterCurrentPage - 1;
+        }
+      }
+
+      // Previous button
+      const previousButton = createPageButton('<', currentPage > 1 ? currentPage - 1 : 1);
+      paginationContainer.appendChild(previousButton);
+
+      // Always display the first page button
+      const firstPageButton = createPageButton(1, 1);
+      paginationContainer.appendChild(firstPageButton);
+      if (startPage > 2) {
+        const ellipsis = document.createElement('span');
+        ellipsis.textContent = '...';
+        ellipsis.classList.add('pagination-ellipsis');
+        paginationContainer.appendChild(ellipsis);
+      }
+
+
+      // Dynamic page buttons
+      for (let i = startPage; i <= endPage; i++) {
+        if (i !== 1 && i !== pageCount) { // Avoid duplicating first and last page buttons
+          const pageButton = createPageButton(i, i);
+          //pageButton.setAttribute(containerId + 'pageButton' + i);
+          paginationContainer.appendChild(pageButton);
+        }
+      }
+
+      if (endPage < pageCount - 1) {
+        // Insert ellipsis to indicate skipped portion of the pagination before the last page
+        const ellipsis = document.createElement('span');
+        ellipsis.textContent = '...';
+        ellipsis.classList.add('pagination-ellipsis');
+        paginationContainer.appendChild(ellipsis);
+      }
+
+      // Always display the last page button
+      if (endPage != 1) {
+        const lastPageButton = createPageButton(pageCount, pageCount);
+        paginationContainer.appendChild(lastPageButton);
+      }
+      // Next button
+      const nextButton = createPageButton('>', currentPage < pageCount ? currentPage + 1 : pageCount);
+      paginationContainer.appendChild(nextButton);
+
+      const pageButton_movies = document.getElementById('movies-container' + 'pageButton' + buttons_pressed_movies[buttons_pressed_movies.length - 1]);
+      const pageButton_people = document.getElementById('people-container' + 'pageButton' + buttons_pressed_people[buttons_pressed_people.length - 1]);
+      if (pageButton_people)
+        pageButton_people.style.backgroundColor = 'green';
+      if (pageButton_movies)
+        pageButton_movies.style.backgroundColor = 'green';
+    }
+
+    function createPageButton(text, page) {
+      const button = document.createElement('button');
+      button.classList.add('page-button');
+      button.textContent = text;
+      if (text != '<')
+        button.setAttribute('id', containerId + 'pageButton' + page);
+
+      button.addEventListener('click', () => {
+        button.style.backgroundColor = 'green';
+        if (containerId === 'movies-container') {
+          if (buttons_pressed_movies.length > 2) {
+            buttons_pressed_movies.shift();
+          }
+
+          buttons_pressed_movies.push(page);
+        }
+        else if (containerId === 'people-container') {
+          if (buttons_pressed_people.length > 2) {
+            buttons_pressed_people.shift();
+          }
+          buttons_pressed_people.push(page);
+        }
+
+        
+        changePage(page);
+      });
+      if (page === Math.ceil(data.length / itemsPerPage) || page === 1) { // Highlight for first or last page
+        button.style.fontWeight = 'bold';
+      }
+      return button;
+    }
+
+    function changePage(pageNum) {
+      displayPage(data, containerId, pageNum, itemsPerPage);
+      paginationContainer.innerHTML = ''; // Clear existing buttons
+      updateButtons(pageNum); // Update buttons based on new current page
+    }
+
+    if (pageCount > 0) {
+      changePage(1); // Initialize pagination with the first page
+    }
+  }
+
+
+
+  function displayPage(data, containerId, pageNum, itemsPerPage) {
+    clearItems(containerId); // Clear existing items before displaying new page items
+    const pageButton = document.getElementById(containerId + 'pageButton' + pageNum);
+
+    if (pageButton != null) {
+      pageButton.style.backgroundColor = 'green !important';
+    }
+    const start = (pageNum - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageData = data.slice(start, end);
+
+    // Call the existing displayData function to render items for the current page
+    displayData(pageData, containerId, true); // Added a third parameter to indicate this call is for pagination
+  }
+
 
   function redirectToMoviePage(movieId) {
     window.location.href = `http://localhost:8228/moviepage?movieId=${movieId}`;
@@ -1022,25 +1232,7 @@
   function redirectToPersonPage(personId) {
     window.location.href = `http://localhost:8228/personpage?personId=${personId}`;
   }
-  function searchMovieData(url, titlePart) {
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ titlePart: titlePart })
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-      })
-      .then(data => {
-        displayData(data, 'movies-container'); // Reuse the displayData function
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  }
+
 
   function searchPeopleData(url, namePart) {
     fetch(url, {
