@@ -1,11 +1,8 @@
 # **NtuaFlix Frontend**
-This directory contains the frontend code for NtuaFlix, a platform designed to provide information related to movies and series.  It features a responsive design, user authentication and dynamic data visualization
+This directory contains the frontend code for NtuaFlix. It features a responsive design, user authentication and dynamic data visualization
 
 ## **Getting Started**
 These instructions will guide you through setting up the frontend for development and testing purposes.
-
-### **Prerequisites**
-- python
 
 ### **Installing**
 - ``` pip install -r requirements.txt ```
