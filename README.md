@@ -1,6 +1,7 @@
 # **NtuaFlix**
 National Technical University of Athens - Software Engineering - University Project  
 NtuaFlix is a platform designed to provide information related to movies and series
+You can find the online version of NtuaFlix [here](http://uniportal.sytes.net:8228/)
 
 ## **Project Components**
 1. [Backend](https://github.com/ntua/softeng23-30/blob/main/backend/README.md) - Handles all the server-side logic, database interactions, API endpoints, and authentication. Built with javascript.
