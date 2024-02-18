@@ -1,13 +1,8 @@
 # **NtuaFlix Backend**
-This directory contains the backend code for NtuaFlix, a platform designed to provide information related to movies and series. It provides a RESTful APIs for data management and user authentication.
+This directory contains the backend code for NtuaFlix. It provides a RESTful APIs for data management and user authentication.
 
 ## **Getting Started**
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### **Prerequisites**
-- Node.js
-- npm
-- MySQL Workbench
+These instructions will let you run the backend of the project on your local machine for development and testing purposes.
 
 ### **Installing**
 - Navigate to backend directory and run the command:
