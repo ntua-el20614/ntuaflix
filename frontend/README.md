@@ -17,7 +17,6 @@ In order to test frontend use on one of the following addresses:
   - [http://127.0.0.1:8228](http://127.0.0.1:8228)
   - [http://192.168.1.104:8228](http://192.168.1.104:8228)
 ### **Some of the Pages**
-- Get Request
-![](https://github.com/ntua/softeng23-30/blob/main/assets/getRequest.png)
-- Post Request
-![](https://github.com/ntua/softeng23-30/blob/main/assets/postRequest.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-1.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-2.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-1.gif)
