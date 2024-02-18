@@ -20,7 +20,7 @@ NtuaFlix is a platform designed to provide information related to movies and ser
 
 ## **Getting Started**
 1. Clone th repository using the command ``` git clone ```
-2. Open the file ``` ntuaflix.sql ``` and run it to set up the database 
+2. Open the file [ntuaflix.sql](https://github.com/ntua/softeng23-30/blob/main/sql/update/ntuaflix.sql) and run it to set up the database 
 3. Start with the [Backend](https://github.com/ntua/softeng23-30/blob/main/backend/README.md) to set up the server and database.
 4. Once the backend is running, proceed with the [Frontend](https://github.com/ntua/softeng23-30/blob/main/frontend/README.md) setup to serve the user interface.
 5. Optionally, install the [CLI](https://github.com/ntua/softeng23-30/blob/main/cli-client/README.md) for managing the platform directly from your terminal.
