@@ -17,7 +17,11 @@ In order to test frontend use on one of the following addresses:
   - [http://127.0.0.1:8228](http://127.0.0.1:8228)
   - [http://192.168.1.104:8228](http://192.168.1.104:8228)
 ### **Some of the Pages**
-![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-1.png)
-![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-2.png)
 ![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-1-ezgif.com-video-to-gif-converter.gif
 )
+![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-2-ezgif.com-video-to-gif-converter.gif)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-1.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-2.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/admin-1.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/admin-2.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/admin-3.png)
