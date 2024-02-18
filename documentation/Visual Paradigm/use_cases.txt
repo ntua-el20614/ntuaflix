@@ -32,11 +32,11 @@ View full movie details
 
 ==== Use Cases ====
 1. User Authentication and Profile Management:
--Focuses on user registration, login, and profile management.
+-Focuses on user registration and login.
 
 2. Movie Browsing, Searching, and Actor/Cast Information:
 -Combines movie and actor/cast searching, including viewing detailed information about movies and their associated cast and crew.
--Encompasses finding the highest rated and most recent movies for each actor/creator and displaying actor biographies.
+-Encompasses finding the highest rated / most recent / genre-filtered movies or tvSeries.
 
 3. User Interaction and Community Features:
 -Includes recording and updating movie ratings (like/dislike), and comments.
