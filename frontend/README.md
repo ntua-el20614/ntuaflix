@@ -7,6 +7,9 @@ These instructions will guide you through setting up the frontend for developmen
 ### **Prerequisites**
 - python
 
+### **Installing**
+- pip install -r requirements.txt
+
  ## **Running**
  Navigate to softeng23-30 directory and run the command:
    - python run.py or
