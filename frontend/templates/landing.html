@@ -42,6 +42,7 @@
 
 
   /* Filter Buttons Basic Styling */
+  #titleFilterButton,
   #genreFilterButton,
   #ratingFilterButton,
   #yearRangeFilterButton {
@@ -54,10 +55,11 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    width: 30%;
+    width: 22%;
     transition: background-color 0.3s, transform 0.2s;
   }
 
+  #titleFilterButton:hover,
   #genreFilterButton:hover,
   #ratingFilterButton:hover,
   #yearRangeFilterButton:hover {
@@ -68,6 +70,7 @@
   }
 
   /* Filter Containers Basic Styling */
+  .title-button-container,
   .genre-button-container,
   .rating-button-container,
   .year-range-button-container {
@@ -78,7 +81,13 @@
     border-radius: 5px;
     padding: 15px;
     display: none;
+    margin: 20px;
     /* Hidden by default */
+  }
+
+  .year-range-button-container {
+
+    margin-bottom: 30px !important;
   }
 
   /* Individual Buttons inside Filter Containers */
@@ -281,9 +290,143 @@
     /* Example styling */
   }
 
-  
-  .movies-imagem,.people-image{
+
+  .movies-imagem,
+  .people-image {
     align-self: center;
+  }
+
+  .menu-div {
+    background-color: #333333AA;
+    margin: 10px;
+    margin-top: 20px;
+    border: #000000 1px solid;
+    border-radius: 15px;
+  }
+
+
+  .menu {
+
+
+    right: 92%;
+
+    --front: #275EFE;
+    --back: #D93757;
+    --icon: white;
+    perspective: 600px;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    input {
+      display: none;
+
+      &+div {
+        span {
+          --rotateY: 0deg;
+          --background: var(--front);
+          transform: rotateY(var(--rotateY));
+          transform-style: preserve-3d;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: var(--background);
+          backface-visibility: hidden;
+          transition: transform .6s cubic-bezier(.2, .64, .48, 1.24);
+
+          &:before,
+          &:after {
+            --rotate: 0deg;
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 2px;
+            border-radius: 1px;
+            top: 50%;
+            left: 50%;
+            background: var(--icon);
+            backface-visibility: hidden;
+            transform: translate(-50%, -50%) rotate(var(--rotate)) translateZ(6px);
+          }
+
+          &:first-child {
+            --background: var(--back);
+
+            &:before {
+              --rotate: -45deg;
+            }
+
+            &:after {
+              --rotate: 45deg;
+            }
+          }
+
+          &:last-child {
+            --rotateY: 180deg;
+
+            &:before {
+              box-shadow: 0 -5px 0 var(--icon), 0 5px 0 var(--icon);
+            }
+
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &:checked+div {
+        span {
+          &:first-child {
+            --rotateY: -180deg;
+          }
+
+          &:last-child {
+            --rotateY: 0deg;
+          }
+        }
+      }
+    }
+
+
+
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+
+
+    box-sizing: inherit;
+
+    &:before,
+    &:after {
+      box-sizing: inherit;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dribbble {
+      position: fixed;
+      display: block;
+      right: 20px;
+      bottom: 20px;
+
+      img {
+        display: block;
+        height: 28px;
+      }
+    }
+  }
+
+  .container-for-mains {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 </style>
 
@@ -294,9 +437,6 @@
   <header class="landing-site-header">
 
     <img src="../static/logo.png" alt="NTUAFlix Logo" class="landing-logo" id="logoImage">
-
-    <img id="moviesButton" src="../static/movies.jpg" class="category-img" alt="Movies">
-    <img id="seriesButton" src="../static/series.jpg" class="category-img" alt="Series">
 
 
     <button id="adminButton" class="admin-btn">🏠</button>
@@ -349,21 +489,52 @@
       <h1 class="CrewTitle" style="display:flex; justify-content: center; color: #353a5e; margin-bottom: 20px;">
         Movies & TV Shows
       </h1>
-      <form action="" class="search-form" onsubmit="fetchAndDisplayMovies();"
-        style="margin-top: 25px; margin-bottom: 25px;">
-        <input type="search" required id="movie-search-input">
-        <i class="fa fa-search"></i>
-      </form>
-      <button id="genreFilterButton" class="genre-filter-btn">Filter by Genre</button>
-      <div id="genreButtonContainer" class="genre-button-container" style="display: none;"></div>
 
-      <button id="ratingFilterButton" class="rating-filter-btn">Filter by Rating</button>
-      <div id="ratingButtonContainer" class="rating-button-container" style="display: none;"></div>
+      <div class="container-for-mains">
+        <form action="" class="search-form" style="order: 0;" onsubmit="fetchAndDisplayMovies();"
+          style="margin-top: 25px; margin-bottom: 25px;">
+          <input type="search" required id="movie-search-input">
+          <i class="fa fa-search"></i>
+        </form>
 
-      <button id="yearRangeFilterButton" class="year-range-filter-btn">Filter by Year Range</button>
-      <div id="yearRangeButtonContainer" class="year-range-button-container" style="display: none;">
-        <div id="year-range-slider"></div>
-        <p id="year-range-text"></p>
+        <label class="menu">
+          <input type="checkbox" id="menu-toggle" checked>
+          <div>
+            <span></span>
+            <span></span>
+          </div>
+        </label>
+      </div>
+
+
+      <a class="dribbble" href="https://dribbble.com/shots/6350574-Hamburger-switch-animation" target="_blank"><img
+          src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
+          alt=""></a>
+
+
+      <div id="menu" class="menu-div" style="display: none;">
+        <button id="titleFilterButton" class="title-filter-btn">Filter by Type</button>
+        <div id="titleButtonContainer" class="title-button-container" style="display: none;">
+
+
+          <img id="moviesButton" src="../static/movies.jpg" class="category-img" alt="Movies">
+
+
+          <img id="seriesButton" src="../static/series.jpg" class="category-img" alt="Series">
+
+        </div>
+
+        <button id="genreFilterButton" class="genre-filter-btn">Filter by Genre</button>
+        <div id="genreButtonContainer" class="genre-button-container" style="display: none;"></div>
+
+        <button id="ratingFilterButton" class="rating-filter-btn">Filter by Rating</button>
+        <div id="ratingButtonContainer" class="rating-button-container" style="display: none;"></div>
+
+        <button id="yearRangeFilterButton" class="year-range-filter-btn">Filter by Year Range</button>
+        <div id="yearRangeButtonContainer" class="year-range-button-container" style="display: none;">
+          <div id="year-range-slider"></div>
+          <p id="year-range-text"></p>
+        </div>
       </div>
 
       <div id="movies-pagination" class="pagination"></div>
@@ -394,6 +565,20 @@
 
 <script>
 
+  document.addEventListener('DOMContentLoaded', function () {
+    var menuToggle = document.getElementById('menu-toggle');
+    menuToggle.addEventListener('change', function () {
+      console.log("menu pressed");
+      const main_div = document.getElementById('menu');
+      if (main_div.style.display == "block") {
+
+        main_div.style.display = "none";
+      } else {
+
+        main_div.style.display = "block";
+      }
+    });
+  });
 
   function setupRotationAndContentChange() {
     // Delay added to ensure elements are loaded
@@ -403,7 +588,7 @@
         item.style.cursor = "pointer";
         item.addEventListener('mouseenter', () => {
 
-          console.log("mouse is here");
+
           clearTimeout(rotateBackTimeout);
           item.style.transform = 'rotateY(180deg)';
 
@@ -421,19 +606,19 @@
           } else if (item.getAttribute('data-id').startsWith('n')) {
             backFace = createPersonBackFaceContent(item);
           }
-          console.log("kataligoume me:", backFace.innerHTML);
+
 
           backFace.style.display = 'flex';
         });
 
         item.addEventListener('mouseleave', () => {
           rotateBackTimeout = setTimeout(() => {
-            console.log("mouse has left");
+
             item.style.transform = 'rotateY(0deg)';
-            try{
-            let imgTag = item.querySelector('img'); // Select the <img> tag within the item
-            imgTag.style.display = 'block'; // Hide the image
-            }catch{
+            try {
+              let imgTag = item.querySelector('img'); // Select the <img> tag within the item
+              imgTag.style.display = 'block'; // Hide the image
+            } catch {
               console.log("no photo")
             }
             let pTags = item.querySelectorAll('p'); // Select all <p> tags within the item
@@ -459,7 +644,7 @@
     // Adjust dimensions as needed
     const originalHeight = item.offsetHeight - 20 + 'px'; // Subtract 20px and add 'px' for CSS value
     const originalWidth = item.offsetWidth + 'px';
-    console.log(originalHeight, originalWidth);
+    //console.log(originalHeight, originalWidth);
 
     // Set the item as a Flex container to center its children
     item.style.display = 'flex';
@@ -487,12 +672,12 @@
     });
 
     // Hide the image
-    try{
-    let imgTag = item.querySelector('img');
-    imgTag.style.display = 'none';
+    try {
+      let imgTag = item.querySelector('img');
+      imgTag.style.display = 'none';
     }
-    catch{
-      console.log("no photo")
+    catch {
+      //console.log("no photo")
     }
     // Reapply original dimensions to the item
     item.style.height = originalHeight;
@@ -507,7 +692,7 @@
 
     const originalHeight = item.offsetHeight - 20 + 'px'; // Subtract 20px and add 'px' for CSS value
     const originalWidth = item.offsetWidth + 'px';
-    console.log(originalHeight, originalWidth);
+    //console.log(originalHeight, originalWidth);
 
 
 
@@ -782,6 +967,9 @@
     fetchAndDisplayMovies();
   }
 
+  document.getElementById('titleFilterButton').addEventListener('click', function () {
+    toggleFilterContainer('titleButtonContainer')
+  })
   // Event Listener for Rating Filter Button
   document.getElementById('ratingFilterButton').addEventListener('click', function () {
     toggleFilterContainer('ratingButtonContainer');
@@ -797,7 +985,8 @@
     const container1 = document.getElementById('genreButtonContainer');
     const container2 = document.getElementById('yearRangeButtonContainer');
     const container3 = document.getElementById('ratingButtonContainer');
-    let flag1 = false, flag2 = false, flag3 = false;
+    const container4 = document.getElementById('titleButtonContainer');
+    let flag1 = false, flag2 = false, flag3 = false, flag4 = false;
     if (container1.style.display === 'block') {
       flag1 = true;
     }
@@ -806,6 +995,9 @@
     }
     if (container3.style.display === 'block') {
       flag3 = true;
+    }
+    if (container4.style.display === 'block') {
+      flag4 = true;
     }
 
 
@@ -832,6 +1024,10 @@
           button.style.backgroundColor = '';
         }
 
+        updatedefault();
+      }
+      if (containerId === 'titleButtonContainer') {
+        toggleImageState();
         updatedefault();
       }
       if (containerId === 'yearRangeButtonContainer') {
@@ -983,6 +1179,7 @@
 
     // Determine the current category based on active states
     updateCategory();
+    fetchAndDisplayMovies();
   }
 
 
@@ -1035,11 +1232,11 @@
       type = await updateCategory();
     }
     catch {
-      console.log("i came through the error")
+      //console.log("i came through the error")
       type = 'all';
     }
 
-    console.log(type)
+    //console.log(type)
     minrating = minrating || '0';
     maxrating = maxrating || '10';
 
@@ -1177,15 +1374,15 @@
       if (containerId === 'movies-container') {
         if (item.img_url_asset != null && item.img_url_asset !== '\\N' && item.img_url_asset !== '') {
           div.innerHTML += `<img class="movies-image" src="${item.img_url_asset.replace('{width_variable}', 'w400')}" alt="${item.primarytitle}">`;
-          
-        }else{
-          if(flag_movies){
-          console.log("div should be 300px")
-          console.log(div.style.height)
+
+        } else {
+          //if (flag_movies) {
+          // console.log(item.primarytitle)
           div.style.height = '377px'
-          console.log(div.style.height)
-        }}
+          //}
+        }
         flag_movies = false;
+
       }
       if (containerId === 'people-container') {
         flag_people = false;
