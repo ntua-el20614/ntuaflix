@@ -23,6 +23,5 @@ In order to test frontend use on one of the following addresses:
 ![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-1.png)  
 ![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-2.png)  
 ![](https://github.com/ntua/softeng23-30/blob/main/assets/admin-1.png)  
-![](https://github.com/ntua/softeng23-30/blob/main/assets/admin-2.png)  
 In order to be able to use "upload movie" you need to include a folder named "all imdb" in the same directory with softeng23-30  
 ![](https://github.com/ntua/softeng23-30/blob/main/assets/admin-3.png)  
