@@ -3,9 +3,9 @@ National Technical University of Athens - Software Engineering - University Proj
 NtuaFlix is a platform designed to provide information related to movies and series
 
 ## **Project Components**
-1. Backend - Handles all the server-side logic, database interactions, API endpoints, and authentication.
-2. Frontend - Provides the user interface, built with modern web technologies for a responsive and intuitive user experience.
-3. CLI - A command-line tool designed for administrators to interact with the NtuaFlix platform efficiently.
+1. Backend - Handles all the server-side logic, database interactions, API endpoints, and authentication. Built with javascript.
+2. Frontend - Provides the user interface, built with modern web technologies for a responsive and intuitive user experience. Built with HTML, javascript, CSS and python.
+3. CLI - A command-line tool designed for administrators to interact with the NtuaFlix platform efficiently. Built with javascript.
 
 ## **Prerequisites**
 - Node.js
