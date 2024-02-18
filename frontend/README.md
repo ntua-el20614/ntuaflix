@@ -19,4 +19,5 @@ In order to test frontend use on one of the following addresses:
 ### **Some of the Pages**
 ![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-1.png)
 ![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-landing-2.png)
-![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-1.gif)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/frontend-1-ezgif.com-video-to-gif-converter.gif
+)
