@@ -514,6 +514,13 @@
 
       <div id="menu" class="menu-div" style="display: none;">
         <button id="titleFilterButton" class="title-filter-btn">Filter by Type</button>
+        <button id="genreFilterButton" class="genre-filter-btn">Filter by Genre</button>
+
+        <button id="ratingFilterButton" class="rating-filter-btn">Filter by Rating</button>
+
+        <button id="yearRangeFilterButton" class="year-range-filter-btn">Filter by Year Range</button>
+
+        
         <div id="titleButtonContainer" class="title-button-container" style="display: none;">
 
 
@@ -524,13 +531,10 @@
 
         </div>
 
-        <button id="genreFilterButton" class="genre-filter-btn">Filter by Genre</button>
         <div id="genreButtonContainer" class="genre-button-container" style="display: none;"></div>
 
-        <button id="ratingFilterButton" class="rating-filter-btn">Filter by Rating</button>
         <div id="ratingButtonContainer" class="rating-button-container" style="display: none;"></div>
 
-        <button id="yearRangeFilterButton" class="year-range-filter-btn">Filter by Year Range</button>
         <div id="yearRangeButtonContainer" class="year-range-button-container" style="display: none;">
           <div id="year-range-slider"></div>
           <p id="year-range-text"></p>
@@ -570,6 +574,7 @@
     menuToggle.addEventListener('change', function () {
       console.log("menu pressed");
       const main_div = document.getElementById('menu');
+
       if (main_div.style.display == "block") {
 
         main_div.style.display = "none";
