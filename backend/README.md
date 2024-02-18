@@ -21,9 +21,7 @@ These instructions will get you a copy of the project up and running on your loc
    - node server.js
 
 ## **Testing**
-In order to test backend you can use [Postman](https://www.postman.com/) 
+In order to test backend you can use [Postman](/assets/"get request.png") 
 ### **Examples of a get and a post request using Postman**
-- Get Request
-![](https://myoctocat.com/assets/images/base-octocat.svg)
-- Post Request
-![](https://myoctocat.com/assets/images/base-octocat.svg)
+![Get Request](/assets/"getRequest.png")
+![Post Request](https://myoctocat.com/assets/images/base-octocat.svg)
