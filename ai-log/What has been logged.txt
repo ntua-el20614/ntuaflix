@@ -40,6 +40,7 @@ coding 39
 coding 40
 coding 41
 coding 42
+coding 43
 component 1
 deployment 1
 deployment 2
@@ -62,6 +63,7 @@ design 7
 requirements gathering 1
 requirements gathering 2
 requirements gathering 3
+requirements gathering 4
 testing 1
 testing 2
 testing 3
