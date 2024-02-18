@@ -146,8 +146,10 @@ exports.searchTitles = async (req, res, next) => {
 
     const query = `
     SELECT 
-    *
-FROM 
+    Titles.*,
+    Title_ratings.*,
+    IF(Titles.img_url_asset LIKE '%.jpg', 0, 1) AS ImagePresent
+    FROM 
     Titles
 INNER JOIN 
     Title_ratings 
@@ -173,8 +175,10 @@ AND
         OR
         '${type}' = 'tvshows' AND Titles.titletype NOT IN ('tvEpisode', 'movie', 'short')
     )
-
-ORDER BY title_ratings.averageRate DESC, Titles.startYear DESC;
+ORDER BY 
+    ImagePresent,
+    Title_ratings.averageRate DESC, 
+    Titles.startYear DESC;
 
     `;
 
