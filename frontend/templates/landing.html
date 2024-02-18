@@ -214,18 +214,59 @@
     color: #004fa3;
   }
 
+  .title-button-container {
+    background-color: #f8f9fa;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    display: none;
+    /* You might want to change this to block or flex to make it visible */
+    margin: 20px;
+    flex-direction: row;
+    /* Align items in a row */
+    justify-content: space-around;
+  }
+
+  .img-container {
+    flex-direction: row;
+    width: 40%;
+    border: solid 1px black;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .img-title {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+  .selection-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    /* Default state */
+    position: absolute;
+
+    margin-left: 10px;
+    right: 40px;
+  }
+
   .category-img {
     border-radius: 25px;
     margin: 10px;
     width: 100px;
     cursor: pointer;
-
   }
 
   .category-img:hover {
-    transform: scale(1.25);
-    transition: 2s;
+    transform: scale(1.15);
+    transition: 1s;
   }
+
 
   .pagination {
     display: flex;
@@ -520,16 +561,24 @@
 
         <button id="yearRangeFilterButton" class="year-range-filter-btn">Filter by Year Range</button>
 
-        
+
         <div id="titleButtonContainer" class="title-button-container" style="display: none;">
 
+          <div class="img-container">
+            <img id="moviesButton" src="../static/movies.jpg" class="category-img" alt="Movies">
+            <div class="selection-indicator" id="moviesIndicator"></div>
+            <span class="img-title">Movies</span>
+          </div>
 
-          <img id="moviesButton" src="../static/movies.jpg" class="category-img" alt="Movies">
-
-
-          <img id="seriesButton" src="../static/series.jpg" class="category-img" alt="Series">
+          <div class="img-container">
+            <img id="seriesButton" src="../static/series.jpg" class="category-img" alt="Series">
+            <div class="selection-indicator" id="seriesIndicator"></div>
+            <span class="img-title">TV Shows</span>
+          </div>
 
         </div>
+
+
 
         <div id="genreButtonContainer" class="genre-button-container" style="display: none;"></div>
 
@@ -568,6 +617,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
+
+  document.getElementById("moviesButton").addEventListener("click", function () {
+    var moviesIndicator = document.getElementById("moviesIndicator");
+    moviesIndicator.style.backgroundColor = moviesIndicator.style.backgroundColor === "blue" ? "transparent" : "blue";
+  });
+
+  document.getElementById("seriesButton").addEventListener("click", function () {
+    var seriesIndicator = document.getElementById("seriesIndicator");
+    seriesIndicator.style.backgroundColor = seriesIndicator.style.backgroundColor === "blue" ? "transparent" : "blue";
+  });
+
 
   document.addEventListener('DOMContentLoaded', function () {
     var menuToggle = document.getElementById('menu-toggle');
