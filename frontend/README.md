@@ -8,7 +8,7 @@ These instructions will guide you through setting up the frontend for developmen
 - python
 
 ### **Installing**
-- pip install -r requirements.txt
+- ``` pip install -r requirements.txt ```
 
  ## **Running**
  Navigate to softeng23-30 directory and run the command:
@@ -21,6 +21,6 @@ In order to test frontend use on one of the following addresses:
   - [http://192.168.1.104:8228](http://192.168.1.104:8228)
 ### **Some of the Pages**
 - Get Request
-![](https://github.com/ntua/softeng23-30/blob/main/backend/assets/getRequest.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/getRequest.png)
 - Post Request
-![](https://github.com/ntua/softeng23-30/blob/main/backend/assets/postRequest.png)
+![](https://github.com/ntua/softeng23-30/blob/main/assets/postRequest.png)
