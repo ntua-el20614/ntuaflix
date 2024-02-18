@@ -70,7 +70,6 @@
   }
 
   /* Filter Containers Basic Styling */
-  .title-button-container,
   .genre-button-container,
   .rating-button-container,
   .year-range-button-container {
@@ -215,19 +214,21 @@
   }
 
   .title-button-container {
-    background-color: #f8f9fa;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 15px;
-    display: none;
-    /* You might want to change this to block or flex to make it visible */
-    margin: 20px;
-    flex-direction: row;
-    /* Align items in a row */
-    justify-content: space-around;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Align items vertically in the center */
+  flex-wrap: wrap; /* Use this if you want to allow wrapping */
+  margin: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
 
   .img-container {
+    margin-right: 30px;
     flex-direction: row;
     width: 40%;
     border: solid 1px black;
@@ -632,7 +633,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     var menuToggle = document.getElementById('menu-toggle');
     menuToggle.addEventListener('change', function () {
-      console.log("menu pressed");
+
       const main_div = document.getElementById('menu');
 
       if (main_div.style.display == "block") {
@@ -864,15 +865,6 @@
   const token = localStorage.getItem('token');
 
 
-  function toggleFilterContainer(containerId) {
-    const container = document.getElementById(containerId);
-    if (container.style.display === 'none') {
-      container.style.display = 'block';
-    } else {
-      container.style.display = 'none';
-    }
-  }
-
   document.getElementById('logoImage').addEventListener('click', function () {
     window.location.href = 'http://localhost:8228/';
   });
@@ -1061,7 +1053,7 @@
     if (container3.style.display === 'block') {
       flag3 = true;
     }
-    if (container4.style.display === 'block') {
+    if (container4.style.display != 'none') {
       flag4 = true;
     }
 
@@ -1078,9 +1070,10 @@
   function toggleFilterContainer(containerId) {
     const container = document.getElementById(containerId);
     const computedStyle = window.getComputedStyle(container);
-
-    if (computedStyle.display === 'block') {
+    console.log(containerId)
+    if (computedStyle.display != 'none') {
       container.style.display = 'none';
+
       if (containerId === 'genreButtonContainer') {
         selectedGenres = []; // Reset genre selection
         // Reset button highlights
@@ -1108,12 +1101,22 @@
 
       }
     } else {
-      if (containerId = 'yearRangeButtonContainer') {
+
+
+      if (containerId == 'yearRangeButtonContainer') {
         yearRangeText.innerHTML = `Selected range: 1950 - 2024`;
         updatedefault();
 
       }
-      container.style.display = 'block';
+
+      if (containerId === "titleButtonContainer") {
+        container.style.display = 'flex';
+
+      } else {
+
+        container.style.display = 'block';
+      }
+
     }
 
 
