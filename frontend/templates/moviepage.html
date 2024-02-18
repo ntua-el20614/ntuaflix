@@ -304,7 +304,7 @@
                         div.innerHTML += `<img src="${personInfo.img_url_asset.replace('{width_variable}', 'w200')}" alt="${personInfo.primaryName}">`;
                     }
 
-                    div.innerHTML += `<h3>${personInfo.primaryName}</h3>`;
+                    div.innerHTML += `<h3 style="color: white;">${personInfo.primaryName}</h3>`;
                     characterInfo = characterInfo[0]
 
                     if (characterInfo && characterInfo.characters && (characterInfo.category === 'actor' || characterInfo.category === 'actress')) {
@@ -350,7 +350,7 @@
                         div.innerHTML += `<img src="${crewMember.img_url_asset.replace('{width_variable}', 'w200')}" alt="${crewMember.primaryName}">`;
                     }
 
-                    div.innerHTML += `<h3>${crewMember.primaryName}</h3>`;
+                    div.innerHTML += `<h3 style="color white;">${crewMember.primaryName}</h3>`;
                     div.innerHTML += `<p>Role: ${roles}</p>`;
 
                     // Add birth year and age, if available

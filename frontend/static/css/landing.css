@@ -419,7 +419,10 @@ form:valid a {
     
 }
 
+.cast-item h3 {
+    color: white;
 
+}
 
 .cast-item {
     margin-right: 10px;
@@ -428,7 +431,7 @@ form:valid a {
     margin-left: 25px;
 
     border-radius: 30px;
-
+    
     border: 1px solid #ccc;
     padding: 10px;
     margin-right: 10px;
